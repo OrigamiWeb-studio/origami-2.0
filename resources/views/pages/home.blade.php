@@ -14,7 +14,7 @@
 	{{--<p>admin</p>--}}
 	{{--@endrole--}}
 
-	<p>{{ $user->profile->first_name . ' ' . $user->profile->last_name . ' ' . ($user->active ? 'activated' : 'not activated') }}</p>
+	<p>USER: {{ $user->profile->first_name . ' ' . $user->profile->last_name . ' ' . ($user->active ? 'activated' : 'not activated') }}</p>
 	<p>{{ $user->profile->sex ? 'male' : 'female' }}</p>
 
 	<ul>
@@ -35,6 +35,21 @@
 		@endforeach
 	</ul>
 
-{{--	{{ \Illuminate\Support\Facades\Auth::user()->profile->phones[0] }}--}}
+	<p>DEVELOPER: {{ $developer->profile->first_name . ' ' . $developer->profile->last_name . ' '
+		. ($developer->profile->user->active ? 'activated' : 'not activated') }}</p>
+
+	<ul>
+		@foreach($developer->languages as $language)
+			<li>{{ $language->value }} - {{ $language->title }}</li>
+		@endforeach
+	</ul>
+
+	<ul>
+		@foreach($developer->skills as $skill)
+			<li>{{ $skill->translateOrDefault('uk')->title }}</li>
+		@endforeach
+	</ul>
+
+	{{--	{{ \Illuminate\Support\Facades\Auth::user()->profile->phones[0] }}--}}
 
 @stop
