@@ -37,4 +37,9 @@ class Developer extends Model
 	{
 		return $this->hasMany(DeveloperExperience::class);
 	}
+	
+	public function projects()
+	{
+		return $this->belongsToMany(Project::class, 'project_developer', 'project_id', 'developer_id');
+	}
 }

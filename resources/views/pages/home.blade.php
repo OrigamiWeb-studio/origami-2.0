@@ -59,7 +59,8 @@
 	<ul>
 		@foreach($developer->educations as $education)
 			<li>{{ $education->date_from . '-' . $education->date_to }} :
-				{{ $education->title }} ({{ $education->location }}, {{ $education->profession }})</li>
+				{{ $education->title }} ({{ $education->location }}, {{ $education->profession }})
+			</li>
 		@endforeach
 	</ul>
 
@@ -67,11 +68,28 @@
 	<ul>
 		@foreach($developer->experiences as $experience)
 			<li>{{ $experience->date_from . '-' . $experience->date_to }} :
-				{{ $experience->title }} ({{ $experience->location }}, {{ $experience->position }})</li>
+				{{ $experience->title }} ({{ $experience->location }}, {{ $experience->position }})
+			</li>
 		@endforeach
 	</ul>
 	<hr>
 	<p>PROJECT: {{ $project->title }} ({{ $project->description }}) (Category: {{ $project->category->title }})</p>
+	<p>Client: {{ $project->client->profile->first_name }}</p>
+	<div>Developers</div>
+	<ul>
+		@foreach($project->developers as $developer)
+			<li>
+				<span>{{ $developer->profile->first_name . ' ' . $developer->profile->last_name }}</span>
+				@if($developer->projects->isNotEmpty())
+					<ul>
+						@foreach($developer->projects as $item)
+							<li>{{ $item->title }} ({{ $item->category->title }})</li>
+						@endforeach
+					</ul>
+				@endif
+			</li>
+		@endforeach
+	</ul>
 
 	{{--	{{ \Illuminate\Support\Facades\Auth::user()->profile->phones[0] }}--}}
 
