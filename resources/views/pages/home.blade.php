@@ -121,6 +121,34 @@
 			</li>
 		@endforeach
 	</ul>
+	<hr>
+	<div>Tickets</div>
+	<ul>
+		@foreach($project->tickets as $ticket)
+			<li>
+				<span>{{ $ticket->title }}</span>
+				(<span>client: {{ $ticket->project->client->profile->first_name }}</span>)
+				(<span>stage: {{ $ticket->stage->title }}</span>)
+				(<span>developer: {{ $ticket->developer->profile->last_name }}</span>)
+				@if($ticket->steps->isNotEmpty())
+					<ul>
+						<li>STEPS</li>
+						@foreach($ticket->steps as $step)
+							<li>{{ $step->time }} minutes - {{ $step->developer->profile->first_name }} : {{ $step->comment }}</li>
+						@endforeach
+					</ul>
+				@endif
+				@if($ticket->comments->isNotEmpty())
+					<ul>
+						<li>COMMENTS</li>
+						@foreach($ticket->comments as $comment)
+							<li>{{ $comment->comment }} ({{ $comment->user->profile->first_name . ' ' . $comment->user->profile->last_name }})</li>
+						@endforeach
+					</ul>
+				@endif
+			</li>
+		@endforeach
+	</ul>
 
 	{{--	{{ \Illuminate\Support\Facades\Auth::user()->profile->phones[0] }}--}}
 
