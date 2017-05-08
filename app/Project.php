@@ -25,6 +25,16 @@ class Project extends Model
 	
 	public function developers()
 	{
-		return $this->belongsToMany(Developer::class, 'project_developer', 'developer_id', 'project_id');
+		return $this->belongsToMany(Developer::class, 'project_developer', 'project_id', 'developer_id');
+	}
+	
+	public function stages()
+	{
+		return $this->belongsToMany(ProjectStage::class, 'project_stage', 'project_id', 'stage_id');
+	}
+	
+	public function current_stage()
+	{
+		return $this->hasOne(ProjectStage::class, 'id', 'current_stage_id');
 	}
 }

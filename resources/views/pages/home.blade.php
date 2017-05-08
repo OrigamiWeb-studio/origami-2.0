@@ -74,6 +74,18 @@
 	</ul>
 	<hr>
 	<p>PROJECT: {{ $project->title }} ({{ $project->description }}) (Category: {{ $project->category->title }})</p>
+	<div>Stages</div>
+	<ul>
+		@foreach($project->stages as $stage)
+			<li>
+				@if($stage->id === $project->current_stage->id)
+					<b>{{ $stage->title }}</b>
+				@else
+					<span>{{ $stage->title }}</span>
+				@endif
+			</li>
+		@endforeach
+	</ul>
 	<p>Client: {{ $project->client->profile->first_name }}</p>
 	<div>Developers</div>
 	<ul>
