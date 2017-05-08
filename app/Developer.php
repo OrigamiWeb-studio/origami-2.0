@@ -27,4 +27,9 @@ class Developer extends Model
 	{
 		return $this->hasMany(DeveloperSkill::class);
 	}
+	
+	public function educations()
+	{
+		return $this->hasMany(DeveloperEducation::class);
+	}
 }
