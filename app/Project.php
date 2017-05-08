@@ -37,4 +37,9 @@ class Project extends Model
 	{
 		return $this->hasOne(ProjectStage::class, 'id', 'current_stage_id');
 	}
+	
+	public function screenshots()
+	{
+		return $this->hasMany(ProjectScreenshot::class, 'project_id', 'id');
+	}
 }

@@ -86,6 +86,14 @@
 			</li>
 		@endforeach
 	</ul>
+	<div>Screenshots</div>
+	<ul>
+		@foreach($project->screenshots as $screenshot)
+			<li>
+				<span>{{ $screenshot->link }}</span>
+			</li>
+		@endforeach
+	</ul>
 	<p>Client: {{ $project->client->profile->first_name }}</p>
 	<div>Developers</div>
 	<ul>
