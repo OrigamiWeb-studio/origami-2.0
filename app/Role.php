@@ -10,7 +10,7 @@ class Role extends EntrustRole
 	use Translatable;
 	
 	public $table = 'roles';
-	public $translationModel = 'App\RoleTranslation';
+	public $translationModel = RoleTranslation::class;
 	public $translatedAttributes = ['display_name', 'description'];
 	
 }

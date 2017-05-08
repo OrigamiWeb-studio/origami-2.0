@@ -10,6 +10,6 @@ class DeveloperEducation extends Model
 	use Translatable;
 	
 	public $table = 'developer_educations';
-	public $translationModel = 'App\DeveloperEducationTranslation';
+	public $translationModel = DeveloperEducationTranslation::class;
 	public $translatedAttributes = ['title', 'location', 'profession'];
 }

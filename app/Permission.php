@@ -10,7 +10,7 @@ class Permission extends EntrustPermission
 	use Translatable;
 	
 	public $table = 'permissions';
-	public $translationModel = 'App\PermissionTranslation';
+	public $translationModel = PermissionTranslation::class;
 	public $translatedAttributes = ['display_name', 'description'];
 	
 }

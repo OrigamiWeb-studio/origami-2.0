@@ -10,6 +10,6 @@ class DeveloperExperience extends Model
 	use Translatable;
 	
 	public $table = 'developer_experiences';
-	public $translationModel = 'App\DeveloperExperienceTranslation';
+	public $translationModel = DeveloperExperienceTranslation::class;
 	public $translatedAttributes = ['title', 'location', 'position', 'description'];
 }

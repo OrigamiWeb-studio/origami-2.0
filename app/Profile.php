@@ -10,7 +10,7 @@ class Profile extends Model
 	use Translatable;
 	
 	public $table = 'profiles';
-	public $translationModel = 'App\ProfileTranslation';
+	public $translationModel = ProfileTranslation::class;
 	public $translatedAttributes = ['first_name', 'last_name'];
 	
 	public function user()

@@ -37,7 +37,7 @@
 			<li>{{ $social->value }}</li>
 		@endforeach
 	</ul>
-
+	<hr>
 	<p>DEVELOPER: {{ $developer->profile->first_name . ' ' . $developer->profile->last_name . ' '
 		. ($developer->profile->user->active ? 'activated' : 'not activated') }}</p>
 
@@ -70,6 +70,8 @@
 				{{ $experience->title }} ({{ $experience->location }}, {{ $experience->position }})</li>
 		@endforeach
 	</ul>
+	<hr>
+	<p>PROJECT: {{ $project->title }} ({{ $project->description }}) (Category: {{ $project->category->title }})</p>
 
 	{{--	{{ \Illuminate\Support\Facades\Auth::user()->profile->phones[0] }}--}}
 

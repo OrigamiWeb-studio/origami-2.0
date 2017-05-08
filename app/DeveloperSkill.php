@@ -10,6 +10,6 @@ class DeveloperSkill extends Model
 	use Translatable;
 	
 	public $table = 'developer_skills';
-	public $translationModel = 'App\DeveloperSkillTranslation';
+	public $translationModel = DeveloperSkillTranslation::class;
 	public $translatedAttributes = ['title'];
 }

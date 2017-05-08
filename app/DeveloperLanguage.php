@@ -10,6 +10,6 @@ class DeveloperLanguage extends Model
 	use Translatable;
 	
 	public $table = 'developer_languages';
-	public $translationModel = 'App\DeveloperLanguageTranslation';
+	public $translationModel = DeveloperLanguageTranslation::class;
 	public $translatedAttributes = ['title'];
 }
