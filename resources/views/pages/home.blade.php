@@ -14,8 +14,8 @@
 	{{--<p>admin</p>--}}
 	{{--@endrole--}}
 
-	<p>USER: {{ $user->profile->first_name . ' ' . $user->profile->last_name . ' ' . ($user->active ? 'activated' : 'not activated') }}</p>
-	<p>{{ $user->profile->sex ? 'male' : 'female' }}</p>
+	<p>USER: {{ $user->profile->first_name . ' ' . $user->profile->last_name . ' ' . ($user->active ? 'activated' : 'not activated') }},
+		{{ $user->profile->sex ? 'male' : 'female' }}</p>
 
 	<div>Phones</div>
 	<ul>
