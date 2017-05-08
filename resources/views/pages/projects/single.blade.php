@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-	homepage
+	{{ $project }}
 @stop
