@@ -63,6 +63,14 @@
 		@endforeach
 	</ul>
 
+	<div>Experiences</div>
+	<ul>
+		@foreach($developer->experiences as $experience)
+			<li>{{ $experience->date_from . '-' . $experience->date_to }} :
+				{{ $experience->title }} ({{ $experience->location }}, {{ $experience->position }})</li>
+		@endforeach
+	</ul>
+
 	{{--	{{ \Illuminate\Support\Facades\Auth::user()->profile->phones[0] }}--}}
 
 @stop

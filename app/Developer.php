@@ -32,4 +32,9 @@ class Developer extends Model
 	{
 		return $this->hasMany(DeveloperEducation::class);
 	}
+	
+	public function experiences()
+	{
+		return $this->hasMany(DeveloperExperience::class);
+	}
 }
