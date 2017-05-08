@@ -44,7 +44,7 @@
 	<div>Languages</div>
 	<ul>
 		@foreach($developer->languages as $language)
-			<li>{{ $language->value }} - {{ $language->title }}</li>
+			<li>{{ $language->value }} - {{ $language->translateOrDefault('uk')->title }}</li>
 		@endforeach
 	</ul>
 
