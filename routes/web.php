@@ -26,8 +26,8 @@ Route::get('/project/{id}', 'ProjectsController@singleProject')
 	->where('id', '[0-9]+');
 
 #Team
-Route::get('/team', 'TeamController@team')
+Route::get('/team', 'TeamController@allDevelopers')
 	->name('team');
-Route::get('/team/{id}', 'TeamController@singleDeveloper')
+Route::get('/developer/{id}', 'TeamController@singleDeveloper')
 	->name('developer')
 	->where('id', '[0-9]+');

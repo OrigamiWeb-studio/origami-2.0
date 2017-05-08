@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
-	public function team()
+	public function allDevelopers()
 	{
 		$data = [
 			'developers' => Developer::get()
