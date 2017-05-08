@@ -17,4 +17,9 @@ class User extends Authenticatable
 	{
 		return $this->hasOne(Profile::class);
 	}
+	
+	public function isDeveloper()
+	{
+		return isset($this->profile->developer) ? true : false;
+	}
 }

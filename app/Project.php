@@ -42,4 +42,9 @@ class Project extends Model
 	{
 		return $this->hasMany(ProjectScreenshot::class, 'project_id', 'id');
 	}
+	
+	public function comments()
+	{
+		return $this->hasMany(ProjectComment::class, 'project_id', 'id');
+	}
 }

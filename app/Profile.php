@@ -32,4 +32,9 @@ class Profile extends Model
 	{
 		return $this->hasMany(ProfileSocial::class);
 	}
+	
+	public function developer()
+	{
+		return $this->hasOne(Developer::class, 'profile_id', 'id');
+	}
 }

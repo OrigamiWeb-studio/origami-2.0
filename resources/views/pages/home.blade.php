@@ -94,6 +94,17 @@
 			</li>
 		@endforeach
 	</ul>
+	<div>Comments</div>
+	<ul>
+		@foreach($project->comments as $comment)
+			<li>
+				<span>{{ $comment->message }} &copy; {{ $comment->user->profile->first_name . ' ' . $comment->user->profile->last_name }}</span>
+				@if($comment->user->isDeveloper())
+					<span>developer kurwa!</span>
+				@endif
+			</li>
+		@endforeach
+	</ul>
 	<p>Client: {{ $project->client->profile->first_name }}</p>
 	<div>Developers</div>
 	<ul>
