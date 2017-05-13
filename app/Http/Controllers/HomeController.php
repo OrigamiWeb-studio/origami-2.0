@@ -10,8 +10,11 @@ class HomeController extends Controller
 	public function index()
 	{
 		$data = [
-			'projects' => Project::limit(5)->get()
+			'projects' => Project::get(),
+//			'projects' => Project::where('client_review', '<>', null)->get()
 		];
+		
+//		dd($data['reviews']);
 		
 		return view('pages.home', $data);
 	}

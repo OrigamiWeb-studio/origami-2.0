@@ -21,6 +21,7 @@ class CreateProfilesTable extends Migration
 			
 			$table->string('first_name')->nullable();
 			$table->string('last_name')->nullable();
+			$table->text('about')->nullable();
 			
 			$table->string('locale')->index();
 			$table->unique(['profile_id', 'locale']);

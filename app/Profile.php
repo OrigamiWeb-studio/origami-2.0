@@ -11,7 +11,7 @@ class Profile extends Model
 	
 	public $table = 'profiles';
 	public $translationModel = ProfileTranslation::class;
-	public $translatedAttributes = ['first_name', 'last_name'];
+	public $translatedAttributes = ['first_name', 'last_name', 'about'];
 	
 	public function user()
 	{

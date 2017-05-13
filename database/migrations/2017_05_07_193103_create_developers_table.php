@@ -19,7 +19,6 @@ class CreateDevelopersTable extends Migration
 			$table->integer('developer_id')->unsigned();
 			
 			$table->string('location')->nullable();
-			$table->text('about')->nullable();
 			$table->text('interests')->nullable();
 			
 			$table->string('locale')->index();

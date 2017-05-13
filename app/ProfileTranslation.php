@@ -8,5 +8,5 @@ class ProfileTranslation extends Model
 {
 	public $table = 'profile_translations';
 	public $timestamps = false;
-	public $fillable = ['first_name', 'last_name'];
+	public $fillable = ['first_name', 'last_name', 'about'];
 }

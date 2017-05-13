@@ -11,7 +11,7 @@ class Developer extends Model
 	
 	public $table = 'developers';
 	public $translationModel = DeveloperTranslation::class;
-	public $translatedAttributes = ['about', 'interests', 'location'];
+	public $translatedAttributes = ['interests', 'location'];
 	
 	public function profile()
 	{

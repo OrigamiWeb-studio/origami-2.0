@@ -8,5 +8,5 @@ class DeveloperTranslation extends Model
 {
 	public $table = 'developer_translations';
 	public $timestamps = false;
-	public $fillable = ['about', 'interests', 'location'];
+	public $fillable = ['interests', 'location'];
 }

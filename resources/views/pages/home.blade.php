@@ -22,51 +22,31 @@
 						<ul id="projects-slider" class="projects-slider list-unstyled cS-hidden">
 							@foreach($projects as $project)
 								<li>
-									<a href="#" class="slide-content">
-										<img src="{{ asset('uploads/projects/project-placeholder.png') }}" alt="{{ $project->title }}">
+									<a href="{{ route('project', ['id' => $project->id]) }}" class="slide-content">
+										<img src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
 									</a>
 								</li>
 							@endforeach
 						</ul>
 					</div>
-					<a href="{{ route('projects') }}">All projects </a>
+					<a href="{{ route('projects') }}">All projects</a>
 				</div>
 			</section>
 		@endif
 
-		@if(isset($contacts))
+		@if($projects->isNotEmpty())
 			<section class="s_clients leaning_section">
 				<div class="container">
 					<h2>Clients</h2>
 					<div class="reviews-slider-wrapper">
 						<ul id="reviews-slider" class="reviews-slider list-unstyled cS-hidden">
-							<li>
-								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-									irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-									non proident, sunt.
-								</blockquote>
-								<strong>David Flannagan</strong>,
-								<span>Director at CitySpace</span>
-							</li>
-							<li>
-								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-									irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-									non proident, sunt.
-								</blockquote>
-								<strong>David Flannagan</strong>,
-								<span>Director at CitySpace</span>
-							</li>
-							<li>
-								<blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-									irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-									non proident, sunt.
-								</blockquote>
-								<strong>David Flannagan</strong>,
-								<span>Director at CitySpace</span>
-							</li>
+							@foreach($projects->where('client_review', '!=', null) as $project)
+								<li>
+									<blockquote>{{ $project->client_review }}</blockquote>
+									<strong>{{ $project->client->profile->first_name.' '.$project->client->profile->last_name }}</strong>,
+									<span>{{ $project->client->profile->about }}</span>
+								</li>
+							@endforeach
 						</ul>
 					</div>
 				</div>

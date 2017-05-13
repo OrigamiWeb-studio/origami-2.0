@@ -13,7 +13,7 @@ $(document).ready(function(){
 	if($("#reviews-slider").length){
 		$("#reviews-slider").lightSlider({
 			item: 1,
-			loop: true,
+			loop: false,
 			controls: false,
 			adaptiveHeight: true,
 			onSliderLoad: function() {
