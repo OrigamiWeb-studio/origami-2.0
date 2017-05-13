@@ -1,4 +1,3 @@
-
 <header class="main_header">
 	<div class="container">
 		<div class="pull-left">
@@ -26,25 +25,31 @@
 					<li>
 						<a href="#">{{ __('Contacts') }}</a>
 					</li>
+					<li>
+						<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							{{ __('Logout') }}
+						</a>
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					</li>
 				</ul>
 			</nav>
 		</div>
+
 		<div class="pull-right">
 			<div class="lang-dropdown dropdown">
 				<a href="#" data-toggle="dropdown">
-					English
+					{{ session('locales.current.name') }}
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li>
-						<a href="#">Polski</a>
-					</li>
-					<li>
-						<a href="#">Русский</a>
-					</li>
-					<li>
-						<a href="#">Українська</a>
-					</li>
+					@foreach(session('locales.list') as $locale)
+						@continue($locale['id'] === session('locales.current.id'))
+						<li>
+							<a href="{{ route('set-locale', ['code' => $locale['code']]) }}">{{ $locale['name'] }}</a>
+						</li>
+					@endforeach
 				</ul>
 			</div>
 			<a href="#" class="btn">
@@ -55,61 +60,60 @@
 </header>
 
 
-
 {{--<nav class="navbar navbar-default navbar-static-top">--}}
-	{{--<div class="container">--}}
-		{{--<div class="navbar-header">--}}
+{{--<div class="container">--}}
+{{--<div class="navbar-header">--}}
 
-			{{--<!-- Collapsed Hamburger -->--}}
-			{{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">--}}
-				{{--<span class="sr-only">Toggle Navigation</span>--}}
-				{{--<span class="icon-bar"></span>--}}
-				{{--<span class="icon-bar"></span>--}}
-				{{--<span class="icon-bar"></span>--}}
-			{{--</button>--}}
+{{--<!-- Collapsed Hamburger -->--}}
+{{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">--}}
+{{--<span class="sr-only">Toggle Navigation</span>--}}
+{{--<span class="icon-bar"></span>--}}
+{{--<span class="icon-bar"></span>--}}
+{{--<span class="icon-bar"></span>--}}
+{{--</button>--}}
 
-			{{--<!-- Branding Image -->--}}
-			{{--<a class="navbar-brand" href="{{ url('/') }}">--}}
-				{{--{{ config('app.name', 'Laravel') }}--}}
-			{{--</a>--}}
-		{{--</div>--}}
+{{--<!-- Branding Image -->--}}
+{{--<a class="navbar-brand" href="{{ url('/') }}">--}}
+{{--{{ config('app.name', 'Laravel') }}--}}
+{{--</a>--}}
+{{--</div>--}}
 
-		{{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
-			{{--<!-- Left Side Of Navbar -->--}}
-			{{--<ul class="nav navbar-nav">--}}
-				{{--&nbsp;<li><a href="{{ action('ProjectsController@allProjects') }}">Projects</a></li>--}}
-				{{--<li><a href="{{ action('TeamController@allDevelopers') }}">Team</a></li>--}}
+{{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
+{{--<!-- Left Side Of Navbar -->--}}
+{{--<ul class="nav navbar-nav">--}}
+{{--&nbsp;<li><a href="{{ action('ProjectsController@allProjects') }}">Projects</a></li>--}}
+{{--<li><a href="{{ action('TeamController@allDevelopers') }}">Team</a></li>--}}
 {{--				<li><a href="{{ action('ContactsController@index') }}">Contacts</a></li>--}}
-			{{--</ul>--}}
+{{--</ul>--}}
 
-			{{--<!-- Right Side Of Navbar -->--}}
-			{{--<ul class="nav navbar-nav navbar-right">--}}
-				{{--<!-- Authentication Links -->--}}
-				{{--@if (Auth::guest())--}}
-					{{--<li><a href="{{ route('login') }}">Login</a></li>--}}
-					{{--<li><a href="{{ route('register') }}">Register</a></li>--}}
-				{{--@else--}}
-					{{--<li class="dropdown">--}}
-						{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-							{{--{{ Auth::user()->login }} <span class="caret"></span>--}}
-						{{--</a>--}}
+{{--<!-- Right Side Of Navbar -->--}}
+{{--<ul class="nav navbar-nav navbar-right">--}}
+{{--<!-- Authentication Links -->--}}
+{{--@if (Auth::guest())--}}
+{{--<li><a href="{{ route('login') }}">Login</a></li>--}}
+{{--<li><a href="{{ route('register') }}">Register</a></li>--}}
+{{--@else--}}
+{{--<li class="dropdown">--}}
+{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
+{{--{{ Auth::user()->login }} <span class="caret"></span>--}}
+{{--</a>--}}
 
-						{{--<ul class="dropdown-menu" role="menu">--}}
-							{{--<li>--}}
-								{{--<a href="{{ route('logout') }}"--}}
-									 {{--onclick="event.preventDefault();--}}
-                                                     {{--document.getElementById('logout-form').submit();">--}}
-									{{--Logout--}}
-								{{--</a>--}}
+{{--<ul class="dropdown-menu" role="menu">--}}
+{{--<li>--}}
+{{--<a href="{{ route('logout') }}"--}}
+{{--onclick="event.preventDefault();--}}
+{{--document.getElementById('logout-form').submit();">--}}
+{{--Logout--}}
+{{--</a>--}}
 
-								{{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-									{{--{{ csrf_field() }}--}}
-								{{--</form>--}}
-							{{--</li>--}}
-						{{--</ul>--}}
-					{{--</li>--}}
-				{{--@endif--}}
-			{{--</ul>--}}
-		{{--</div>--}}
-	{{--</div>--}}
+{{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--{{ csrf_field() }}--}}
+{{--</form>--}}
+{{--</li>--}}
+{{--</ul>--}}
+{{--</li>--}}
+{{--@endif--}}
+{{--</ul>--}}
+{{--</div>--}}
+{{--</div>--}}
 {{--</nav>--}}
