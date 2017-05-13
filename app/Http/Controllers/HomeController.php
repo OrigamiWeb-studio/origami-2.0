@@ -20,6 +20,14 @@ class HomeController extends Controller
 	
 	public function sendForm(Request $request)
 	{
+		$this->validate($request, [
+			'name'    => 'required|regex:/^[\pL\s\-]+$/u|between:2,128',
+			'email'   => 'required|email',
+			'phone'   => 'numeric|digits_between:9,12',
+			'message' => 'required|between:10,1000',
+		]);
+		
+		
 		dd($request);
 	}
 	
