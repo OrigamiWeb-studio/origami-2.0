@@ -4,13 +4,13 @@
 			<nav class="main_nav">
 				<ul>
 					<li>
-						<a href="{{ route('projects') }}">Projects</a>
+						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<a href="#">About Us</a>
+						<a href="#">{{ __('About Us') }}</a>
 					</li>
 					<li>
-						<a href="#">Contacts</a>
+						<a href="#">{{ __('Contacts') }}</a>
 					</li>
 				</ul>
 			</nav>

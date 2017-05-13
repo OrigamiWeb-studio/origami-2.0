@@ -11,11 +11,9 @@ class HomeController extends Controller
 	{
 		$data = [
 			'projects' => Project::get(),
-//			'projects' => Project::where('client_review', '<>', null)->get()
 		];
 		
-//		dd($data['reviews']);
-		
+		app()->setLocale('uk');
 		return view('pages.home', $data);
 	}
 	
