@@ -6,10 +6,11 @@
 	@include('head.styles')
 </head>
 <body>
-<div id="app">
-	@include('head.header')
-	@yield('content')
-</div>
+@include('head.header')
+
+@yield('content')
+
+@include('foot.footer')
 @include('foot.styles')
 @include('foot.scripts')
 </body>

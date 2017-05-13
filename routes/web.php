@@ -15,8 +15,9 @@ Auth::routes();
 #Homepage
 Route::get('/', 'HomeController@index')
 	->name('home');
-Route::get('/home', 'HomeController@index')
-	->name('home');
+Route::get('/home', 'HomeController@index');
+Route::post('/send-form', 'HomeController@sendForm')
+	->name('home-send-form');
 
 #Projects
 Route::get('/projects', 'ProjectsController@allProjects')
