@@ -7,7 +7,7 @@
 </head>
 <body>
 @include('head.header')
-test
+
 @yield('content')
 
 @include('foot.footer')
