@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ app()->getLocale() ? app()->getLocale() : config('app.locale') }}">
 <head>
 	@include('head.meta')
+
 	<title>{{ config('app.name', 'ORIGAMI STUDIO') }}</title>
+
 	@include('head.styles')
 </head>
 <body>
