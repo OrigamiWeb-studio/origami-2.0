@@ -37,4 +37,9 @@ class Profile extends Model
 	{
 		return $this->hasOne(Developer::class, 'profile_id', 'id');
 	}
+	
+	public function getNameAttribute()
+	{
+		return $this->first_name . ' ' . $this->last_name;
+	}
 }
