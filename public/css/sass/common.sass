@@ -1,0 +1,136 @@
+$lightblue: #9da7b0
+$darkblue: #262b2f
+
+body
+	max-width: 100%
+	min-width: 320px	
+	overflow-x: hidden
+	font-size: 14px
+	color: $darkblue
+	font-family: 'PTSans', sans-serif
+	font-weight: 400
+	background: #fff
+	h1,h2,h3,h4
+		font-weight: 400
+
+*:focus
+	outline: none
+
+main
+	min-height: calc( 100vh - 111px )
+
+a
+	transition: color .2s ease
+	color: $lightblue
+	font-family: 'PTSans', sans-serif
+	font-weight: 700
+	&:focus,
+	&:hover
+		color: $darkblue
+		text-decoration: none
+	&:visited,
+	&:hover
+		text-decoration: none
+.btn
+	display: inline-block
+	border: 2px solid #e7e9ec
+	padding: 9px 11px
+	position: relative
+	transition: all 0.1s ease
+	color: $lightblue
+	font-weight: 700
+	background: #fff
+	cursor: pointer
+	&:hover
+		background: $darkblue
+		color: #fff
+
+
+
+.main_nav
+	ul
+		padding: 0
+		list-style: none
+		margin: 0
+	li
+		display: inline-block
+		margin-right: 51px
+		&:last-child
+			margin-right: 0
+.main_header
+	background: #fafafb
+	border-bottom: 2px solid #e7e9ec
+	padding: 4px 0
+	position: absolute
+	width: 100%
+	z-index: 10
+	.btn
+		border: 2px solid #e7e9ec
+		padding: 10px 28px
+.logo-wrapper,
+.main_header .main_nav,
+.lang-dropdown
+	display: inline-block
+.main_header .main_nav
+	vertical-align: top
+	ul
+		margin: 30px 0 30px 44px
+	a
+		position: relative
+		&:before
+			content: ''
+			position: absolute
+			width: 100%
+			height: 2px
+			background:  $darkblue
+			bottom: -37px
+			left: 0
+			transition: all .2s ease
+			opacity: 0
+			pointer-events: none
+		&:hover
+			&:before
+				opacity: 1
+.lang-dropdown
+	margin: 30px 30px 30px 0
+	&>a>span
+		position: relative
+		top: -1px
+.dropdown-menu
+	border-radius: 0
+	right: -15px
+	left: auto
+	top: 30px
+	background: #fafafb
+	border-color: #e2e6ea
+	&:before
+		content: '\f04b'
+		position: absolute
+		top: -14px
+		right: 13px
+		font-family: 'FontAwesome'
+		transform: rotate(-90deg)
+		color: #fafafb
+		text-shadow: 1px 0px 0px #e2e6ea
+		font-size: 13px
+	&>li>a
+		padding: 9px 20px
+		color: $lightblue
+		&:hover
+			color: $darkblue
+
+
+.main_footer
+	border-top: 1px solid #e7e9ec
+	background: #fff
+	padding: 35px
+.soc-icons
+	ul
+		margin: 0
+		padding: 0
+		list-style: none
+	li
+		display: inline-block
+		margin-right: 24px
+		&:last-child
+			margin-right: 0
