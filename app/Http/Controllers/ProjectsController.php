@@ -14,6 +14,15 @@ class ProjectsController extends Controller
 	public function allProjects()
 	{
 		$data = [
+            'styles'   => [
+                'libs/jcf/jcf.css',
+                'css/projects-style.css'
+            ],
+            'scripts'  => [
+                'libs/jcf/jcf.js',
+                'libs/jcf/jcf.select.js',
+                'libs/jcf/jcf.range.js'
+            ],
 			'projects' => Project::get()
 		];
 		

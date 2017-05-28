@@ -12,6 +12,13 @@ class HomeController extends Controller
 	public function index()
 	{
 		$data = [
+		    'styles'   => [
+                'libs/lightslider/lightslider.min.css',
+		        'css/home-style.css'
+            ],
+            'scripts'  => [
+                'libs/lightslider/lightslider.min.js'
+            ],
 			'projects' => Project::get(),
 		];
 		

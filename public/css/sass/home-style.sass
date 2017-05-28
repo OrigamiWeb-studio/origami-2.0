@@ -1,162 +1,10 @@
-
-//COMMON
-
 $lightblue: #9da7b0
 $darkblue: #262b2f
-
-body
-	max-width: 100%
-	min-width: 320px	
-	overflow-x: hidden
-	font-size: 14px
-	color: $darkblue
-	font-family: 'PTSans', sans-serif
-	font-weight: normal
-	background: #fff
-	h1,h2,h3,h4
-		font-weight: normal
-a
-	transition: color .2s ease
-	color: $lightblue
-	font-family: 'PTSans', sans-serif
-	font-weight: bold
-	&:hover
-		color: $darkblue
-	&:visited,
-	&:focus,
-	&:hover
-		text-decoration: none
-.btn
-	display: inline-block
-	border: 1px solid $lightblue
-	padding: 11px 25px
-	position: relative
-	span
-		position: relative
-		z-index: 1
-	&:before
-		content: ''
-		position: absolute
-		left: 0
-		top: 0
-		width: 100%
-		height: 100%
-		background: $darkblue
-		z-index: 0
-		pointer-events: none
-		transition: transform .2s ease
-		transform: scale(0)
-	&:hover
-		color: #fafafb
-		&:before
-			transform: scale(1)
-
-
-.main_nav
-	ul
-		padding: 0
-		list-style: none
-		margin: 0
-	li
-		display: inline-block
-		margin-right: 51px
-		&:last-child
-			margin-right: 0
-
-
-.main_header
-	background: #fafafb
-	border-bottom: 1px solid #e7e9ec
-	padding: 10px 0
-	position: absolute
-	width: 100%
-	z-index: 10
-.logo-wrapper,
-.main_header .main_nav,
-.lang-dropdown
-	display: inline-block
-.main_header .main_nav
-	vertical-align: top
-	ul
-		margin: 30px 0 30px 44px
-	a
-		position: relative
-		&:before
-			content: ''
-			position: absolute
-			width: 100%
-			height: 1px
-			background:  $lightblue
-			bottom: -42px
-			left: 0
-			transition: all .2s ease
-			opacity: 0
-			pointer-events: none
-		&:hover
-			&:before
-				opacity: 1
-.lang-dropdown
-	margin: 30px 30px 30px 0
-	&>a>span
-		position: relative
-		top: -1px
-.dropdown-menu
-	border-radius: 0
-	right: -15px
-	left: auto
-	top: 30px
-	background: #fafafb
-	border-color: #e2e6ea
-	&:before
-		content: '\f04b'
-		position: absolute
-		top: -14px
-		right: 13px
-		font-family: 'FontAwesome'
-		transform: rotate(-90deg)
-		color: #fafafb
-		text-shadow: 1px 0px 0px #e2e6ea
-		font-size: 13px
-	&>li>a
-		padding: 9px 20px
-		color: $lightblue
-		&:hover
-			color: $darkblue
-
-
-.main_footer
-	border-top: 1px solid #e7e9ec
-	background: #fff
-	padding: 45px
-.soc-icons
-	ul
-		margin: 0
-		padding: 0
-		list-style: none
-	li
-		display: inline-block
-		margin-right: 24px
-		&:last-child
-			margin-right: 0
-
-
-
-
-
-
-
-
-//MAIN
-
-
-
-
-
 
 section
 	h2
 		font-family: 'RobotoSlab', sans-serif
-		font-weight: bold
+		font-weight: 700
 		font-size: 36px
 		text-align: center
 		text-transform: uppercase
@@ -183,27 +31,31 @@ section
 		margin: 0
 		font-size: 60px
 		font-family: 'RobotoSlab', sans-serif
-		font-weight: bold
+		font-weight: 700
 	p
 		margin: 9px 0 0 
 		font-size: 16px
 		font-family: 'PTSans', sans-serif
-		font-weight: normal
+		font-weight: 400
 		color: $lightblue
 .scroll-down
 	position: absolute
 	bottom: 40px
 	left: 0
 	right: 0
-	font-family: 'RobotoSlab', sans-serif
-	font-weight: bold
-	font-size: 12px
+	text-align: center
+	a
+		font-family: 'RobotoSlab', sans-serif
+		font-weight: 700
+		font-size: 12px
+		position: relative
+		padding-bottom: 25px
 	i
 		position: absolute
 		display: block
 		left: 0
 		right: 0
-		bottom: -15px
+		bottom: 10px
 		opacity: 0
 		animation: godown 1s linear infinite
 		font-size: 16px
@@ -272,10 +124,10 @@ section
 		strong
 			margin: 0 0 0 60px
 			font-family: 'RobotoSlab', sans-serif
-			font-weight: bold
+			font-weight: 700
 		span
 			font-family: 'RobotoSlab', sans-serif
-			font-weight: normal
+			font-weight: 400
 			color: $lightblue
 		.lSSlideWrapper
 			margin-bottom: 10px
@@ -313,10 +165,7 @@ section
 		padding: 10px 16px
 		border: 1px solid #ebedef
 		color: $darkblue
-		&::-webkit-input-placeholder,
-		&::-moz-placeholder,
-		&:-moz-placeholder,
-		&:-ms-input-placeholder
+		&::placeholder
 			color: $lightblue
 		&:focus
 			border-color: $lightblue
@@ -326,14 +175,18 @@ section
 	p
 		text-align: center
 		font-family: 'PTSans', sans-serif
-		font-weight: normal
+		font-weight: 400
 		font-size: 16px 
 		color: $lightblue
 		margin: 0 0 40px
 	.btn-submit
 		border: none
 		font-family: 'PTSans', sans-serif
-		font-weight: bold
+		font-weight: 700
 		color: #fff
 		width: auto
 		padding: 12px 35px
+		background: $lightblue
+		transition: background 0.1s ease
+		&:hover
+			background: $darkblue
