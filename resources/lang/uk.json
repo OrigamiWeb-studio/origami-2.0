@@ -1,4 +1,5 @@
 {
+  "Home": "Головна",
   "Projects": "Проекти",
   "About Us": "Про нас",
   "Contacts": "Контакти",
@@ -15,5 +16,18 @@
   "Our projects": "Наші проекти",
   "All projects": "Всі проекти",
   "Clients": "Клієнти",
-  "We develop a websites of any complexity." : "Ми розробляємо веб-сайти будь-якої складності."
+  "We develop a websites of any complexity." : "Ми розробляємо веб-сайти будь-якої складності.",
+
+  "View per page": "Відображати на сторінці",
+  "All": "Всі",
+  "Sort by": "Сортувати",
+  "A-Z": "А-Я",
+  "Z-A": "Я-А",
+  "Search": "Пошук",
+  "Category": "Категорія",
+  "Year": "Рік",
+  "Price": "Ціна",
+  "Components": "Компоненти",
+  "Cheap": "Дешево",
+  "Expencive": "Дорого"
 }

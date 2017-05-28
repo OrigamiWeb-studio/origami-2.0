@@ -14,16 +14,18 @@ class ProjectsController extends Controller
 	public function allProjects()
 	{
 		$data = [
-            'styles'   => [
-                'libs/jcf/jcf.css',
-                'css/projects-style.css'
-            ],
-            'scripts'  => [
-                'libs/jcf/jcf.js',
-                'libs/jcf/jcf.select.js',
-                'libs/jcf/jcf.range.js'
-            ],
-			'projects' => Project::get()
+			'styles' => [
+				'libs/jcf/jcf.css',
+				'css/projects-style.css'
+			],
+			'scripts' => [
+				'libs/jcf/jcf.js',
+				'libs/jcf/jcf.select.js',
+				'libs/jcf/jcf.range.js'
+			],
+			'projects' => Project::get(),
+			'categories' => ProjectCategory::get(),
+			'stages' => ProjectStage::get()
 		];
 		
 		return view('pages.projects.all')->with($data);
@@ -45,7 +47,7 @@ class ProjectsController extends Controller
 			'stages' => ProjectStage::get(),
 			'clients' => User::where('is_developer', false)->get()
 		];
-		
+
 //		dd($data['clients']);
 		
 		return view('pages.projects.edit')->with($data);
@@ -68,7 +70,6 @@ class ProjectsController extends Controller
 //		$project = Project::create([
 //			'title'
 //		]);
-		
 		
 		
 		dd($request->all());
