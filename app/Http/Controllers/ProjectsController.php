@@ -7,35 +7,61 @@ use App\Project;
 use App\ProjectCategory;
 use App\ProjectStage;
 use App\User;
-use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
-	public function allProjects($categories = null, $paginate = 1)
+	public function allProjects($categories = null, $paginate = 6, $years = null, $stages = null, $order = 'asc', $prices = [30, 80])
 	{
 		$projects = Project::query();
 		
 		#Фильтр по категориям
-		if ($categories !== null)
+		if ($categories !== null) {
 			if (is_array($categories))
 				$projects = $projects->whereIn('category_id', $categories);
 			else
 				$projects = $projects->where('category_id', '=', $categories);
-			
-		//here code
+		}
 		
+		#Фильтр по годам
+		if ($years !== null) {
+			if (is_array($years)) {
+				foreach ($years as $year)
+					$projects = $projects->whereYear('created_at', '=', $year, 'or');
+			} else
+				$projects = $projects->whereYear('created_at', $years);
+		}
 		
+		#Фильтр по компонентам
+		if ($stages !== null) {
+			if (is_array($stages))
+				$projects = $projects->whereHas('stages', function ($q) use ($stages) {
+					$q->whereIn('stage_id', $stages);
+				});
+			else
+				$projects = $projects->whereHas('stages', function ($q) use ($stages) {
+					$q->where('stage_id', '=', $stages);
+				});
+		}
 		
+		#Фильтр по ценам
+		if (is_array($stages)) {
 		
+		}
+
+//		if ($order === 'desc')
+//			$projects = $projects->orderBy('title', 'DESC');
+//		else
+//			$projects = $projects->orderBy('title');
 		
 		#Пагинация
-		if (is_integer($paginate))
-			$projects = $projects->paginate($paginate);
-		else
-			$projects = $projects->paginate(6);
+//		if (is_integer($paginate))
+//			$projects = $projects->paginate($paginate);
+//		else
+//			$projects = $projects->paginate(6);
+//		TODO ALL PROJECTS
 		
 		
-		
+		$projects = $projects->get();
 //		dd($projects);
 		
 		$data = [
