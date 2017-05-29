@@ -11,8 +11,33 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
-	public function allProjects()
+	public function allProjects($categories = null, $paginate = 1)
 	{
+		$projects = Project::query();
+		
+		#Фильтр по категориям
+		if ($categories !== null)
+			if (is_array($categories))
+				$projects = $projects->whereIn('category_id', $categories);
+			else
+				$projects = $projects->where('category_id', '=', $categories);
+			
+		//here code
+		
+		
+		
+		
+		
+		#Пагинация
+		if (is_integer($paginate))
+			$projects = $projects->paginate($paginate);
+		else
+			$projects = $projects->paginate(6);
+		
+		
+		
+//		dd($projects);
+		
 		$data = [
 			'styles' => [
 				'libs/jcf/jcf.css',
@@ -23,7 +48,7 @@ class ProjectsController extends Controller
 				'libs/jcf/jcf.select.js',
 				'libs/jcf/jcf.range.js'
 			],
-			'projects' => Project::get(),
+			'projects' => $projects,
 			'categories' => ProjectCategory::get(),
 			'stages' => ProjectStage::get()
 		];

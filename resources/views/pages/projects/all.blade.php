@@ -204,23 +204,24 @@
 									</div>
 								@endforeach
 							</div>
-							<ul class="pagination">
-								<li class="active">
-									<a href="#">1</a>
-								</li>
-								<li>
-									<a href="#">2</a>
-								</li>
-								<li>
-									...
-								</li>
-								<li>
-									<a href="#">5</a>
-								</li>
-								<li>
-									<a href="#">6</a>
-								</li>
-							</ul>
+							{!! $projects->links() !!}
+							{{--<ul class="pagination">--}}
+							{{--<li class="active">--}}
+							{{--<a href="#">1</a>--}}
+							{{--</li>--}}
+							{{--<li>--}}
+							{{--<a href="#">2</a>--}}
+							{{--</li>--}}
+							{{--<li>--}}
+							{{--...--}}
+							{{--</li>--}}
+							{{--<li>--}}
+							{{--<a href="#">5</a>--}}
+							{{--</li>--}}
+							{{--<li>--}}
+							{{--<a href="#">6</a>--}}
+							{{--</li>--}}
+							{{--</ul>--}}
 						</div>
 					</div>
 				</div>
