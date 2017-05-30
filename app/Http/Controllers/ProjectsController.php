@@ -100,7 +100,7 @@ class ProjectsController extends Controller
 		$projects = $projects->with('translations');
 		
 		#Пагинация
-		if ($paginate !== null && in_array($paginate, [3, 6, 9, 12])) {
+		if ($paginate !== null && in_array($paginate, [6, 9, 12])) {
 			$projects = $projects->paginate($paginate);
 		} else $projects = $projects->paginate(100);
 		
