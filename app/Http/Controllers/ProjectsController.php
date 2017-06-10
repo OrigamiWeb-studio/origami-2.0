@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
-	public function allProjects($categories = null, $paginate = 6, $years = null, $stages = null, $order = 'asc', $prices = [0, 100], $search = null)
+	public function allProjects()
 	{
 		$data = [
 			'styles' => [
@@ -122,8 +122,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.all')->with($data);
 	}
 	
-	public
-	function singleProject($id)
+	public function singleProject($id)
 	{
 		$data = [
 			'project' => Project::find($id)
@@ -132,8 +131,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.single')->with($data);
 	}
 	
-	public
-	function addProjectView()
+	public function addProjectView()
 	{
 		$data = [
 			'categories' => ProjectCategory::get(),
@@ -146,8 +144,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.edit')->with($data);
 	}
 	
-	public
-	function editProjectView($id)
+	public function editProjectView($id)
 	{
 		$data = [
 			'project' => Project::find($id),
@@ -159,8 +156,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.edit')->with($data);
 	}
 	
-	public
-	function addProject(ProjectRequest $request)
+	public function addProject(ProjectRequest $request)
 	{
 //		$project = Project::create([
 //			'title'
