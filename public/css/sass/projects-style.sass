@@ -33,6 +33,13 @@ main
 						display: block
 				span
 					color: $darkblue
+	@media screen and (max-width: 767px)
+		width: 33.33333%
+		float: left
+	@media screen and (max-width: 660px)
+		width: 50%
+	@media screen and (max-width: 540px)
+		width: 100%
 .custom_mark
 	width: 16px
 	height: 16px
@@ -106,6 +113,10 @@ main
 			margin: 0
 			font-weight: 700
 			letter-spacing: 2px
+			@media screen and (max-width: 991px) and (min-width: 768px)
+				margin-top: 24px
+			@media screen and (max-width: 767px)
+				margin-bottom: 10px
 		span
 			font-weight: 700
 .view_per_page 
@@ -113,6 +124,8 @@ main
 	.pagination
 		display: inline-block
 		vertical-align: top
+	@media screen and (max-width: 991px) and (min-width: 768px)
+		text-align: right
 	
 .sort_by
 	text-align: right
@@ -121,7 +134,6 @@ main
 		padding: 6px 0
 		height: auto
 		min-width: 0
-		margin-right: 8px
 		margin: 0 8px 0 2px
 		color: $lightblue
 		.jcf-select-opener
@@ -132,6 +144,10 @@ main
 				top: 8px 
 				left: 8px
 				font-family: 'FontAwesome'
+	@media screen and (max-width: 991px)
+		margin-top: 20px
+	@media screen and (max-width: 767px)
+		text-align: left
 .jcf-select-orderby
 	.jcf-select-drop-content
 		border: 2px solid $lightgrey
@@ -223,8 +239,18 @@ main
 	span
 		color: $lightblue
 
+.projects
+	display: flex
+	flex-wrap: wrap
+	justify-content: space-between
+	@media screen and (max-width: 767px)
+		margin-top: 30px
+	@media screen and (max-width: 500px)
+		justify-content: center
+
 .project-item
 	margin-bottom: 30px
+	width: calc( 33.333333% - 15px )
 	figure
 		height: 266px
 		display: flex
@@ -246,5 +272,12 @@ main
 			color: $lightblue
 			font-size: 12px
 			margin: 0 3px
+	@media screen and (max-width: 991px) and (min-width: 768px)
+		width: calc( 50% - 15px )
+	@media screen and (max-width: 660px)
+		width: calc( 50% - 15px )
+	@media screen and (max-width: 500px)
+		width: 100%
+		max-width: 290px
 
 
