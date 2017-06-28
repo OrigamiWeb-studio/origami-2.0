@@ -1,5 +1,6 @@
 $lightblue: #9da7b0
 $darkblue: #262b2f
+$lightgrey: #e7e9ec
 
 .main_header
 	background: #fff
@@ -10,7 +11,7 @@ main
 	background: #fafafb
 
 .block
-	border: 2px solid #e7e9ec
+	border: 2px solid $lightgrey
 	background: #fff
 
 .custom_checkbutton
@@ -84,12 +85,14 @@ main
 		display: inline-block
 		vertical-align: top
 		&.active
-			a
+			a,
+			span
 				border-color: #efeff1
 				color: $darkblue
 				background: #fff
 				font-weight: 700
-	a
+	a,
+	span
 		font-weight: 400
 		padding: 10px 15px
 		border: 2px solid transparent
@@ -114,7 +117,7 @@ main
 .sort_by
 	text-align: right
 	.jcf-select
-		border: 2px solid #e7e9ec
+		border: 2px solid $lightgrey
 		padding: 6px 0
 		height: auto
 		min-width: 0
@@ -131,7 +134,7 @@ main
 				font-family: 'FontAwesome'
 .jcf-select-orderby
 	.jcf-select-drop-content
-		border: 2px solid #e7e9ec
+		border: 2px solid $lightgrey
 		border-top-color: transparent
 	.jcf-list 
 		.jcf-option
@@ -227,7 +230,7 @@ main
 		display: flex
 		justify-content: center
 		align-items: center
-		border-bottom: 2px solid #e7e9ec
+		border-bottom: 2px solid $lightgrey
 	.descr
 		text-align: center
 		padding: 25px 15px
