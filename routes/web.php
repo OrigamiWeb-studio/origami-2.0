@@ -26,6 +26,8 @@ Route::post('/send-form', 'HomeController@sendForm')
 #Projects
 Route::get('/projects', 'ProjectsController@allProjects')
 	->name('projects');
+Route::post('/projects', 'ProjectsController@allProjectsJson')
+	->name('projects-json');
 Route::get('/project/add', 'ProjectsController@addProjectView')
 	->name('project-add');
 Route::get('/project/{id}/edit', 'ProjectsController@editProjectView')

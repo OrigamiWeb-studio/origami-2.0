@@ -147,45 +147,46 @@
 										</label>
 									@endforeach
 									{{--<label class="custom_checkbutton">--}}
-										{{--<input type="checkbox" name="components" value="business_analysis">--}}
-										{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
-										{{--<span>Business analysis</span>--}}
+									{{--<input type="checkbox" name="components" value="business_analysis">--}}
+									{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
+									{{--<span>Business analysis</span>--}}
 									{{--</label>--}}
 									{{--<label class="custom_checkbutton">--}}
-										{{--<input type="checkbox" name="components" value="prototyping">--}}
-										{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
-										{{--<span>Prototyping</span>--}}
+									{{--<input type="checkbox" name="components" value="prototyping">--}}
+									{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
+									{{--<span>Prototyping</span>--}}
 									{{--</label>--}}
 									{{--<label class="custom_checkbutton">--}}
-										{{--<input type="checkbox" name="components" value="design_development">--}}
-										{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
-										{{--<span>Design development</span>--}}
+									{{--<input type="checkbox" name="components" value="design_development">--}}
+									{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
+									{{--<span>Design development</span>--}}
 									{{--</label>--}}
 									{{--<label class="custom_checkbutton">--}}
-										{{--<input type="checkbox" name="components" value="template_development">--}}
-										{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
-										{{--<span>Template development</span>--}}
+									{{--<input type="checkbox" name="components" value="template_development">--}}
+									{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
+									{{--<span>Template development</span>--}}
 									{{--</label>--}}
 									{{--<label class="custom_checkbutton">--}}
-										{{--<input type="checkbox" name="components" value="development_of_functional">--}}
-										{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
-										{{--<span>Development of functional</span>--}}
+									{{--<input type="checkbox" name="components" value="development_of_functional">--}}
+									{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
+									{{--<span>Development of functional</span>--}}
 									{{--</label>--}}
 									{{--<label class="custom_checkbutton">--}}
-										{{--<input type="checkbox" name="components" value="seo">--}}
-										{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
-										{{--<span>SEO optimization</span>--}}
+									{{--<input type="checkbox" name="components" value="seo">--}}
+									{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
+									{{--<span>SEO optimization</span>--}}
 									{{--</label>--}}
 									{{--<label class="custom_checkbutton">--}}
-										{{--<input type="checkbox" name="components" value="support">--}}
-										{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
-										{{--<span>Site support</span>--}}
+									{{--<input type="checkbox" name="components" value="support">--}}
+									{{--<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>--}}
+									{{--<span>Site support</span>--}}
 									{{--</label>--}}
 								</div>
 							</div>
 						</aside>
 						<div class="col-md-9">
 							<div class="row">
+								{{--@foreach($projects->sortByDesc('title') as $project)--}}
 								@foreach($projects as $project)
 									<div class="col-md-4">
 										<div class="block project-item">
@@ -196,32 +197,30 @@
 											</a>
 											<div class="descr">
 												<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
-												@foreach($project->stages as $stage)
-													<span>#{{ $stage->title }}</span>
-												@endforeach
+												<span>{{ $project->category->title }}</span>
 											</div>
 										</div>
 									</div>
 								@endforeach
 							</div>
-							{!! $projects->links() !!}
-							{{--<ul class="pagination">--}}
-							{{--<li class="active">--}}
-							{{--<a href="#">1</a>--}}
-							{{--</li>--}}
-							{{--<li>--}}
-							{{--<a href="#">2</a>--}}
-							{{--</li>--}}
-							{{--<li>--}}
-							{{--...--}}
-							{{--</li>--}}
-							{{--<li>--}}
-							{{--<a href="#">5</a>--}}
-							{{--</li>--}}
-							{{--<li>--}}
-							{{--<a href="#">6</a>--}}
-							{{--</li>--}}
-							{{--</ul>--}}
+							{{--{!! $projects->links() !!}--}}
+							<ul class="pagination">
+							<li class="active">
+							<a href="#">1</a>
+							</li>
+							<li>
+							<a href="#">2</a>
+							</li>
+							<li>
+							...
+							</li>
+							<li>
+							<a href="#">5</a>
+							</li>
+							<li>
+							<a href="#">6</a>
+							</li>
+							</ul>
 						</div>
 					</div>
 				</div>
