@@ -21,10 +21,10 @@
 							<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 						</li>
 						<li style="transition-delay: 150ms, 150ms, 0ms">
-							<a href="#">{{ __('About Us') }}</a>
+							<a href="{{ route('about') }}">{{ __('About Us') }}</a>
 						</li>
 						<li style="transition-delay: 300ms, 300ms, 0ms">
-							<a href="#">{{ __('Contacts') }}</a>
+							<a href="{{ route('contacts') }}">{{ __('Contacts') }}</a>
 						</li>
 						<li style="transition-delay: 450ms, 450ms, 0ms">
 							<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

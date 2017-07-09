@@ -126,6 +126,9 @@ class ProjectsController extends Controller
 	function singleProject($id)
 	{
 		$data = [
+		    'styles'  =>[
+		      'css/project-style.css'
+            ],
 			'project' => Project::find($id)
 		];
 		

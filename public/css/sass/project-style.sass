@@ -1,0 +1,159 @@
+$lightblue: #9da7b0
+$darkblue: #262b2f
+$lightgrey: #e7e9ec
+
+
+.block
+	border: 2px solid $lightgrey
+	background: #fff
+	display: block
+	&_btn
+		padding: 15px 0 
+		text-align: center
+
+.paragraph
+	color: $lightblue
+	font-size: 16px
+	margin: 0
+	line-height: 1.8
+
+.tag-list
+	font-size: 16px
+	color: $lightblue
+	line-height: 1.8
+
+.sub-block
+	padding-bottom: 27px
+	&_border-bottom
+		border-bottom: 1px solid #ebedef
+
+.grey-title-text
+	color: $lightblue
+
+.btn_transparent
+	border: none
+	padding: 0
+	background: transparent
+	&:hover
+		background: transparent
+		color: $darkblue
+
+
+
+.developers-team
+	&__list
+		font-size: 0
+		padding-top: 9px
+	&__item
+		font-size: 14px
+		display: inline-block
+		vertical-align: top
+		width: 50%
+		@media screen and (max-width: 666px)
+			display: block
+			width: 100%
+			margin-bottom: 30px
+			&:last-child
+				margin-bottom: 0
+	&__avatar,
+	&__information
+		display: inline-block
+		vertical-align: middle
+	&__avatar
+		width: 65px
+		height: 65px
+		object-fit: cover
+		border-radius: 50%
+	&__information
+		margin-left: 21px
+		@media screen and (max-width: 666px)
+			margin-left: 10px
+	&__name
+		margin: 0
+		font-weight: 700
+	&__position
+		font-size: 12px
+		font-weight: 700
+		color: $lightblue
+
+
+
+.project-item
+	margin-bottom: 30px
+	figure
+		height: 266px
+		display: flex
+		justify-content: center
+		align-items: center
+		border-bottom: 2px solid $lightgrey
+	.descr
+		text-align: center
+		padding: 25px 15px
+		a
+			font-weight: bold
+			margin: 0
+			color: $darkblue
+			display: block
+			font-size: 14px 
+		span
+			display: inline-block
+			font-weight: bold
+			color: $lightblue
+			font-size: 12px
+			margin: 0 3px
+
+.project-content
+	padding: 26px 0 104px
+	&__block
+		margin-bottom: 30px
+		padding: 0 46px 37px
+		@media screen and (max-width: 560px)
+			padding: 0 25px 37px
+	&__sub-title
+		font-weight: bold
+		margin: 42px 0 24px
+		line-height: 1
+		text-transform: uppercase
+
+.project-description
+	&__figure-block
+		margin: -2px -48px 0
+		@media screen and (max-width: 560px)
+			margin: -2px -25px 0
+	&__main-image
+		width: 100%
+		height: 270px
+		object-fit: cover
+
+.comments-list
+	&__item
+		border-top: 1px solid #ebedef
+		padding: 30px 0
+		&_answer
+			padding-left: 45px
+	&__header
+		&:after
+			content: ''
+			display: table
+			clear: both
+	&__name
+		margin: 0
+		float: left
+	&__date
+		float: right
+		font-weight: 700
+		color: $lightblue
+	&__paragraph
+		margin: 15px 0
+	&__btn
+		margin-right: 22px
+		&:last-child
+			margin-right: 0
+	@media screen and (max-width: 767px)
+		&__name,
+		&__date
+			float: none
+		&__name
+			margin-bottom: 10px
+	@media screen and (max-width: 767px)
+

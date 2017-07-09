@@ -111,7 +111,7 @@
 										</a>
 										<div class="descr">
 											<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
-											<span>{{ $project->category->title }}</span>
+											<span>#{{ $project->category->title }}</span>
 										</div>
 									</div>
 								@endforeach

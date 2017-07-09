@@ -6,31 +6,31 @@ $(document).ready(function(){
 			controls: false,
 			pager: false,
 			onSliderLoad: function() {
-				$('#projects-slider').removeClass('cS-hidden');
-			},
-			responsive: [
-				{
-					breakpoint: 991,
-					settings: {
-						item: 3,
-						pager: true
-					}
-				},
-				{
-					breakpoint: 767,
-					settings: {
-						item: 2,
-						pager: true
-					}
-				},
-				{
-					breakpoint: 440,
-					settings: {
-						item: 1,
-						pager: true
-					}
-				}
-			]
+	            $('#projects-slider').removeClass('cS-hidden');
+	        },
+	        responsive: [
+	        	{
+	        		breakpoint: 991,
+	        		settings: {
+	        			item: 3,
+	        			pager: true
+	        		}
+	        	},
+	        	{
+	        		breakpoint: 767,
+	        		settings: {
+	        			item: 2,
+	        			pager: true
+	        		}
+	        	},
+	        	{
+	        		breakpoint: 440,
+	        		settings: {
+	        			item: 1,
+	        			pager: true
+	        		}
+	        	}
+	        ]
 		});
 	}
 	if($("#reviews-slider").length){
@@ -40,7 +40,7 @@ $(document).ready(function(){
 			controls: false,
 			adaptiveHeight: true,
 			onSliderLoad: function() {
-				$('#reviews-slider').removeClass('cS-hidden');
+			    $('#reviews-slider').removeClass('cS-hidden');
 			}
 		});
 	}
@@ -79,10 +79,6 @@ $(document).ready(function(){
 				var bodyEl = document.querySelector('body');
 				bodyEl.classList.toggle('opened');
 			},
-			langDropdownToggle: function(event){
-				event.preventDefault();
-				this.langDropdown = !this.langDropdown;
-			},
 			closeDropDown: function(){
 				this.langDropdown = false;
 			}
@@ -98,6 +94,28 @@ $(document).ready(function(){
 
 	var scrollDown = new Vue({
 		el: '.s_hero'
-	})
+	});
+
+
+	if($("#map").length){
+		function initMap() {
+			var myLatLng = {lat: 48.689353, lng: 26.570980};
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 16,
+				center: myLatLng
+			});
+
+			var image = document.location.origin+"/img/map-point.png";
+
+			var marker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				title: 'Столовка',
+				icon: image
+			});
+		}
+		initMap();
+	}
 
 });

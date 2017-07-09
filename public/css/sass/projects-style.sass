@@ -2,14 +2,6 @@ $lightblue: #9da7b0
 $darkblue: #262b2f
 $lightgrey: #e7e9ec
 
-.main_header
-	background: #fff
-.main_footer
-	background: #fafafb
-
-main
-	background: #fafafb
-
 .block
 	border: 2px solid $lightgrey
 	background: #fff
@@ -56,32 +48,6 @@ main
 		font-size: 10px
 		color: $darkblue
 
-.breadcrumbs
-	padding-top: 128px
-	ul 
-		padding: 0
-		margin: 0
-		list-style: none
-	li
-		display: inline-block
-		position: relative
-		margin-right: 29px
-		&:after
-			content: '\f105'
-			position: absolute
-			font-family: 'FontAwesome'
-			right: -18px
-			top: 4px
-			color: $lightblue
-			font-size: 10px
-		&:last-child
-			margin-right: 0
-			&:after
-				display: none
-	a
-		font-size: 12px
-		font-weight: 400
-
 .pagination
 	margin: 0
 	padding: 0
@@ -109,10 +75,7 @@ main
 	header
 		padding: 22px 0 0
 		h1
-			font-size: 24px
 			margin: 0
-			font-weight: 700
-			letter-spacing: 2px
 			@media screen and (max-width: 991px) and (min-width: 768px)
 				margin-top: 24px
 			@media screen and (max-width: 767px)

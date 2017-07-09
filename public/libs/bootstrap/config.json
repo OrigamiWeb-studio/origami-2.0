@@ -386,8 +386,13 @@
     "forms.less",
     "responsive-utilities.less",
     "navs.less",
-    "navbar.less"
+    "navbar.less",
+    "component-animations.less",
+    "modals.less"
   ],
-  "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=8e69d18cb88e6de7ed50f6b86939df80"
+  "js": [
+    "modal.js",
+    "transition.js"
+  ],
+  "customizerUrl": "http://getbootstrap.com/customize/?id=dea4ceefec0ead9163c55e6f82af5fe4"
 }
