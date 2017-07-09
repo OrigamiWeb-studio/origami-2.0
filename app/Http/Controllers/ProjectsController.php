@@ -23,7 +23,7 @@ class ProjectsController extends Controller
 				'libs/jcf/jcf.select.js',
 				'libs/jcf/jcf.range.js',
                 'libs/vue/vue-resource.min.js',
-                'js/filters.min.js'
+                'js/filters.js'
 			],
 			'projects' => Project::paginate(6),
 			'categories' => ProjectCategory::get(),
@@ -121,7 +121,7 @@ class ProjectsController extends Controller
 			'stages' => ProjectStage::get()
 		];
 		
-		return view('pages.projects.all')->with($data);
+		return $data;
 	}
 	
 	public

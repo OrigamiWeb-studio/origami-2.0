@@ -125,7 +125,7 @@ $lightgrey: #e7e9ec
 			color: #fff
 			background: #262b2f
 
-.search-form
+.search-wrapper
 	display: inline-block
 	position: relative
 	&.opened
@@ -144,6 +144,8 @@ $lightgrey: #e7e9ec
 			color: $lightblue
 	button
 		padding: 9px 13px
+		i
+			pointer-events: none
 
 .projects_content
 	margin-top: 18px
@@ -205,15 +207,18 @@ $lightgrey: #e7e9ec
 .projects
 	display: flex
 	flex-wrap: wrap
-	justify-content: space-between
+	justify-content: flex-start
+	margin-right: -23px
 	@media screen and (max-width: 767px)
 		margin-top: 30px
 	@media screen and (max-width: 500px)
 		justify-content: center
+		margin-right: 0
 
 .project-item
 	margin-bottom: 30px
-	width: calc( 33.333333% - 15px )
+	margin-right: 23px
+	width: calc( 33.333333% - 23px )
 	figure
 		height: 266px
 		display: flex
@@ -236,11 +241,12 @@ $lightgrey: #e7e9ec
 			font-size: 12px
 			margin: 0 3px
 	@media screen and (max-width: 991px) and (min-width: 768px)
-		width: calc( 50% - 15px )
+		width: calc( 50% - 23px )
 	@media screen and (max-width: 660px)
-		width: calc( 50% - 15px )
+		width: calc( 50% - 23px )
 	@media screen and (max-width: 500px)
 		width: 100%
 		max-width: 290px
+		margin-right: 0
 
 

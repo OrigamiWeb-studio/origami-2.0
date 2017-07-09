@@ -47,10 +47,10 @@
 									<option value="a-z">{{ __('A-Z') }}</option>
 									<option value="z-a">{{ __('Z-A') }}</option>
 								</select>
-								<form class="search-form">
-									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" required>
-									<button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-								</form>
+								<div v-bind:class="{opened: searchField}" class="search-wrapper">
+									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="search" required>
+									<button type="submit" @click.prevent="searchField = !searchField" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -63,7 +63,7 @@
 									<h3>{{ __('Category') }}</h3>
 									@foreach($categories as $category)
 										<label class="custom_checkbutton">
-											<input type="checkbox" name="website_category" @change="sendData()" v-model="filterData.categories" value="{{ $category->title }}">
+											<input type="checkbox" name="website_category" v-model="filterData.categories" value="{{ $category->id }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ $category->title }}</span>
 										</label>
@@ -73,7 +73,7 @@
 									<h3>{{ __('Year') }}</h3>
 									@for($i = \Carbon\Carbon::now()->addYear()->year; $i >= 2016; $i--)
 										<label class="custom_checkbutton">
-											<input type="checkbox" name="finish_date" @change="sendData()" v-model="filterData.years" value="{{ $i }}">
+											<input type="checkbox" name="finish_date" v-model="filterData.years" value="{{ $i }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ $i }}</span>
 										</label>
@@ -91,7 +91,7 @@
 									<h3>{{ __('Components') }}</h3>
 									@foreach($stages as $stage)
 										<label class="custom_checkbutton">
-											<input type="checkbox" name="components" @change="sendData()" v-model="filterData.components" value="{{ $stage->title }}">
+											<input type="checkbox" name="components" v-model="filterData.components" value="{{ $stage->id }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ $stage->title }}</span>
 										</label>
@@ -101,20 +101,35 @@
 						</aside>
 						<div class="col-md-9 col-sm-8">
 							<div class="projects">
-								{{--@foreach($projects->sortByDesc('title') as $project)--}}
-								@foreach($projects as $project)
-									<div class="block project-item">
-										<a href="{{ route('project', ['id' => $project->id]) }}">
+								<template v-if="filtered">
+									<div class="block project-item" v-for="project in filteredProjects">
+										<a v-bind:href="project.id">
 											<figure>
-												<img src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+												<img v-bind:src='project.cover' v:bind:alt="project.title">
 											</figure>
 										</a>
 										<div class="descr">
-											<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
-											<span>#{{ $project->category->title }}</span>
+											<a v-bind:href="project.id">@{{ project.title }}</a>
+											<span>#category</span>
 										</div>
 									</div>
-								@endforeach
+								</template>
+								<template v-if="!filtered">
+									{{--@foreach($projects->sortByDesc('title') as $project)--}}
+									@foreach($projects as $project)
+										<div class="block project-item">
+											<a href="{{ route('project', ['id' => $project->id]) }}">
+												<figure>
+													<img src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+												</figure>
+											</a>
+											<div class="descr">
+												<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
+												<span>#{{ $project->category->title }}</span>
+											</div>
+										</div>
+									@endforeach
+								</template>
 							</div>
 							{{--{!! $projects->links() !!}--}}
 							<ul class="pagination">

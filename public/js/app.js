@@ -45,16 +45,6 @@ $(document).ready(function(){
 		});
 	}
 
-	$(".search-form>.btn").click(function(e){
-		e.preventDefault();
-		var searchForm = $(this).parent();
-		if(searchForm.hasClass('opened')){
-			searchForm.removeClass('opened');
-		}else{
-			searchForm.addClass('opened');
-		}
-	});
-
 	if($('select').length || $('input[type=range]').length){
 		jcf.setOptions('Select', {
 			wrapNative: false,

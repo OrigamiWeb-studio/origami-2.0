@@ -17,4 +17,4 @@
 @endif
 
 <!-- Scripts -->
-<script type="text/javascript" src="{{ asset('js/app.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
