@@ -9,7 +9,6 @@
 
 <script type="text/javascript" src="{{ asset('libs/jquery/jquery-3.2.0.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('libs/vue/vue.v2.3.0.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('libs/lightslider/lightslider.min.js') }}"></script>
 
 @if(isset($scripts) && count($scripts) > 0)
     @foreach($scripts as $script)

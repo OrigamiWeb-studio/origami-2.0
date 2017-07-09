@@ -63,7 +63,7 @@
 									<h3>{{ __('Category') }}</h3>
 									@foreach($categories as $category)
 										<label class="custom_checkbutton">
-											<input type="checkbox" name="website_category" value="internet-shop">
+											<input type="checkbox" name="website_category" @change="sendData()" v-model="filterData.categories" value="{{ $category->title }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ $category->title }}</span>
 										</label>
@@ -73,7 +73,7 @@
 									<h3>{{ __('Year') }}</h3>
 									@for($i = \Carbon\Carbon::now()->addYear()->year; $i >= 2016; $i--)
 										<label class="custom_checkbutton">
-											<input type="checkbox" name="finish_date" value="2018">
+											<input type="checkbox" name="finish_date" @change="sendData()" v-model="filterData.years" value="{{ $i }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ $i }}</span>
 										</label>
@@ -91,7 +91,7 @@
 									<h3>{{ __('Components') }}</h3>
 									@foreach($stages as $stage)
 										<label class="custom_checkbutton">
-											<input type="checkbox" name="components" value="business_analysis">
+											<input type="checkbox" name="components" @change="sendData()" v-model="filterData.components" value="{{ $stage->title }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ $stage->title }}</span>
 										</label>

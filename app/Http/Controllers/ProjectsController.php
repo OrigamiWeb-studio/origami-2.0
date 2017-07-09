@@ -21,7 +21,9 @@ class ProjectsController extends Controller
 			'scripts' => [
 				'libs/jcf/jcf.js',
 				'libs/jcf/jcf.select.js',
-				'libs/jcf/jcf.range.js'
+				'libs/jcf/jcf.range.js',
+                'libs/vue/vue-resource.min.js',
+                'js/filters.min.js'
 			],
 			'projects' => Project::paginate(6),
 			'categories' => ProjectCategory::get(),

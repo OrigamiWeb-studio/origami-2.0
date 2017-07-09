@@ -40,7 +40,7 @@
 		</transition>
 		<div class="pull-right">
 			<div class="lang-dropdown">
-				<a href="#" @click="langDropdownToggle($event)">
+				<a href="#" @click.prevent="langDropdown = !langDropdown">
 				{{ session('locales.current.name') }}
 				<span class="caret"></span>
 				</a>
