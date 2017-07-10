@@ -65,7 +65,7 @@
 										<label class="custom_checkbutton">
 											<input type="checkbox" name="website_category" v-model="filterData.categories" value="{{ $category->id }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
-											<span>{{ $category->title }}</span>
+											<span>{{ $category->translateOrDefault(app()->getLocale())->title }}</span>
 										</label>
 									@endforeach
 								</div>
@@ -93,7 +93,7 @@
 										<label class="custom_checkbutton">
 											<input type="checkbox" name="components" v-model="filterData.components" value="{{ $stage->id }}">
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
-											<span>{{ $stage->title }}</span>
+											<span>{{ $stage->translateOrDefault(app()->getLocale())->title }}</span>
 										</label>
 									@endforeach
 								</div>

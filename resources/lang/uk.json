@@ -29,5 +29,16 @@
   "Price": "Ціна",
   "Components": "Компоненти",
   "Cheap": "Дешево",
-  "Expencive": "Дорого"
+  "Expencive": "Дорого",
+
+  "Go to the site": "Перейти на сайт",
+  "About project": "Про проект",
+  "Project components": "Компоненти проекту",
+  "Developers team": "Команда розробників",
+  "Description": "Опис",
+  "Comments": "Коментарі",
+  "Guest": "Гість",
+  "Answer": "Відповісти",
+  "Edit": "Редагувати",
+  "Delete": "Видалити"
 }
