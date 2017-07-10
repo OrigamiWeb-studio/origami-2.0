@@ -10,7 +10,9 @@
 					<h1>Origami Web-Studio</h1>
 					<p>{{ __('We develop a websites of any complexity.') }}</p>
 				</div>
-				<a href="#" class="scroll-down">{{ __('Scroll down') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				<div class="scroll-down">
+					<a href="#" v-scroll-to="'.s_projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				</div>
 			</div>
 		</section>
 
@@ -43,7 +45,7 @@
 							@foreach($projects->where('client_review', '!=', null) as $project)
 								<li>
 									<blockquote>{{ $project->client_review }}</blockquote>
-									<strong>{{ $project->client->profile->first_name.' '.$project->client->profile->last_name }}</strong>,
+									<strong>{{ $project->client->profile->first_name.' '.$project->client->profile->last_name }}</strong>
 									<span>{{ $project->client->profile->about }}</span>
 								</li>
 							@endforeach

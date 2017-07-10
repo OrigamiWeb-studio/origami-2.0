@@ -1,6 +1,15 @@
 $lightblue: #9da7b0
 $darkblue: #262b2f
 
+.main_header
+	background: #fafafb
+	position: absolute
+	width: 100%
+.main_footer
+	background: #fff
+	margin-top: -50px
+	position: relative
+
 section
 	h2
 		font-family: 'RobotoSlab', sans-serif
@@ -10,9 +19,14 @@ section
 		text-transform: uppercase
 		letter-spacing: 3px
 		margin: 45px 0
+		@media screen and (max-width: 590px)
+			font-size: 26px
+			letter-spacing: 2px
 .leaning_section
 	transform: rotate(-2.5deg) translateZ(0)
 	transform-origin: 50% 51%
+	padding: 0 70px
+	margin: 0 -70px
 	.container 
 		transform: rotate(2.5deg) translateZ(0)
 		transform-origin: 50% 51%
@@ -32,6 +46,11 @@ section
 		font-size: 60px
 		font-family: 'RobotoSlab', sans-serif
 		font-weight: 700
+		letter-spacing: normal
+		@media screen and (max-width: 767px)
+			font-size: 50px
+		@media screen and (max-width: 590px)
+			font-size: 28px 
 	p
 		margin: 9px 0 0 
 		font-size: 16px
@@ -76,8 +95,34 @@ section
 	background: #fff
 	text-align: right
 	padding-bottom: 55px
+	@media screen and (max-width: 991px)
+		.lSSlideWrapper
+			margin-bottom: 20px
 .projects-slider-wrapper
 	margin-bottom: 25px
+	@media screen and (max-width: 767px)
+		max-width: 600px
+		margin: 0 auto 20px
+	@media screen and (max-width: 440px)
+		max-width: 320px
+	.lSSlideWrapper
+		overflow: visible
+	.lSSlideOuter
+		overflow: visible
+		position: relative
+		&:before,
+		&:after
+			content: ''
+			position: absolute
+			background: rgba(255,255,255,0.7)
+			top: 0
+			height: 100%
+			width: 9999px
+			z-index: 50
+		&:before
+			right: 100%
+		&:after
+			left: 100%
 .projects-slider
 	li
 		border: 2px solid #efeff1
@@ -86,7 +131,10 @@ section
 	justify-content: center
 	align-items: center
 	padding: 100px 0
-
+	@media screen and (max-width: 550px)
+		padding: 80px 0
+	@media screen and (max-width: 440px)
+		padding: 90px 0
 
 .s_clients
 	background: #fafafb
@@ -125,20 +173,14 @@ section
 			margin: 0 0 0 60px
 			font-family: 'RobotoSlab', sans-serif
 			font-weight: 700
+			&:after
+				content: ','
 		span
 			font-family: 'RobotoSlab', sans-serif
 			font-weight: 400
 			color: $lightblue
 		.lSSlideWrapper
 			margin-bottom: 10px
-		.lSSlideOuter .lSPager.lSpg > li a
-			background-color: #fcfafa
-			border: 1px solid #9d9c9b
-			height: 10px
-			width: 10px
-		.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a
-			background-color: $darkblue
-			border: none
 	@media(min-width: 700px)
 		.reviews-slider-wrapper
 			margin: 66px auto
@@ -149,9 +191,32 @@ section
 					height: 30px
 			strong
 				margin: 10px 0 0 60px
+	@media screen and (max-width: 767px)
+		.reviews-slider-wrapper
+			blockquote
+				margin: 0 0 15px
+				&:before,
+				&:after
+					display: none
+			strong
+				margin: 0 0 5px
+				display: block
+				&:after
+					display: none
+
+
+.lSSlideOuter .lSPager.lSpg > li a
+	background-color: #fcfafa
+	border: 1px solid #9d9c9b
+	height: 10px
+	width: 10px
+.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a
+	background-color: $darkblue
+	border: none
 
 .s_contact
-	padding-bottom: 55px
+	padding-bottom: 105px
+	background: #fff
 	h2
 		margin-top: -26px
 	.form-group
@@ -159,7 +224,8 @@ section
 	form
 		max-width:  370px
 		margin: 0 auto
-	input,
+	input[type=text],
+	input[type=email],
 	textarea
 		width: 100%
 		padding: 10px 16px
@@ -179,14 +245,3 @@ section
 		font-size: 16px 
 		color: $lightblue
 		margin: 0 0 40px
-	.btn-submit
-		border: none
-		font-family: 'PTSans', sans-serif
-		font-weight: 700
-		color: #fff
-		width: auto
-		padding: 12px 35px
-		background: $lightblue
-		transition: background 0.1s ease
-		&:hover
-			background: $darkblue

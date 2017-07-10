@@ -1,16 +1,9 @@
 $lightblue: #9da7b0
 $darkblue: #262b2f
-
-.main_header
-	background: #fff
-.main_footer
-	background: #fafafb
-
-main
-	background: #fafafb
+$lightgrey: #e7e9ec
 
 .block
-	border: 2px solid #e7e9ec
+	border: 2px solid $lightgrey
 	background: #fff
 
 .custom_checkbutton
@@ -32,6 +25,13 @@ main
 						display: block
 				span
 					color: $darkblue
+	@media screen and (max-width: 767px)
+		width: 33.33333%
+		float: left
+	@media screen and (max-width: 660px)
+		width: 50%
+	@media screen and (max-width: 540px)
+		width: 100%
 .custom_mark
 	width: 16px
 	height: 16px
@@ -48,32 +48,6 @@ main
 		font-size: 10px
 		color: $darkblue
 
-.breadcrumbs
-	padding-top: 128px
-	ul 
-		padding: 0
-		margin: 0
-		list-style: none
-	li
-		display: inline-block
-		position: relative
-		margin-right: 29px
-		&:after
-			content: '\f105'
-			position: absolute
-			font-family: 'FontAwesome'
-			right: -18px
-			top: 4px
-			color: $lightblue
-			font-size: 10px
-		&:last-child
-			margin-right: 0
-			&:after
-				display: none
-	a
-		font-size: 12px
-		font-weight: 400
-
 .pagination
 	margin: 0
 	padding: 0
@@ -84,12 +58,14 @@ main
 		display: inline-block
 		vertical-align: top
 		&.active
-			a
+			a,
+			span
 				border-color: #efeff1
 				color: $darkblue
 				background: #fff
 				font-weight: 700
-	a
+	a,
+	span
 		font-weight: 400
 		padding: 10px 15px
 		border: 2px solid transparent
@@ -99,10 +75,11 @@ main
 	header
 		padding: 22px 0 0
 		h1
-			font-size: 24px
 			margin: 0
-			font-weight: 700
-			letter-spacing: 2px
+			@media screen and (max-width: 991px) and (min-width: 768px)
+				margin-top: 24px
+			@media screen and (max-width: 767px)
+				margin-bottom: 10px
 		span
 			font-weight: 700
 .view_per_page 
@@ -110,15 +87,16 @@ main
 	.pagination
 		display: inline-block
 		vertical-align: top
+	@media screen and (max-width: 991px) and (min-width: 768px)
+		text-align: right
 	
 .sort_by
 	text-align: right
 	.jcf-select
-		border: 2px solid #e7e9ec
+		border: 2px solid $lightgrey
 		padding: 6px 0
 		height: auto
 		min-width: 0
-		margin-right: 8px
 		margin: 0 8px 0 2px
 		color: $lightblue
 		.jcf-select-opener
@@ -129,9 +107,13 @@ main
 				top: 8px 
 				left: 8px
 				font-family: 'FontAwesome'
+	@media screen and (max-width: 991px)
+		margin-top: 20px
+	@media screen and (max-width: 767px)
+		text-align: left
 .jcf-select-orderby
 	.jcf-select-drop-content
-		border: 2px solid #e7e9ec
+		border: 2px solid $lightgrey
 		border-top-color: transparent
 	.jcf-list 
 		.jcf-option
@@ -143,7 +125,7 @@ main
 			color: #fff
 			background: #262b2f
 
-.search-form
+.search-wrapper
 	display: inline-block
 	position: relative
 	&.opened
@@ -162,6 +144,8 @@ main
 			color: $lightblue
 	button
 		padding: 9px 13px
+		i
+			pointer-events: none
 
 .projects_content
 	margin-top: 18px
@@ -220,14 +204,27 @@ main
 	span
 		color: $lightblue
 
+.projects
+	display: flex
+	flex-wrap: wrap
+	justify-content: flex-start
+	margin-right: -23px
+	@media screen and (max-width: 767px)
+		margin-top: 30px
+	@media screen and (max-width: 500px)
+		justify-content: center
+		margin-right: 0
+
 .project-item
 	margin-bottom: 30px
+	margin-right: 23px
+	width: calc( 33.333333% - 23px )
 	figure
 		height: 266px
 		display: flex
 		justify-content: center
 		align-items: center
-		border-bottom: 2px solid #e7e9ec
+		border-bottom: 2px solid $lightgrey
 	.descr
 		text-align: center
 		padding: 25px 15px
@@ -243,5 +240,13 @@ main
 			color: $lightblue
 			font-size: 12px
 			margin: 0 3px
+	@media screen and (max-width: 991px) and (min-width: 768px)
+		width: calc( 50% - 23px )
+	@media screen and (max-width: 660px)
+		width: calc( 50% - 23px )
+	@media screen and (max-width: 500px)
+		width: 100%
+		max-width: 290px
+		margin-right: 0
 
 

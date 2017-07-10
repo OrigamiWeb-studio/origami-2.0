@@ -38,6 +38,14 @@ Route::get('/project/{id}', 'ProjectsController@singleProject')
 	->name('project')
 	->where('id', '[0-9]+');
 
+#About
+Route::get('/about', 'AboutController@index')
+    ->name('about');
+
+#Contacts
+Route::get('/contacts', 'ContactsController@index')
+    ->name('contacts');
+
 #Team
 Route::get('/team', 'TeamController@allDevelopers')
 	->name('team');

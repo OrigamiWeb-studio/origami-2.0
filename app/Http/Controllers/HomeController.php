@@ -17,6 +17,7 @@ class HomeController extends Controller
 		        'css/home-style.css'
             ],
             'scripts'  => [
+                'libs/vue/vue-scrollto.min.js',
                 'libs/lightslider/lightslider.min.js'
             ],
 			'projects' => Project::get(),

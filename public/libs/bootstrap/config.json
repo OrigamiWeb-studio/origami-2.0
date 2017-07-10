@@ -387,10 +387,12 @@
     "responsive-utilities.less",
     "navs.less",
     "navbar.less",
-    "dropdowns.less"
+    "component-animations.less",
+    "modals.less"
   ],
   "js": [
-    "dropdown.js"
+    "modal.js",
+    "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=19b5db9bd235fa95c51be18e9c0976e3"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=dea4ceefec0ead9163c55e6f82af5fe4"
 }
