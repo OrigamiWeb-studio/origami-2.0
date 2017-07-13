@@ -76,6 +76,10 @@
 			<input type="file" name="main_image" id="main_image">
 		</p>
 		<p>
+			<label for="">Slider photos (can attach more than one)</label>
+			<input type="file" name="slider_images[]" multiple/>
+		</p>
+		<p>
 			<input type="checkbox" name="visible" {{ old('visible') || isset($project) && $project->visible ? 'checked' : '' }}>Visible
 			<input type="checkbox" name="us_choice" {{ old('us_choice') || isset($project) && $project->us_choice ? 'checked' : '' }}>Us choice
 		</p>
@@ -95,10 +99,10 @@
 			          placeholder="Short description">{{ isset($project) ? $project->short_description : old('short_description') }}</textarea>
 		</p>
 		{{--<p>--}}
-			{{--<label for="">Closed at</label>--}}
-			{{--<input type="datetime-local" name="closed_at" value="{{ isset($project) ? $project->closed_at : old('review') }}">--}}
+		{{--<label for="">Closed at</label>--}}
+		{{--<input type="datetime-local" name="closed_at" value="{{ isset($project) ? $project->closed_at : old('review') }}">--}}
 		{{--</p>--}}
-		<button type="submit">ADD/EDIT</button>
+		<button type="submit">EDIT</button>
 		@if (count($errors) > 0)
 			<div class="alert alert-danger">
 				<ul>

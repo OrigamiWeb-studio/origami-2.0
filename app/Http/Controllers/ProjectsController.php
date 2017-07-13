@@ -6,6 +6,7 @@ use App\Developer;
 use App\Http\Requests\ProjectRequest;
 use App\Project;
 use App\ProjectCategory;
+use App\ProjectScreenshot;
 use App\ProjectStage;
 use App\User;
 use Illuminate\Http\Request;
@@ -135,7 +136,7 @@ class ProjectsController extends Controller
 			],
 			'project' => Project::find($id)
 		];
-		
+
 //		dd($data['project']->developers);
 		
 		return view('pages.projects.single')->with($data);
@@ -189,12 +190,51 @@ class ProjectsController extends Controller
 				File::delete(public_path($project->cover));
 			$image = Input::file('cover');
 			$destination_path = public_path('uploads/projects/placeholders/');
-			$file_path = 'uploads/projects/placeholders/'.str_random(5).time().str_random(5).'.'.$image->getClientOriginalExtension();
+			$file_path = 'uploads/projects/placeholders/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
 			$image->move($destination_path, $file_path);
 			$project->cover = $file_path;
 		}
 		
-//		TODO main image
+		if (Input::hasFile('main_image')) {
+			if ($project->main_image)
+				File::delete(public_path($project->main_image));
+			$image = Input::file('main_image');
+			$destination_path = public_path('uploads/projects/main_images/');
+			$file_path = 'uploads/projects/main_images/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
+			$image->move($destination_path, $file_path);
+			$project->main_image = $file_path;
+		}
+		
+		if (Input::hasFile('slider_images')) {
+			
+//			if (isset($project->screenshots) && count($project->screenshots) > 0) {
+//				foreach ($project->screenshots as $screenshot) {
+//					File::delete(public_path($screenshot->link));
+//					$screenshot->delete();
+//				}
+//			}
+			
+			$images = Input::file('slider_images');
+			$destination_path = public_path('uploads/projects/slider_images/');
+			
+			foreach ($images as $image) {
+				$file_path = 'uploads/projects/slider_images/'
+					. $project->id
+					. str_random(5)
+					. time()
+					. str_random(5)
+					. '.' . $image->getClientOriginalExtension();
+				$image->move($destination_path, $file_path);
+				
+				$screenshot = new ProjectScreenshot();
+				$screenshot->project_id = $project->id;
+				$screenshot->link = $file_path;
+				$screenshot->save();
+			}
+			
+			dd('test');
+			
+		}
 		
 		$project->save();
 		

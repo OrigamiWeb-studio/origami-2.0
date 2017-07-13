@@ -49,24 +49,25 @@
 										@endisset
 
 									</div>
+
 								</div>
 							@endisset
 
 							@isset($project->link)
 								<a href="{{ $project->link }}" class="btn block block_btn">{{ __('Go to the site') }}</a>
 							@endisset
+
 						</aside>
 
 						<div class="col-md-9">
 							<div class="block project-content__block project-description">
 
-								{{--TODO main image--}}
-								{{--@isset($project->main_image)--}}
-								<figure class="project-description__figure-block">
-									<img class="project-description__main-image" src="https://dishots.com/static/img/shots/820e9b0c0bbd7ad8c70b0c8144f9eef9.png"
-									     alt="{{ $project->title }}">
-								</figure>
-								{{--@endisset--}}
+								@isset($project->main_image)
+									<figure class="project-description__figure-block">
+										<img class="project-description__main-image" src="{{ asset($project->main_image) }}"
+										     alt="{{ $project->title }}">
+									</figure>
+								@endisset
 
 								@if(isset($project->title) && isset($project->short_description))
 									<div class="sub-block {{ isset($project->developers) && count($project->developers) > 0 ? 'sub-block_border-bottom' : '' }} ">
@@ -136,6 +137,17 @@
 										{{ __('Description') }}
 									</h3>
 									<p class="paragraph">{{ $project->description }}</p>
+								</div>
+							@endif
+
+							@isset($project->screenshots)
+								<div class="block project-content__block">
+									<h3 class="project-content__sub-title">
+										Скриншоты
+									</h3>
+									@foreach($project->screenshots as $screenshot)
+										<p class="paragraph">{{ asset($screenshot->link) }}</p>
+									@endforeach
 								</div>
 							@endif
 
