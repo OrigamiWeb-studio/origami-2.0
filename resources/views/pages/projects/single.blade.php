@@ -113,8 +113,9 @@
 														<h4 class="developers-team__name">
 															{{ $developer->profile->name }}
 														</h4>
-														{{--TODO developer position--}}
-														<span class="developers-team__position">#position</span>
+														@isset($developer->position)
+															<span class="developers-team__position">#{{ $developer->position }}</span>
+														@endisset
 													</div>
 												</li>
 											@endforeach
