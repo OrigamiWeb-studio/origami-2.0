@@ -11,7 +11,7 @@ class Project extends Model
 	
 	public $table = 'projects';
 	public $translationModel = ProjectTranslation::class;
-	public $translatedAttributes = ['title', 'description'];
+	public $translatedAttributes = ['title', 'description', 'short_description'];
 	
 	public function category()
 	{

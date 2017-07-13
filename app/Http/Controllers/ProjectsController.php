@@ -2,32 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Developer;
 use App\Http\Requests\ProjectRequest;
 use App\Project;
 use App\ProjectCategory;
 use App\ProjectStage;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
 
 class ProjectsController extends Controller
 {
 	public function allProjects()
 	{
 		$data = [
-			'styles' => [
+			'styles'     => [
 				'libs/jcf/jcf.css',
 				'css/projects-style.css'
 			],
-			'scripts' => [
+			'scripts'    => [
 				'libs/jcf/jcf.js',
 				'libs/jcf/jcf.select.js',
 				'libs/jcf/jcf.range.js',
-                'libs/vue/vue-resource.min.js',
-                'js/filters.js'
+				'libs/vue/vue-resource.min.js',
+				'js/filters.js'
 			],
-			'projects' => Project::paginate(6),
+			'projects'   => Project::paginate(6),
 			'categories' => ProjectCategory::get(),
-			'stages' => ProjectStage::get()
+			'stages'     => ProjectStage::get()
 		];
 		
 		return view('pages.projects.all')->with($data);
@@ -107,18 +110,18 @@ class ProjectsController extends Controller
 		} else $projects = $projects->paginate(100);
 		
 		$data = [
-			'styles' => [
+			'styles'     => [
 				'libs/jcf/jcf.css',
 				'css/projects-style.css'
 			],
-			'scripts' => [
+			'scripts'    => [
 				'libs/jcf/jcf.js',
 				'libs/jcf/jcf.select.js',
 				'libs/jcf/jcf.range.js'
 			],
-			'projects' => $projects,
+			'projects'   => $projects,
 			'categories' => ProjectCategory::get(),
-			'stages' => ProjectStage::get()
+			'stages'     => ProjectStage::get()
 		];
 		
 		return $data;
@@ -127,11 +130,13 @@ class ProjectsController extends Controller
 	public function singleProject($id)
 	{
 		$data = [
-		    'styles'  =>[
-		      'css/project-style.css'
-            ],
+			'styles'  => [
+				'css/project-style.css'
+			],
 			'project' => Project::find($id)
 		];
+		
+//		dd($data['project']->developers);
 		
 		return view('pages.projects.single')->with($data);
 	}
@@ -140,8 +145,8 @@ class ProjectsController extends Controller
 	{
 		$data = [
 			'categories' => ProjectCategory::get(),
-			'stages' => ProjectStage::get(),
-			'clients' => User::where('is_developer', false)->get()
+			'stages'     => ProjectStage::get(),
+			'clients'    => User::where('is_developer', false)->get()
 		];
 
 //		dd($data['clients']);
@@ -152,30 +157,47 @@ class ProjectsController extends Controller
 	public function editProjectView($id)
 	{
 		$data = [
-			'project' => Project::find($id),
+			'project'    => Project::find($id),
 			'categories' => ProjectCategory::get(),
-			'stages' => ProjectStage::get(),
-			'clients' => User::where('is_developer', false)->get()
+			'stages'     => ProjectStage::get(),
+			'clients'    => User::where('is_developer', false)->get(),
+			'developers' => Developer::get()
 		];
 		
 		return view('pages.projects.edit')->with($data);
 	}
 	
-	public function editProject(ProjectRequest $request)
+	public function editProject(ProjectRequest $request, $project_id)
 	{
+		$project = Project::find($project_id);
 		
-		dd($request->all());
+		$project->title = $request['title'];
+		$project->client_id = $request['client'];
+		$project->category_id = $request['category'];
+		$project->current_stage_id = $request['stage'];
+		$project->link = $request['link'];
+		$project->visible = $request['visible'] === 'on' ? true : false;
+		$project->us_choice = $request['us_choice'] === 'on' ? true : false;
+		$project->client_review = $request['review'];
+		$project->description = $request['description'];
+		$project->short_description = $request['short_description'];
+		$project->stages()->sync($request['stages']);
+		$project->developers()->sync($request['developers']);
 		
-//		return view('pages.projects.edit')->with($data);
+		if (Input::hasFile('cover')) {
+			if ($project->cover)
+				File::delete(public_path($project->cover));
+			$image = Input::file('cover');
+			$destination_path = public_path('uploads/projects/placeholders/');
+			$file_path = 'uploads/projects/placeholders/'.str_random(5).time().str_random(5).'.'.$image->getClientOriginalExtension();
+			$image->move($destination_path, $file_path);
+			$project->cover = $file_path;
+		}
+		
+//		TODO main image
+		
+		$project->save();
+		
+		dd($request->all(), $project->title);
 	}
-	
-//	public function addProject(ProjectRequest $request)
-//	{
-////		$project = Project::create([
-////			'title'
-////		]);
-//
-//
-//		dd($request->all());
-//	}
 }
