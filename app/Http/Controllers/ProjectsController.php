@@ -232,12 +232,10 @@ class ProjectsController extends Controller
 				$screenshot->save();
 			}
 			
-			dd('test');
-			
 		}
 		
 		$project->save();
 		
-		dd($request->all(), $project->title);
+		return redirect()->action('ProjectsController@singleProject', ['id' => $project_id]);
 	}
 }
