@@ -15,12 +15,14 @@ class ProjectRequest extends FormRequest
 	{
 		return [
 			'title' => 'required|string|between:4,256',
-			'client' => 'required',
-			'category' => 'required',
-			'stage' => 'required',
+			'client' => 'required|integer',
+			'category' => 'required|integer',
+			'stage' => 'required|integer',
+			'stages' => 'required|array',
+			'stages.*' => 'integer',
 			'link' => 'string',
 			'review' => 'string',
-			'description' => 'required|string|between:4,1024'
+			'description' => 'required|string|between:4,4096'
 		];
 	}
 }

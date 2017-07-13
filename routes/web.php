@@ -26,14 +26,22 @@ Route::post('/send-form', 'HomeController@sendForm')
 #Projects
 Route::get('/projects', 'ProjectsController@allProjects')
 	->name('projects');
+
 Route::post('/projects', 'ProjectsController@allProjectsJson')
 	->name('projects-json');
+
 Route::get('/project/add', 'ProjectsController@addProjectView')
 	->name('project-add');
-Route::get('/project/{id}/edit', 'ProjectsController@editProjectView')
-	->name('project-edit');
+
 Route::post('/project/add', 'ProjectsController@addProject')
 	->name('project-add-submit');
+
+Route::get('/project/{id}/edit', 'ProjectsController@editProjectView')
+	->name('project-edit');
+
+Route::post('/project/{id}/edit', 'ProjectsController@editProject')
+	->name('project-edit-submit');
+
 Route::get('/project/{id}', 'ProjectsController@singleProject')
 	->name('project')
 	->where('id', '[0-9]+');

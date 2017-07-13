@@ -161,13 +161,21 @@ class ProjectsController extends Controller
 		return view('pages.projects.edit')->with($data);
 	}
 	
-	public function addProject(ProjectRequest $request)
+	public function editProject(ProjectRequest $request)
 	{
-//		$project = Project::create([
-//			'title'
-//		]);
-		
 		
 		dd($request->all());
+		
+//		return view('pages.projects.edit')->with($data);
 	}
+	
+//	public function addProject(ProjectRequest $request)
+//	{
+////		$project = Project::create([
+////			'title'
+////		]);
+//
+//
+//		dd($request->all());
+//	}
 }
