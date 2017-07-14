@@ -141,7 +141,7 @@
 								</div>
 							@endif
 
-							@isset($project->screenshots)
+							@if(isset($project->screenshots) && count($project->screenshots) > 0)
 								<div class="block project-content__block">
 									<h3 class="project-content__sub-title">
 										Скриншоты
@@ -156,12 +156,12 @@
 								<div class="block project-content__block">
 
 									<h3 class="project-content__sub-title">
-										{{ __('Comments') }} <span class="grey-title-text">({{ $project->comments->count() }})</span>
+										{{ __('Comments') }} <span class="grey-title-text">({{ $project->comments->where('parent_id', '=', null)->count() }})</span>
 									</h3>
 
 									<ul class="comments-list">
 
-										@foreach($project->comments as $comment)
+										@foreach($project->comments->where('parent_id', '=', null) as $comment)
 											<li class="comments-list__item">
 
 												<header class="comments-list__header">
@@ -185,26 +185,34 @@
 												</div>
 
 											</li>
-											{{--TODO answers--}}
-											{{--<li class="comments-list__item comments-list__item_answer">--}}
-											{{--<header class="comments-list__header">--}}
-											{{--<h4 class="comments-list__name">--}}
-											{{--#Viktor Sobyshchanskyi <span class="grey-title-text">(sobyshchanskyi@origami.team)</span>--}}
-											{{--</h4>--}}
-											{{--<span class="comments-list__date">--}}
-											{{--Today, 22:57--}}
-											{{--</span>--}}
-											{{--</header>--}}
-											{{--<p class="paragraph comments-list__paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
-											{{--incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut--}}
-											{{--aliquip--}}
-											{{--extereas. </p>--}}
-											{{--<div class="comments-list__managment">--}}
-											{{--<input type="submit" class="btn btn_transparent comments-list__btn" value="Answer">--}}
-											{{--<input type="submit" class="btn btn_transparent comments-list__btn" value="Edit">--}}
-											{{--<input type="submit" class="btn btn_transparent comments-list__btn" value="Delete">--}}
-											{{--</div>--}}
-											{{--</li>--}}
+
+											@if(isset($comment->answers) && count($comment->answers) > 0)
+												@foreach($comment->answers as $answer)
+
+													<li class="comments-list__item comments-list__item_answer">
+														<header class="comments-list__header">
+															<h4 class="comments-list__name">
+																#{{ $answer->user_id === null ? __('Guest') : $answer->user->profile->name }}
+																@role('admin')
+																<a href="mailto:{{ $answer->email }}" class="grey-title-text">({{ $answer->email }})</a>
+																@endrole()
+															</h4>
+															<span class="comments-list__date">
+												Today, 22:57
+												</span>
+														</header>
+														<p class="paragraph comments-list__paragraph">{{ $answer->message }}</p>
+														<div class="comments-list__managment">
+															@role('admin')
+															<input type="submit" class="btn btn_transparent comments-list__btn" value="{{ __('Edit') }}">
+															<input type="submit" class="btn btn_transparent comments-list__btn" value="{{ __('Delete') }}">
+															@endrole()
+														</div>
+													</li>
+
+												@endforeach
+											@endif
+
 										@endforeach
 
 									</ul>

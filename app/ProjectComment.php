@@ -12,4 +12,9 @@ class ProjectComment extends Model
 	{
 		return $this->hasOne(User::class, 'id', 'user_id');
 	}
+	
+	public function answers()
+	{
+		return $this->hasMany(ProjectComment::class, 'parent_id', 'id');
+	}
 }

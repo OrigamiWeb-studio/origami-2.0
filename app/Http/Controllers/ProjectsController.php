@@ -6,6 +6,7 @@ use App\Developer;
 use App\Http\Requests\ProjectRequest;
 use App\Project;
 use App\ProjectCategory;
+use App\ProjectComment;
 use App\ProjectScreenshot;
 use App\ProjectStage;
 use App\User;
@@ -137,7 +138,7 @@ class ProjectsController extends Controller
 			'project' => Project::find($id)
 		];
 
-//		dd($data['project']->developers);
+//		dd($data['project']->comments->where('parent_id', '=', null)[0]->answers());
 		
 		return view('pages.projects.single')->with($data);
 	}
