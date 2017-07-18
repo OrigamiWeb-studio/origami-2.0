@@ -124,8 +124,8 @@
 												</figure>
 											</a>
 											<div class="descr">
-												<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
-												<span>#{{ $project->category->title }}</span>
+												<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
+												<span>#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
 											</div>
 										</div>
 									@endforeach
