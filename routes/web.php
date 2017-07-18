@@ -11,19 +11,25 @@
 |
 */
 Auth::routes();
-
+#-----------------------------------------------------------------------------------
 #Locales
+#
+#
 Route::get('/locale/{code}', 'HomeController@setLocale')
 	->name('set-locale');
-
+#-----------------------------------------------------------------------------------
 #Homepage
+#
+#
 Route::get('/', 'HomeController@index')
 	->name('home');
 Route::get('/home', 'HomeController@index');
 Route::post('/send-form', 'HomeController@sendForm')
 	->name('home-send-form');
-
+#-----------------------------------------------------------------------------------
 #Projects
+#
+#
 Route::get('/projects', 'ProjectsController@allProjects')
 	->name('projects');
 
@@ -55,16 +61,33 @@ Route::get('/project/{id}/delete', 'ProjectsController@deleteProject')
 Route::get('/project/{id}', 'ProjectsController@singleProject')
 	->name('project')
 	->where('id', '[0-9]+');
+#-----------------------------------------------------------------------------------
+#Tickets
+#
+#
+Route::get('/project/{project_id}/tickets', 'TicketsController@projectTickets')
+	->name('project-tickets')
+	->where('project_id', '[0-9]+');
 
+Route::get('/ticket/{id}', 'TicketsController@singleTicket')
+	->name('ticket')
+	->where('id', '[0-9]+');
+#-----------------------------------------------------------------------------------
 #About
+#
+#
 Route::get('/about', 'AboutController@index')
 	->name('about');
-
+#-----------------------------------------------------------------------------------
 #Contacts
+#
+#
 Route::get('/contacts', 'ContactsController@index')
 	->name('contacts');
-
+#-----------------------------------------------------------------------------------
 #Team
+#
+#
 Route::get('/team', 'TeamController@allDevelopers')
 	->name('team');
 Route::get('/developer/{id}', 'TeamController@singleDeveloper')
