@@ -6,7 +6,7 @@
   "Write to Us": "Написати нам",
   "Logout": "Вихід",
 
-
+  "Start a project": "Почати проект",
   "Name": "Ім'я",
   "Phone number": "Номер телефону",
   "Project details": "Деталі проекту",
@@ -40,5 +40,13 @@
   "Guest": "Гість",
   "Answer": "Відповісти",
   "Edit": "Редагувати",
-  "Delete": "Видалити"
+  "Delete": "Видалити",
+
+  "Among our clients": "Серед наших клієнтів",
+  "Who we are?": "Хто ми?",
+
+  "Origami Web Studio": "Веб студія Орігамі",
+  "Let's do this": "Просто зробіть  це",
+  "We will contact you": "Ми зконтактуємось з Вами",
+  "2 Suvorova street, Kamianets-Podilskyi, Ukraine": "вул. Суворова 2, Кам'янець-Подільський, Україна"
 }

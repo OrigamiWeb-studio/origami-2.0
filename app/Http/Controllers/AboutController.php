@@ -11,13 +11,15 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function index(){
-        $data = [
-            'styles' => [
-                'css/about-style.css'
-            ]
-        ];
-
-        return view('pages.about')->with($data);
-    }
+	public function index()
+	{
+		$data = [
+			'styles' => [
+				'css/about-style.css'
+			],
+			'projects' => Project::where('cover', '!=', null)->get()
+		];
+		
+		return view('pages.about')->with($data);
+	}
 }

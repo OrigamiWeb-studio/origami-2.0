@@ -87,7 +87,7 @@
 													<h3 class="project-content__sub-title">{{ __('Project components') }}</h3>
 													<ul class="tag-list">
 
-														<?php $iterator = 1 ?>
+														@php $iterator = 1 @endphp
 														@foreach($project->stages->sortBy('id') as $stage)
 															<li class="tag-list__item">{{ $iterator++ . '. ' . $stage->title }}</li>
 														@endforeach

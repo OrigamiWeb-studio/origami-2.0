@@ -6,7 +6,7 @@
   "Write to Us": "Написать нам",
   "Logout": "Выход",
 
-
+  "Start a project": "Начать проект",
   "Name": "Имя",
   "Phone number": "Номер телефона",
   "Project details": "Детали проекта",
@@ -40,5 +40,13 @@
   "Guest": "Гость",
   "Answer": "Ответить",
   "Edit": "Редактировать",
-  "Delete": "Удалить"
+  "Delete": "Удалить",
+
+  "Among our clients": "Среди наших клиентов",
+  "Who we are?": "Кто мы?",
+
+  "Origami Web Studio": "Веб студия Оригами",
+  "Let's do this": "Просто сделайте это",
+  "We will contact you": "Мы сконтактируемся с Вами",
+  "2 Suvorova street, Kamianets-Podilskyi, Ukraine": "ул. Суворова 2, Каменец-Подольский, Украина"
 }

@@ -7,10 +7,10 @@
 						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<a href="#">{{ __('About Us') }}</a>
+						<a href="{{ route('about') }}">{{ __('About Us') }}</a>
 					</li>
 					<li>
-						<a href="#">{{ __('Contacts') }}</a>
+						<a href="{{ route('contacts') }}">{{ __('Contacts') }}</a>
 					</li>
 				</ul>
 			</nav>
