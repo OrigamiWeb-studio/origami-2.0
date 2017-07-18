@@ -12,14 +12,14 @@ class HomeController extends Controller
 	public function index()
 	{
 		$data = [
-		    'styles'   => [
-                'libs/lightslider/lightslider.min.css',
-		        'css/home-style.css'
-            ],
-            'scripts'  => [
-                'libs/vue/vue-scrollto.min.js',
-                'libs/lightslider/lightslider.min.js'
-            ],
+			'styles'   => [
+				'libs/lightslider/lightslider.min.css',
+				'css/home-style.css'
+			],
+			'scripts'  => [
+				'libs/vue/vue-scrollto.min.js',
+				'libs/lightslider/lightslider.min.js'
+			],
 			'projects' => Project::get(),
 		];
 		

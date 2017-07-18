@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProjectRequest extends FormRequest
+class ProjectAddRequest extends FormRequest
 {
 	public function authorize()
 	{
@@ -28,8 +28,8 @@ class ProjectRequest extends FormRequest
 			'developers.*'      => 'integer',
 			'link'              => 'string',
 			'review'            => 'string',
-			'description'       => 'string|between:4,4096',
-			'short_description' => 'required|string|between:4,512'
+			'description'       => 'between:4,4096',
+			'short_description' => 'string|between:4,512'
 		];
 		
 		return $rules;

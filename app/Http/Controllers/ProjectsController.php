@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Developer;
-use App\Http\Requests\ProjectRequest;
+use App\Http\Requests\ProjectAddRequest;
+use App\Http\Requests\ProjectEditRequest;
 use App\Project;
 use App\ProjectCategory;
-use App\ProjectComment;
 use App\ProjectScreenshot;
 use App\ProjectStage;
 use App\User;
@@ -137,8 +137,6 @@ class ProjectsController extends Controller
 			],
 			'project' => Project::find($id)
 		];
-
-//		dd($data['project']->comments->where('parent_id', '=', null)[0]->answers());
 		
 		return view('pages.projects.single')->with($data);
 	}
@@ -148,12 +146,11 @@ class ProjectsController extends Controller
 		$data = [
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get(),
-			'clients'    => User::where('is_developer', false)->get()
+			'clients'    => User::where('is_developer', false)->get(),
+			'developers' => Developer::get()
 		];
-
-//		dd($data['clients']);
 		
-		return view('pages.projects.edit')->with($data);
+		return view('pages.projects.add')->with($data);
 	}
 	
 	public function editProjectView($id)
@@ -169,7 +166,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.edit')->with($data);
 	}
 	
-	public function editProject(ProjectRequest $request, $project_id)
+	public function editProject(ProjectEditRequest $request, $project_id)
 	{
 		$project = Project::find($project_id);
 		
@@ -189,6 +186,7 @@ class ProjectsController extends Controller
 		if (Input::hasFile('cover')) {
 			if ($project->cover)
 				File::delete(public_path($project->cover));
+			
 			$image = Input::file('cover');
 			$destination_path = public_path('uploads/projects/placeholders/');
 			$file_path = 'uploads/projects/placeholders/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
@@ -199,6 +197,7 @@ class ProjectsController extends Controller
 		if (Input::hasFile('main_image')) {
 			if ($project->main_image)
 				File::delete(public_path($project->main_image));
+			
 			$image = Input::file('main_image');
 			$destination_path = public_path('uploads/projects/main_images/');
 			$file_path = 'uploads/projects/main_images/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
@@ -207,13 +206,6 @@ class ProjectsController extends Controller
 		}
 		
 		if (Input::hasFile('slider_images')) {
-			
-//			if (isset($project->screenshots) && count($project->screenshots) > 0) {
-//				foreach ($project->screenshots as $screenshot) {
-//					File::delete(public_path($screenshot->link));
-//					$screenshot->delete();
-//				}
-//			}
 			
 			$images = Input::file('slider_images');
 			$destination_path = public_path('uploads/projects/slider_images/');
@@ -237,6 +229,86 @@ class ProjectsController extends Controller
 		
 		$project->save();
 		
-		return redirect()->action('ProjectsController@singleProject', ['id' => $project_id]);
+		return redirect()
+			->action('ProjectsController@singleProject', ['id' => $project_id])
+			->with('success', 'Данные успешно обновлены');
+	}
+	
+	public function addProject(ProjectAddRequest $request)
+	{
+		$project = new Project();
+		
+		$project->title = $request['title'];
+		$project->client_id = $request['client'];
+		$project->category_id = $request['category'];
+		$project->current_stage_id = $request['stage'];
+		$project->link = $request['link'];
+		$project->visible = $request['visible'] === 'on' ? true : false;
+		$project->us_choice = $request['us_choice'] === 'on' ? true : false;
+		$project->client_review = $request['review'];
+		$project->description = $request['description'];
+		$project->short_description = $request['short_description'];
+		
+		if (Input::hasFile('cover')) {
+			if ($project->cover)
+				File::delete(public_path($project->cover));
+			
+			$image = Input::file('cover');
+			$destination_path = public_path('uploads/projects/placeholders/');
+			$file_path = 'uploads/projects/placeholders/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
+			$image->move($destination_path, $file_path);
+			$project->cover = $file_path;
+		}
+		
+		if (Input::hasFile('main_image')) {
+			if ($project->main_image)
+				File::delete(public_path($project->main_image));
+			
+			$image = Input::file('main_image');
+			$destination_path = public_path('uploads/projects/main_images/');
+			$file_path = 'uploads/projects/main_images/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
+			$image->move($destination_path, $file_path);
+			$project->main_image = $file_path;
+		}
+		
+		$project->save();
+		
+		$project->stages()->sync($request['stages']);
+		$project->developers()->sync($request['developers']);
+		
+		if (Input::hasFile('slider_images')) {
+			
+			$images = Input::file('slider_images');
+			$destination_path = public_path('uploads/projects/slider_images/');
+			
+			foreach ($images as $image) {
+				$file_path = 'uploads/projects/slider_images/'
+					. $project->id
+					. str_random(5)
+					. time()
+					. str_random(5)
+					. '.' . $image->getClientOriginalExtension();
+				$image->move($destination_path, $file_path);
+				
+				$screenshot = new ProjectScreenshot();
+				$screenshot->project_id = $project->id;
+				$screenshot->link = $file_path;
+				$screenshot->save();
+			}
+			
+		}
+		
+		return redirect()
+			->action('ProjectsController@singleProject', ['id' => $project->id])
+			->with('success', 'Проект успешно создан');
+	}
+	
+	public function deleteProject($id)
+	{
+		Project::where('id', '=', $id)->delete();
+		
+		return redirect()
+			->action('ProjectsController@allProjects')
+			->with('success', 'Проект успешно удален');
 	}
 }

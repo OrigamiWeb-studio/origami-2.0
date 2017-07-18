@@ -60,6 +60,16 @@
 						</aside>
 
 						<div class="col-md-9">
+
+							@if(session('success'))
+								<div class="block project-content__block">
+									<h3 class="project-content__sub-title">
+										Success
+									</h3>
+									<p class="paragraph">{{ session('success') }}</p>
+								</div>
+							@endif
+
 							<div class="block project-content__block project-description">
 
 								@isset($project->main_image)

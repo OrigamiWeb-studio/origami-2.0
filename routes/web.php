@@ -31,16 +31,26 @@ Route::post('/projects', 'ProjectsController@allProjectsJson')
 	->name('projects-json');
 
 Route::get('/project/add', 'ProjectsController@addProjectView')
-	->name('project-add');
+	->name('project-add')
+	->middleware(['role:admin']);
 
 Route::post('/project/add', 'ProjectsController@addProject')
-	->name('project-add-submit');
+	->name('project-add-submit')
+	->middleware(['role:admin']);
 
 Route::get('/project/{id}/edit', 'ProjectsController@editProjectView')
-	->name('project-edit');
+	->name('project-edit')
+	->middleware(['role:admin']);
 
+//TODO change to PUT method
 Route::post('/project/{id}/edit', 'ProjectsController@editProject')
-	->name('project-edit-submit');
+	->name('project-edit-submit')
+	->middleware(['role:admin']);
+
+//TODO change to DELETE method
+Route::get('/project/{id}/delete', 'ProjectsController@deleteProject')
+	->name('project-delete-submit')
+	->middleware(['role:admin']);
 
 Route::get('/project/{id}', 'ProjectsController@singleProject')
 	->name('project')
@@ -48,11 +58,11 @@ Route::get('/project/{id}', 'ProjectsController@singleProject')
 
 #About
 Route::get('/about', 'AboutController@index')
-    ->name('about');
+	->name('about');
 
 #Contacts
 Route::get('/contacts', 'ContactsController@index')
-    ->name('contacts');
+	->name('contacts');
 
 #Team
 Route::get('/team', 'TeamController@allDevelopers')

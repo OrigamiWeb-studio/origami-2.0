@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<form action="{{ route('project-edit-submit', ['id' => $project->id]) }}" method="post" enctype="multipart/form-data">
+	<form action="{{ route('project-add-submit') }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 
 
@@ -10,7 +10,7 @@
 			<label for="title">{{ __('Title') }}</label>
 
 			<input type="text" placeholder="{{ __('Title') }}" name="title" id="title"
-			       value="{{ empty(old('title')) ? $project->title : old('title') }}">
+			       value="{{ old('title') }}">
 
 			@if($errors->has('title'))
 				<p class="help-block text-danger">{{ $errors->first('title') }}</p>
@@ -23,7 +23,7 @@
 
 			<select name="client" id="client">
 				@foreach($clients as $client)
-					<option value="{{ $client->id }}" {{ $project->client_id === $client->id ? 'selected' : '' }}>
+					<option value="{{ $client->id }}">
 						{{ $client->profile->name }}
 					</option>
 				@endforeach
@@ -40,7 +40,7 @@
 
 			<select name="developers[]" id="developers" multiple>
 				@foreach($developers as $developer)
-					<option value="{{ $developer->id }}" {{ $project->developers->contains('id', $developer->id) ? 'selected' : '' }}>
+					<option value="{{ $developer->id }}">
 						{{ $developer->profile->name }}
 					</option>
 				@endforeach
@@ -57,7 +57,7 @@
 
 			<select name="category" id="category">
 				@foreach($categories as $category)
-					<option value="{{ $category->id }}" {{ $project->category_id === $category->id ? 'selected' : '' }}>
+					<option value="{{ $category->id }}">
 						{{ $category->translateOrDefault(app()->getLocale())->title }}
 					</option>
 				@endforeach
@@ -74,7 +74,7 @@
 
 			<select name="stage" id="stage">
 				@foreach($stages as $stage)
-					<option value="{{ $stage->id }}" {{ $project->current_stage_id === $stage->id ? 'selected' : '' }}>
+					<option value="{{ $stage->id }}">
 						{{ $stage->translateOrDefault(app()->getLocale())->title }}
 					</option>
 				@endforeach
@@ -91,7 +91,7 @@
 
 			<select name="stages[]" id="stages" multiple>
 				@foreach($stages as $stage)
-					<option value="{{ $stage->id }}" {{ $project->stages->contains('id', $stage->id) ? 'selected' : '' }}>
+					<option value="{{ $stage->id }}">
 						{{ $stage->translateOrDefault(app()->getLocale())->title }}
 					</option>
 				@endforeach
@@ -106,8 +106,7 @@
 		<div class="form-group">
 			<label for="link">{{ __('Link') }}</label>
 
-			<input type="text" placeholder="{{ __('Link') }}" name="link" id="link"
-			       value="{{ empty(old('link')) ? $project->link : old('link') }}">
+			<input type="text" placeholder="{{ __('Link') }}" name="link" id="link" value="{{ old('link') }}">
 
 			@if($errors->has('link'))
 				<p class="help-block text-danger">{{ $errors->first('link') }}</p>
@@ -173,8 +172,7 @@
 		<div class="form-group">
 			<label for="client_review">{{ __('Client review') }}</label>
 
-			<textarea name="client_review" id="client_review">{{ empty(old('client_review'))
-			? $project->client_review : old('client_review') }}</textarea>
+			<textarea name="client_review" id="client_review">{{ old('client_review') }}</textarea>
 
 			@if($errors->has('client_review'))
 				<p class="help-block text-danger">{{ $errors->first('client_review') }}</p>
@@ -185,8 +183,7 @@
 		<div class="form-group">
 			<label for="description">{{ __('Description') }}</label>
 
-			<textarea name="description" id="description">{{ empty(old('description'))
-			? $project->description : old('description') }}</textarea>
+			<textarea name="description" id="description">{{ old('description') }}</textarea>
 
 			@if($errors->has('description'))
 				<p class="help-block text-danger">{{ $errors->first('description') }}</p>
@@ -197,24 +194,12 @@
 		<div class="form-group">
 			<label for="short_description">{{ __('Short description') }}</label>
 
-			<textarea name="short_description" id="short_description">{{ empty(old('short_description'))
-			? $project->short_description : old('short_description') }}</textarea>
+			<textarea name="short_description" id="short_description">{{ old('short_description') }}</textarea>
 
 			@if($errors->has('short_description'))
 				<p class="help-block text-danger">{{ $errors->first('short_description') }}</p>
 			@endif
 		</div>
-
-
-		{{--<div class="form-group">--}}
-			{{--<label for="closed_at">{{ __('Closed at') }}</label>--}}
-
-			{{--TODO datetime closed_at--}}
-
-			{{--@if($errors->has('closed_at'))--}}
-				{{--<p class="help-block text-danger">{{ $errors->first('closed_at') }}</p>--}}
-			{{--@endif--}}
-		{{--</div>--}}
 
 		<button type="submit">EDIT</button>
 
