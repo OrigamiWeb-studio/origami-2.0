@@ -13,7 +13,7 @@
 						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<a href="#">{{ $project->title }}</a>
+						<span>{{ $project->title }}</span>
 					</li>
 				</ul>
 			</div>
@@ -35,17 +35,17 @@
 								<div class="block project-item hidden-sm hidden-xs">
 
 									@isset($project->cover)
-										<figure>
-											<img src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+										<figure class="project-item__logo-wrapper">
+											<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
 										</figure>
 									@endisset
 
-									<div class="descr">
+									<div class="project-item__description">
 
-										<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
+										<span class="project-item__title">{{ $project->title }}</span>
 
 										@isset($project->category->translateOrDefault(app()->getLocale())->title)
-											<span>#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
+											<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
 										@endisset
 
 									</div>

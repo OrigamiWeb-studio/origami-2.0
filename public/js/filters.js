@@ -17,6 +17,11 @@ var allProjects = new Vue({
                 this.sendData()
             },
             deep: true
+        },
+        search: function(){
+            if(!this.filtered){
+                this.sendData();
+            }
         }
     },
     methods: {
@@ -33,14 +38,11 @@ var allProjects = new Vue({
     computed: {
       filteredProjects: function(){
           return this.projects.filter((project) => {
-              return project.title.match(this.search);
+              return project.title.toLowerCase().match(this.search.toLowerCase());
           })
       }
     },
     mounted: function(){
-        // this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
-        //     console.log(data);
-        // })
         var self = this;
         window.addEventListener('click', function(e){
             if(!e.target.parentNode.classList.contains('search-wrapper'))

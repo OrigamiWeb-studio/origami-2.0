@@ -9,7 +9,7 @@
 						<a href="{{ route('home') }}">{{ __('Home') }}</a>
 					</li>
 					<li>
-						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
+						<span>{{ __('Projects') }}</span>
 					</li>
 				</ul>
 			</div>
@@ -79,14 +79,18 @@
 										</label>
 									@endfor
 								</div>
-								<div class="sub_block">
-									<h3>{{ __('Price') }}</h3>
-									<label class="range_input">
-										<input type="range" value="30,80" multiple>
-										<span class="pull-left">{{ __('Cheap') }}</span>
-										<span class="pull-right">{{ __('Expencive') }}</span>
-									</label>
-								</div>
+
+								{{--Hide untill it will be works--}}
+
+								{{--<div class="sub_block">--}}
+									{{--<h3>{{ __('Price') }}</h3>--}}
+									{{--<label class="range_input">--}}
+										{{--<input type="range" value="30,80" multiple>--}}
+										{{--<span class="pull-left">{{ __('Cheap') }}</span>--}}
+										{{--<span class="pull-right">{{ __('Expencive') }}</span>--}}
+									{{--</label>--}}
+								{{--</div>--}}
+
 								<div class="sub_block">
 									<h3>{{ __('Components') }}</h3>
 									@foreach($stages as $stage)
