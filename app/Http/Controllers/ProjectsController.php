@@ -35,7 +35,7 @@ class ProjectsController extends Controller
 			'stages'     => ProjectStage::get()
 		];
 		
-		return view('pages.projects.all')->with($data);
+		return view('pages.projects.projects-all')->with($data);
 	}
 	
 	public function allProjectsJson(Request $request)
@@ -138,7 +138,7 @@ class ProjectsController extends Controller
 			'project' => Project::find($id)
 		];
 		
-		return view('pages.projects.single')->with($data);
+		return view('pages.projects.projects-single')->with($data);
 	}
 	
 	public function addProjectView()
@@ -150,7 +150,7 @@ class ProjectsController extends Controller
 			'developers' => Developer::get()
 		];
 		
-		return view('pages.projects.add')->with($data);
+		return view('pages.projects.projects-add')->with($data);
 	}
 	
 	public function editProjectView($id)
@@ -163,7 +163,7 @@ class ProjectsController extends Controller
 			'developers' => Developer::get()
 		];
 		
-		return view('pages.projects.edit')->with($data);
+		return view('pages.projects.projects-edit')->with($data);
 	}
 	
 	public function editProject(ProjectEditRequest $request, $project_id)
