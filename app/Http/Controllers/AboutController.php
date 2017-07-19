@@ -14,9 +14,7 @@ class AboutController extends Controller
 	public function index()
 	{
 		$data = [
-			'styles' => [
-				'css/about-style.css'
-			],
+			'styles'   => config('resources.about.styles'),
 			'projects' => Project::where('cover', '!=', null)->get()
 		];
 		

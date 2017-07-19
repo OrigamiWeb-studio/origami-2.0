@@ -11,17 +11,13 @@ use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
-    public function index(){
-        $data = [
-            'styles'  => [
-                'css/contacts-style.css'
-            ],
-            'scripts' => [
-                'libs/bootstrap/js/bootstrap.min.js',
-                'http://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8'
-            ]
-        ];
-
-        return view('pages.contacts')->with($data);
-    }
+	public function index()
+	{
+		$data = [
+			'styles'  => config('resources.contacts.styles'),
+			'scripts' => config('resources.contacts.scripts')
+		];
+		
+		return view('pages.contacts')->with($data);
+	}
 }

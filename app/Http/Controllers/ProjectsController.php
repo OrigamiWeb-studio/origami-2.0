@@ -19,17 +19,8 @@ class ProjectsController extends Controller
 	public function allProjects()
 	{
 		$data = [
-			'styles'     => [
-				'libs/jcf/jcf.css',
-				'css/projects-style.css'
-			],
-			'scripts'    => [
-				'libs/jcf/jcf.js',
-				'libs/jcf/jcf.select.js',
-				'libs/jcf/jcf.range.js',
-				'libs/vue/vue-resource.min.js',
-				'js/filters.js'
-			],
+			'styles'     => config('resources.projects.all.styles'),
+			'scripts'    => config('resources.projects.all.scripts'),
 			'projects'   => Project::paginate(6),
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get()
@@ -131,12 +122,15 @@ class ProjectsController extends Controller
 	
 	public function singleProject($id)
 	{
+
+//		dd(config('resources.projects.single.styles'));
+		
 		$data = [
-			'styles'  => [
-				'css/project-style.css'
-			],
+			'styles' => config('resources.projects.single.styles'),
 			'project' => Project::find($id)
 		];
+		
+//		dd($data['styles']);
 		
 		return view('pages.projects.projects-single')->with($data);
 	}
