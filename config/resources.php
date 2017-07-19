@@ -52,6 +52,7 @@ return [
 			'css/home-style.css'
 		],
 		'scripts' => [
+		    'libs/jquery/jquery-3.2.0.min.js',
 			'libs/vue/vue-scrollto.min.js',
 			'libs/lightslider/lightslider.min.js'
 		]

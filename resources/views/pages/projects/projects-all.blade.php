@@ -9,7 +9,7 @@
 						<a href="{{ route('home') }}">{{ __('Home') }}</a>
 					</li>
 					<li>
-						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
+						<span>{{ __('Projects') }}</span>
 					</li>
 				</ul>
 			</div>

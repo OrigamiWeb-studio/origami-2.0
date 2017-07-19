@@ -13,7 +13,7 @@ class HomeController extends Controller
 	{
 		$data = [
 			'styles'   => config('resources.home.styles'),
-			'scripts'  => config('resources.projects.home.scripts'),
+			'scripts'  => config('resources.home.scripts'),
 			'projects' => Project::get(),
 		];
 		
