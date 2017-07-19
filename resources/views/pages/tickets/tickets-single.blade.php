@@ -18,7 +18,7 @@
 						<a href="{{ route('project-tickets', ['project_id' => $ticket->project->id]) }}">{{ __('Tickets') }}</a>
 					</li>
 					<li>
-						<a href="{{ route('ticket', ['id' => $ticket->id]) }}">{{ $ticket->title }}</a>
+						<span>{{ $ticket->title }}</span>
 					</li>
 				</ul>
 			</div>
