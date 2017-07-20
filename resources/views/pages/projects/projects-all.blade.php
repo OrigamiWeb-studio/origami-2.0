@@ -106,15 +106,15 @@
 						<div class="col-md-9 col-sm-8">
 							<div class="projects">
 								<template v-if="filtered">
-									<div class="block project-item" v-for="project in filteredProjects">
-										<a v-bind:href="project.id">
-											<figure>
-												<img v-bind:src='project.cover' v:bind:alt="project.title">
+									<div class="block project-item projects__project-item" v-for="project in filteredProjects">
+										<a :href="'{{ url('/project') }}/' + project.id ">
+											<figure class="project-item__logo-wrapper">
+												<img  class="project-item__logo" :src='project.cover' :alt="project.title">
 											</figure>
 										</a>
-										<div class="descr">
-											<a v-bind:href="project.id">@{{ project.title }}</a>
-											<span>#category</span>
+										<div class="project-item__description">
+											<a :href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
+											<span class="project-item__category">#@{{ project.category_title }}</span>
 										</div>
 									</div>
 								</template>

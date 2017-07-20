@@ -28,7 +28,7 @@ var allProjects = new Vue({
         sendData: function(){
             this.filtered = true;
             this.$http.post('/projects', this.filterData).then(function(data){
-               this.projects = (data.data.projects.data);
+               this.projects = (data.data.projects);
                 // console.log(document.location.origin)
             },function(err){
                 console.log(err);

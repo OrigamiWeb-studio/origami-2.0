@@ -33,14 +33,14 @@ class ProjectsController extends Controller
 	{
 		$categories = $request['categories'] ? $request['categories'] : null;
 		$years = $request['years'] ? $request['years'] : null;
-		$stages = $request['stages'] ? $request['stages'] : null;
+		$stages = $request['components'] ? $request['components'] : null;
 		$order = in_array($request['order'], ['asc', 'desc']) ? $request['order'] : 'asc';
 		$prices = $request['prices'] ? $request['prices'] : null;
 		$search = $request['search'] ? $request['search'] : null;
 		$paginate = $request['paginate'] ? $request['paginate'] : null;
 		
 		$projects = Project::query();
-		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
+//		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
 		
 		#Фильтр по категориям
 		if ($categories !== null) {
@@ -86,16 +86,16 @@ class ProjectsController extends Controller
 					->orWhere('description', 'like', '%' . $search . '%');
 			});
 		}
-		
-		$projects = $projects->where('project_translations.locale', '=', app()->getLocale());
+
+//		$projects = $projects->where('project_translations.locale', '=', app()->getLocale());
 		$projects = $projects->select([
 			'projects.*',
-			'project_translations.title',
-			'project_translations.description'
+//			'project_translations.title',
+//			'project_translations.description'
 		]);
-		$projects = $projects->groupBy('project_translations.id');
-		$projects = $projects->orderBy('project_translations.title', $order);
-		$projects = $projects->with('translations');
+//		$projects = $projects->groupBy('project_translations.id');
+//		$projects = $projects->orderBy('project_translations.title', $order);
+//		$projects = $projects->with('translations');
 		
 		#Пагинация
 		if ($paginate !== null && in_array($paginate, [6, 9, 12])) {
@@ -103,19 +103,35 @@ class ProjectsController extends Controller
 		} else $projects = $projects->paginate(100);
 		
 		$data = [
-			'styles'     => [
-				'libs/jcf/jcf.css',
-				'css/projects-style.css'
-			],
-			'scripts'    => [
-				'libs/jcf/jcf.js',
-				'libs/jcf/jcf.select.js',
-				'libs/jcf/jcf.range.js'
-			],
-			'projects'   => $projects,
-			'categories' => ProjectCategory::get(),
-			'stages'     => ProjectStage::get()
+			'pagination' => [],
+			'projects'   => []
 		];
+		
+		foreach ($projects as $project) {
+			$data['projects'] [] = [
+				'id'             => $project->id,
+				'cover'          => $project->cover,
+				'title'          => $project->translateOrDefault(app()->getLocale())->title,
+				'category_title' => $project->category->translateOrDefault(app()->getLocale())->title
+			];
+		}
+
+//		return $data;
+//
+//		$data = [
+//			'styles'     => [
+//				'libs/jcf/jcf.css',
+//				'css/projects-style.css'
+//			],
+//			'scripts'    => [
+//				'libs/jcf/jcf.js',
+//				'libs/jcf/jcf.select.js',
+//				'libs/jcf/jcf.range.js'
+//			],
+//			'projects'   => $projects,
+//			'categories' => ProjectCategory::get(),
+//			'stages'     => ProjectStage::get()
+//		];
 		
 		return $data;
 	}
@@ -126,10 +142,10 @@ class ProjectsController extends Controller
 //		dd(config('resources.projects.single.styles'));
 		
 		$data = [
-			'styles' => config('resources.projects.single.styles'),
+			'styles'  => config('resources.projects.single.styles'),
 			'project' => Project::find($id)
 		];
-		
+
 //		dd($data['styles']);
 		
 		return view('pages.projects.projects-single')->with($data);
