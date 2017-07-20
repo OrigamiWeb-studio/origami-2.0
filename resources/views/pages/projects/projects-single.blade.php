@@ -32,7 +32,7 @@
 						<aside class="col-md-3">
 
 							@isset($project->title)
-								<div class="block project-item hidden-sm hidden-xs">
+								<div class="block project-content__project-item project-item hidden-sm hidden-xs">
 
 									@isset($project->cover)
 										<figure class="project-item__logo-wrapper">

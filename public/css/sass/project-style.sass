@@ -1,3 +1,6 @@
+@import "components/_colors.sass"
+@import "components/_project-item.sass"
+
 $lightblue: #9da7b0
 $darkblue: #262b2f
 $lightgrey: #e7e9ec
@@ -78,32 +81,6 @@ $lightgrey: #e7e9ec
 
 
 
-.project-item
-	margin-bottom: 30px
-	&__logo-wrapper
-		height: 266px
-		display: flex
-		justify-content: center
-		align-items: center
-		border-bottom: 2px solid $lightgrey
-	&__logo
-		max-width: 100%
-	&__description
-		text-align: center
-		padding: 25px 15px
-	&__category
-		display: inline-block
-		font-weight: bold
-		color: $lightblue
-		font-size: 12px
-		margin: 0 3px
-	&__title
-		font-weight: bold
-		margin: 0
-		color: $darkblue
-		display: block
-		font-size: 14px 
-
 .project-content
 	padding: 26px 0 104px
 	&__block
@@ -116,6 +93,8 @@ $lightgrey: #e7e9ec
 		margin: 42px 0 24px
 		line-height: 1
 		text-transform: uppercase
+	&__project-item
+		margin-bottom: 30px
 
 .project-description
 	&__figure-block

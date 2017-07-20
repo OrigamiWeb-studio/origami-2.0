@@ -1,6 +1,5 @@
-$lightblue: #9da7b0
-$darkblue: #262b2f
-$lightgrey: #e7e9ec
+@import "components/_colors.sass"
+@import "components/_project-item.sass"
 
 .block
 	border: 2px solid $lightgrey
@@ -209,44 +208,22 @@ $lightgrey: #e7e9ec
 	flex-wrap: wrap
 	justify-content: flex-start
 	margin-right: -23px
+	&__project-item
+		margin-bottom: 30px
+		margin-right: 23px
+		width: calc( 33.333333% - 23px )
+		@media screen and (max-width: 991px) and (min-width: 768px)
+			width: calc( 50% - 23px )
+		@media screen and (max-width: 660px)
+			width: calc( 50% - 23px )
+		@media screen and (max-width: 500px)
+			width: 100%
+			max-width: 290px
+			margin-right: 0
 	@media screen and (max-width: 767px)
 		margin-top: 30px
 	@media screen and (max-width: 500px)
 		justify-content: center
-		margin-right: 0
-
-.project-item
-	margin-bottom: 30px
-	margin-right: 23px
-	width: calc( 33.333333% - 23px )
-	figure
-		height: 266px
-		display: flex
-		justify-content: center
-		align-items: center
-		border-bottom: 2px solid $lightgrey
-	.descr
-		text-align: center
-		padding: 25px 15px
-		a
-			font-weight: bold
-			margin: 0
-			color: $darkblue
-			display: block
-			font-size: 14px 
-		span
-			display: inline-block
-			font-weight: bold
-			color: $lightblue
-			font-size: 12px
-			margin: 0 3px
-	@media screen and (max-width: 991px) and (min-width: 768px)
-		width: calc( 50% - 23px )
-	@media screen and (max-width: 660px)
-		width: calc( 50% - 23px )
-	@media screen and (max-width: 500px)
-		width: 100%
-		max-width: 290px
 		margin-right: 0
 
 

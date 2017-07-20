@@ -121,15 +121,15 @@
 								<template v-if="!filtered">
 									{{--@foreach($projects->sortByDesc('title') as $project)--}}
 									@foreach($projects as $project)
-										<div class="block project-item">
+										<div class="block project-item projects__project-item">
 											<a href="{{ route('project', ['id' => $project->id]) }}">
-												<figure>
-													<img src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+												<figure class="project-item__logo-wrapper">
+													<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
 												</figure>
 											</a>
-											<div class="descr">
-												<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
-												<span>#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
+											<div class="project-item__description">
+												<a class="project-item__title" href="{{ route('project', ['id' => $project->id]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
+												<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
 											</div>
 										</div>
 									@endforeach
