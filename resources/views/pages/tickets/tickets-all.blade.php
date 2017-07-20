@@ -15,7 +15,7 @@
 						<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
 					</li>
 					<li>
-						<a href="{{ route('project-tickets', ['project_id' => $project->id]) }}">{{ __('Tickets') }}</a>
+						<span>{{ __('Tickets') }}</span>
 					</li>
 				</ul>
 			</div>
@@ -25,6 +25,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
+					<h1>{{ $project->title }} - список тікетів</h1>
 					<ul>
 						@foreach($tickets as $ticket)
 							<li style="background: #EAEAEA; margin-bottom: 2px">
