@@ -45,6 +45,49 @@ $(document).ready(function(){
 		});
 	}
 
+	if($("#results-slider").length){
+		$("#results-slider").lightSlider({
+			item: 4,
+			loop: true,
+			controls: false,
+			slideMargin: 30,
+			onSliderLoad: function() {
+			    $('#results-slider').removeClass('cS-hidden');
+			},
+			responsive: [
+	        	{
+	        		breakpoint: 767,
+	        		settings: {
+	        			item: 3,
+	        			adaptiveHeight: true
+	        		}
+	        	},
+	        	{
+	        		breakpoint: 600,
+	        		settings: {
+	        			item: 2
+	        		}
+	        	},
+	        	{
+	        		breakpoint: 410,
+	        		settings: {
+	        			item: 1
+	        		}
+	        	}
+	        ]
+		})
+	}
+
+	$(".search-form>.btn").click(function(e){
+		e.preventDefault();
+		var searchForm = $(this).parent();
+		if(searchForm.hasClass('opened')){
+			searchForm.removeClass('opened');
+		}else{
+			searchForm.addClass('opened');
+		}
+	});
+
 	if($('select').length || $('input[type=range]').length){
 		jcf.setOptions('Select', {
 			wrapNative: false,
@@ -96,7 +139,7 @@ $(document).ready(function(){
 				center: myLatLng
 			});
 
-			var image = document.location.origin+"/img/map-point.png";
+			var image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4CsvtJTZ_uws9LeVKFUf9PcDQ7iRFxqW_XhII4B8jqbk-o8ePMQ';
 
 			var marker = new google.maps.Marker({
 				position: myLatLng,

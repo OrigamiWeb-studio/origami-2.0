@@ -4,7 +4,7 @@
 
 	<main>
 
-		<section class="s_hero leaning_section">
+		<section class="s_hero">
 			<div class="container">
 				<div class="site_title">
 					<h1>Origami Web-Studio</h1>
@@ -17,7 +17,7 @@
 		</section>
 
 		@if($projects->isNotEmpty())
-			<section class="s_projects">
+			<section class="s_projects leaning_section">
 				<div class="container">
 					<h2>{{ __('Our projects') }}</h2>
 					<div class="projects-slider-wrapper">

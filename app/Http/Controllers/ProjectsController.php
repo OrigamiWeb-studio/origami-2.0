@@ -143,6 +143,7 @@ class ProjectsController extends Controller
 		
 		$data = [
 			'styles'  => config('resources.projects.single.styles'),
+            'scripts'  => config('resources.projects.single.scripts'),
 			'project' => Project::find($id)
 		];
 

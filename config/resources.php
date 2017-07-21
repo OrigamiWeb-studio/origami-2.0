@@ -5,10 +5,11 @@ return [
 		
 		'single' => [
 			'styles'  => [
+			    'libs/lightslider/lightslider.min.css',
 				'css/project-style.css'
 			],
 			'scripts' => [
-			
+			    'libs/lightslider/lightslider.min.js'
 			]
 		],
 		

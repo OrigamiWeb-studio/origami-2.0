@@ -1,4 +1,8 @@
 .project-item
+	position: relative
+	&:hover
+		.project-item__management-icons
+			display: block
 	&__logo-wrapper
 		height: 266px
 		display: flex
@@ -21,4 +25,30 @@
 		margin: 0
 		color: $darkblue
 		display: block
-		font-size: 14px 
+		font-size: 14px
+	&__management-icons
+		position: absolute
+		top: 26px
+		right: 15px
+		padding: 0
+		margin: 0
+		list-style: none
+		display: none
+		@media screen and (max-width: 991px)
+			display: block
+	&__management-item
+		display: inline-block
+		vertical-align: middle
+		margin-right: 10px
+	&__management-icon
+		border: 2px solid #ebedef
+		font-size: 12px
+		color: $lightblue
+		transition: color .2s ease
+		height: 35px
+		width: 35px
+		display: flex
+		justify-content: center
+		align-items: center
+		&:hover
+			color: $darkblue

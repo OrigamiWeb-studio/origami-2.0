@@ -50,6 +50,24 @@
 
 									</div>
 
+									<ul class="project-item__management-icons">
+										<li class="project-item__management-item">
+											<a class="project-item__management-icon" href="#">
+												<i class="fa fa-ticket" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li class="project-item__management-item">
+											<a class="project-item__management-icon" href="#">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li class="project-item__management-item">
+											<a class="project-item__management-icon" href="#">
+												<i class="fa fa-trash-o" aria-hidden="true"></i>
+											</a>
+										</li>
+									</ul>
+
 								</div>
 							@endisset
 
@@ -149,7 +167,7 @@
 									</h3>
 									<p class="paragraph">{{ $project->description }}</p>
 								</div>
-							@endif
+							@endisset
 
 							@if(isset($project->screenshots) && count($project->screenshots) > 0)
 								<div class="block project-content__block">
@@ -161,6 +179,29 @@
 									@endforeach
 								</div>
 							@endif
+
+								<div class="block project-content__block">
+									<h3 class="project-content__sub-title">
+										Results of work
+									</h3>
+									<div class="sub-block sub-block_border-bottom">
+										<div class="results-slider project-content__results-slider">
+											<ul id="results-slider" class="results-slider__list list-unstyled cS-hidden">
+												@foreach($project->screenshots as $screenshot)
+													<li class="results-slider__item">
+														<img class="results-slider__image" onerror="this.src='{{ asset('img/image.svg') }}';"  src="{{ $screenshot->link }}" alt="Some title">
+													</li>
+												@endforeach
+											</ul>
+										</div>
+									</div>
+									<h3 class="project-content__sub-title">
+										Summation
+									</h3>
+									<p class="paragraph">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip extereas.
+									</p>
+								</div>
 
 							@if(count($project->comments) > 0)
 								<div class="block project-content__block">
