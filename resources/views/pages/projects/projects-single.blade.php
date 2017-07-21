@@ -204,12 +204,20 @@
 								</div>
 
 							@if(count($project->comments) > 0)
-								<div class="block project-content__block">
-
-									<h3 class="project-content__sub-title">
-										{{ __('Comments') }} <span class="grey-title-text">({{ $project->comments->where('parent_id', '=', null)->count() }})</span>
-									</h3>
-
+								<div class="block project-content__block comments-block">
+									<header class="comments-block__header">
+										<h3 class="project-content__sub-title">
+											{{ __('Comments') }} <span class="grey-title-text">({{ $project->comments->where('parent_id', '=', null)->count() }})</span>
+										</h3>
+										<ul class="comments-block__sorting">
+											<li class="comments-block__sorting-item comments-block__sorting-item_active">
+												<a class="comments-block__sorting-button"href="#">Newest</a>
+											</li>
+											<li class="comments-block__sorting-item">
+												<a class="comments-block__sorting-button"href="#">Oldest</a>
+											</li>
+										</ul>
+									</header>
 									<ul class="comments-list">
 
 										@foreach($project->comments->where('parent_id', '=', null) as $comment)
@@ -267,6 +275,16 @@
 										@endforeach
 
 									</ul>
+									<div class="pagination-block">
+										<ul class="pagination view-per-page__pagination">
+											<li class="pagination__item">
+												<span class="pagination__index pagination__index_active">1</span>
+											</li>
+											<li class="pagination__item">
+												<a class="pagination__index" href="#">2</a>
+											</li>
+										</ul>
+									</div>
 								</div>
 							@endif
 

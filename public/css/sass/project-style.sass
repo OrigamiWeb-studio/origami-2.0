@@ -6,6 +6,7 @@
 
 // Components
 @import "components/_project-item.sass"
+@import "components/_pagination.sass"
 
 .block
 	border: 2px solid $lightgrey
@@ -109,12 +110,48 @@
 		height: 270px
 		object-fit: cover
 
+.comments-block
+	&__header
+		position: relative
+	&__sorting
+		position: absolute
+		right: 0
+		top: 0
+		font-size: 0
+		@media screen and (max-width: 500px)
+			position: relative
+			margin-bottom: 15px
+	&__sorting-item
+		display: inline-block
+		padding: 0 20px
+		font-size: 12px
+		border: 1px solid $lightblue
+		margin: 0 -0.5px
+		&:first-child
+			border-width: 0 1px 0 0
+			margin-left: 0
+		&:last-child
+			margin-right: 0
+			padding-right: 0
+			border-width: 0 0 0 1px
+		&_active
+			position: relative
+			z-index: 1
+			border-color: $darkblue
+			.comments-block__sorting-button
+				color: $darkblue
+		@media screen and (max-width: 500px)
+			&:first-child
+				padding-left: 0
+
 .comments-list
 	&__item
 		border-top: 1px solid #ebedef
 		padding: 30px 0
 		&_answer
 			padding-left: 45px
+			@media screen and (max-width: 450px)
+				padding-left: 15px
 	&__header
 		&:after
 			content: ''
@@ -164,4 +201,9 @@
 				background-color: #262b2f
 				border: none
 
+
+.pagination-block
+	padding: 46px 0
+	border: 1px solid #ebedef
+	border-width: 1px 0
 

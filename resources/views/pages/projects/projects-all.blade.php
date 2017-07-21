@@ -22,20 +22,20 @@
 							<h1>{{ __('Projects') }}</h1>
 						</div>
 						<div class="col-md-6 col-sm-8">
-							<div class="view_per_page">
+							<div class="view-per-page">
 								<span>{{ __('View per page') }}:</span>
-								<ul class="pagination">
-									<li>
-										<a href="#">6</a>
+								<ul class="pagination view-per-page__pagination">
+									<li class="pagination__item">
+										<a class="pagination__index" href="#">6</a>
 									</li>
-									<li class="active">
-										<span>9</span>
+									<li class="pagination__item">
+										<span class="pagination__index pagination__index_active">9</span>
 									</li>
-									<li>
-										<a href="#">12</a>
+									<li class="pagination__item">
+										<a class="pagination__index" href="#">12</a>
 									</li>
-									<li>
-										<a href="#">{{ __('All') }}</a>
+									<li class="pagination__item">
+										<a class="pagination__index" href="#">{{ __('All') }}</a>
 									</li>
 								</ul>
 							</div>
@@ -170,21 +170,21 @@
 								</template>
 							</div>
 							{{--{!! $projects->links() !!}--}}
-							<ul class="pagination">
-								<li class="active">
-									<span>1</span>
+							<ul class="pagination projects_content__pagination">
+								<li class="pagination__item">
+									<span class="pagination__index pagination__index_active">1</span>
 								</li>
-								<li>
-									<a href="#">2</a>
+								<li class="pagination__item">
+									<a class="pagination__index" href="#">2</a>
 								</li>
-								<li>
-									<span>...</span>
+								<li class="pagination__item">
+									...
 								</li>
-								<li>
-									<a href="#">5</a>
+								<li class="pagination__item">
+									<a class="pagination__index" href="#">5</a>
 								</li>
-								<li>
-									<a href="#">6</a>
+								<li class="pagination__item">
+									<a class="pagination__index" href="#">6</a>
 								</li>
 							</ul>
 						</div>
