@@ -1,4 +1,11 @@
+
+// Colors
 @import "components/_colors.sass"
+
+
+
+// Components
+@import "components/_form.sass"
 
 .s_contacts
 	h1 
@@ -103,22 +110,6 @@
 		margin: 35px 0
 	.modal-body
 		padding: 0 0 20px
-	.form-group
-		margin-bottom: 20px
-	input[type=text],
-	input[type=email],
-	textarea
-		width: 100%
-		padding: 10px 16px
-		border: 1px solid #ebedef
-		color: $darkblue
-		&::placeholder
-			color: $lightblue
-		&:focus
-			border-color: $lightblue
-			outline: none
-	textarea
-		resize: none
 	@media screen and (max-width: 540px)
 		margin: 0 10px
 		.modal-dialog

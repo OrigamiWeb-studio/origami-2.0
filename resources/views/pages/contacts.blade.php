@@ -56,20 +56,20 @@
 					<h4 class="modal-title">{{ __('Start a project') }}</h4>
 				</div>
 				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<input type="text" placeholder="{{ __('Name') }}" name="name" id="contact_name">
+					<form class="origami-form">
+						<div class="form-group origami-form__form-group">
+							<input class="origami-form__input" type="text" placeholder="{{ __('Name') }}" name="name" id="contact_name">
 						</div>
-						<div class="form-group">
-							<input type="email" placeholder="Email" name="email" id="contact_email">
+						<div class="form-group origami-form__form-group">
+							<input class="origami-form__input" type="email" placeholder="Email" name="email" id="contact_email">
 						</div>
-						<div class="form-group">
-							<input type="text" placeholder="{{ __('Phone number') }}" name="number" id="contact_number">
+						<div class="form-group origami-form__form-group">
+							<input class="origami-form__input" type="text" placeholder="{{ __('Phone number') }}" name="number" id="contact_number">
 						</div>
-						<div class="form-group">
-							<textarea name="details" id="contact_details" rows="4" placeholder="{{ __('Project details') }}"></textarea>
+						<div class="form-group origami-form__form-group">
+							<textarea class="origami-form__input origami-form__input_textarea" name="details" id="contact_details" rows="4" placeholder="{{ __('Project details') }}"></textarea>
 						</div>
-						<div class="form-group">
+						<div class="form-group origami-form__form-group">
 							<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
 						</div>
 					</form>

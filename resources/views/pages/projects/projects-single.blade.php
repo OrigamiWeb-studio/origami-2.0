@@ -285,6 +285,51 @@
 											</li>
 										</ul>
 									</div>
+
+									<div class="add-comment">
+										<h3 class="project-content__sub-title add-comment__title">
+											Add comment:
+										</h3>
+										<div class="row">
+											<div class="col-md-6">
+												<form class="origami-form">
+													{{ csrf_field() }}
+													<div class="form-group origami-form__form-group">
+														<input class="origami-form__input" type="text" placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}">
+														@if($errors->has('name'))
+															<p class="help-block text-danger">{{ $errors->first('name') }}</p>
+														@endif
+													</div>
+													<div class="form-group origami-form__form-group">
+														<input class="origami-form__input" type="email" placeholder="Email" name="email" value="{{ old('email') }}">
+														@if($errors->has('email'))
+															<p class="help-block text-danger">{{ $errors->first('email') }}</p>
+														@endif
+													</div>
+													<div class="form-group origami-form__form-group">
+														<input class="origami-form__input" type="text" placeholder="{{ __('Phone number') }}" name="phone" value="{{ old('phone') }}">
+														@if($errors->has('phone'))
+															<p class="help-block text-danger">{{ $errors->first('phone') }}</p>
+														@endif
+													</div>
+													<div class="form-group origami-form__form-group">
+														<textarea class="origami-form__input origami-form__input_textarea" name="message" rows="4" placeholder="Message"></textarea>
+														@if($errors->has('message'))
+															<p class="help-block text-danger">{{ $errors->first('message') }}</p>
+														@endif
+													</div>
+													<div class="form-group origami-form__form-group">
+														Капча
+													</div>
+													<div class="form-group origami-form__form-group">
+														<input type="submit" class="btn btn-submit" value="Send request">
+													</div>
+												</form>
+											</div>
+											<div class="col-md-6"></div>
+										</div>
+									</div>
+
 								</div>
 							@endif
 
