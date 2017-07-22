@@ -6,10 +6,12 @@ return [
 		'single' => [
 			'styles'  => [
 			    'libs/lightslider/lightslider.min.css',
+                'libs/magnific-popup/magnific-popup.css',
 				'css/project-style.css'
 			],
 			'scripts' => [
-			    'libs/lightslider/lightslider.min.js'
+			    'libs/lightslider/lightslider.min.js',
+                'libs/magnific-popup/jquery.magnific-popup.min.js'
 			]
 		],
 		

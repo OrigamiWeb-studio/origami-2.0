@@ -170,10 +170,12 @@
 												<ul id="results-slider" class="results-slider__list list-unstyled cS-hidden">
 													@foreach($project->screenshots as $screenshot)
 														<li class="results-slider__item">
-															<img class="results-slider__image"
-															     src="{{ asset($screenshot->link) }}"
-															     onerror="this.src='{{ asset('img/image.svg') }}';"
-															     alt="{{ isset($project->title) ? $project->title : __('Project') }} {{ __('screenshots') }}">
+															<a href="{{ asset($screenshot->link) }}">
+																<img class="results-slider__image"
+																	 src="{{ asset($screenshot->link) }}"
+																	 onerror="this.src='{{ asset('img/image.svg') }}';"
+																	 alt="{{ isset($project->title) ? $project->title : __('Project') }} {{ __('screenshots') }}">
+															</a>
 														</li>
 													@endforeach
 												</ul>
