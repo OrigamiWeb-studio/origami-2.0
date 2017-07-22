@@ -6,10 +6,12 @@ var allProjects = new Vue({
         filterData: {
             "categories": [],
             "years" : [],
-            "components" : []
+            "components" : [],
+            "paginate": 1
         },
         search: '',
-        projects: []
+        projects: [],
+        pagination: []
     },
     watch: {
         filterData: {
@@ -27,8 +29,10 @@ var allProjects = new Vue({
     methods: {
         sendData: function(){
             this.filtered = true;
-            this.$http.post('/projects', this.filterData).then(function(data){
-               this.projects = (data.data.projects);
+            this.$http.post('/projects?page=2', this.filterData).then(function(data){
+                this.projects = (data.data.projects);
+                this.pagination = (data.data.pagination);
+                console.log(this.pagination);
                 // console.log(document.location.origin)
             },function(err){
                 console.log(err);

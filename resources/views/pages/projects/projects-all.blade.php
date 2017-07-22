@@ -42,11 +42,11 @@
 						</div>
 						<div class="col-md-3 col-sm-8">
 							<div class="sort_by">
-								<span>{{ __('Sort by') }}:</span>
-								<select class="orderby" name="orderby" id="orderby">
-									<option value="a-z">{{ __('A-Z') }}</option>
-									<option value="z-a">{{ __('Z-A') }}</option>
-								</select>
+								{{--<span>{{ __('Sort by') }}:</span>--}}
+								{{--<select class="orderby" name="orderby" id="orderby">--}}
+									{{--<option value="a-z">{{ __('A-Z') }}</option>--}}
+									{{--<option value="z-a">{{ __('Z-A') }}</option>--}}
+								{{--</select>--}}
 								<div v-bind:class="{opened: searchField}" class="search-wrapper">
 									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="search" required>
 									<button type="submit" @click.prevent="searchField = !searchField" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -149,11 +149,12 @@
 												<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
 											</div>
 											<ul class="project-item__management-icons">
-												<li class="project-item__management-item">
-													<a class="project-item__management-icon" href="#">
-														<i class="fa fa-ticket" aria-hidden="true"></i>
-													</a>
-												</li>
+												{{--<li class="project-item__management-item">--}}
+													{{--<a class="project-item__management-icon" href="#">--}}
+														{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
+													{{--</a>--}}
+												{{--</li>--}}
+												@role('admin')
 												<li class="project-item__management-item">
 													<a class="project-item__management-icon" href="#">
 														<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -167,29 +168,51 @@
 														</button>
 													</form>
 												</li>
+												@endrole()
 											</ul>
 										</div>
 									@endforeach
 								</template>
 							</div>
 							{{--{!! $projects->links() !!}--}}
-							<ul class="pagination projects_content__pagination">
-								<li class="pagination__item">
-									<span class="pagination__index pagination__index_active">1</span>
-								</li>
-								<li class="pagination__item">
-									<a class="pagination__index" href="#">2</a>
-								</li>
-								<li class="pagination__item">
-									...
-								</li>
-								<li class="pagination__item">
-									<a class="pagination__index" href="#">5</a>
-								</li>
-								<li class="pagination__item">
-									<a class="pagination__index" href="#">6</a>
-								</li>
-							</ul>
+
+							<template v-if="filtered">
+								<ul class="pagination projects_content__pagination">
+									<li class="pagination__item">
+										<span class="pagination__index pagination__index_active">1</span>
+									</li>
+									<li class="pagination__item">
+										<a class="pagination__index" :href="'/projects?page=1'">2</a>
+									</li>
+									<li class="pagination__item">
+										...
+									</li>
+									<li class="pagination__item">
+										<a class="pagination__index" href="#">5</a>
+									</li>
+									<li class="pagination__item">
+										<a class="pagination__index" href="#">6</a>
+									</li>
+								</ul>
+							</template>
+
+							{{--<ul class="pagination projects_content__pagination">--}}
+								{{--<li class="pagination__item">--}}
+									{{--<span class="pagination__index pagination__index_active">1</span>--}}
+								{{--</li>--}}
+								{{--<li class="pagination__item">--}}
+									{{--<a class="pagination__index" href="#">2</a>--}}
+								{{--</li>--}}
+								{{--<li class="pagination__item">--}}
+									{{--...--}}
+								{{--</li>--}}
+								{{--<li class="pagination__item">--}}
+									{{--<a class="pagination__index" href="#">5</a>--}}
+								{{--</li>--}}
+								{{--<li class="pagination__item">--}}
+									{{--<a class="pagination__index" href="#">6</a>--}}
+								{{--</li>--}}
+							{{--</ul>--}}
 						</div>
 					</div>
 				</div>

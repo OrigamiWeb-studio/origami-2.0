@@ -51,11 +51,11 @@
 									</div>
 
 									<ul class="project-item__management-icons">
-										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="#">
-												<i class="fa fa-ticket" aria-hidden="true"></i>
-											</a>
-										</li>
+										{{--<li class="project-item__management-item">--}}
+											{{--<a class="project-item__management-icon" href="#">--}}
+												{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
+											{{--</a>--}}
+										{{--</li>--}}
 										<li class="project-item__management-item">
 											<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
 												<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -101,7 +101,7 @@
 								@endisset
 
 								@if(isset($project->title) && isset($project->short_description))
-									<div class="sub-block {{ isset($project->developers) && count($project->developers) > 0 ? 'sub-block_border-bottom' : '' }} ">
+									<div class="sub-block {{--{{ isset($project->developers) && count($project->developers) > 0 ? 'sub-block_border-bottom' : '' }} --}}">
 										<div class="row">
 
 											<div class="col-sm-7">
@@ -131,29 +131,7 @@
 									</div>
 								@endif
 
-								@if(isset($project->developers) && count($project->developers) > 0)
-									<div class="developers-team">
-										<h3 class="project-content__sub-title">{{ __('Developers team') }}</h3>
-										<ul class="developers-team__list">
-
-											@foreach($project->developers as $developer)
-												<li class="developers-team__item">
-													<img src="{{ $developer->profile->photo }}" alt=""
-													     class="developers-team__avatar">
-													<div class="developers-team__information">
-														<h4 class="developers-team__name">
-															{{ $developer->profile->name }}
-														</h4>
-														@isset($developer->position)
-															<span class="developers-team__position">#{{ $developer->position }}</span>
-														@endisset
-													</div>
-												</li>
-											@endforeach
-
-										</ul>
-									</div>
-								@endif
+{{--								@include('pages.projects.components.project-developers')--}}
 
 							</div>
 
