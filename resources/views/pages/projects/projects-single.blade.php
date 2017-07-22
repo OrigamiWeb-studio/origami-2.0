@@ -62,9 +62,12 @@
 											</a>
 										</li>
 										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="#">
-												<i class="fa fa-trash-o" aria-hidden="true"></i>
-											</a>
+											<form action="">
+												{{ csrf_field() }}
+												<button class="project-item__management-icon">
+													<i class="fa fa-trash-o" aria-hidden="true"></i>
+												</button>
+											</form>
 										</li>
 									</ul>
 
