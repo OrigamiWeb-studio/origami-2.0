@@ -1,7 +1,6 @@
 var allProjects = new Vue({
     el: '.s_allprojects',
     data: {
-        filtered: false,
         searchField: false,
         filterData: {
             "categories": [],
@@ -19,32 +18,25 @@ var allProjects = new Vue({
                 this.sendData()
             },
             deep: true
-        },
-        search: function(){
-            if(!this.filtered){
-                this.sendData();
-            }
         }
     },
     methods: {
         sendData: function(){
-            this.filtered = true;
-            this.$http.post('/projects?page=2', this.filterData).then(function(data){
-                this.projects = (data.data.projects);
-                this.pagination = (data.data.pagination);
-                console.log(this.pagination);
-                // console.log(document.location.origin)
+            this.$http.post('/projects', this.filterData).then(function(data){
+                this.projects = data.data.projects;
+                this.pagination = data.data.pagination;
             },function(err){
                 console.log(err);
             })
+        },
+        paginate: function(page){
+            this.$http.post('/projects?page='+page, this.filterData).then(function(data){
+                this.projects = data.data.projects;
+                this.pagination = data.data.pagination;
+            }, function(err){
+                console.log(err);
+            })
         }
-    },
-    computed: {
-      filteredProjects: function(){
-          return this.projects.filter((project) => {
-              return project.title.toLowerCase().match(this.search.toLowerCase());
-          })
-      }
     },
     mounted: function(){
         var self = this;
@@ -52,5 +44,8 @@ var allProjects = new Vue({
             if(!e.target.parentNode.classList.contains('search-wrapper'))
                 self.searchField = false;
         })
+    },
+    beforeMount(){
+        this.sendData();
     }
 });
