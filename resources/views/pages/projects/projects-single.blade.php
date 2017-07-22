@@ -57,7 +57,7 @@
 											</a>
 										</li>
 										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="#">
+											<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
 												<i class="fa fa-pencil" aria-hidden="true"></i>
 											</a>
 										</li>
@@ -154,54 +154,40 @@
 
 							</div>
 
-							@isset($project->description)
+							@if(isset($project->description) || (isset($project->screenshots) && count($project->screenshots) > 0))
 								<div class="block project-content__block">
-									{{--<h3 class="project-content__sub-title">--}}
-									{{--Some title--}}
-									{{--</h3>--}}
-									{{--<div class="sub-block sub-block_border-bottom" style="height: 500px">--}}
-									{{--{{ $project->description }}--}}
-									{{--</div>--}}
-									<h3 class="project-content__sub-title">
-										{{ __('Description') }}
-									</h3>
-									<p class="paragraph">{{ $project->description }}</p>
-								</div>
-							@endisset
 
-							@if(isset($project->screenshots) && count($project->screenshots) > 0)
-								<div class="block project-content__block">
-									<h3 class="project-content__sub-title">
-										Скриншоты
-									</h3>
-									@foreach($project->screenshots as $screenshot)
-										<p class="paragraph">{{ asset($screenshot->link) }}</p>
-									@endforeach
+									@if(isset($project->screenshots) && count($project->screenshots) > 0)
+										<h3 class="project-content__sub-title">
+											{{ __('Results of work') }}
+										</h3>
+
+										<div class="sub-block {{ isset($project->description) ? 'sub-block_border-bottom' : '' }}">
+											<div class="results-slider project-content__results-slider">
+												<ul id="results-slider" class="results-slider__list list-unstyled cS-hidden">
+													@foreach($project->screenshots as $screenshot)
+														<li class="results-slider__item">
+															<img class="results-slider__image"
+															     src="{{ asset($screenshot->link) }}"
+															     onerror="this.src='{{ asset('img/image.svg') }}';"
+															     alt="{{ isset($project->title) ? $project->title : __('Project') }} {{ __('screenshots') }}">
+														</li>
+													@endforeach
+												</ul>
+											</div>
+										</div>
+									@endif
+
+									@isset($project->description)
+										<h3 class="project-content__sub-title">
+											{{ __('Summation') }}
+										</h3>
+
+										<p class="paragraph">{{ $project->description }}</p>
+									@endisset
+
 								</div>
 							@endif
-
-								<div class="block project-content__block">
-									<h3 class="project-content__sub-title">
-										Results of work
-									</h3>
-									<div class="sub-block sub-block_border-bottom">
-										<div class="results-slider project-content__results-slider">
-											<ul id="results-slider" class="results-slider__list list-unstyled cS-hidden">
-												@foreach($project->screenshots as $screenshot)
-													<li class="results-slider__item">
-														<img class="results-slider__image" onerror="this.src='{{ asset('img/image.svg') }}';"  src="{{ $screenshot->link }}" alt="Some title">
-													</li>
-												@endforeach
-											</ul>
-										</div>
-									</div>
-									<h3 class="project-content__sub-title">
-										Summation
-									</h3>
-									<p class="paragraph">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip extereas.
-									</p>
-								</div>
 
 							@if(count($project->comments) > 0)
 								<div class="block project-content__block">

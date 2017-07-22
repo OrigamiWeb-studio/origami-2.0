@@ -1,6 +1,7 @@
 {
   "Home": "Головна",
   "Projects": "Проекти",
+  "Project": "Проект",
   "About Us": "Про нас",
   "Contacts": "Контакти",
   "Write to Us": "Написати нам",
@@ -38,6 +39,10 @@
   "Developers team": "Команда розробників",
   "Description": "Опис",
   "Comments": "Коментарі",
+  "screenshots": "скріншоти",
+  "Results of work": "Результати роботи",
+  "Summation": "Підсумки",
+
   "Guest": "Гість",
   "Answer": "Відповісти",
   "Edit": "Редагувати",

@@ -1,6 +1,7 @@
 {
   "Home": "Главная",
   "Projects": "Проекты",
+  "Project": "Проект",
   "About Us": "О нас",
   "Contacts": "Контакты",
   "Write to Us": "Написать нам",
@@ -38,6 +39,10 @@
   "Developers team": "Команда разработчиков",
   "Description": "Описание",
   "Comments": "Комментарии",
+  "screenshots": "Скриншоты",
+  "Results of work": "Результаты работы",
+  "Summation": "Итоги",
+
   "Guest": "Гость",
   "Answer": "Ответить",
   "Edit": "Редактировать",
@@ -49,5 +54,5 @@
   "Origami Web Studio": "Веб студия Оригами",
   "Let's do this": "Просто сделайте это",
   "We will contact you": "Мы сконтактируемся с Вами",
-  "2 Suvorova street, Kamianets-Podilskyi, Ukraine": "ул. Суворова 2, Каменец-Подольский, Украина"
+  "2 Suvorova street, Kamianets-Podilskyi, Ukraine": "ул. Суворова 2, Каменец-Подольский, Украина",
 }
