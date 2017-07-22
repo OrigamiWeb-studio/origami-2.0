@@ -98,12 +98,27 @@ class ProjectsController extends Controller
 //		$projects = $projects->with('translations');
 		
 		#Пагинация
-		if ($paginate !== null && in_array($paginate, [6, 9, 12])) {
+		
+//		return $paginate;
+		
+		if ($paginate !== null && in_array($paginate, [1, 2, 3, 6, 9, 12])) {
 			$projects = $projects->paginate($paginate);
 		} else $projects = $projects->paginate(100);
+
+//		return $projects;
 		
 		$data = [
-			'pagination' => [],
+			'pagination' => [
+				'item_first'    => $projects->firstItem(),
+				'item_last'     => $projects->lastItem(),
+				'page_last'     => $projects->lastPage(),
+				'page_current'  => $projects->currentPage(),
+				'page_next_url' => $projects->nextPageUrl(),
+				'page_prev_url' => $projects->previousPageUrl(),
+				'per_page'      => $projects->perPage(),
+				'total'         => $projects->total()
+			
+			],
 			'projects'   => []
 		];
 		
@@ -143,7 +158,7 @@ class ProjectsController extends Controller
 		
 		$data = [
 			'styles'  => config('resources.projects.single.styles'),
-            'scripts'  => config('resources.projects.single.scripts'),
+			'scripts' => config('resources.projects.single.scripts'),
 			'project' => Project::find($id)
 		];
 
