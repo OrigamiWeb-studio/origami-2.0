@@ -149,11 +149,12 @@
 												<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
 											</div>
 											<ul class="project-item__management-icons">
-												<li class="project-item__management-item">
-													<a class="project-item__management-icon" href="#">
-														<i class="fa fa-ticket" aria-hidden="true"></i>
-													</a>
-												</li>
+												{{--<li class="project-item__management-item">--}}
+													{{--<a class="project-item__management-icon" href="#">--}}
+														{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
+													{{--</a>--}}
+												{{--</li>--}}
+												@role('admin')
 												<li class="project-item__management-item">
 													<a class="project-item__management-icon" href="#">
 														<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -167,6 +168,7 @@
 														</button>
 													</form>
 												</li>
+												@endrole()
 											</ul>
 										</div>
 									@endforeach
