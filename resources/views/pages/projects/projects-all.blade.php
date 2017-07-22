@@ -135,7 +135,7 @@
 										<a :href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
 										<span class="project-item__category">#@{{ project.category_title }}</span>
 									</div>
-									<ul class="project-item__management-icons">
+									{{--<ul class="project-item__management-icons">
 										<li class="project-item__management-item">
 											<a class="project-item__management-icon" href="#">
 												<i class="fa fa-ticket" aria-hidden="true"></i>
@@ -151,7 +151,7 @@
 												<i class="fa fa-trash-o" aria-hidden="true"></i>
 											</a>
 										</li>
-									</ul>
+									</ul>--}}
 								</div>
 								{{--@foreach($projects->sortByDesc('title') as $project)--}}
 								{{--@foreach($projects as $project)--}}
