@@ -48,14 +48,14 @@
 		</section>
 	</main>
 
-	<div class="modal fade contact-modal" id="contact-modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
-					<h4 class="modal-title">{{ __('Start a project') }}</h4>
+	<div class="modal fade origami-modal" id="contact-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog origami-modal__dialog" role="document">
+			<div class="modal-content origami-modal__content">
+				<div class="modal-header origami-modal__header">
+					<button type="button" class="close origami-modal__close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
+					<h4 class="modal-title origami-modal__title">{{ __('Start a project') }}</h4>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body origami-modal__body">
 					<form class="origami-form">
 						<div class="form-group origami-form__form-group">
 							<input class="origami-form__input" type="text" placeholder="{{ __('Name') }}" name="name" id="contact_name">
