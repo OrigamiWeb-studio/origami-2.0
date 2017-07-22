@@ -26,16 +26,36 @@
 								<span>{{ __('View per page') }}:</span>
 								<ul class="pagination view-per-page__pagination">
 									<li class="pagination__item">
-										<a class="pagination__index" href="#">6</a>
+										<template v-if="pagination.per_page == 1">
+											<span class="pagination__index pagination__index_active">1</span>
+										</template>
+										<template v-else>
+											<a class="pagination__index" @click.prevent="filterData.paginate = 1" href="project?per_page=1">1</a>
+										</template>
 									</li>
 									<li class="pagination__item">
-										<span class="pagination__index pagination__index_active">9</span>
+										<template v-if="pagination.per_page == 2">
+											<span class="pagination__index pagination__index_active">2</span>
+										</template>
+										<template v-else>
+											<a class="pagination__index" @click.prevent="filterData.paginate = 2" href="project?per_page=2">2</a>
+										</template>
 									</li>
 									<li class="pagination__item">
-										<a class="pagination__index" href="#">12</a>
+										<template v-if="pagination.per_page == 3">
+											<span class="pagination__index pagination__index_active">3</span>
+										</template>
+										<template v-else>
+											<a class="pagination__index" @click.prevent="filterData.paginate = 3" href="project?per_page=3">3</a>
+										</template>
 									</li>
 									<li class="pagination__item">
-										<a class="pagination__index" href="#">{{ __('All') }}</a>
+										<template v-if="pagination.per_page == 100">
+											<span class="pagination__index pagination__index_active">All</span>
+										</template>
+										<template v-else>
+											<a class="pagination__index" @click.prevent="filterData.paginate = ''" href="project?per_page=All">{{ __('All') }}</a>
+										</template>
 									</li>
 								</ul>
 							</div>
@@ -47,7 +67,7 @@
 									{{--<option value="a-z">{{ __('A-Z') }}</option>--}}
 									{{--<option value="z-a">{{ __('Z-A') }}</option>--}}
 								{{--</select>--}}
-								<div v-bind:class="{opened: searchField}" class="search-wrapper">
+								<div :class="{opened: searchField}" class="search-wrapper">
 									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="search" required>
 									<button type="submit" @click.prevent="searchField = !searchField" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
 								</div>
@@ -105,114 +125,83 @@
 						</aside>
 						<div class="col-md-9 col-sm-8">
 							<div class="projects">
-								<template v-if="filtered">
-									<div class="block project-item projects__project-item" v-for="project in filteredProjects">
-										<a :href="'{{ url('/project') }}/' + project.id ">
-											<figure class="project-item__logo-wrapper">
-												<img  class="project-item__logo" :src='project.cover' :alt="project.title">
-											</figure>
-										</a>
-										<div class="project-item__description">
-											<a :href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
-											<span class="project-item__category">#@{{ project.category_title }}</span>
-										</div>
-										<ul class="project-item__management-icons">
-											<li class="project-item__management-item">
-												<a class="project-item__management-icon" href="#">
-													<i class="fa fa-ticket" aria-hidden="true"></i>
-												</a>
-											</li>
-											<li class="project-item__management-item">
-												<a class="project-item__management-icon" href="#">
-													<i class="fa fa-pencil" aria-hidden="true"></i>
-												</a>
-											</li>
-											<li class="project-item__management-item">
-												<a class="project-item__management-icon" href="#">
-													<i class="fa fa-trash-o" aria-hidden="true"></i>
-												</a>
-											</li>
-										</ul>
+								<div class="block project-item projects__project-item" v-for="project in filteredProjects">
+									<a :href="'{{ url('/project') }}/' + project.id ">
+										<figure class="project-item__logo-wrapper">
+											<img  class="project-item__logo" :src='project.cover' :alt="project.title">
+										</figure>
+									</a>
+									<div class="project-item__description">
+										<a :href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
+										<span class="project-item__category">#@{{ project.category_title }}</span>
 									</div>
-								</template>
-								<template v-if="!filtered">
-									{{--@foreach($projects->sortByDesc('title') as $project)--}}
-									@foreach($projects as $project)
-										<div class="block project-item projects__project-item">
-											<a href="{{ route('project', ['id' => $project->id]) }}">
-												<figure class="project-item__logo-wrapper">
-													<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
-												</figure>
+									<ul class="project-item__management-icons">
+										<li class="project-item__management-item">
+											<a class="project-item__management-icon" href="#">
+												<i class="fa fa-ticket" aria-hidden="true"></i>
 											</a>
-											<div class="project-item__description">
-												<a class="project-item__title" href="{{ route('project', ['id' => $project->id]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
-												<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
-											</div>
-											<ul class="project-item__management-icons">
-												{{--<li class="project-item__management-item">--}}
-													{{--<a class="project-item__management-icon" href="#">--}}
-														{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
-													{{--</a>--}}
-												{{--</li>--}}
-												@role('admin')
-												<li class="project-item__management-item">
-													<a class="project-item__management-icon" href="#">
-														<i class="fa fa-pencil" aria-hidden="true"></i>
-													</a>
-												</li>
-												<li class="project-item__management-item">
-													<form action="">
-														{{ csrf_field() }}
-														<button class="project-item__management-icon">
-															<i class="fa fa-trash-o" aria-hidden="true"></i>
-														</button>
-													</form>
-												</li>
-												@endrole()
-											</ul>
-										</div>
-									@endforeach
-								</template>
+										</li>
+										<li class="project-item__management-item">
+											<a class="project-item__management-icon" href="#">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li class="project-item__management-item">
+											<a class="project-item__management-icon" href="#">
+												<i class="fa fa-trash-o" aria-hidden="true"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+								{{--@foreach($projects->sortByDesc('title') as $project)--}}
+								{{--@foreach($projects as $project)--}}
+									{{--<div class="block project-item projects__project-item">--}}
+										{{--<a href="{{ route('project', ['id' => $project->id]) }}">--}}
+											{{--<figure class="project-item__logo-wrapper">--}}
+												{{--<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">--}}
+											{{--</figure>--}}
+										{{--</a>--}}
+										{{--<div class="project-item__description">--}}
+											{{--<a class="project-item__title" href="{{ route('project', ['id' => $project->id]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>--}}
+											{{--<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>--}}
+										{{--</div>--}}
+										{{--<ul class="project-item__management-icons">--}}
+											{{--<li class="project-item__management-item">--}}
+												{{--<a class="project-item__management-icon" href="#">--}}
+													{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
+												{{--</a>--}}
+											{{--</li>--}}
+											{{--@role('admin')--}}
+											{{--<li class="project-item__management-item">--}}
+												{{--<a class="project-item__management-icon" href="#">--}}
+													{{--<i class="fa fa-pencil" aria-hidden="true"></i>--}}
+												{{--</a>--}}
+											{{--</li>--}}
+											{{--<li class="project-item__management-item">--}}
+												{{--<form action="">--}}
+													{{--{{ csrf_field() }}--}}
+													{{--<button class="project-item__management-icon">--}}
+														{{--<i class="fa fa-trash-o" aria-hidden="true"></i>--}}
+													{{--</button>--}}
+												{{--</form>--}}
+											{{--</li>--}}
+											{{--@endrole()--}}
+										{{--</ul>--}}
+									{{--</div>--}}
+								{{--@endforeach--}}
 							</div>
-							{{--{!! $projects->links() !!}--}}
 
-							<template v-if="filtered">
-								<ul class="pagination projects_content__pagination">
-									<li class="pagination__item">
-										<span class="pagination__index pagination__index_active">1</span>
-									</li>
-									<li class="pagination__item">
-										<a class="pagination__index" :href="'/projects?page=1'">2</a>
-									</li>
-									<li class="pagination__item">
-										...
-									</li>
-									<li class="pagination__item">
-										<a class="pagination__index" href="#">5</a>
-									</li>
-									<li class="pagination__item">
-										<a class="pagination__index" href="#">6</a>
-									</li>
-								</ul>
-							</template>
+							<ul v-if="pagination.page_last>1" class="pagination projects_content__pagination">
+								<li class="pagination__item" v-for="(item, index) in pagination.page_last">
+									<template v-if="pagination.page_current == (index+1)">
+										<span class="pagination__index pagination__index_active">@{{ index+1 }}</span>
+									</template>
+									<template v-else>
+										<a :href="'/projects?page='+(index+1)" @click.prevent="paginate((index+1))" class="pagination__index">@{{ index+1 }}</a>
+									</template>
+								</li>
+							</ul>
 
-							{{--<ul class="pagination projects_content__pagination">--}}
-								{{--<li class="pagination__item">--}}
-									{{--<span class="pagination__index pagination__index_active">1</span>--}}
-								{{--</li>--}}
-								{{--<li class="pagination__item">--}}
-									{{--<a class="pagination__index" href="#">2</a>--}}
-								{{--</li>--}}
-								{{--<li class="pagination__item">--}}
-									{{--...--}}
-								{{--</li>--}}
-								{{--<li class="pagination__item">--}}
-									{{--<a class="pagination__index" href="#">5</a>--}}
-								{{--</li>--}}
-								{{--<li class="pagination__item">--}}
-									{{--<a class="pagination__index" href="#">6</a>--}}
-								{{--</li>--}}
-							{{--</ul>--}}
 						</div>
 					</div>
 				</div>

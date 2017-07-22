@@ -1,7 +1,6 @@
 var allProjects = new Vue({
     el: '.s_allprojects',
     data: {
-        filtered: false,
         searchField: false,
         filterData: {
             "categories": [],
@@ -21,20 +20,24 @@ var allProjects = new Vue({
             deep: true
         },
         search: function(){
-            if(!this.filtered){
-                this.sendData();
-            }
+            this.sendData();
         }
     },
     methods: {
         sendData: function(){
-            this.filtered = true;
-            this.$http.post('/projects?page=2', this.filterData).then(function(data){
-                this.projects = (data.data.projects);
-                this.pagination = (data.data.pagination);
+            this.$http.post('/projects', this.filterData).then(function(data){
+                this.projects = data.data.projects;
+                this.pagination = data.data.pagination;
                 console.log(this.pagination);
-                // console.log(document.location.origin)
             },function(err){
+                console.log(err);
+            })
+        },
+        paginate: function(page){
+            this.$http.post('/projects?page='+page, this.filterData).then(function(data){
+                this.projects = data.data.projects;
+                this.pagination = data.data.pagination;
+            }, function(err){
                 console.log(err);
             })
         }
@@ -52,5 +55,8 @@ var allProjects = new Vue({
             if(!e.target.parentNode.classList.contains('search-wrapper'))
                 self.searchField = false;
         })
+    },
+    beforeMount(){
+        this.sendData();
     }
 });
