@@ -17,16 +17,6 @@
 		</div>
 		<section class="s_contacts">
 			<div class="container">
-				<header>
-					<h1>{{ __('Contacts') }}</h1>
-				</header>
-				<div class="map-wrapper">
-					<div id="map" class="map"></div>
-					<address>
-						<strong>{{ __('Origami Web Studio') }}</strong>
-						<span>{{ __('2 Suvorova street, Kamianets-Podilskyi, Ukraine') }}</span>
-					</address>
-				</div>
 				<div class="our-contacts">
 					<h2>{{ __('Let\'s do this') }}</h2>
 					<ul>
