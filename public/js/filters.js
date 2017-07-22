@@ -18,9 +18,6 @@ var allProjects = new Vue({
                 this.sendData()
             },
             deep: true
-        },
-        search: function(){
-            this.sendData();
         }
     },
     methods: {
@@ -28,7 +25,6 @@ var allProjects = new Vue({
             this.$http.post('/projects', this.filterData).then(function(data){
                 this.projects = data.data.projects;
                 this.pagination = data.data.pagination;
-                console.log(this.pagination);
             },function(err){
                 console.log(err);
             })
@@ -41,13 +37,6 @@ var allProjects = new Vue({
                 console.log(err);
             })
         }
-    },
-    computed: {
-      filteredProjects: function(){
-          return this.projects.filter((project) => {
-              return project.title.toLowerCase().match(this.search.toLowerCase());
-          })
-      }
     },
     mounted: function(){
         var self = this;

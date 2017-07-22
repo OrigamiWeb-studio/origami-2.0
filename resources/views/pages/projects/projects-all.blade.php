@@ -125,7 +125,7 @@
 						</aside>
 						<div class="col-md-9 col-sm-8">
 							<div class="projects">
-								<div class="block project-item projects__project-item" v-for="project in filteredProjects">
+								<div class="block project-item projects__project-item" v-for="project in projects">
 									<a :href="'{{ url('/project') }}/' + project.id ">
 										<figure class="project-item__logo-wrapper">
 											<img  class="project-item__logo" :src='project.cover' :alt="project.title">
