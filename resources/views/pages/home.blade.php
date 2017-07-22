@@ -61,39 +61,39 @@
 				<h2>{{ __('Write to Us') }}</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
 
-				<form action="{{ route('home-send-form') }}" method="post">
+				<form class="origami-form s_contact__form" action="{{ route('home-send-form') }}" method="post">
 					{{ csrf_field() }}
 
-					<div class="form-group">
-						<input type="text" placeholder="{{ __('Name') }}" name="name" id="contact_name" value="{{ old('name') }}">
+					<div class="form-group origami-form__form-group">
+						<input class="origami-form__input" type="text" placeholder="{{ __('Name') }}" name="name" id="contact_name" value="{{ old('name') }}">
 						@if($errors->has('name'))
 							<p class="help-block text-danger">{{ $errors->first('name') }}</p>
 						@endif
 					</div>
 
-					<div class="form-group">
-						<input type="email" placeholder="Email" name="email" id="contact_email" value="{{ old('email') }}">
+					<div class="form-group origami-form__form-group">
+						<input class="origami-form__input" type="email" placeholder="Email" name="email" id="contact_email" value="{{ old('email') }}">
 						@if($errors->has('email'))
 							<p class="help-block text-danger">{{ $errors->first('email') }}</p>
 						@endif
 					</div>
 
-					<div class="form-group">
-						<input type="text" placeholder="{{ __('Phone number') }}" name="phone" id="contact_number" value="{{ old('phone') }}">
+					<div class="form-group origami-form__form-group">
+						<input class="origami-form__input" type="text" placeholder="{{ __('Phone number') }}" name="phone" id="contact_number" value="{{ old('phone') }}">
 						@if($errors->has('phone'))
 							<p class="help-block text-danger">{{ $errors->first('phone') }}</p>
 						@endif
 					</div>
 
-					<div class="form-group">
-						<textarea placeholder="{{ __('Project details') }}" name="message" id="contact_details" rows="4">{{ old('message') }}</textarea>
+					<div class="form-group origami-form__form-group">
+						<textarea class="origami-form__input origami-form__input_textarea" placeholder="{{ __('Project details') }}" name="message" id="contact_details" rows="4">{{ old('message') }}</textarea>
 						@if($errors->has('message'))
 							<p class="help-block text-danger">{{ $errors->first('message') }}</p>
 						@endif
 					</div>
 
-					<div class="form-group">
-						<input type="submit" class="btn-submit" value="{{ __('Send') }}">
+					<div class="form-group origami-form__form-group">
+						<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
 					</div>
 				</form>
 

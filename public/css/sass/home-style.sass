@@ -1,4 +1,11 @@
+
+// Colors
 @import "components/_colors.sass"
+
+
+
+// Components
+@import "components/_form.sass"
 
 body
 	background: #fff
@@ -221,25 +228,9 @@ section
 	background: #fff
 	h2
 		margin-top: -26px
-	.form-group
-		margin-bottom: 20px
-	form
+	&__form
 		max-width:  370px
 		margin: 0 auto
-	input[type=text],
-	input[type=email],
-	textarea
-		width: 100%
-		padding: 10px 16px
-		border: 1px solid #ebedef
-		color: $darkblue
-		&::placeholder
-			color: $lightblue
-		&:focus
-			border-color: $lightblue
-			outline: none
-	textarea
-		resize: none
 	p
 		text-align: center
 		font-family: 'PTSans', sans-serif
