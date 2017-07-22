@@ -1,0 +1,52 @@
+.origami-modal
+	text-align: center
+	&:before
+		content: ''
+		display: inline-block
+		height: 100%
+		vertical-align: middle
+		margin-right: -4px
+	&__close
+		background: none
+		color: $lightblue
+		font-weight: 700
+		border: none
+		font-size: 26px
+		position: absolute
+		right: 22px
+		top: 20px
+		&:hover
+			color: $darkblue
+	&__dialog
+		width: 470px
+		margin: 30px auto
+		display: inline-block
+		text-align: left
+		vertical-align: middle
+	&__content
+		border-radius: 0
+		padding: 0 50px
+	&__header
+		padding: 0
+		border-bottom: none
+	&__title
+		font-size: 40px
+		color: $darkblue
+		font-weight: 700
+		font-family: 'RobotoSlab', sans-serif
+		margin: 35px 0
+	&__modal-body
+		padding: 0 0 20px
+	@media screen and (max-width: 540px)
+		margin: 0 10px
+		&__dialog
+			width: 100%
+			max-width: none
+			margin: 10px 0
+		&__close
+			font-size: 23px
+		&__title
+			font-size: 28px
+			margin: 35px 0 25px
+		&__content
+			padding: 0 20px

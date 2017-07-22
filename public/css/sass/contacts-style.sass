@@ -5,6 +5,7 @@
 
 
 // Components
+@import "components/_modal.sass"
 @import "components/_form.sass"
 
 .s_contacts
@@ -38,7 +39,7 @@
 	margin-bottom: 75px
 	h2
 		display: inline-block
-		margin: 0
+		margin: 35px 0 0
 		border-bottom: $darkblue 3px solid
 		font-family: 'RobotoSlab', sans-serif
 		font-size: 36px
@@ -70,59 +71,6 @@
 			width: 100%
 			max-width: none
 			margin: 0 0 20px
-
-.contact-modal
-	text-align: center
-	&:before
-		content: ''
-		display: inline-block
-		height: 100%
-		vertical-align: middle
-		margin-right: -4px
-	.close
-		background: none
-		color: $lightblue
-		font-weight: 700
-		border: none
-		font-size: 26px
-		position: absolute
-		right: 22px
-		top: 20px
-		&:hover
-			color: $darkblue
-	.modal-dialog
-		width: 470px
-		margin: 30px auto
-		display: inline-block
-		text-align: left
-		vertical-align: middle
-	.modal-content
-		border-radius: 0
-		padding: 0 50px
-	.modal-header
-		padding: 0
-		border-bottom: none
-	.modal-title
-		font-size: 40px
-		color: $darkblue
-		font-weight: 700
-		font-family: 'RobotoSlab', sans-serif
-		margin: 35px 0
-	.modal-body
-		padding: 0 0 20px
-	@media screen and (max-width: 540px)
-		margin: 0 10px
-		.modal-dialog
-			width: 100%
-			max-width: none
-			margin: 10px 0
-		.close
-			font-size: 23px
-		.modal-title
-			font-size: 28px
-			margin: 35px 0 25px
-		.modal-content
-			padding: 0 20px
 
 
 
