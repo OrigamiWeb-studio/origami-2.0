@@ -17,12 +17,9 @@ return [
 		
 		'all'    => [
 			'styles'  => [
-				'libs/jcf/jcf.css',
 				'css/projects-style.css'
 			],
 			'scripts' => [
-				'libs/jcf/jcf.js',
-				'libs/jcf/jcf.select.js',
 				'libs/jcf/jcf.range.js',
 				'libs/vue/vue-resource.min.js',
 				'js/filters.js'
@@ -55,7 +52,6 @@ return [
 			'css/home-style.css'
 		],
 		'scripts' => [
-		    'libs/jquery/jquery-3.2.0.min.js',
 			'libs/vue/vue-scrollto.min.js',
 			'libs/lightslider/lightslider.min.js'
 		]
@@ -77,7 +73,6 @@ return [
 			'css/contacts-style.css'
 		],
 		'scripts' => [
-			'libs/bootstrap/js/bootstrap.min.js',
 			'http://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8'
 		]
 	]

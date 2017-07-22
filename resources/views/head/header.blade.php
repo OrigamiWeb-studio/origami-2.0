@@ -53,7 +53,7 @@
 					@endforeach
 				</ul>
 			</div>
-			<a href="#" class="btn">{{ __('Write to Us') }}</a>
+			<a href="#" class="btn" data-toggle="modal" data-target="#writetous-modal">{{ __('Write to Us') }}</a>
 			<div class="burger-menu" :class="{opened: headerActive}" @click="mobileMenu()">
 				<div class="burger"></div>
 			</div>

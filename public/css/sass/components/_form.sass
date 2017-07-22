@@ -1,10 +1,16 @@
 .origami-form
+	font-size: 16px
 	&__form-group
 		margin-bottom: 20px
+	&__label
+		cursor: pointer
+		color: $lightblue
+		font-weight: 400
+		margin: 0 0 10px
 	&__input
 		width: 100%
 		padding: 10px 16px
-		border: 1px solid #ebedef
+		border: 1px solid #ebedef	
 		color: $darkblue
 		&::placeholder
 			color: $lightblue
@@ -13,3 +19,43 @@
 			outline: none
 		&_textarea
 			resize: none
+		&_error
+			border-color: #e83c44
+			color: #e83c44
+			&:focus
+				color: $darkblue
+
+.jcf-select-origami-form__select
+	display: block
+	height: auto
+	min-width: 0
+	margin: 0
+	width: 100%
+	border: 1px solid #ebedef
+	color: #262b2f
+	&.jcf-drop-active .jcf-select-opener
+		color: $darkblue
+	.jcf-select-text
+		line-height: 1.4
+		margin: 0
+		font-size: 16px
+		padding: 10px 16px
+		.jcf-option-placeholder
+			color: $lightblue
+	.jcf-select-opener
+		background: transparent
+		width: 0
+		height: 0
+		border-top: 4px dashed
+		border-top: 4px solid\9
+		border-right: 4px solid transparent
+		border-left: 4px solid transparent
+		top: 21px
+		right: 23px
+		color: $lightblue
+	.jcf-select-drop-content
+		border: none
+	.jcf-option
+		line-height: 1.4
+		font-size: 16px
+		padding: 10px 16px

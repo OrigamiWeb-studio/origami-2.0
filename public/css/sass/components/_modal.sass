@@ -19,10 +19,15 @@
 			color: $darkblue
 	&__dialog
 		width: 470px
+		max-width: 100%
 		margin: 30px auto
 		display: inline-block
 		text-align: left
 		vertical-align: middle
+		&_wide
+			width: 770px
+			@media screen and (max-width: 767px)
+				margin: 10px 0
 	&__content
 		border-radius: 0
 		padding: 0 50px
@@ -37,6 +42,9 @@
 		margin: 35px 0
 	&__modal-body
 		padding: 0 0 20px
+	&_wide
+		@media screen and (max-width: 767px)
+			margin: 0 10px
 	@media screen and (max-width: 540px)
 		margin: 0 10px
 		&__dialog

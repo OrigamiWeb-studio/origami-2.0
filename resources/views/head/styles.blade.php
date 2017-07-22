@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" media="all" href="{{ asset('libs/bootstrap/css/bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css" media="all" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('libs/jcf/jcf.css') }}">
 <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/fonts.css') }}">
 <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/common.css') }}">
 
