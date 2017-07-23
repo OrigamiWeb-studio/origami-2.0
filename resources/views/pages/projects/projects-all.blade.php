@@ -51,7 +51,7 @@
 									</li>
 									<li class="pagination__item">
 										<template v-if="pagination.per_page == 100">
-											<span class="pagination__index pagination__index_active">All</span>
+											<span class="pagination__index pagination__index_active">{{ __('All') }}</span>
 										</template>
 										<template v-else>
 											<a class="pagination__index" @click.prevent="filterData.paginate = ''" href="project?per_page=All">{{ __('All') }}</a>
