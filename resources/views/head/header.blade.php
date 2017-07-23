@@ -34,15 +34,16 @@
 							<a href="{{ route('contacts') }}">{{ __('Contacts') }}</a>
 						</li>
 
-						<li style="transition-delay: 450ms, 450ms, 0ms">
-							<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-								{{ __('Logout') }}
-							</a>
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-								{{ csrf_field() }}
-							</form>
-						</li>
-
+						@if(Auth::user())
+							<li style="transition-delay: 450ms, 450ms, 0ms">
+								<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									{{ csrf_field() }}
+								</form>
+							</li>
+						@endif
 					</ul>
 				</nav>
 			</div>
