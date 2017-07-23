@@ -59,3 +59,24 @@
 		line-height: 1.4
 		font-size: 16px
 		padding: 10px 16px
+
+
+.alert
+	padding: 13px 35px 13px 16px
+	border: 1px solid #ebedef
+	color: $lightblue
+	position: relative
+	&:after
+		font-family: 'FontAwesome'
+		right: 13px
+		height: 20px
+		margin: auto
+		position: absolute
+		top: 0
+		bottom: 0
+	&_danger
+		border-color: #f9cdcf
+		background: #fce6e7
+		color: #e83c44
+		&:after
+			content: '\f071'

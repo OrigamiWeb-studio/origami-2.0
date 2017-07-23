@@ -70,13 +70,18 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group origami-form__form-group">
+					<div class="origami-form__form-group">
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
 						          name="description" id="writetous-description" rows="4"
 						          placeholder="{{ __('Describe your project') }}" required></textarea>
 					</div>
-					<div class="form-group origami-form__form-group">
+					<div class="origami-form__form-group">
+						<div class="alert alert_danger">
+							Ошибочка :(
+						</div>
+					</div>
+					<div class="origami-form__form-group">
 						<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
 					</div>
 				</form>

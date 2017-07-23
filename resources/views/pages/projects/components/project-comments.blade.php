@@ -86,29 +86,44 @@
 				Add comment:
 			</h3>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-sm-6 col-sm-push-6">
+					<h4 class="project-content__sub-title add-comment__rules-title">Rules for comments</h4>
+					<p class="add-comment__rules">The comment will be published in case if it corresponds with rules below:</p>
+					<ol class="add-comment__rules-list">
+						<li class="add-comment__rules-item">Don't use inappropriate language and offencive words. This includes using obscenities as well as being just plain mean.</li>
+						<li class="add-comment__rules-item">Dissalow posting comments that doen't have any point</li>
+						<li class="add-comment__rules-item">Minimal length of comment is 150 symbols</li>
+						<li class="add-comment__rules-item">Dissalow using capslock for whole comment</li>
+						<li class="add-comment__rules-item">Dissalow providing links/trackbacks to obscene or inappropriate content.</li>
+					</ol>
+				</div>
+				<div class="col-sm-6 col-sm-pull-6">
 					<form class="origami-form">
 						{{ csrf_field() }}
 						<div class="form-group origami-form__form-group">
-							<input class="origami-form__input" type="text" placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}">
+							<label for="comment-form__name" class="origami-form__label">Name *</label>
+							<input class="origami-form__input" type="text" name="name" value="{{ old('name') }}" id="comment-form__name" required>
 							@if($errors->has('name'))
 								<p class="help-block text-danger">{{ $errors->first('name') }}</p>
 							@endif
 						</div>
 						<div class="form-group origami-form__form-group">
-							<input class="origami-form__input" type="email" placeholder="Email" name="email" value="{{ old('email') }}">
+							<label for="comment-form__name" class="origami-form__label">Email *</label>
+							<input class="origami-form__input" type="email" name="email" value="{{ old('email') }}" id="comment-form__email" required>
 							@if($errors->has('email'))
 								<p class="help-block text-danger">{{ $errors->first('email') }}</p>
 							@endif
 						</div>
 						<div class="form-group origami-form__form-group">
-							<input class="origami-form__input" type="text" placeholder="{{ __('Phone number') }}" name="phone" value="{{ old('phone') }}">
+							<label for="comment-form__name" class="origami-form__label">Phone number</label>
+							<input class="origami-form__input" type="text" name="phone" value="{{ old('phone') }}" id="comment-form__phone">
 							@if($errors->has('phone'))
 								<p class="help-block text-danger">{{ $errors->first('phone') }}</p>
 							@endif
 						</div>
 						<div class="form-group origami-form__form-group">
-							<textarea class="origami-form__input origami-form__input_textarea" name="message" rows="4" placeholder="Message"></textarea>
+							<label for="comment-form__name" class="origami-form__label">Message *</label>
+							<textarea class="origami-form__input origami-form__input_textarea" name="message" rows="4" id="comment-form__message" required></textarea>
 							@if($errors->has('message'))
 								<p class="help-block text-danger">{{ $errors->first('message') }}</p>
 							@endif
@@ -121,7 +136,6 @@
 						</div>
 					</form>
 				</div>
-				<div class="col-md-6"></div>
 			</div>
 		</div>
 

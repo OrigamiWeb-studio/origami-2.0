@@ -46,20 +46,68 @@
 					<h4 class="modal-title origami-modal__title">{{ __('Start a project') }}</h4>
 				</div>
 				<div class="modal-body origami-modal__body">
-					<form class="origami-form">
-						<div class="form-group origami-form__form-group">
-							<input class="origami-form__input" type="text" placeholder="{{ __('Name') }}" name="name" id="contact_name">
+
+					<form class="origami-form s_contact__form" action="{{ route('save-contact-us-request') }}" method="get">
+						{{ csrf_field() }}
+
+						<div class="origami-form__form-group">
+							<label for="contactform__name" class="origami-form__label">{{ __('Name') }} *</label>
+							<input class="origami-form__input @if($errors->has('name')) origami-form__input_error @endif" id="contactform-name" type="text"
+								   name="name" id="contactform__name" value="{{ old('name') }}" required>
 						</div>
-						<div class="form-group origami-form__form-group">
-							<input class="origami-form__input" type="email" placeholder="Email" name="email" id="contact_email">
+
+						<div class="origami-form__form-group">
+							<label for="contactform__email" class="origami-form__label">Email *</label>
+							<input class="origami-form__input @if($errors->has('email')) origami-form__input_error @endif" type="email"
+								   name="email" id="contactform__email" value="{{ old('email') }}" required>
 						</div>
-						<div class="form-group origami-form__form-group">
-							<input class="origami-form__input" type="text" placeholder="{{ __('Phone number') }}" name="number" id="contact_number">
+
+						<div class="origami-form__form-group">
+							<label for="contactform__phone" class="origami-form__label">{{ __('Phone number') }}</label>
+							<input class="origami-form__input @if($errors->has('phone')) origami-form__input_error @endif" type="text"
+								   name="phone" id="contactform__phone" value="{{ old('phone') }}">
 						</div>
-						<div class="form-group origami-form__form-group">
-							<textarea class="origami-form__input origami-form__input_textarea" name="details" id="contact_details" rows="4" placeholder="{{ __('Project details') }}"></textarea>
+
+						<div class="origami-form__form-group">
+							<label for="contactform__message" class="origami-form__label">{{ __('Project details') }} *</label>
+							<textarea class="origami-form__input @if($errors->has('description')) origami-form__input_error @endif origami-form__input_textarea"
+									  name="description" id="contactform__message" rows="4" required>{{ old('description') }}</textarea>
 						</div>
-						<div class="form-group origami-form__form-group">
+
+
+						@if($errors->has('name'))
+							<div class="origami-form__form-group">
+								<div class="alert alert_danger">
+									{{ $errors->first('name') }}
+								</div>
+							</div>
+						@endif
+
+						@if($errors->has('email'))
+							<div class="origami-form__form-group">
+								<div class="alert alert_danger">
+									{{ $errors->first('email') }}
+								</div>
+							</div>
+						@endif
+
+						@if($errors->has('phone'))
+							<div class="origami-form__form-group">
+								<div class="alert alert_danger">
+									{{ $errors->first('phone') }}
+								</div>
+							</div>
+						@endif
+
+						@if($errors->has('description'))
+							<div class="origami-form__form-group">
+								<div class="alert alert_danger">
+									{{ $errors->first('description') }}
+								</div>
+							</div>
+						@endif
+
+						<div class="origami-form__form-group">
 							<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
 						</div>
 					</form>
