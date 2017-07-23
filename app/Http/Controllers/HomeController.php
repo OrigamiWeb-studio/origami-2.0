@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Locale;
 use App\Project;
-use App\StartProjectRequest;
+use App\EmailRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StartProjectRequest extends FormRequest
+class EmailRequest extends FormRequest
 {
 	public function authorize()
 	{
@@ -14,8 +14,8 @@ class StartProjectRequest extends FormRequest
 	public function rules()
 	{
 		$data = [
-			'name' => 'required|string|between:2,255',
-			'email' => 'required|email',
+			'name'        => 'required|string|between:2,255',
+			'email'       => 'required|email',
 			'description' => 'required|string|between:4,2048'
 		];
 		

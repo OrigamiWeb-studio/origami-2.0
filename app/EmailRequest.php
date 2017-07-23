@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StartProjectRequest extends Model
+class EmailRequest extends Model
 {
-	protected $table = 'start_project_requests';
+	protected $table = 'email_requests';
 	
 	public function user()
 	{
