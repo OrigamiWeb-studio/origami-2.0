@@ -8,7 +8,8 @@
 				<h4 class="modal-title origami-modal__title">{{ __('Start a project') }}</h4>
 			</div>
 			<div class="modal-body origami-modal__body">
-				<form class="origami-form">
+				<form class="origami-form" action="{{ route('save-start-project-request') }}" method="get">
+					{{ csrf_field() }}
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
@@ -47,10 +48,10 @@
 								<label for="writetous-budget" class="origami-form__label">{{ __('Budget') }} *</label>
 								<select class="origami-form__select" name="budget" id="writetous-budget" required>
 									<option value="" class="placeholder">{{ __('Select your budget range') }}</option>
-									<option value="$1">< $2500</option>
-									<option value=">$1-5">$2500 - $5000</option>
-									<option value="<$5">$5000 - $10000</option>
-									<option value="<$5">> $10000</option>
+									<option value="< $2500">&lt; $2500</option>
+									<option value="$2500 - $5000">$2500 - $5000</option>
+									<option value="$5000 - $10000">$5000 - $10000</option>
+									<option value="> $10000">&gt; $10000</option>
 								</select>
 							</div>
 						</div>
@@ -58,7 +59,7 @@
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-type" class="origami-form__label">{{ __('Project type') }} *</label>
-								<select class="origami-form__select" name="project-type" id="writetous-type">
+								<select class="origami-form__select" name="project_type" id="writetous-type">
 									<option value="" class="placeholder">{{ __('Select a type') }}</option>
 									@if(isset($project_categories) && count($project_categories) > 0)
 										@foreach($project_categories as $category)

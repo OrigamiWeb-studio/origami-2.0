@@ -93,3 +93,9 @@ Route::get('/team', 'TeamController@allDevelopers')
 Route::get('/developer/{id}', 'TeamController@singleDeveloper')
 	->name('developer')
 	->where('id', '[0-9]+');
+#-----------------------------------------------------------------------------------
+#Email requests
+#
+#
+Route::get('/email-requests/start-project', 'EmailRequestsController@saveStartProjectRequest')
+	->name('save-start-project-request');

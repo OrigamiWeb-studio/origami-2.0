@@ -12,4 +12,9 @@ class StartProjectRequest extends Model
 	{
 		return $this->hasOne(User::class, 'id', 'user_id');
 	}
+	
+	public function project_category()
+	{
+		return $this->hasOne(ProjectCategory::class, 'id', 'project_category_id');
+	}
 }
