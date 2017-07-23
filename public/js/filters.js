@@ -6,9 +6,9 @@ var allProjects = new Vue({
             "categories": [],
             "years" : [],
             "components" : [],
+            "search": '',
             "paginate": 1
         },
-        search: '',
         projects: [],
         pagination: []
     },
