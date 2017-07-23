@@ -37,6 +37,7 @@ var allProjects = new Vue({
                 console.log(err);
             })
         }
+
     },
     mounted: function(){
         var self = this;
