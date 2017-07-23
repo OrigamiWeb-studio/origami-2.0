@@ -26,27 +26,27 @@
 								<span>{{ __('View per page') }}:</span>
 								<ul class="pagination view-per-page__pagination">
 									<li class="pagination__item">
-										<template v-if="pagination.per_page == 1">
-											<span class="pagination__index pagination__index_active">1</span>
+										<template v-if="pagination.per_page == 6">
+											<span class="pagination__index pagination__index_active">6</span>
 										</template>
 										<template v-else>
-											<a class="pagination__index" @click.prevent="filterData.paginate = 1" href="project?per_page=1">1</a>
+											<a class="pagination__index" @click.prevent="filterData.paginate = 6" href="project?per_page=6">6</a>
 										</template>
 									</li>
 									<li class="pagination__item">
-										<template v-if="pagination.per_page == 2">
-											<span class="pagination__index pagination__index_active">2</span>
+										<template v-if="pagination.per_page == 9">
+											<span class="pagination__index pagination__index_active">9</span>
 										</template>
 										<template v-else>
-											<a class="pagination__index" @click.prevent="filterData.paginate = 2" href="project?per_page=2">2</a>
+											<a class="pagination__index" @click.prevent="filterData.paginate = 9" href="project?per_page=9">9</a>
 										</template>
 									</li>
 									<li class="pagination__item">
-										<template v-if="pagination.per_page == 3">
-											<span class="pagination__index pagination__index_active">3</span>
+										<template v-if="pagination.per_page == 12">
+											<span class="pagination__index pagination__index_active">12</span>
 										</template>
 										<template v-else>
-											<a class="pagination__index" @click.prevent="filterData.paginate = 3" href="project?per_page=3">3</a>
+											<a class="pagination__index" @click.prevent="filterData.paginate = 12" href="project?per_page=12">12</a>
 										</template>
 									</li>
 									<li class="pagination__item">
