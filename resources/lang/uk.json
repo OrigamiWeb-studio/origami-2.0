@@ -12,6 +12,12 @@
   "Name": "Ім'я",
   "Phone number": "Номер телефону",
   "Project details": "Деталі проекту",
+  "Company": "Компанія",
+  "Budget": "Бюджет",
+  "Project type": "Тип проекту",
+  "Select your budget range": "Виберіть діапазон бюджету",
+  "Select a type": "Виберіть тип",
+  "Describe your project": "Опишіть свій проект",
   "Send": "Відправити",
 
   "Scroll down": "Прокрутіть вниз",

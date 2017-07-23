@@ -12,6 +12,12 @@
   "Name": "Имя",
   "Phone number": "Номер телефона",
   "Project details": "Детали проекта",
+  "Company": "Компания",
+  "Budget": "Бюджет",
+  "Project type": "Тип проекта",
+  "Select your budget range": "Выберите диапазон бюджета",
+  "Select a type": "Выберите тип",
+  "Describe your project": "Опишите свой проект",
   "Send": "Отправить",
 
   "Scroll down": "Прокрутите вниз",
