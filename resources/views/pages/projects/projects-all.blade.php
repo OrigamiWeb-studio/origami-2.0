@@ -125,7 +125,8 @@
 						</aside>
 						<div class="col-md-9 col-sm-8">
 
-                            <transition-group name="project" tag="div" class="projects">
+                            {{--<transition-group name="project" tag="div" class="projects">--}}
+							<div class="projects">
 
                                 <div class="block project-item projects__project-item" v-for="project in projects" v-bind:key="project">
                                     <a :href="'{{ url('/project') }}/' + project.id ">
@@ -139,7 +140,8 @@
                                     </div>
                                 </div>
 
-                            </transition-group>
+							</div>
+                            {{--</transition-group>--}}
 
 							<ul v-if="pagination.page_last>1" class="pagination projects_content__pagination">
                                 <li class="pagination__item" v-for="(item, index) in pagination.page_last">

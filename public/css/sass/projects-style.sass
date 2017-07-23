@@ -200,6 +200,7 @@
 		margin-bottom: 30px
 		margin-right: 23px
 		width: calc( 33.333333% - 23px )
+		transition: all .5s
 		@media screen and (max-width: 991px) and (min-width: 768px)
 			width: calc( 50% - 23px )
 		@media screen and (max-width: 660px)
@@ -213,5 +214,18 @@
 	@media screen and (max-width: 500px)
 		justify-content: center
 		margin-right: 0
+    
+
+.project-enter
+	opacity: 0
+	transform: translateY(30px)
+
+
+.project-leave-to
+	opacity: 0
+	transform:  translateX(-30px)
+
+.project-leave-active
+	position: absolute
 
 
