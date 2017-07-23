@@ -60,10 +60,11 @@ return [
 	
 	'about' => [
 		'styles'  => [
+            'libs/lightslider/lightslider.min.css',
 			'css/about-style.css'
 		],
 		'scripts' => [
-		
+            'libs/lightslider/lightslider.min.js'
 		]
 	],
 	
