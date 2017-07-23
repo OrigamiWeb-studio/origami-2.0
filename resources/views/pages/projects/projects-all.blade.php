@@ -68,7 +68,7 @@
 									{{--<option value="z-a">{{ __('Z-A') }}</option>--}}
 								{{--</select>--}}
 								<div :class="{opened: searchField}" class="search-wrapper">
-									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="search" required>
+									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="filterData.search" required>
 									<button type="submit" @click.prevent="searchField = !searchField" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
 								</div>
 							</div>
