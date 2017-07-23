@@ -40,14 +40,14 @@
 					</div>
 				</div>
 
-				<div class="among-our-clients">
-					<h3>{{ __('Among our clients') }}</h3>
-					<ul>
+				<div class="our-clients">
+					<h3 class="our-clients__title">{{ __('Among our clients') }}</h3>
+					<ul id="ourclients-slider" class="list-unstyled cS-hidden our-clients__list">
 						@foreach($projects as $project)
 							@isset($project->cover)
-								<li>
-									<a href="{{ action('ProjectsController@singleProject', ['id' => $project->id]) }}">
-										<img src="{{ asset($project->cover) }}" alt="@isset($project->title) {{ $project->title }} @endisset">
+								<li class="our-clients__item">
+									<a class="our-clients__link" href="{{ action('ProjectsController@singleProject', ['id' => $project->id]) }}">
+										<img class="our-clients__image" src="{{ asset($project->cover) }}" alt="@isset($project->title) {{ $project->title }} @endisset">
 									</a>
 								</li>
 							@endisset
