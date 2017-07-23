@@ -7,7 +7,7 @@ var allProjects = new Vue({
             "years" : [],
             "components" : [],
             "search": '',
-            "paginate": 1
+            "paginate": ''
         },
         projects: [],
         pagination: []
@@ -37,6 +37,7 @@ var allProjects = new Vue({
                 console.log(err);
             })
         }
+
     },
     mounted: function(){
         var self = this;

@@ -124,84 +124,33 @@
 							</div>
 						</aside>
 						<div class="col-md-9 col-sm-8">
-							<div class="projects">
-								<div class="block project-item projects__project-item" v-for="project in projects">
-									<a :href="'{{ url('/project') }}/' + project.id ">
-										<figure class="project-item__logo-wrapper">
-											<img  class="project-item__logo" :src='project.cover' :alt="project.title">
-										</figure>
-									</a>
-									<div class="project-item__description">
-										<a :href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
-										<span class="project-item__category">#@{{ project.category_title }}</span>
-									</div>
-									{{--<ul class="project-item__management-icons">
-										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="#">
-												<i class="fa fa-ticket" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="#">
-												<i class="fa fa-pencil" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="#">
-												<i class="fa fa-trash-o" aria-hidden="true"></i>
-											</a>
-										</li>
-									</ul>--}}
-								</div>
-								{{--@foreach($projects->sortByDesc('title') as $project)--}}
-								{{--@foreach($projects as $project)--}}
-									{{--<div class="block project-item projects__project-item">--}}
-										{{--<a href="{{ route('project', ['id' => $project->id]) }}">--}}
-											{{--<figure class="project-item__logo-wrapper">--}}
-												{{--<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">--}}
-											{{--</figure>--}}
-										{{--</a>--}}
-										{{--<div class="project-item__description">--}}
-											{{--<a class="project-item__title" href="{{ route('project', ['id' => $project->id]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>--}}
-											{{--<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>--}}
-										{{--</div>--}}
-										{{--<ul class="project-item__management-icons">--}}
-											{{--<li class="project-item__management-item">--}}
-												{{--<a class="project-item__management-icon" href="#">--}}
-													{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
-												{{--</a>--}}
-											{{--</li>--}}
-											{{--@role('admin')--}}
-											{{--<li class="project-item__management-item">--}}
-												{{--<a class="project-item__management-icon" href="#">--}}
-													{{--<i class="fa fa-pencil" aria-hidden="true"></i>--}}
-												{{--</a>--}}
-											{{--</li>--}}
-											{{--<li class="project-item__management-item">--}}
-												{{--<form action="">--}}
-													{{--{{ csrf_field() }}--}}
-													{{--<button class="project-item__management-icon">--}}
-														{{--<i class="fa fa-trash-o" aria-hidden="true"></i>--}}
-													{{--</button>--}}
-												{{--</form>--}}
-											{{--</li>--}}
-											{{--@endrole()--}}
-										{{--</ul>--}}
-									{{--</div>--}}
-								{{--@endforeach--}}
-							</div>
+
+                            <transition-group name="project" tag="div" class="projects">
+
+                                <div class="block project-item projects__project-item" v-for="project in projects" v-bind:key="project">
+                                    <a :href="'{{ url('/project') }}/' + project.id ">
+                                        <figure class="project-item__logo-wrapper">
+                                            <img  class="project-item__logo" :src='project.cover' :alt="project.title">
+                                        </figure>
+                                    </a>
+                                    <div class="project-item__description">
+                                        <a :href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
+                                        <span class="project-item__category">#@{{ project.category_title }}</span>
+                                    </div>
+                                </div>
+
+                            </transition-group>
 
 							<ul v-if="pagination.page_last>1" class="pagination projects_content__pagination">
-								<li class="pagination__item" v-for="(item, index) in pagination.page_last">
-									<template v-if="pagination.page_current == (index+1)">
-										<span class="pagination__index pagination__index_active">@{{ index+1 }}</span>
-									</template>
-									<template v-else>
-										<a :href="'/projects?page='+(index+1)" @click.prevent="paginate((index+1))" class="pagination__index">@{{ index+1 }}</a>
-									</template>
-								</li>
+                                <li class="pagination__item" v-for="(item, index) in pagination.page_last">
+                                    <template v-if="pagination.page_current == (index+1)">
+                                        <span class="pagination__index pagination__index_active">@{{ index+1 }}</span>
+                                    </template>
+                                    <template v-else>
+                                        <a :href="'/projects?page='+(index+1)" @click.prevent="paginate((index+1))" class="pagination__index">@{{ index+1 }}</a>
+                                    </template>
+                                </li>
 							</ul>
-
 						</div>
 					</div>
 				</div>
@@ -209,3 +158,73 @@
 		</section>
 	</main>
 @stop
+
+
+
+
+{{--<div class="projects">--}}
+    {{--<div class="block project-item projects__project-item" v-for="project in projects">--}}
+        {{--<a :href="'{{ url('/project') }}/' + project.id ">--}}
+            {{--<figure class="project-item__logo-wrapper">--}}
+                {{--<img  class="project-item__logo" :src='project.cover' :alt="project.title">--}}
+            {{--</figure>--}}
+        {{--</a>--}}
+        {{--<div class="project-item__description">--}}
+            {{--<a :href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>--}}
+            {{--<span class="project-item__category">#@{{ project.category_title }}</span>--}}
+        {{--</div>--}}
+        {{--<ul class="project-item__management-icons">--}}
+            {{--<li class="project-item__management-item">--}}
+                {{--<a class="project-item__management-icon" href="#">--}}
+                    {{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li class="project-item__management-item">--}}
+                {{--<a class="project-item__management-icon" href="#">--}}
+                    {{--<i class="fa fa-pencil" aria-hidden="true"></i>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li class="project-item__management-item">--}}
+                {{--<a class="project-item__management-icon" href="#">--}}
+                    {{--<i class="fa fa-trash-o" aria-hidden="true"></i>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+        {{--</ul>--}}
+    {{--</div>--}}
+    {{--@foreach($projects->sortByDesc('title') as $project)--}}
+    {{--@foreach($projects as $project)--}}
+    {{--<div class="block project-item projects__project-item">--}}
+    {{--<a href="{{ route('project', ['id' => $project->id]) }}">--}}
+    {{--<figure class="project-item__logo-wrapper">--}}
+    {{--<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">--}}
+    {{--</figure>--}}
+    {{--</a>--}}
+    {{--<div class="project-item__description">--}}
+    {{--<a class="project-item__title" href="{{ route('project', ['id' => $project->id]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>--}}
+    {{--<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>--}}
+    {{--</div>--}}
+    {{--<ul class="project-item__management-icons">--}}
+    {{--<li class="project-item__management-item">--}}
+    {{--<a class="project-item__management-icon" href="#">--}}
+    {{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
+    {{--</a>--}}
+    {{--</li>--}}
+    {{--@role('admin')--}}
+    {{--<li class="project-item__management-item">--}}
+    {{--<a class="project-item__management-icon" href="#">--}}
+    {{--<i class="fa fa-pencil" aria-hidden="true"></i>--}}
+    {{--</a>--}}
+    {{--</li>--}}
+    {{--<li class="project-item__management-item">--}}
+    {{--<form action="">--}}
+    {{--{{ csrf_field() }}--}}
+    {{--<button class="project-item__management-icon">--}}
+    {{--<i class="fa fa-trash-o" aria-hidden="true"></i>--}}
+    {{--</button>--}}
+    {{--</form>--}}
+    {{--</li>--}}
+    {{--@endrole()--}}
+    {{--</ul>--}}
+    {{--</div>--}}
+    {{--@endforeach--}}
+{{--</div>--}}
