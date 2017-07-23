@@ -82,8 +82,8 @@ class ProjectsController extends Controller
 		if ($search !== null) {
 			$projects = $projects->whereHas('translations', function ($q) use ($search) {
 				$q->where('locale', '=', app()->getLocale())
-					->where('title', 'like', '%' . $search . '%')
-					->orWhere('description', 'like', '%' . $search . '%');
+					->where('title', 'like', '%' . $search . '%');
+//					->orWhere('description', 'like', '%' . $search . '%');
 			});
 		}
 
