@@ -96,6 +96,11 @@
 						@endif
 					</div>
 
+					{!! $captcha->display('captcha-contact-us') !!}
+					@if($errors->has('g-recaptcha-response'))
+						<p class="help-block text-danger">{{ $errors->first('g-recaptcha-response') }}</p>
+					@endif
+
 					<div class="form-group origami-form__form-group">
 						<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
 					</div>

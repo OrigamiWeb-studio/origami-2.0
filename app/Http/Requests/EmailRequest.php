@@ -14,9 +14,10 @@ class EmailRequest extends FormRequest
 	public function rules()
 	{
 		$data = [
-			'name'        => 'required|string|between:2,255',
-			'email'       => 'required|email',
-			'description' => 'required|string|between:4,2048'
+			'name'                 => 'required|string|between:2,255',
+			'email'                => 'required|email',
+			'description'          => 'required|string|between:4,2048',
+			'g-recaptcha-response' => 'required|captcha'
 		];
 		
 		return $data;

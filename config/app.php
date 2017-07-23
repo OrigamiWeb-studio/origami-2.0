@@ -170,6 +170,7 @@ return [
 		
 		Zizaco\Entrust\EntrustServiceProvider::class,
 		Dimsav\Translatable\TranslatableServiceProvider::class,
+		Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class,
 		
 		/*
 		 * Application Service Providers...
@@ -230,6 +231,7 @@ return [
 		'View'         => Illuminate\Support\Facades\View::class,
 		
 		'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+		'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
 	],
 
 ];

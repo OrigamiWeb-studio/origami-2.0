@@ -9,8 +9,11 @@
 			</div>
 			<div class="modal-body origami-modal__body">
 				<form class="origami-form" action="{{ route('save-start-project-request') }}" method="get">
+
 					{{ csrf_field() }}
+
 					<div class="row">
+
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-name" class="origami-form__label">{{ __('Name') }} *</label>
@@ -18,6 +21,7 @@
 								       type="text" name="name" id="writetous-name" required>
 							</div>
 						</div>
+
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-company" class="origami-form__label">{{ __('Company') }}</label>
@@ -25,8 +29,11 @@
 								       type="text" name="company" id="writetous-company" value="Origami studio">
 							</div>
 						</div>
+
 					</div>
+
 					<div class="row">
+
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-email" class="origami-form__label">{{ __('Email') }} *</label>
@@ -34,6 +41,7 @@
 								       type="email" name="email" id="writetous-email" required>
 							</div>
 						</div>
+
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-number" class="origami-form__label">{{ __('Phone number') }}</label>
@@ -41,8 +49,11 @@
 								       type="text" name="number" id="writetous-number">
 							</div>
 						</div>
+
 					</div>
+
 					<div class="row">
+
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-budget" class="origami-form__label">{{ __('Budget') }} *</label>
@@ -69,13 +80,18 @@
 								</select>
 							</div>
 						</div>
+
 					</div>
+
 					<div class="form-group origami-form__form-group">
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
 						          name="description" id="writetous-description" rows="4"
 						          placeholder="{{ __('Describe your project') }}" required></textarea>
 					</div>
+
+					{!! $captcha->display('captcha-start-project') !!}
+
 					<div class="form-group origami-form__form-group">
 						<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
 					</div>

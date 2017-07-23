@@ -21,3 +21,5 @@
 
 <!-- Scripts -->
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
+{!! $captcha->scriptWithCallback(['captcha-contact-us', 'captcha-start-project']) !!}
