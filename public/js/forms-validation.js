@@ -1,33 +1,26 @@
 
-
 var writeToUsForm = new Vue({
     el: "#write-to-us-form",
     data: {
-
+        "_token": Laravel.csrfToken,
+        "name": '',
+        "email": '',
+        "description": '',
+        "g-recaptcha-response": ''
     },
     methods: {
         sendForm: function(){
 
-            // var formData = new FormData();
-            // formData.append('name', "somename");
-            // console.log(formData);
-            // this.$http.get('/email-requests/start-project', this.$data).then(function(data){
-            //     console.log(data)
-            // }, function(err){
-            //     console.log(err);
-            // });
-            // this.$refs.custom.submit();
-            // console.log(this.form);
+            // console.log(grecaptcha.getResponse());
+            // console.log(document.getElementById("captcha-start-project").getElementsByClassName("g-recaptcha-response")[0].value);
+            this.$data["g-recaptcha-response"] = document.getElementById("captcha-start-project").getElementsByClassName("g-recaptcha-response")[0].value;
+            console.log(this.$data);
+            this.$http.post('/email-requests/start-project', this.$data).then(function(data){
+                console.log(data)
+            }, function(err){
+                console.log(err);
+            });
         }
     }
+
 });
-
-
-// form: {
-//     name: '',
-//         company: '',
-//         email: '',
-//         number: '',
-//         budget: '',
-//         project_type: ''
-// }

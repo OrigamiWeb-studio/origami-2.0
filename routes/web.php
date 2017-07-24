@@ -97,7 +97,7 @@ Route::get('/developer/{id}', 'TeamController@singleDeveloper')
 #Email requests
 #
 #
-Route::get('/email-requests/start-project', 'EmailRequestsController@saveStartProjectRequest')
+Route::post('/email-requests/start-project', 'EmailRequestsController@saveStartProjectRequest')
 	->name('save-start-project-request');
 Route::get('/email-requests/contact-us', 'EmailRequestsController@saveContactUsRequest')
 	->name('save-contact-us-request');

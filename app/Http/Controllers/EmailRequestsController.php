@@ -10,16 +10,19 @@ class EmailRequestsController extends Controller
 {
 	public function saveStartProjectRequest(Request $request)
 	{
+
+//        return $request->all();
+
 		$validator = Validator::make($request->all(), [
 			'name'                 => 'required|string|between:2,255',
 			'email'                => 'required|email',
 			'description'          => 'required|string|between:4,2048',
 			'g-recaptcha-response' => 'required|captcha'
 		]);
-		
+
 		if ($validator->passes()) {
 			$sp_request = new \App\EmailRequest();
-			
+
 			$sp_request->name = $request['name'];
 			$sp_request->type = 'Start project';
 			$sp_request->user_id = auth()->user() ? auth()->user()->id : null;
@@ -30,12 +33,12 @@ class EmailRequestsController extends Controller
 			$sp_request->budget = $request['budget'];
 			$sp_request->project_category_id = $request['project_type'];
 			$sp_request->message = $request['description'];
-			
+
 			$sp_request->save();
-			
+
 			return response()->json(['success' => 'Your message has been successfully sent']);
 		}
-		
+
 		return response()->json(['error' => $validator->errors()->all()]);
 		
 //		return redirect()->back()->with('success', 'Your message has been successfully sent');

@@ -8,7 +8,14 @@
 				<h4 class="modal-title origami-modal__title">{{ __('Start a project') }}</h4>
 			</div>
 			<div class="modal-body origami-modal__body">
-				<form ref="custom" id="write-to-us-form" class="origami-form" @submit.prevent="sendForm" action="{{ route('save-start-project-request') }}" method="get">
+				{{--<form id="write-to-us-form" class="origami-form" action="{{ route('save-start-project-request') }}" method="post">				<form id="write-to-us-form" class="origami-form" @submit.prevent="sendForm" action="{{ route('save-start-project-request') }}" method="post">--}}
+				<form id="write-to-us-form" class="origami-form" @submit.prevent="sendForm" action="{{ route('save-start-project-request') }}" method="post">
+
+					<script>
+						window.Laravel = <?php echo json_encode([
+								'csrfToken' => csrf_token(),
+						]); ?>
+					</script>
 
 					{{ csrf_field() }}
 
@@ -18,7 +25,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-name" class="origami-form__label">{{ __('Name') }} *</label>
 								<input class="origami-form__input"
-								       type="text" name="name" id="writetous-name" required>
+								       type="text" name="name" id="writetous-name" v-model="name" required>
 							</div>
 						</div>
 
@@ -38,7 +45,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-email" class="origami-form__label">{{ __('Email') }} *</label>
 								<input class="origami-form__input"
-								       type="email" name="email" id="writetous-email" required>
+								       type="email" name="email" id="writetous-email" required v-model="email">
 							</div>
 						</div>
 
@@ -86,7 +93,7 @@
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
 						          name="description" id="writetous-description" rows="4"
-						          placeholder="{{ __('Describe your project') }}" required></textarea>
+						          placeholder="{{ __('Describe your project') }}" minlength="4" required v-model="description"></textarea>
 					</div>
 
 					<div class="origami-form__form-group">
