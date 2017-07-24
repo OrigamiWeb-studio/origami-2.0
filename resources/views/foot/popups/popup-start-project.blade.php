@@ -8,7 +8,7 @@
 				<h4 class="modal-title origami-modal__title">{{ __('Start a project') }}</h4>
 			</div>
 			<div class="modal-body origami-modal__body">
-				<form class="origami-form" action="{{ route('save-start-project-request') }}" method="get">
+				<form ref="custom" id="write-to-us-form" class="origami-form" @submit.prevent="sendForm" action="{{ route('save-start-project-request') }}" method="get">
 
 					{{ csrf_field() }}
 
@@ -18,15 +18,15 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-name" class="origami-form__label">{{ __('Name') }} *</label>
 								<input class="origami-form__input"
-								       type="text" name="name" id="writetous-name" required>
+								       type="text" name="name" v-model="form.name" id="writetous-name" required>
 							</div>
 						</div>
 
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-company" class="origami-form__label">{{ __('Company') }}</label>
-								<input class="origami-form__input origami-form__input_error"
-								       type="text" name="company" id="writetous-company" value="Origami studio">
+								<input class="origami-form__input"
+								       type="text" name="company" v-model="form.company" id="writetous-company">
 							</div>
 						</div>
 
@@ -38,7 +38,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-email" class="origami-form__label">{{ __('Email') }} *</label>
 								<input class="origami-form__input"
-								       type="email" name="email" id="writetous-email" required>
+								       type="email" name="email" v-model="form.email" id="writetous-email" required>
 							</div>
 						</div>
 
@@ -46,7 +46,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-number" class="origami-form__label">{{ __('Phone number') }}</label>
 								<input class="origami-form__input"
-								       type="text" name="number" id="writetous-number">
+								       type="text" name="number" v-model="form.number" id="writetous-number">
 							</div>
 						</div>
 
@@ -85,7 +85,7 @@
 					<div class="origami-form__form-group">
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
-						          name="description" id="writetous-description" rows="4"
+						          name="description" v-model="form.description" id="writetous-description" rows="4"
 						          placeholder="{{ __('Describe your project') }}" required></textarea>
 					</div>
 
@@ -95,7 +95,9 @@
 						</div>
 					</div>
 
-					{!! $captcha->display('captcha-start-project') !!}
+					<div class="origami-form__form-group">
+						{!! $captcha->display('captcha-start-project') !!}
+					</div>
 
 					<div class="origami-form__form-group">
 						<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
