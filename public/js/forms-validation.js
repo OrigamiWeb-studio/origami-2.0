@@ -3,13 +3,15 @@
 var writeToUsForm = new Vue({
     el: "#write-to-us-form",
     data: {
-        form: {}
+
     },
     methods: {
         sendForm: function(){
 
-            console.log(this.$refs.custom);
-            // this.$http.get('/email-requests/start-project', this.$refs.custom).then(function(data){
+            // var formData = new FormData();
+            // formData.append('name', "somename");
+            // console.log(formData);
+            // this.$http.get('/email-requests/start-project', this.$data).then(function(data){
             //     console.log(data)
             // }, function(err){
             //     console.log(err);

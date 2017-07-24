@@ -18,7 +18,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-name" class="origami-form__label">{{ __('Name') }} *</label>
 								<input class="origami-form__input"
-								       type="text" name="name" v-model="form.name" id="writetous-name" required>
+								       type="text" name="name" id="writetous-name" required>
 							</div>
 						</div>
 
@@ -26,7 +26,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-company" class="origami-form__label">{{ __('Company') }}</label>
 								<input class="origami-form__input"
-								       type="text" name="company" v-model="form.company" id="writetous-company">
+								       type="text" name="company" id="writetous-company">
 							</div>
 						</div>
 
@@ -38,7 +38,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-email" class="origami-form__label">{{ __('Email') }} *</label>
 								<input class="origami-form__input"
-								       type="email" name="email" v-model="form.email" id="writetous-email" required>
+								       type="email" name="email" id="writetous-email" required>
 							</div>
 						</div>
 
@@ -46,7 +46,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-number" class="origami-form__label">{{ __('Phone number') }}</label>
 								<input class="origami-form__input"
-								       type="text" name="number" v-model="form.number" id="writetous-number">
+								       type="text" name="number" id="writetous-number">
 							</div>
 						</div>
 
@@ -85,7 +85,7 @@
 					<div class="origami-form__form-group">
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
-						          name="description" v-model="form.description" id="writetous-description" rows="4"
+						          name="description" id="writetous-description" rows="4"
 						          placeholder="{{ __('Describe your project') }}" required></textarea>
 					</div>
 

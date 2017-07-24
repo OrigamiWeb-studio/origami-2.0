@@ -63,8 +63,9 @@
 					</div>
 				</div>
 			@endif
-
-			{!! $captcha->display('captcha-contact-us') !!}
+			<div class="origami-form__form-group">
+				{!! $captcha->display('captcha-contact-us') !!}
+			</div>
 			@if($errors->has('g-recaptcha-response'))
 				<p class="help-block text-danger">{{ $errors->first('g-recaptcha-response') }}</p>
 			@endif
