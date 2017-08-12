@@ -24,16 +24,14 @@
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-name" class="origami-form__label">{{ __('Name') }} *</label>
-								<input class="origami-form__input"
-								       type="text" name="name" id="writetous-name" v-model="name" required>
+								<input class="origami-form__input" name="name" id="writetous-name" v-model="formData.name">
 							</div>
 						</div>
 
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-company" class="origami-form__label">{{ __('Company') }}</label>
-								<input class="origami-form__input"
-								       type="text" name="company" id="writetous-company">
+								<input class="origami-form__input" name="company" v-model="formData.company" id="writetous-company">
 							</div>
 						</div>
 
@@ -45,15 +43,14 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-email" class="origami-form__label">{{ __('Email') }} *</label>
 								<input class="origami-form__input"
-								       type="email" name="email" id="writetous-email" required v-model="email">
+								       type="email" name="email" id="writetous-email" required v-model="formData.email">
 							</div>
 						</div>
 
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-number" class="origami-form__label">{{ __('Phone number') }}</label>
-								<input class="origami-form__input"
-								       type="text" name="number" id="writetous-number">
+								<input class="origami-form__input" name="phone" v-model="formData.phone" id="writetous-number">
 							</div>
 						</div>
 
@@ -64,7 +61,7 @@
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-budget" class="origami-form__label">{{ __('Budget') }} *</label>
-								<select class="origami-form__select" name="budget" id="writetous-budget" required>
+								<select class="origami-form__select" v-model="formData.budget" name="budget" id="writetous-budget" required>
 									<option value="" class="placeholder">{{ __('Select your budget range') }}</option>
 									<option value="< $2500">&lt; $2500</option>
 									<option value="$2500 - $5000">$2500 - $5000</option>
@@ -77,7 +74,7 @@
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
 								<label for="writetous-type" class="origami-form__label">{{ __('Project type') }} *</label>
-								<select class="origami-form__select" name="project_type" id="writetous-type">
+								<select class="origami-form__select" v-model="formData.project_type" name="project_type" id="writetous-type">
 									<option value="" class="placeholder">{{ __('Select a type') }}</option>
 									@if(isset($project_categories) && count($project_categories) > 0)
 										@foreach($project_categories as $category)
@@ -93,12 +90,14 @@
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
 						          name="description" id="writetous-description" rows="4"
-						          placeholder="{{ __('Describe your project') }}" minlength="4" required v-model="description"></textarea>
+						          placeholder="{{ __('Describe your project') }}" minlength="4" required v-model="formData.description"></textarea>
 					</div>
 
-					<div class="origami-form__form-group">
+
+
+					<div class="origami-form__form-group" v-for="error in errors">
 						<div class="alert alert_danger">
-							Ошибочка :(
+							@{{ error }}
 						</div>
 					</div>
 

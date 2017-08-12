@@ -18,7 +18,8 @@
 		<section class="s_contacts">
 			<div class="container">
 				<div class="our-contacts">
-					<h2>{{ __('Let\'s do this') }}</h2>
+					{{--<h2>{{ __('Let\'s do this') }}</h2>--}}
+					<h2>{{ __('Contact us') }}</h2>
 					<ul>
 						<li>
 							<strong>Skype</strong>
@@ -33,8 +34,9 @@
 							<span>+380 (96) 724 28 23</span>
 						</li>
 					</ul>
-					<a href="#" class="btn btn-submit" data-toggle="modal" data-target="#contact-modal">{{ __('We will contact you') }}</a>
+					{{--<a href="#" class="btn btn-submit" data-toggle="modal" data-target="#contact-modal">{{ __('We will contact you') }}</a>--}}
 				</div>
+			</div>
 		</section>
 	</main>
 
@@ -74,12 +76,12 @@
 									  name="description" id="contactform__message" rows="4" required>{{ old('description') }}</textarea>
 						</div>
 
-						{!! $captcha->display('captcha-contact-us') !!}
-						@if($errors->has('g-recaptcha-response'))
-							<p class="help-block text-danger">{{ $errors->first('g-recaptcha-response') }}</p>
-						@endif
-
-						<div class="form-group origami-form__form-group">
+						<div class="origami-form__form-group">
+							{!! $captcha->display('captcha-contact-us') !!}
+							@if($errors->has('g-recaptcha-response'))
+								<p class="help-block text-danger">{{ $errors->first('g-recaptcha-response') }}</p>
+							@endif
+						</div>
 
 
 						@if($errors->has('name'))
@@ -117,6 +119,7 @@
 						<div class="origami-form__form-group">
 							<input type="submit" class="btn btn-submit" value="{{ __('Send') }}">
 						</div>
+
 					</form>
 				</div>
 			</div>

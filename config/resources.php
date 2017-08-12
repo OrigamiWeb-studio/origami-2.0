@@ -21,7 +21,6 @@ return [
       ],
       'scripts' => [
         'libs/jcf/jcf.range.js',
-        'libs/vue/vue-resource.min.js',
         'js/filters.js'
       ]
     ],
