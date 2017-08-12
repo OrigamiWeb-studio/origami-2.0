@@ -15,9 +15,9 @@
 <script type="text/javascript" src="{{ asset('libs/vue/vue-resource.min.js') }}"></script>
 
 @if(isset($scripts) && count($scripts) > 0)
-    @foreach($scripts as $script)
-        <script type="text/javascript" src="{{ asset($script) }}"></script>
-    @endforeach
+  @foreach($scripts as $script)
+    <script type="text/javascript" src="{{ asset($script) }}"></script>
+  @endforeach
 @endif
 
 <!-- Scripts -->

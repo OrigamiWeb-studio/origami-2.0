@@ -5,12 +5,12 @@
 <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/common.css') }}">
 
 @if(isset($styles) && count($styles) > 0)
-    @foreach($styles as $style)
-        @if(is_array($style))
-            <link rel="stylesheet" type="text/css" media="{{ $style['media'] ? $style['media'] : 'all' }}"
-                  href="{{ asset($style['link'] ? $style['link'] : '') }}">
-        @else
-            <link rel="stylesheet" type="text/css" media="all" href="{{ asset($style) }}">
-        @endif
-    @endforeach
+  @foreach($styles as $style)
+    @if(is_array($style))
+      <link rel="stylesheet" type="text/css" media="{{ $style['media'] ? $style['media'] : 'all' }}"
+            href="{{ asset($style['link'] ? $style['link'] : '') }}">
+    @else
+      <link rel="stylesheet" type="text/css" media="all" href="{{ asset($style) }}">
+    @endif
+  @endforeach
 @endif

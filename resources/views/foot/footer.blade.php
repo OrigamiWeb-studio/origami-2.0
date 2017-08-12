@@ -3,15 +3,9 @@
 		<div class="pull-left">
 			<nav class="main_nav">
 				<ul>
-					<li>
-						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
-					</li>
-					<li>
-						<a href="{{ route('about') }}">{{ __('About Us') }}</a>
-					</li>
-					<li>
-						<a href="{{ route('contacts') }}">{{ __('Contacts') }}</a>
-					</li>
+					<li><a href="{{ route('projects') }}">{{ __('Projects') }}</a></li>
+					<li><a href="{{ route('about') }}">{{ __('About Us') }}</a></li>
+					<li><a href="{{ route('contacts') }}">{{ __('Contacts') }}</a></li>
 				</ul>
 			</nav>
 		</div>
