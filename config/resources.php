@@ -5,8 +5,6 @@ return [
 
     'single' => [
       'styles' => [
-        'libs/lightslider/lightslider.min.css',
-        'libs/magnific-popup/magnific-popup.css',
         'css/project-style.css'
       ],
       'scripts' => [
@@ -47,7 +45,6 @@ return [
 
   'home' => [
     'styles' => [
-      'libs/lightslider/lightslider.min.css',
       'css/home-style.css'
     ],
     'scripts' => [
@@ -59,7 +56,6 @@ return [
 
   'about' => [
     'styles' => [
-      'libs/lightslider/lightslider.min.css',
       'css/about-style.css'
     ],
     'scripts' => [
