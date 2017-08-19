@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Validator;
 
 class EmailRequestsController extends Controller
 {
-	private function sendEmail($email_request) {
+	private function sendEmail($email_request)
+	{
 
 		//TODO send email
 
@@ -49,31 +50,39 @@ class EmailRequestsController extends Controller
 
 	public function saveContactUsRequest(Request $request)
 	{
-		$validator = Validator::make($request->all(), [
+		$this->validate($request, [
 			'name'                 => 'required|string|between:2,255',
 			'email'                => 'required|email',
 			'description'          => 'required|string|between:4,2048',
 			'g-recaptcha-response' => 'required|captcha',
 		]);
 
-		if ($validator->passes()) {
-			$sp_request = new EmailRequest();
+//		$validator = Validator::make($request->all(), [
+//			'name'                 => 'required|string|between:2,255',
+//			'email'                => 'required|email',
+//			'description'          => 'required|string|between:4,2048',
+//			'g-recaptcha-response' => 'required|captcha',
+//		]);
 
-			$sp_request->name = $request['name'];
-			$sp_request->type = 'Contact us';
-			$sp_request->user_id = auth()->user() ? auth()->user()->id : null;
-			$sp_request->user_ip = $request->ip();
-			$sp_request->email = $request['email'];
-			$sp_request->phone = isset($request['number']) ? $request['number'] : null;
-			$sp_request->message = $request['description'];
+//		if ($validator->passes()) {
+		$sp_request = new EmailRequest();
 
-			$sp_request->save();
+		$sp_request->name = $request['name'];
+		$sp_request->type = 'Contact us';
+		$sp_request->user_id = auth()->user() ? auth()->user()->id : null;
+		$sp_request->user_ip = $request->ip();
+		$sp_request->email = $request['email'];
+		$sp_request->phone = isset($request['number']) ? $request['number'] : null;
+		$sp_request->message = $request['description'];
 
-			$this->sendEmail($sp_request);
+		$sp_request->save();
 
-			return response()->json(['success' => 'Your message has been successfully sent']);
-		}
+		$this->sendEmail($sp_request);
 
-		return response()->json(['error' => $validator->errors()->all()]);
+		return redirect()->back()->with(['success' => 'Your message has been successfully sent']);
+//			return response()->json(['success' => 'Your message has been successfully sent']);
+//		}
+
+//		return redirect()->back()->withErrors($validator->errors()->all());
 	}
 }
