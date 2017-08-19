@@ -18,7 +18,7 @@ class CreateProjectCategoriesTable extends Migration
 			
 			$table->string('title');
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['project_category_id', 'locale']);
 			$table->foreign('project_category_id')->references('id')->on('project_categories')->onDelete('cascade');
 		});

@@ -23,7 +23,7 @@ class CreateDeveloperEducationsTable extends Migration
 			$table->string('location');
 			$table->string('profession');
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['developer_education_id', 'locale']);
 			$table->foreign('developer_education_id')->references('id')->on('developer_educations')->onDelete('cascade');
 		});

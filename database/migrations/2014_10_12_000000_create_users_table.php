@@ -11,7 +11,7 @@ class CreateUsersTable extends Migration
 		Schema::create('users', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('login');
-			$table->string('email')->unique();
+			$table->string('email', 128)->unique();
 			$table->boolean('online')->default(false);
 			$table->boolean('active')->default(true);
 			$table->ipAddress('last_ip')->default('192.168.1.1');

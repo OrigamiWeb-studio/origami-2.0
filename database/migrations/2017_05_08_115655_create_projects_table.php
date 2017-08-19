@@ -28,7 +28,7 @@ class CreateProjectsTable extends Migration
 			$table->string('title');
 			$table->text('description');
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['project_id', 'locale']);
 			$table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
 		});

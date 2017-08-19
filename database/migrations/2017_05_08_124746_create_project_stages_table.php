@@ -19,7 +19,7 @@ class CreateProjectStagesTable extends Migration
 			
 			$table->string('title');
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['project_stage_id', 'locale']);
 			$table->foreign('project_stage_id')->references('id')->on('project_stages')->onDelete('cascade');
 		});

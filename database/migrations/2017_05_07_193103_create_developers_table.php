@@ -21,7 +21,7 @@ class CreateDevelopersTable extends Migration
 			$table->string('location')->nullable();
 			$table->text('interests')->nullable();
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['developer_id', 'locale']);
 			$table->foreign('developer_id')->references('id')->on('developers')->onDelete('cascade');
 		});

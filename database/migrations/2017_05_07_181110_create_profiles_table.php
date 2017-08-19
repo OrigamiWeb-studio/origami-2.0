@@ -23,7 +23,7 @@ class CreateProfilesTable extends Migration
 			$table->string('last_name')->nullable();
 			$table->text('about')->nullable();
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['profile_id', 'locale']);
 			$table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
 		});

@@ -20,7 +20,7 @@ class CreateDeveloperSkillsTable extends Migration
 			
 			$table->string('title')->nullable();
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['developer_skill_id', 'locale']);
 			$table->foreign('developer_skill_id')->references('id')->on('developer_skills')->onDelete('cascade');
 		});

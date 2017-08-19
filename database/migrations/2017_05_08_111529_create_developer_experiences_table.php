@@ -24,7 +24,7 @@ class CreateDeveloperExperiencesTable extends Migration
 			$table->string('position');
 			$table->text('description');
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['developer_experience_id', 'locale']);
 			$table->foreign('developer_experience_id')->references('id')->on('developer_experiences')->onDelete('cascade');
 		});

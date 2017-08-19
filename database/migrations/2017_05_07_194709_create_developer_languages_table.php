@@ -21,7 +21,7 @@ class CreateDeveloperLanguagesTable extends Migration
 			
 			$table->string('title')->nullable();
 			
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			$table->unique(['developer_language_id', 'locale']);
 			$table->foreign('developer_language_id')->references('id')->on('developer_languages')->onDelete('cascade');
 		});

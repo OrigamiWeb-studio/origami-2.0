@@ -9,7 +9,7 @@ class EntrustSetupTables extends Migration
 		// Create table for storing roles
 		Schema::create('roles', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name')->unique();
+			$table->string('name', 128)->unique();
 			$table->timestamps();
 		});
 		
@@ -18,7 +18,7 @@ class EntrustSetupTables extends Migration
 			$table->integer('role_id')->unsigned();
 			$table->string('display_name')->nullable();
 			$table->string('description')->nullable();
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			
 			$table->unique(['role_id', 'locale']);
 			$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
@@ -40,7 +40,7 @@ class EntrustSetupTables extends Migration
 		// Create table for storing permissions
 		Schema::create('permissions', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name')->unique();
+			$table->string('name', 128)->unique();
 			$table->timestamps();
 		});
 		
@@ -49,7 +49,7 @@ class EntrustSetupTables extends Migration
 			$table->integer('permission_id')->unsigned();
 			$table->string('display_name')->nullable();
 			$table->string('description')->nullable();
-			$table->string('locale')->index();
+			$table->string('locale', 32)->index();
 			
 			$table->unique(['permission_id', 'locale']);
 			$table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
