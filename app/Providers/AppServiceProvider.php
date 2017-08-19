@@ -17,7 +17,11 @@ class AppServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$project_categories = ProjectCategory::get();
-		$captcha = new NoCaptcha('6LecsgoUAAAAAETHKPedtB3WA_To0qtFLpOhhSRh', '6LecsgoUAAAAAPztnF6sF-q_59bsbA7SgcW3FvbW', app()->getLocale());
+		$captcha = new NoCaptcha(
+			env('NOCAPTCHA_SECRET'),
+			env('NOCAPTCHA_SITEKEY'),
+			app()->getLocale()
+		);
 		$captcha->setLang('en');
 		
 		View::share('project_categories', $project_categories);
