@@ -89,7 +89,7 @@
 					<div class="origami-form__form-group">
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
-						          name="description" id="writetous-description" rows="4"
+						          name="project_details" id="writetous-description" rows="4"
 						          placeholder="{{ __('Describe your project') }}" minlength="4" required v-model="formData.description"></textarea>
 					</div>
 

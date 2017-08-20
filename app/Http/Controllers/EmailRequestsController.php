@@ -20,7 +20,7 @@ class EmailRequestsController extends Controller
 		$validator = Validator::make($request->all(), [
 			'name'                 => 'required|string|between:2,255',
 			'email'                => 'required|email',
-			'description'          => 'required|string|between:4,2048',
+			'project_details'      => 'required|string|between:4,2048',
 			'g-recaptcha-response' => 'required|captcha',
 		]);
 
@@ -36,7 +36,7 @@ class EmailRequestsController extends Controller
 			$sp_request->phone = isset($request['number']) ? $request['number'] : '';
 			$sp_request->budget = $request['budget'];
 			$sp_request->project_category_id = $request['project_type'];
-			$sp_request->message = $request['description'];
+			$sp_request->message = $request['project_details'];
 
 			$sp_request->save();
 
@@ -53,14 +53,14 @@ class EmailRequestsController extends Controller
 		$this->validate($request, [
 			'name'                 => 'required|string|between:2,255',
 			'email'                => 'required|email',
-			'description'          => 'required|string|between:4,2048',
+			'project_details'      => 'required|string|between:4,2048',
 			'g-recaptcha-response' => 'required|captcha',
 		]);
 
 //		$validator = Validator::make($request->all(), [
 //			'name'                 => 'required|string|between:2,255',
 //			'email'                => 'required|email',
-//			'description'          => 'required|string|between:4,2048',
+//			'project_details'          => 'required|string|between:4,2048',
 //			'g-recaptcha-response' => 'required|captcha',
 //		]);
 
@@ -73,7 +73,7 @@ class EmailRequestsController extends Controller
 		$sp_request->user_ip = $request->ip();
 		$sp_request->email = $request['email'];
 		$sp_request->phone = isset($request['number']) ? $request['number'] : null;
-		$sp_request->message = $request['description'];
+		$sp_request->message = $request['project_details'];
 
 		$sp_request->save();
 

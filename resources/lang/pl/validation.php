@@ -100,8 +100,12 @@ return [
 	*/
 
 	'custom' => [
-		'attribute-name' => [
+		'attribute-name'       => [
 			'rule-name' => 'custom-message',
+		],
+		'g-recaptcha-response' => [
+			'required' => 'Captcha jest wymagana.',
+			'captcha'  => 'Mamy podejrzenia, że jesteś botem. Spróbuj ponownie.',
 		],
 	],
 
@@ -116,6 +120,12 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'name'            => 'Imię',
+		'email'           => 'Email',
+		'phone'           => 'Numer telefonu',
+		'description'     => 'Opis',
+		'project_details' => 'Szczegóły projektu',
+	],
 
 ];

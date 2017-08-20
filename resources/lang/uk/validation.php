@@ -100,8 +100,12 @@ return [
 	*/
 
 	'custom' => [
-		'attribute-name' => [
+		'attribute-name'       => [
 			'rule-name' => 'custom-message',
+		],
+		'g-recaptcha-response' => [
+			'required' => 'Капча є обов\'язковою.',
+			'captcha'  => 'У нас є підозра що ви бот. Спробуйте ще раз.',
 		],
 	],
 
@@ -116,6 +120,12 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'name'            => 'Ім\'я',
+		'email'           => 'Email',
+		'phone'           => 'Номер телефону',
+		'description'     => 'Опис',
+		'project_details' => 'Деталі проекту',
+	],
 
 ];

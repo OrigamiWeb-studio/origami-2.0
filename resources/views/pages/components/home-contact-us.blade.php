@@ -27,8 +27,8 @@
 
 			<div class="origami-form__form-group">
 				<label for="homeform__message" class="origami-form__label">{{ __('Project details') }} *</label>
-				<textarea class="origami-form__input @if($errors->has('description')) origami-form__input_error @endif origami-form__input_textarea"
-				          name="description" id="homeform__message" rows="4" required>{{ old('description') }}</textarea>
+				<textarea class="origami-form__input @if($errors->has('project_details')) origami-form__input_error @endif origami-form__input_textarea"
+				          name="description" id="homeform__message" rows="4" required>{{ old('project_details') }}</textarea>
 			</div>
 
 			@if($errors->has('name'))
@@ -55,10 +55,10 @@
 				</div>
 			@endif
 
-			@if($errors->has('description'))
+			@if($errors->has('project_details'))
 				<div class="origami-form__form-group">
 					<div class="alert alert_danger">
-						{{ $errors->first('description') }}
+						{{ $errors->first('project_details') }}
 					</div>
 				</div>
 			@endif
