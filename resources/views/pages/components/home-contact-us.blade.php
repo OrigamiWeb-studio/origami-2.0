@@ -9,7 +9,7 @@
 
 			<div class="origami-form__form-group">
 				<label for="homeform__name" class="origami-form__label">{{ __('Name') }} *</label>
-				<input class="origami-form__input @if($errors->has('name')) origami-form__input_error @endif" id="homeform-name"
+				<input class="origami-form__input @if($errors->has('name')) origami-form__input_error @endif" id="homeform__name"
 				       name="name" value="{{ old('name') }}" required>
 			</div>
 
