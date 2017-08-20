@@ -15,7 +15,7 @@ Auth::routes();
 #Locales
 #
 #
-Route::get('/locale/{code}', 'HomeController@setLocale')
+Route::get('/locale/{code}', 'LocalesController@setLocale')
 	->name('set-locale');
 #-----------------------------------------------------------------------------------
 #Homepage
