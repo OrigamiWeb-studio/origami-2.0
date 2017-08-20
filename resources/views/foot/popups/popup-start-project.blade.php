@@ -43,7 +43,7 @@
 							<div class="origami-form__form-group">
 								<label for="writetous-email" class="origami-form__label">{{ __('Email') }} *</label>
 								<input class="origami-form__input"
-								       type="email" name="email" id="writetous-email" required v-model="formData.email">
+								       type="email" name="email" id="writetous-email" v-model="formData.email">
 							</div>
 						</div>
 
@@ -60,8 +60,8 @@
 
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
-								<label for="writetous-budget" class="origami-form__label">{{ __('Budget') }} *</label>
-								<select class="origami-form__select" v-model="formData.budget" name="budget" id="writetous-budget" required>
+								<label for="writetous-budget" class="origami-form__label">{{ __('Budget') }}</label>
+								<select class="origami-form__select" v-model="formData.budget" name="budget" id="writetous-budget">
 									<option value="" class="placeholder">{{ __('Select your budget range') }}</option>
 									<option value="< $2500">&lt; $2500</option>
 									<option value="$2500 - $5000">$2500 - $5000</option>
@@ -73,7 +73,7 @@
 
 						<div class="col-sm-6">
 							<div class="origami-form__form-group">
-								<label for="writetous-type" class="origami-form__label">{{ __('Project type') }} *</label>
+								<label for="writetous-type" class="origami-form__label">{{ __('Project type') }}</label>
 								<select class="origami-form__select" v-model="formData.project_type" name="project_type" id="writetous-type">
 									<option value="" class="placeholder">{{ __('Select a type') }}</option>
 									@if(isset($project_categories) && count($project_categories) > 0)
@@ -90,7 +90,7 @@
 						<label for="writetous-description" class="origami-form__label">{{ __('Description') }} *</label>
 						<textarea class="origami-form__input origami-form__input_textarea"
 						          name="project_details" id="writetous-description" rows="4"
-						          placeholder="{{ __('Describe your project') }}" minlength="4" required v-model="formData.description"></textarea>
+						          placeholder="{{ __('Describe your project') }}" minlength="4" v-model="formData.project_details"></textarea>
 					</div>
 
 
