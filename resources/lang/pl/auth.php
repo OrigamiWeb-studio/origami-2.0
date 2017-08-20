@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'failed'   => 'Имя пользователя и пароль не совпадают.',
-	'throttle' => 'Слишком много попыток входа. Пожалуйста, попробуйте еще раз через :seconds секунд.',
+	'failed'   => 'Błędny login lub hasło.',
+	'throttle' => 'Za dużo nieudanych prób logowania. Proszę spróbować za :seconds sekund.',
 
 ];
