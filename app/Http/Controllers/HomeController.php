@@ -21,23 +21,12 @@ class HomeController extends Controller
 		return view('pages.home', $data);
 	}
 	
-	public function sendForm(Request $request)
-	{
-		$this->validate($request, [
-			'name'    => 'required|regex:/^[\pL\s\-]+$/u|between:2,128',
-			'email'   => 'required|email',
-			'phone'   => 'numeric|digits_between:9,12',
-			'message' => 'required|between:10,1000',
-		]);
-		
-		
-		dd($request);
-	}
-	
 	public function setLocale($code)
 	{
-		$_locales = Locale::where('active', true)->orderBy('order')->get();
-		
+		$_locales = Locale::where('active', true)
+			->orderBy('order')
+			->get();
+
 		if ($_locales->contains('code', $code))
 			$locales['current'] = $_locales->where('code', '=', $code)->first()->toArray();
 		else

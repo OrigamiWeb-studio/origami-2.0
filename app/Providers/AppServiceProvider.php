@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use Arcanedev\NoCaptcha\NoCaptcha;
-use App\ProjectCategory;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,16 +13,7 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$project_categories = ProjectCategory::get();
-		$captcha = new NoCaptcha(
-			env('NOCAPTCHA_SECRET'),
-			env('NOCAPTCHA_SITEKEY'),
-			app()->getLocale()
-		);
-		$captcha->setLang('en');
-		
-		View::share('project_categories', $project_categories);
-		View::share('captcha', $captcha);
+
 	}
 	
 	/**
