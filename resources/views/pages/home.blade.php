@@ -11,7 +11,7 @@
 					<p>{{ __('We develop a websites of any complexity.') }}</p>
 				</div>
 				<div class="scroll-down">
-					<a href="#" v-scroll-to="'.s_projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+					<a href="#" v-scroll-to="'.s-projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</section>
