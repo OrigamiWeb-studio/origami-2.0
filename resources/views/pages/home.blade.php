@@ -17,15 +17,15 @@
 		</section>
 
 		@if($projects->isNotEmpty())
-			<section class="s_projects leaning_section">
+			<section class="s-projects leaning_section">
 				<div class="container">
 					<h2 class="section-title">{{ __('Our projects') }}</h2>
-					<div class="projects-slider-wrapper">
-						<ul id="projects-slider" class="projects-slider list-unstyled cS-hidden">
+					<div class="s-projects__slider">
+						<ul id="projects-slider" class="list-unstyled cS-hidden">
 							@foreach($projects as $project)
-								<li>
-									<a href="{{ route('project', ['id' => $project->id]) }}" class="slide-content">
-										<img src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+								<li class="s-projects__item">
+									<a href="{{ route('project', ['id' => $project->id]) }}" class="s-projects__content">
+										<img class="s-projects__image" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
 									</a>
 								</li>
 							@endforeach

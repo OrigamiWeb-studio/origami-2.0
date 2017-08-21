@@ -100,50 +100,53 @@
 		transform: translateY(10px)
 		opacity: 0
 
-.s_projects
+.s-projects
 	background: #fff
 	text-align: right
 	padding-bottom: 55px
 	@media screen and (max-width: 991px)
 		.lSSlideWrapper
 			margin-bottom: 20px
-.projects-slider-wrapper
-	margin-bottom: 25px
-	@media screen and (max-width: 767px)
-		max-width: 600px
-		margin: 0 auto 20px
-	@media screen and (max-width: 440px)
-		max-width: 320px
-	.lSSlideWrapper
-		overflow: visible
-	.lSSlideOuter
-		overflow: visible
-		position: relative
-		&:before,
-		&:after
-			content: ''
-			position: absolute
-			background: rgba(255,255,255,0.7)
-			top: 0
-			height: 100%
-			width: 9999px
-			z-index: 50
-		&:before
-			right: 100%
-		&:after
-			left: 100%
-.projects-slider
-	li
+	&__slider
+		margin-bottom: 25px
+		@media screen and (max-width: 767px)
+			max-width: 600px
+			margin: 0 auto 20px
+		@media screen and (max-width: 440px)
+			max-width: 320px
+		.lSSlideWrapper
+			overflow: visible
+		.lSSlideOuter
+			overflow: visible
+			position: relative
+			&:before,
+			&:after
+				content: ''
+				position: absolute
+				background: rgba(255,255,255,0.7)
+				top: 0
+				height: 100%
+				width: 9999px
+				z-index: 50
+			&:before
+				right: 100%
+			&:after
+				left: 100%
+	&__item
 		border: 2px solid #efeff1
-.slide-content
-	display: flex
-	justify-content: center
-	align-items: center
-	height: 250px
-	@media screen and (max-width: 550px)
-		padding: 80px 0
-	@media screen and (max-width: 440px)
-		padding: 90px 0
+	&__content
+		padding-top: 101%
+		display: block
+		position: relative
+	&__image
+		max-width: 100%
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		margin: auto
+
 
 .s_clients
 	background: #fafafb

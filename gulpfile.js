@@ -2,44 +2,21 @@ var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps   = require('gulp-sourcemaps'),
-    webpack      = require('webpack-stream'),
-    uglify       = require('gulp-uglify'),
-    pump         = require('pump'),
-    named        = require('vinyl-named');
+    pump         = require('pump');
 
-gulp.task('sass', function(){
-    return gulp.src('./resources/assets/sass/**/*.sass')
-        .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['last 15 version'],
-            cascade: false
-        }))
-        .pipe(sourcemaps.write("../maps"))
-        .pipe(gulp.dest('./public/css'))
-});
 
-gulp.task('scripts', function(cb){
+gulp.task('sass', function(cb){
     pump(
         [
-            gulp.src('./resources/assets/js/*.js'),
-            named(),
-            webpack({
-               module:{
-                   rules: [
-                       {
-                           test: /\.js$/,
-                           loader: 'babel-loader',
-                           options: {
-                               presets: ['es2015'],
-                               // plugins: ['transform-runtime']
-                           }
-                       }
-                   ]
-               }
+            gulp.src('./resources/assets/sass/**/*.sass'),
+            sourcemaps.init(),
+            sass({outputStyle: 'compressed'}).on('error', sass.logError),
+            autoprefixer({
+                browsers: ['last 15 version'],
+                cascade: false
             }),
-            // uglify(),
-            gulp.dest('./public/js/')
+            sourcemaps.write("../maps"),
+            gulp.dest('./public/css')
         ],
         cb
     )
