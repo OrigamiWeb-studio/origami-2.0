@@ -168,7 +168,7 @@ $(document).ready(function(){
 
 
 	var headerMenu = new Vue({
-		el: ".main_header",
+		el: ".main-header",
 		data: {
 			headerActive: false,
 			langDropdown: false

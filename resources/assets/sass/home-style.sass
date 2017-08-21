@@ -1,5 +1,5 @@
 //Libs
-@import "../libs/lightslider/lightslider.min"
+@import "../../../public/libs/lightslider/lightslider.min"
 
 // Colors
 @import "components/_colors.sass"
@@ -9,27 +9,28 @@
 // Components
 
 
-.main_header
+.main-header
 	background: #fafafb
 	position: absolute
 	width: 100%
-.main_footer
-	background: #fff
+.main-footer
 	margin-top: -50px
 	position: relative
+	//without reviews
+	//background: #fff
 
-section
-	h2
-		font-family: 'RobotoSlab', sans-serif
-		font-weight: 700
-		font-size: 36px
-		text-align: center
-		text-transform: uppercase
-		letter-spacing: 3px
-		margin: 45px 0
-		@media screen and (max-width: 590px)
-			font-size: 26px
-			letter-spacing: 2px
+
+.section-title
+	font-family: 'RobotoSlab', sans-serif
+	font-weight: 700
+	font-size: 36px
+	text-align: center
+	text-transform: uppercase
+	letter-spacing: 3px
+	margin: 45px 0
+	@media screen and (max-width: 590px)
+		font-size: 26px
+		letter-spacing: 2px
 .leaning_section
 	transform: rotate(-2.5deg) translateZ(0)
 	transform-origin: 50% 51%
@@ -138,7 +139,7 @@ section
 	display: flex
 	justify-content: center
 	align-items: center
-	padding: 100px 0
+	height: 250px
 	@media screen and (max-width: 550px)
 		padding: 80px 0
 	@media screen and (max-width: 440px)
@@ -222,9 +223,12 @@ section
 	background-color: $darkblue
 	border: none
 
-.s_contact
+.s-contact
 	padding-bottom: 105px
-	background: #fff
+	//without reviews
+	//background: #fff
+	&__input
+		background-color: #fafafb
 	h2
 		margin-top: -26px
 	&__form

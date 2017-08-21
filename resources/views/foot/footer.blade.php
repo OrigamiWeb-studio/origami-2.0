@@ -1,7 +1,7 @@
-<footer class="main_footer">
+<footer class="main-footer">
 	<div class="container">
 		<div class="pull-left">
-			<nav class="main_nav">
+			<nav class="main-nav">
 				<ul>
 					<li><a href="{{ route('projects') }}">{{ __('Projects') }}</a></li>
 					<li><a href="{{ route('about') }}">{{ __('About Us') }}</a></li>

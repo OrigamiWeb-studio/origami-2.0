@@ -19,7 +19,7 @@
 		@if($projects->isNotEmpty())
 			<section class="s_projects leaning_section">
 				<div class="container">
-					<h2>{{ __('Our projects') }}</h2>
+					<h2 class="section-title">{{ __('Our projects') }}</h2>
 					<div class="projects-slider-wrapper">
 						<ul id="projects-slider" class="projects-slider list-unstyled cS-hidden">
 							@foreach($projects as $project)

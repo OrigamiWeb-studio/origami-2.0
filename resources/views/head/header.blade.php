@@ -1,4 +1,4 @@
-<header class="main_header">
+<header class="main-header">
 	<div class="container">
 		<div class="logo-wrapper">
 			<a href="{{ route('home') }}">
@@ -16,7 +16,7 @@
 
 		<transition name="header_menu_appearing">
 			<div class="header_menu" v-show="headerActive" transition="appearing" style="display: none">
-				<nav class="main_nav">
+				<nav class="main-nav">
 					<ul>
 
 						<li style="transition-delay: 0ms, 0ms, 0ms"
@@ -50,20 +50,20 @@
 		</transition>
 		<div class="pull-right">
 			<div class="lang-dropdown">
-				<a href="#" @click.prevent="langDropdown = !langDropdown">
+				<a class="lang-dropdown__current-lang" href="#" @click.prevent="langDropdown = !langDropdown">
 					{{ session('locales.current.name') }}
-					<span class="caret"></span>
+					<span class="caret lang-dropdown__caret"></span>
 				</a>
-				<ul class="dropdown-menu" style="display: none" v-show="langDropdown">
+				<ul class="lang-dropdown__menu" style="display: none" v-show="langDropdown">
 					@foreach(session('locales.list') as $locale)
 						@continue($locale['id'] === session('locales.current.id'))
-						<li>
-							<a href="{{ route('set-locale', ['code' => $locale['code']]) }}">{{ $locale['name'] }}</a>
+						<li class="lang-dropdown__item">
+							<a class="lang-dropdown__item-link" href="{{ route('set-locale', ['code' => $locale['code']]) }}">{{ $locale['name'] }}</a>
 						</li>
 					@endforeach
 				</ul>
 			</div>
-			<a href="#" class="btn" data-toggle="modal" data-target="#writetous-modal">{{ __('Write to Us') }}</a>
+			<a href="#" class="btn main-header__button" data-toggle="modal" data-target="#writetous-modal">{{ __('Write to Us') }}</a>
 			<div class="burger-menu" :class="{opened: headerActive}" @click="mobileMenu()">
 				<div class="burger"></div>
 			</div>
