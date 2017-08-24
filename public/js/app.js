@@ -166,37 +166,6 @@ $(document).ready(function(){
 		jcf.replace('input[type=range]');
 	}
 
-
-	var headerMenu = new Vue({
-		el: ".main-header",
-		data: {
-			headerActive: false,
-			langDropdown: false
-		},
-		methods: {
-			mobileMenu: function(){
-				this.headerActive = !this.headerActive;
-				var bodyEl = document.querySelector('body');
-				bodyEl.classList.toggle('opened');
-			},
-			closeDropDown: function(){
-				this.langDropdown = false;
-			}
-		},
-		mounted: function(){
-			var self = this;
-			window.addEventListener('click', function(e){
-				if(!e.target.parentNode.classList.contains('lang-dropdown'))
-					self.closeDropDown();
-			})
-		}
-	});
-
-	var scrollDown = new Vue({
-		el: '.s_hero'
-	});
-
-
 	if($("#map").length){
 		function initMap() {
 			var myLatLng = {lat: 48.689353, lng: 26.570980};

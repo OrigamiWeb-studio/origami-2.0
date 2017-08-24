@@ -8,14 +8,12 @@
 				<h4 class="modal-title origami-modal__title">{{ __('Start a project') }}</h4>
 			</div>
 			<div class="modal-body origami-modal__body">
-				{{--<form id="write-to-us-form" class="origami-form" action="{{ route('save-start-project-request') }}" method="post">				<form id="write-to-us-form" class="origami-form" @submit.prevent="sendForm" action="{{ route('save-start-project-request') }}" method="post">--}}
+				<script>
+                    window.Laravel = <?php echo json_encode([
+                        'csrfToken' => csrf_token(),
+                    ]); ?>
+				</script>
 				<form id="write-to-us-form" class="origami-form" @submit.prevent="sendForm" action="{{ route('save-start-project-request') }}" method="post">
-
-					<script>
-						window.Laravel = <?php echo json_encode([
-								'csrfToken' => csrf_token(),
-						]); ?>
-					</script>
 
 					{{ csrf_field() }}
 

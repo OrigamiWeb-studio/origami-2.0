@@ -3,12 +3,13 @@
 @section('content')
 
 	<main>
-
 		<section class="s_hero">
 			<div class="container">
 				<div class="site_title">
 					<h1>Origami Web-Studio</h1>
 					<p>{{ __('We develop a websites of any complexity.') }}</p>
+					<div id="app">
+					</div>
 				</div>
 				<div class="scroll-down">
 					<a href="#" v-scroll-to="'.s-projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>

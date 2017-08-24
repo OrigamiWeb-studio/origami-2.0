@@ -9,7 +9,8 @@ return [
       ],
       'scripts' => [
         'libs/lightslider/lightslider.min.js',
-        'libs/magnific-popup/jquery.magnific-popup.min.js'
+        'libs/magnific-popup/jquery.magnific-popup.min.js',
+        'js/common-vue.js'
       ]
     ],
 
@@ -19,7 +20,7 @@ return [
       ],
       'scripts' => [
         'libs/jcf/jcf.range.js',
-        'js/filters.js'
+        'js/projects-vue.js'
       ]
     ],
 
@@ -48,8 +49,8 @@ return [
       'css/home-style.css'
     ],
     'scripts' => [
-      'libs/vue/vue-scrollto.min.js',
-      'libs/lightslider/lightslider.min.js'
+        'js/home-vue.js',
+        'libs/lightslider/lightslider.min.js',
     ]
   ],
 
@@ -59,7 +60,8 @@ return [
       'css/about-style.css'
     ],
     'scripts' => [
-      'libs/lightslider/lightslider.min.js'
+        'libs/lightslider/lightslider.min.js',
+        'js/common-vue.js'
     ]
   ],
 
@@ -69,7 +71,8 @@ return [
       'css/contacts-style.css'
     ],
     'scripts' => [
-      'http://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8'
+        'http://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8',
+        'js/common-vue.js'
     ]
   ]
 
