@@ -1,5 +1,8 @@
 {
-    "/js/home-vue.js": "/js/home-vue.js",
-    "/js/projects-vue.js": "/js/projects-vue.js",
-    "/js/common-vue.js": "/js/common-vue.js"
+    "/js/home-scripts.js": "/js/home-scripts.js",
+    "/js/project-scripts.js": "/js/project-scripts.js",
+    "/js/about-scripts.js": "/js/about-scripts.js",
+    "/js/projects-scripts.js": "/js/projects-scripts.js",
+    "/js/contact-scripts.js": "/js/contact-scripts.js",
+    "/js/common.js": "/js/common.js"
 }

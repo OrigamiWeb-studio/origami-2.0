@@ -7,11 +7,13 @@ return [
       'styles' => [
         'css/project-style.css'
       ],
-      'scripts' => [
-        'libs/lightslider/lightslider.min.js',
-        'libs/magnific-popup/jquery.magnific-popup.min.js',
-        'js/common-vue.js'
-      ]
+        'scripts' => [
+            'js/project-scripts.js'
+        ],
+//      'scripts' => [
+//        'libs/lightslider/lightslider.min.js',
+//        'libs/magnific-popup/jquery.magnific-popup.min.js'
+//      ]
     ],
 
     'all' => [
@@ -19,9 +21,8 @@ return [
         'css/projects-style.css'
       ],
       'scripts' => [
-        'libs/jcf/jcf.range.js',
-        'js/projects-vue.js'
-      ]
+         'js/projects-scripts.js'
+       ]
     ],
 
     'edit' => [
@@ -49,8 +50,7 @@ return [
       'css/home-style.css'
     ],
     'scripts' => [
-        'js/home-vue.js',
-        'libs/lightslider/lightslider.min.js',
+      'js/home-scripts.js'
     ]
   ],
 
@@ -60,8 +60,7 @@ return [
       'css/about-style.css'
     ],
     'scripts' => [
-        'libs/lightslider/lightslider.min.js',
-        'js/common-vue.js'
+        'js/about-scripts.js'
     ]
   ],
 
@@ -72,7 +71,7 @@ return [
     ],
     'scripts' => [
         'http://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8',
-        'js/common-vue.js'
+      'js/contact-scripts.js'
     ]
   ]
 

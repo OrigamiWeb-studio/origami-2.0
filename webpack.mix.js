@@ -11,6 +11,9 @@ let mix = require('laravel-mix').mix;
  |
  */
 
-mix.js('resources/assets/js/home-vue.js', 'public/js')
-    .js('resources/assets/js/projects-vue.js', 'public/js')
-    .js('resources/assets/js/common-vue.js', 'public/js');
+mix.js('resources/assets/js/home-scripts.js', 'public/js')
+    .js('resources/assets/js/projects-scripts.js', 'public/js')
+    .js('resources/assets/js/project-scripts.js', 'public/js')
+    .js('resources/assets/js/about-scripts.js', 'public/js')
+    .js('resources/assets/js/contact-scripts.js', 'public/js')
+    .js('resources/assets/js/common.js', 'public/js');
