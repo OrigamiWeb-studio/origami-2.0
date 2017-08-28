@@ -9,11 +9,7 @@ return [
       ],
         'scripts' => [
             'js/project-scripts.js'
-        ],
-//      'scripts' => [
-//        'libs/lightslider/lightslider.min.js',
-//        'libs/magnific-popup/jquery.magnific-popup.min.js'
-//      ]
+        ]
     ],
 
     'all' => [
@@ -70,7 +66,7 @@ return [
       'css/contacts-style.css'
     ],
     'scripts' => [
-        'http://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8',
+//        'https://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8',
       'js/contact-scripts.js'
     ]
   ]

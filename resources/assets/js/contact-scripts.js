@@ -2,6 +2,6 @@
 require('./common');
 
 //Jquery
-require('./jquery-scripts/contact-map');
+// require('./jquery-scripts/contact-map');
 
 //Vue
