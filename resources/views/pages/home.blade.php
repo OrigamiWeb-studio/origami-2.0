@@ -7,12 +7,12 @@
 			<div class="container">
 				<div class="site_title">
 					<h1>Origami Web-Studio</h1>
-					<p>{{ __('We develop a websites of any complexity.') }}</p>
+					<p>{{ __('High-quality sites development for all devices types.') }}</p>
 					<div id="app">
 					</div>
 				</div>
 				<div class="scroll-down">
-					<a href="#" v-scroll-to="'.s-projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+					<span class="scroll-down__button" v-scroll-to="'.s-projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down scroll-down__arrow" aria-hidden="true"></i></span>
 				</div>
 			</div>
 		</section>

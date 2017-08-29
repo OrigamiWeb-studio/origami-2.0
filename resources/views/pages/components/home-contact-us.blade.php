@@ -2,7 +2,7 @@
 	<div class="container">
 
 		<h2 class="section-title">{{ __('Write to Us') }}</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+		<p>{{__('If you have questions or you want to do an order please send the form below. We will contact you soon.')}}</p>
 
 		<form class="origami-form s-contact__form" action="{{ route('save-contact-us-request') }}" method="get">
 			{{ csrf_field() }}
