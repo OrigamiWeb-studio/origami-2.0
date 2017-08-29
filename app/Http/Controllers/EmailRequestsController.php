@@ -50,21 +50,21 @@ class EmailRequestsController extends Controller
 
 	public function saveContactUsRequest(Request $request)
 	{
-		$this->validate($request, [
-			'name'                 => 'required|string|between:2,255',
-			'email'                => 'required|email',
-			'project_details'      => 'required|string|between:4,2048',
-			'g-recaptcha-response' => 'required|captcha',
-		]);
-
-//		$validator = Validator::make($request->all(), [
+//		$this->validate($request, [
 //			'name'                 => 'required|string|between:2,255',
 //			'email'                => 'required|email',
-//			'project_details'          => 'required|string|between:4,2048',
+//			'project_details'      => 'required|string|between:4,2048',
 //			'g-recaptcha-response' => 'required|captcha',
 //		]);
 
-//		if ($validator->passes()) {
+		$validator = Validator::make($request->all(), [
+			'name'                 => 'required|string|between:2,255',
+			'email'                => 'required|email',
+			'project_details'          => 'required|string|between:4,2048',
+			'g-recaptcha-response' => 'required|captcha',
+		]);
+
+		if ($validator->passes()) {
 		$sp_request = new EmailRequest();
 
 		$sp_request->name = $request['name'];
@@ -79,10 +79,10 @@ class EmailRequestsController extends Controller
 
 		$this->sendEmail($sp_request);
 
-		return redirect()->back()->with(['success' => 'Your message has been successfully sent']);
-//			return response()->json(['success' => 'Your message has been successfully sent']);
-//		}
+//		return redirect()->back()->with(['success' => 'Your message has been successfully sent']);
+			return response()->json(['success' => 'Your message has been successfully sent']);
+		}
 
-//		return redirect()->back()->withErrors($validator->errors()->all());
+		return response()->json(['error' => $validator->errors()->all()]);
 	}
 }
