@@ -7,10 +7,9 @@ return [
       'styles' => [
         'css/project-style.css'
       ],
-      'scripts' => [
-        'libs/lightslider/lightslider.min.js',
-        'libs/magnific-popup/jquery.magnific-popup.min.js'
-      ]
+        'scripts' => [
+            'js/project-scripts.js'
+        ]
     ],
 
     'all' => [
@@ -18,9 +17,8 @@ return [
         'css/projects-style.css'
       ],
       'scripts' => [
-        'libs/jcf/jcf.range.js',
-        'js/filters.js'
-      ]
+         'js/projects-scripts.js'
+       ]
     ],
 
     'edit' => [
@@ -48,8 +46,7 @@ return [
       'css/home-style.css'
     ],
     'scripts' => [
-      'libs/vue/vue-scrollto.min.js',
-      'libs/lightslider/lightslider.min.js'
+      'js/home-scripts.js'
     ]
   ],
 
@@ -59,7 +56,7 @@ return [
       'css/about-style.css'
     ],
     'scripts' => [
-      'libs/lightslider/lightslider.min.js'
+        'js/about-scripts.js'
     ]
   ],
 
@@ -69,7 +66,8 @@ return [
       'css/contacts-style.css'
     ],
     'scripts' => [
-      'http://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8'
+//        'https://maps.google.com/maps/api/js?key=AIzaSyBED1xxwdz2aeMSXBDtJwItnDn7apYZjF8',
+      'js/contact-scripts.js'
     ]
   ]
 

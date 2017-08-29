@@ -40,8 +40,17 @@
 					</div>
 				</div>
 
+				{{--<div class="development-stages">--}}
+					{{--<h2 class="development-stages__title">Stages of Development</h2>--}}
+					{{--<ul class="development-stages__list">--}}
+						{{--<li class="development-stages__item">--}}
+							{{----}}
+						{{--</li>--}}
+					{{--</ul>--}}
+				{{--</div>--}}
+
 				<div class="our-clients">
-					<h3 class="our-clients__title">{{ __('Among our clients') }}</h3>
+					<h3 class="our-clients__title">{{ __('Our clients') }}</h3>
 					<ul id="ourclients-slider" class="list-unstyled cS-hidden our-clients__list">
 						@foreach($projects as $project)
 							@isset($project->cover)

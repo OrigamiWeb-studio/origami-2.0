@@ -3,29 +3,30 @@
 @section('content')
 
 	<main>
-
 		<section class="s_hero">
 			<div class="container">
 				<div class="site_title">
 					<h1>Origami Web-Studio</h1>
-					<p>{{ __('We develop a websites of any complexity.') }}</p>
+					<p>{{ __('High-quality sites development for all devices types.') }}</p>
+					<div id="app">
+					</div>
 				</div>
 				<div class="scroll-down">
-					<a href="#" v-scroll-to="'.s_projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+					<span class="scroll-down__button" v-scroll-to="'.s-projects'">{{ __('Scroll down') }} <i class="fa fa-angle-down scroll-down__arrow" aria-hidden="true"></i></span>
 				</div>
 			</div>
 		</section>
 
 		@if($projects->isNotEmpty())
-			<section class="s_projects leaning_section">
+			<section class="s-projects leaning_section">
 				<div class="container">
-					<h2>{{ __('Our projects') }}</h2>
-					<div class="projects-slider-wrapper">
-						<ul id="projects-slider" class="projects-slider list-unstyled cS-hidden">
+					<h2 class="section-title">{{ __('Our projects') }}</h2>
+					<div class="s-projects__slider">
+						<ul id="projects-slider" class="list-unstyled cS-hidden">
 							@foreach($projects as $project)
-								<li>
-									<a href="{{ route('project', ['id' => $project->id]) }}" class="slide-content">
-										<img src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+								<li class="s-projects__item">
+									<a href="{{ route('project', ['id' => $project->id]) }}" class="s-projects__content">
+										<img class="s-projects__image" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
 									</a>
 								</li>
 							@endforeach

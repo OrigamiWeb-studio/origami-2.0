@@ -1,33 +1,33 @@
-<section class="s_contact leaning_section">
+<section class="s-contact leaning_section">
 	<div class="container">
 
-		<h2>{{ __('Write to Us') }}</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+		<h2 class="section-title">{{ __('Write to Us') }}</h2>
+		<p>{{__('If you have questions or you want to do an order please send the form below. We will contact you soon.')}}</p>
 
-		<form class="origami-form s_contact__form" action="{{ route('save-contact-us-request') }}" method="get">
+		<form class="origami-form s-contact__form" action="{{ route('save-contact-us-request') }}" method="get">
 			{{ csrf_field() }}
 
 			<div class="origami-form__form-group">
 				<label for="homeform__name" class="origami-form__label">{{ __('Name') }} *</label>
-				<input class="origami-form__input @if($errors->has('name')) origami-form__input_error @endif" id="homeform__name"
+				<input class="origami-form__input s-contact__input @if($errors->has('name')) origami-form__input_error @endif" id="homeform__name"
 				       name="name" value="{{ old('name') }}" required>
 			</div>
 
 			<div class="origami-form__form-group">
 				<label for="homeform__email" class="origami-form__label">Email *</label>
-				<input class="origami-form__input @if($errors->has('email')) origami-form__input_error @endif" type="email"
+				<input class="origami-form__input s-contact__input @if($errors->has('email')) origami-form__input_error @endif" type="email"
 				       name="email" id="homeform__email" value="{{ old('email') }}" required>
 			</div>
 
 			<div class="origami-form__form-group">
 				<label for="homeform__phone" class="origami-form__label">{{ __('Phone number') }}</label>
-				<input class="origami-form__input @if($errors->has('phone')) origami-form__input_error @endif"
+				<input class="origami-form__input s-contact__input @if($errors->has('phone')) origami-form__input_error @endif"
 				       name="phone" id="homeform__phone" value="{{ old('phone') }}">
 			</div>
 
 			<div class="origami-form__form-group">
 				<label for="homeform__message" class="origami-form__label">{{ __('Project details') }} *</label>
-				<textarea class="origami-form__input @if($errors->has('project_details')) origami-form__input_error @endif origami-form__input_textarea"
+				<textarea class="origami-form__input s-contact__input @if($errors->has('project_details')) origami-form__input_error @endif origami-form__input_textarea"
 				          name="description" id="homeform__message" rows="4" required>{{ old('project_details') }}</textarea>
 			</div>
 

@@ -7,21 +7,10 @@
 <script type="text/javascript" src="{{ asset('libs/respond/respond.min.js')}}"></script>
 <![endif]-->
 
-<script type="text/javascript" src="{{ asset('libs/jquery/jquery-3.2.0.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('libs/bootstrap/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('libs/jcf/jcf.js') }}"></script>
-<script type="text/javascript" src="{{ asset('libs/jcf/jcf.select.js') }}"></script>
-<script type="text/javascript" src="{{ asset('libs/vue/vue.v2.3.0.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('libs/vue/vue-resource.min.js') }}"></script>
-
 @if(isset($scripts) && count($scripts) > 0)
   @foreach($scripts as $script)
     <script type="text/javascript" src="{{ asset($script) }}"></script>
   @endforeach
 @endif
-
-<!-- Scripts -->
-<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/forms-validation.js') }}"></script>
 
 {!! $captcha->scriptWithCallback(['captcha-contact-us', 'captcha-start-project']) !!}

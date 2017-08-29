@@ -24,7 +24,6 @@
   "Our projects": "Наші проекти",
   "All projects": "Всі проекти",
   "Clients": "Клієнти",
-  "We develop a websites of any complexity." : "Ми розробляємо веб-сайти будь-якої складності.",
 
   "View per page": "Відображати на сторінці",
   "All": "Всі",
@@ -54,12 +53,15 @@
   "Edit": "Редагувати",
   "Delete": "Видалити",
 
-  "Among our clients": "Серед наших клієнтів",
+  "Our clients": "Наші клієнти",
   "Who we are?": "Хто ми?",
 
   "Origami Web Studio": "Веб студія Орігамі",
   "Let's do this": "Просто зробіть  це",
   "Contact us": "Зконтактуйтесь з нами",
   "We will contact you": "Ми зконтактуємось з Вами",
-  "2 Suvorova street, Kamianets-Podilskyi, Ukraine": "вул. Суворова 2, Кам'янець-Подільський, Україна"
+  "2 Suvorova street, Kamianets-Podilskyi, Ukraine": "вул. Суворова 2, Кам'янець-Подільський, Україна",
+
+  "High-quality sites development for all devices types.": "Високоякісна розробка веб-сайтів під всі типи пристроїв.",
+  "If you have questions or you want to do an order please send the form below. We will contact you soon.": "Якщо у Вас виникли питання, або Ви бажаєте зробити замовлення заповніть, будь-ласка, форму. Ми зв'яжемось з Вами найближчим часом."
 }

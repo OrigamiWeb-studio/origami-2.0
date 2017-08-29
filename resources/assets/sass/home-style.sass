@@ -1,0 +1,255 @@
+@import "./common"
+
+//Libs
+@import "../../../node_modules/lightslider/dist/css/lightslider"
+
+// Colors
+@import "components/_colors.sass"
+
+
+
+// Components
+
+
+.main-header
+	background: #fafafb
+	position: absolute
+	width: 100%
+.main-footer
+	margin-top: -50px
+	position: relative
+	//without reviews
+	//background: #fff
+
+
+.section-title
+	font-family: 'RobotoSlab', sans-serif
+	font-weight: 700
+	font-size: 36px
+	text-align: center
+	text-transform: uppercase
+	letter-spacing: 3px
+	margin: 45px 0
+	@media screen and (max-width: 590px)
+		font-size: 26px
+		letter-spacing: 2px
+.leaning_section
+	transform: rotate(-2.5deg) translateZ(0)
+	transform-origin: 50% 51%
+	padding: 0 70px
+	margin: 0 -70px
+	.container 
+		transform: rotate(2.5deg) translateZ(0)
+		transform-origin: 50% 51%
+.s_hero
+	background: #fafafb
+	position: relative
+	text-align: center
+.site_title
+	height: 100vh
+	min-height: 400px
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+	h1
+		margin: 0
+		font-size: 60px
+		font-family: 'RobotoSlab', sans-serif
+		font-weight: 700
+		letter-spacing: normal
+		@media screen and (max-width: 767px)
+			font-size: 50px
+		@media screen and (max-width: 590px)
+			font-size: 28px 
+	p
+		margin: 9px 0 0 
+		font-size: 16px
+		font-family: 'PTSans', sans-serif
+		font-weight: 400
+		color: $lightblue
+.scroll-down
+	position: absolute
+	bottom: 40px
+	left: 0
+	right: 0
+	text-align: center
+	&__button
+		font-family: 'RobotoSlab', sans-serif
+		font-weight: 700
+		font-size: 12px
+		position: relative
+		padding-bottom: 25px
+		text-transform: uppercase
+		letter-spacing: 1px
+		cursor: pointer
+		color: $lightblue
+		transition: all .2s ease
+		&:hover
+			color: $darkblue
+	&__arrow
+		position: absolute
+		display: block
+		left: 0
+		right: 0
+		bottom: 10px
+		opacity: 0
+		animation: godown 1s linear infinite
+		font-size: 16px
+
+
+@keyframes godown
+	0%
+		transform: translateY(0px)
+		opacity: 0
+	50%
+		transform: translateY(5px)
+		opacity: 1
+	100%
+		transform: translateY(10px)
+		opacity: 0
+
+.s-projects
+	background: #fff
+	text-align: right
+	padding-bottom: 55px
+	@media screen and (max-width: 991px)
+		.lSSlideWrapper
+			margin-bottom: 20px
+	&__slider
+		margin-bottom: 25px
+		@media screen and (max-width: 767px)
+			max-width: 600px
+			margin: 0 auto 20px
+		@media screen and (max-width: 440px)
+			max-width: 320px
+		.lSSlideWrapper
+			overflow: visible
+		.lSSlideOuter
+			overflow: visible
+			position: relative
+			&:before,
+			&:after
+				content: ''
+				position: absolute
+				background: rgba(255,255,255,0.7)
+				top: 0
+				height: 100%
+				width: 9999px
+				z-index: 50
+			&:before
+				right: 100%
+			&:after
+				left: 100%
+	&__item
+		border: 2px solid #efeff1
+	&__content
+		padding-top: 101%
+		display: block
+		position: relative
+	&__image
+		max-width: 100%
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		margin: auto
+
+
+.s_clients
+	background: #fafafb
+	h2
+		margin-top: -21px
+	.reviews-slider-wrapper
+		margin: 20px 0 66px
+		position: relative
+		font-size: 16px
+		max-width: 910px
+		blockquote
+			border: none
+			line-height: 2
+			position: relative
+			margin: 30px 60px 15px
+			padding: 0
+			&:before
+				content: ""
+				width: 35px
+				height: 25px
+				background: url(../img/open-quote.png) no-repeat
+				background-size: contain
+				position: absolute
+				top: -20px
+				left: -55px
+			&:after
+				content: ""
+				width: 35px
+				height: 25px
+				background: url(../img/close-quote.png) no-repeat
+				background-size: contain
+				position: absolute
+				right: -55px
+				bottom: -20px
+		strong
+			margin: 0 0 0 60px
+			font-family: 'RobotoSlab', sans-serif
+			font-weight: 700
+			&:after
+				content: ','
+		span
+			font-family: 'RobotoSlab', sans-serif
+			font-weight: 400
+			color: $lightblue
+		.lSSlideWrapper
+			margin-bottom: 10px
+	@media(min-width: 700px)
+		.reviews-slider-wrapper
+			margin: 66px auto
+			blockquote
+				font-size: 16px
+				&:before, &:after
+					width: 40px
+					height: 30px
+			strong
+				margin: 10px 0 0 60px
+	@media screen and (max-width: 767px)
+		.reviews-slider-wrapper
+			blockquote
+				margin: 0 0 15px
+				&:before,
+				&:after
+					display: none
+			strong
+				margin: 0 0 5px
+				display: block
+				&:after
+					display: none
+
+
+.lSSlideOuter .lSPager.lSpg > li a
+	background-color: #fcfafa
+	border: 1px solid #9d9c9b
+	height: 10px
+	width: 10px
+.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a
+	background-color: $darkblue
+	border: none
+
+.s-contact
+	padding-bottom: 105px
+	//without reviews
+	//background: #fff
+	&__input
+		background-color: #fafafb
+	h2
+		margin-top: -26px
+	&__form
+		max-width:  370px
+		margin: 0 auto
+	p
+		text-align: center
+		font-family: 'PTSans', sans-serif
+		font-weight: 400
+		font-size: 16px 
+		color: $lightblue
+		margin: 0 0 40px
