@@ -60,27 +60,30 @@ class EmailRequestsController extends Controller
 		$validator = Validator::make($request->all(), [
 			'name'                 => 'required|string|between:2,255',
 			'email'                => 'required|email',
-			'project_details'          => 'required|string|between:4,2048',
-			'g-recaptcha-response' => 'required|captcha',
+			'project_details'      => 'required|string|between:4,2048',
+//			'g-recaptcha-response' => 'required|captcha',
 		]);
 
 		if ($validator->passes()) {
-		$sp_request = new EmailRequest();
+			$sp_request = new EmailRequest();
 
-		$sp_request->name = $request['name'];
-		$sp_request->type = 'Contact us';
-		$sp_request->user_id = auth()->user() ? auth()->user()->id : null;
-		$sp_request->user_ip = $request->ip();
-		$sp_request->email = $request['email'];
-		$sp_request->phone = isset($request['number']) ? $request['number'] : null;
-		$sp_request->message = $request['project_details'];
+			$sp_request->name = $request['name'];
+			$sp_request->type = 'Contact us';
+			$sp_request->user_id = auth()->user() ? auth()->user()->id : null;
+			$sp_request->user_ip = $request->ip();
+			$sp_request->email = $request['email'];
+			$sp_request->phone = isset($request['number']) ? $request['number'] : null;
+			$sp_request->message = $request['project_details'];
 
-		$sp_request->save();
+			$sp_request->save();
 
-		$this->sendEmail($sp_request);
+			$this->sendEmail($sp_request);
 
 //		return redirect()->back()->with(['success' => 'Your message has been successfully sent']);
-			return response()->json(['success' => 'Your message has been successfully sent']);
+			return response()->json([
+				'success' => 'Your message has been successfully sent',
+				'token' => csrf_token()
+			]);
 		}
 
 		return response()->json(['error' => $validator->errors()->all()]);
