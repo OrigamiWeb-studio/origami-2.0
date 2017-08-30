@@ -22,6 +22,7 @@ const writeToUsForm = new Vue({
                 let receivedData = data.body;
                 if(typeof receivedData.error !== 'undefined'){
                     this.errors = receivedData.error;
+                    this.success = '';
                 }else{
                     this.errors = [];
                     this.formData = {

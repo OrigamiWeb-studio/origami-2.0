@@ -19,9 +19,11 @@ const contactUsForm = new Vue({
                 let receivedData = data.body;
                 if(typeof receivedData.error !== 'undefined'){
                     this.errors = receivedData.error;
+                    this.success = '';
                 }else{
                     this.errors = [];
                     this.formData = {
+                        "_token": receivedData.token,
                         "name": '',
                         "email": '',
                         "phone": '',
@@ -29,6 +31,7 @@ const contactUsForm = new Vue({
                         "g-recaptcha-response": ''
                     };
                     this.success = receivedData.success;
+                    console.log(data);
                 }
             }, function(err){
                 console.log(err);

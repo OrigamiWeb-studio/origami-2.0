@@ -61,7 +61,7 @@ class EmailRequestsController extends Controller
 			'name'                 => 'required|string|between:2,255',
 			'email'                => 'required|email',
 			'project_details'      => 'required|string|between:4,2048',
-//			'g-recaptcha-response' => 'required|captcha',
+			'g-recaptcha-response' => 'required|captcha',
 		]);
 
 		if ($validator->passes()) {
