@@ -1,5 +1,5 @@
 const contactUsForm = new Vue({
-    el: "#write-to-us-form",
+    el: "#contact-form",
     data: {
         formData: {
             "_token": Laravel.csrfToken,
@@ -9,19 +9,27 @@ const contactUsForm = new Vue({
             "project_details": '',
             "g-recaptcha-response": ''
         },
-        errors: []
+        errors: [],
+        success: ''
     },
     methods: {
         sendForm: function(){
             this.formData["g-recaptcha-response"] = document.getElementById("captcha-contact-us").getElementsByClassName("g-recaptcha-response")[0].value;
             this.$http.post('/email-requests/contact-us', this.formData).then(function(data){
-                let receivedData = JSON.parse(data.bodyText);
+                let receivedData = data.body;
                 if(typeof receivedData.error !== 'undefined'){
                     this.errors = receivedData.error;
                 }else{
-                    location.reload();
+                    this.errors = [];
+                    this.formData = {
+                        "name": '',
+                        "email": '',
+                        "phone": '',
+                        "project_details": '',
+                        "g-recaptcha-response": ''
+                    };
+                    this.success = receivedData.success;
                 }
-                console.log(data)
             }, function(err){
                 console.log(err);
             });

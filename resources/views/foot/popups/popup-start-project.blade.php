@@ -99,6 +99,12 @@
 						</div>
 					</div>
 
+					<div class="origami-form__form-group" v-if="success !== ''">
+						<div class="alert alert_success">
+							@{{ success }}
+						</div>
+					</div>
+
 					<div class="origami-form__form-group">
 						{!! $captcha->display('captcha-start-project') !!}
 					</div>

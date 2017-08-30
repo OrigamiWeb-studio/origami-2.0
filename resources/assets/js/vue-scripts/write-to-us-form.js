@@ -12,19 +12,27 @@ const writeToUsForm = new Vue({
             "project_details": '',
             "g-recaptcha-response": ''
         },
-        errors: []
+        errors: [],
+        success: ''
     },
     methods: {
         sendForm: function(){
             this.formData["g-recaptcha-response"] = document.getElementById("captcha-start-project").getElementsByClassName("g-recaptcha-response")[0].value;
             this.$http.post('/email-requests/start-project', this.formData).then(function(data){
-                var receivedData = JSON.parse(data.bodyText);
+                let receivedData = data.body;
                 if(typeof receivedData.error !== 'undefined'){
                     this.errors = receivedData.error;
                 }else{
-                    location.reload();
+                    this.errors = [];
+                    this.formData = {
+                        "name": '',
+                        "email": '',
+                        "phone": '',
+                        "project_details": '',
+                        "g-recaptcha-response": ''
+                    };
+                    this.success = receivedData.success;
                 }
-                console.log(data)
             }, function(err){
                 console.log(err);
             });
