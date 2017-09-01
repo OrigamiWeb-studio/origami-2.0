@@ -128,6 +128,10 @@ a
 		&:last-child
 			margin-right: 0
 
+
+%inline-block
+	display: inline-block
+
 .main-header
 	background: #fff
 	border-bottom: 2px solid $lightgrey
@@ -142,11 +146,16 @@ a
 			border-color: transparent
 		@media screen and (max-width: 991px)
 			display: none
-.logo-wrapper,
-.main-header .main-nav,
-.lang-dropdown
-	display: inline-block
+
+.logo
+	@extend %inline-block
+	padding: 16px 0
+	&__image
+		width: 54px
+		height: 48px
+
 .main-header .main-nav
+	@extend %inline-block
 	vertical-align: top
 	ul
 		margin: 30px 0 30px 44px
@@ -164,6 +173,7 @@ a
 				left: 0
 				pointer-events: none
 .lang-dropdown
+	@extend %inline-block
 	margin: 30px 30px 30px 0
 	position: relative
 	&__caret
@@ -333,7 +343,7 @@ a
 
 
 .main-footer
-	border-top: 1px solid $lightgrey
+	border-top: 2px solid $lightgrey
 	padding: 35px
 	background: #fafafb
 	@media screen and (max-width: 600px)

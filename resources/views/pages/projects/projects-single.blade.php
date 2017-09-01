@@ -151,7 +151,7 @@
 															<a href="{{ asset($screenshot->link) }}">
 																<img class="results-slider__image"
 																	 src="{{ asset($screenshot->link) }}"
-																	 onerror="this.src='{{ asset('img/image.svg') }}';"
+																	 onerror="this.src='{{ asset('/images/image.svg') }}';"
 																	 alt="{{ isset($project->title) ? $project->title : __('Project') }} {{ __('screenshots') }}">
 															</a>
 														</li>

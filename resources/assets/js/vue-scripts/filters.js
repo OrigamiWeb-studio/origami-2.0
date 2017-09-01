@@ -22,19 +22,19 @@ const allProjects = new Vue({
     },
     methods: {
         sendData: function(){
-            this.$http.post('/projects', this.filterData).then(function(data){
-                this.projects = data.data.projects;
-                this.pagination = data.data.pagination;
-            },function(err){
-                console.log(err);
+            axios.post('/projects', this.filterData).then(response => {
+                this.projects = response.data.projects;
+                this.pagination = response.data.pagination;
+            }).catch(err => {
+                console.error(err);
             })
         },
         paginate: function(page){
-            this.$http.post('/projects?page='+page, this.filterData).then(function(data){
-                this.projects = data.data.projects;
-                this.pagination = data.data.pagination;
-            }, function(err){
-                console.log(err);
+            axios.post('/projects?page='+page, this.filterData).then(response => {
+                this.projects = response.data.projects;
+                this.pagination = response.data.pagination;
+            }).catch(err => {
+                console.error(err);
             })
         }
 
