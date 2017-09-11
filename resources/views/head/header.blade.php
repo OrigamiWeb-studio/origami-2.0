@@ -1,16 +1,8 @@
 <header class="main-header">
 	<div class="container">
-		<div class="logo-wrapper">
+		<div class="logo">
 			<a href="{{ route('home') }}">
-				<svg version="1.1"
-				     xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 200 200" width="75px" height="75px">
-					<polygon style="fill:#3F3F3F;" points="180.328,94.989 159.496,74.924 149.914,93.529 "/>
-					<polygon style="fill:#636363;" points="159.434,75.047 114.877,91.385 128.244,136.683 "/>
-					<polygon style="fill:#919090;" points="60.834,34.222 106.133,61.327 83.112,105.141 "/>
-					<polygon style="fill:#444343;" points="19.34,159.513 38.277,149.488 27.509,137.235 "/>
-					<polygon style="fill:#706E6E;" points="51.181,165.058 27.447,137.235 63.777,141.474 "/>
-					<polygon style="fill:#444343;" points="106.115,61.312 128.321,136.56 51.148,165.058 "/>
-				</svg>
+				<img class="logo__image" src="{{ asset('/images/logo.svg') }}" alt="Origami Web-Studio logo">
 			</a>
 		</div>
 

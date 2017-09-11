@@ -15,8 +15,8 @@ const contactUsForm = new Vue({
     methods: {
         sendForm: function(){
             this.formData["g-recaptcha-response"] = document.getElementById("captcha-contact-us").getElementsByClassName("g-recaptcha-response")[0].value;
-            this.$http.post('/email-requests/contact-us', this.formData).then(function(data){
-                let receivedData = data.body;
+            axios.post('/email-requests/contact-us', this.formData).then(response => {
+                let receivedData = response.data;
                 if(typeof receivedData.error !== 'undefined'){
                     this.errors = receivedData.error;
                     this.success = '';
@@ -31,10 +31,9 @@ const contactUsForm = new Vue({
                         "g-recaptcha-response": ''
                     };
                     this.success = receivedData.success;
-                    console.log(data);
                 }
-            }, function(err){
-                console.log(err);
+            }).catch(err => {
+                console.error(err);
             });
         }
     }

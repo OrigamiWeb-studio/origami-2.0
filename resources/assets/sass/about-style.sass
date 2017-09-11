@@ -3,16 +3,14 @@
 //Libs
 @import "../../../node_modules/lightslider/dist/css/lightslider"
 
-.s_about
-	margin-bottom: 60px
-
-.who-we-are-wrapper
-	margin: 11px 0 40px
-	h2
-		margin: 0 0 20px
-		text-align: center
-		font-size: 36px
-	p
+.who-we-are
+	margin: 0 -15px
+	columns: 2
+	@media screen and (max-width: 670px)
+		columns: 1
+		margin: 0
+	&__paragraph
+		color: $lightblue
 		margin: 0
 		font-size: 16px
 		line-height: 1.6
@@ -20,34 +18,108 @@
 		@media screen and (max-width: 670px)
 			padding: 0
 			margin: 0 0 10px
-.who-we-are-text
-	columns: 2
-	margin: 0 -15px
-	@media screen and (max-width: 670px)
-		columns: 1
+
+
+.about-section
+	&__title
+		font-size: 36px
+		font-weight: 700
+		color: $darkblue
+		margin: 0 0
+		font-family: "RobotoSlab", sans-serif
+		text-transform: uppercase
+		text-align: center
+		margin-bottom: 48px
+		@media screen and (max-width: 767px)
+			font-size: 28px
+
+.development-stages
+	&__list
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+	&__item
+		background-color: #fff
+		width: calc( 50% - 15px )
+		border: 2px solid #efeff1
+		margin-bottom: 30px
+		counter-increment: stage-counter
+		position: relative
+		min-height: 166px
+		overflow: hidden
+		padding:
+			left: 203px
+			top: 30px
+			bottom: 30px
+			right: 35px
+		@media screen and (max-width: 991px) and (min-width: 767px), screen and (max-width: 560px)
+			padding-left: 25px
+			min-height: 0
+		@media screen and (max-width: 767px)
+			width: 100%
+		&:last-child
+			margin: 0 auto
+		&:before
+			content: counter(stage-counter)
+			position: absolute
+			top: 0
+			left: 0
+			display: flex
+			justify-content: center
+			align-items: center
+			height: 100%
+			width: 168px
+			border-right: 2px solid #efeff1
+			font-family: 'RobotoSlab', sans-serif
+			font-size: 85px
+			font-weight: 700
+			color: $lightblue
+			margin-right: 35px
+			@media screen and (max-width: 991px) and (min-width: 767px), screen and (max-width: 560px)
+				height: 75px
+				width: 75px
+				border-right: none
+				font-size: 50px
+	&__name
+		font-family: "RobotoSlab", sans-serif
+		font-weight: 700
+		font-size: 16px
+		margin: 0 0 20px
+		text-transform: uppercase
+		@media screen and (max-width: 991px) and (min-width: 767px), screen and (max-width: 560px)
+			margin-left: 40px
+	&__description
+		color: $lightblue
 		margin: 0
 
+
+.s-about
+	margin-bottom: 60px
+	&__who-we-are
+		margin:
+			top: 19px
+			bottom: 60px
+	&__development-stages
+		margin-bottom: 67px
+
 .our-clients
-	&__title
-		font-size: 24px
-		text-align: center
-		margin: 0 0 25px
 	&__list
 		font-size: 0
-		margin-bottom: 10px
 	&__item
-		text-align: center
-		padding: 0 10px
-		cursor: auto !important
+		background-color: #fff
+		border: 2px solid #efeff1
 	&__link
-		filter: grayscale(100%)
-		transition: all .2s ease
-		&:hover
-			filter: grayscale(0%)
-		@media screen and (max-width: 991px)
-			filter: grayscale(0%)
+		padding-top: 100%
+		display: block
+		position: relative
 	&__image
-		max-width: 100%
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		margin: auto
+		max-width: 80%
 	.lSSlideOuter .lSPager.lSpg>li
 		a
 			background-color: #fcfafa
