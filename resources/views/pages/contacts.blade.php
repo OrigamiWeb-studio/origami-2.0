@@ -21,18 +21,18 @@
 					{{--<h2>{{ __('Let\'s do this') }}</h2>--}}
 					<h2>{{ __('Contact us') }}</h2>
 					<ul>
-						<li>
-							<strong>Skype</strong>
-							<a href="#">origamiwebstudio</a>
-						</li>
+						{{--<li>--}}
+							{{--<strong>Skype</strong>--}}
+							{{--<a href="#">origamiwebstudio</a>--}}
+						{{--</li>--}}
 						<li>
 							<strong>Email</strong>
-							<a href="mailto:info@origami.team">info@origami.team</a>
+							<a href="mailto:contact@origami.team">contact@origami.team</a>
 						</li>
-						<li>
-							<strong>{{ __('Phone number') }}</strong>
-							<span>+380 (96) 724 28 23</span>
-						</li>
+						{{--<li>--}}
+							{{--<strong>{{ __('Phone number') }}</strong>--}}
+							{{--<span>+380 (96) 724 28 23</span>--}}
+						{{--</li>--}}
 					</ul>
 					{{--<a href="#" class="btn btn-submit" data-toggle="modal" data-target="#contact-modal">{{ __('We will contact you') }}</a>--}}
 				</div>
