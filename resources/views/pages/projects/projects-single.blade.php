@@ -56,19 +56,21 @@
 												{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
 											{{--</a>--}}
 										{{--</li>--}}
-										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
-												<i class="fa fa-pencil" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li class="project-item__management-item">
-											<form action="">
-												{{ csrf_field() }}
-												<button class="project-item__management-icon">
-													<i class="fa fa-trash-o" aria-hidden="true"></i>
-												</button>
-											</form>
-										</li>
+										@role('admin')
+											<li class="project-item__management-item">
+												<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
+													<i class="fa fa-pencil" aria-hidden="true"></i>
+												</a>
+											</li>
+											<li class="project-item__management-item">
+												<form action="">
+													{{ csrf_field() }}
+													<button class="project-item__management-icon">
+														<i class="fa fa-trash-o" aria-hidden="true"></i>
+													</button>
+												</form>
+											</li>
+										@endrole()
 									</ul>
 
 								</div>
@@ -115,12 +117,14 @@
 
 											@isset($project->stages)
 												<div class="col-sm-4 col-sm-offset-1">
-													<h3 class="project-content__sub-title">{{ __('Project components') }}</h3>
+													<h3 class="project-content__sub-title">{{ __('Stages of development') }}</h3>
 													<ul class="tag-list">
 
-														@php $iterator = 1 @endphp
-														@foreach($project->stages->sortBy('id') as $stage)
-															<li class="tag-list__item">{{ $iterator++ . '. ' . $stage->title }}</li>
+														@foreach($project->stages->sortBy('order') as $key => $stage)
+															<li class="tag-list__item">
+																<span title="{{ $stage->translateOrDefault(app()->getLocale())->description }}">
+																	{{ $key + 1 . '. ' . $stage->translateOrDefault(app()->getLocale())->title }}</span>
+															</li>
 														@endforeach
 
 													</ul>

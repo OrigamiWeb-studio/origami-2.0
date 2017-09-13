@@ -11,7 +11,7 @@ class ProjectStage extends Model
 	
 	public $table = 'project_stages';
 	public $translationModel = ProjectStageTranslation::class;
-	public $translatedAttributes = ['title'];
+	public $translatedAttributes = ['title', 'description'];
 	
 	public function curator()
 	{
