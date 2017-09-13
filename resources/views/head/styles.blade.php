@@ -2,11 +2,11 @@
   @foreach($styles as $style)
     @if(is_array($style))
       <link rel="stylesheet" type="text/css" media="{{ $style['media'] ? $style['media'] : 'all' }}"
-            href="{{ asset($style['link'] ? $style['link'] : '') }}">
+            href="{{ mix($style['link'] ? $style['link'] : '') }}">
     @else
-      <link rel="stylesheet" type="text/css" media="all" href="{{ asset($style) }}">
+      <link rel="stylesheet" type="text/css" media="all" href="{{ mix($style) }}">
     @endif
   @endforeach
 @else
-  <link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/common.css') }}">
+  <link rel="stylesheet" type="text/css" media="all" href="{{ mix('css/common.css') }}">
 @endif

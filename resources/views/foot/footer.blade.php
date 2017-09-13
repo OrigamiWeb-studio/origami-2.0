@@ -13,18 +13,13 @@
 			<div class="soc-icons">
 				<ul>
 					<li>
-						<a href="https://vk.com/origamiwebstudio">
+						<a target="_blank" href="https://vk.com/origamiwebstudio">
 							<i class="fa fa-vk" aria-hidden="true"></i>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<i class="fa fa-dribbble" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fa fa-behance" aria-hidden="true"></i>
+						<a target="_blank" href="https://www.facebook.com/groups/746999255478272">
+							<i class="fa fa-facebook" aria-hidden="true"></i>
 						</a>
 					</li>
 				</ul>

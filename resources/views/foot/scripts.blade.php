@@ -9,8 +9,10 @@
 
 @if(isset($scripts) && count($scripts) > 0)
   @foreach($scripts as $script)
-    <script type="text/javascript" src="{{ asset($script) }}"></script>
+    <script type="text/javascript" src="{{ mix($script) }}"></script>
   @endforeach
+@else
+  <script type="text/javascript" src="{{ mix('js/common.js') }}"></script>
 @endif
 
 {!! $captcha->scriptWithCallback(['captcha-contact-us', 'captcha-start-project']) !!}

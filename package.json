@@ -49,6 +49,7 @@
     "jcf": "^1.2.3",
     "lightslider": "^1.1.6",
     "magnific-popup": "^1.1.0",
-    "vue-scrollto": "^2.7.5"
+    "vue-scrollto": "^2.7.5",
+    "vue-slider-component": "^2.4.0"
   }
 }

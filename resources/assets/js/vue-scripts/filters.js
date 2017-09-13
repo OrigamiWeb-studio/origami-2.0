@@ -1,5 +1,10 @@
-const allProjects = new Vue({
+vueSlider = require('vue-slider-component');
+
+new Vue({
     el: '.s_allprojects',
+    components: {
+        vueSlider
+    },
     data: {
         searchField: false,
         filterData: {
@@ -40,7 +45,7 @@ const allProjects = new Vue({
 
     },
     mounted: function(){
-        var self = this;
+        let self = this;
         window.addEventListener('click', function(e){
             if(!e.target.parentNode.classList.contains('search-wrapper'))
                 self.searchField = false;

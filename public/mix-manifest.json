@@ -1,14 +1,14 @@
 {
-    "/js/home-scripts.js": "/js/home-scripts.js",
-    "/css/about-style.css": "/css/about-style.css",
-    "/css/common.css": "/css/common.css",
-    "/css/contacts-style.css": "/css/contacts-style.css",
-    "/css/home-style.css": "/css/home-style.css",
-    "/css/project-style.css": "/css/project-style.css",
-    "/css/projects-style.css": "/css/projects-style.css",
-    "/js/project-scripts.js": "/js/project-scripts.js",
-    "/js/about-scripts.js": "/js/about-scripts.js",
-    "/js/projects-scripts.js": "/js/projects-scripts.js",
-    "/js/contact-scripts.js": "/js/contact-scripts.js",
-    "/js/common.js": "/js/common.js"
+    "/js/home-scripts.js": "/js/home-scripts.js?id=7afc2cae846b78f4f983",
+    "/css/about-style.css": "/css/about-style.css?id=5c7532ec61f5f8bb189b",
+    "/css/common.css": "/css/common.css?id=94d53c76103086402736",
+    "/css/contacts-style.css": "/css/contacts-style.css?id=e674c6373b3548e3b491",
+    "/css/home-style.css": "/css/home-style.css?id=02bd360dff6a8812a019",
+    "/css/project-style.css": "/css/project-style.css?id=f1189bbfda6b583c36b3",
+    "/css/projects-style.css": "/css/projects-style.css?id=03e65c7564cf03a2279b",
+    "/js/project-scripts.js": "/js/project-scripts.js?id=1ebb90f2de4977cbf4be",
+    "/js/projects-scripts.js": "/js/projects-scripts.js?id=2fa3c72a26d1b95beabd",
+    "/js/about-scripts.js": "/js/about-scripts.js?id=b3bc919c0b9f1ec466ba",
+    "/js/contact-scripts.js": "/js/contact-scripts.js?id=d7c49f32aca775838f60",
+    "/js/common.js": "/js/common.js?id=c2404cbbc393b05d40e8"
 }
