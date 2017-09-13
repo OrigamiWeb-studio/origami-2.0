@@ -3,6 +3,7 @@
 @section('content')
 
 	<main>
+
 		<div class="breadcrumbs">
 			<div class="container">
 				<ul>
@@ -15,10 +16,10 @@
 				</ul>
 			</div>
 		</div>
+
 		<section class="s_contacts">
 			<div class="container">
 				<div class="our-contacts">
-					{{--<h2>{{ __('Let\'s do this') }}</h2>--}}
 					<h2>{{ __('Contact us') }}</h2>
 					<ul>
 						{{--<li>--}}
@@ -38,6 +39,7 @@
 				</div>
 			</div>
 		</section>
+
 	</main>
 
 	<div class="modal fade origami-modal" id="contact-modal" tabindex="-1" role="dialog">
