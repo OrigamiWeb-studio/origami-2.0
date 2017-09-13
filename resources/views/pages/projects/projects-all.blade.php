@@ -99,9 +99,7 @@
 										</label>
 									@endfor
 								</div>
-
-								{{--Hide untill it will be works--}}
-
+								{{--<vue-slider></vue-slider>--}}
 								{{--<div class="sub_block">--}}
 									{{--<h3>{{ __('Price') }}</h3>--}}
 									{{--<label class="range_input">--}}

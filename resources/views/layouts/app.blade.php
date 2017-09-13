@@ -8,11 +8,12 @@
 	@include('head.styles')
 </head>
 <body>
-@include('head.header')
+<div class="content">
+	@include('head.header')
+	@yield('content')
+	@include('foot.footer')
+</div>
 
-@yield('content')
-
-@include('foot.footer')
 @include('foot.styles')
 @include('foot.scripts')
 </body>
