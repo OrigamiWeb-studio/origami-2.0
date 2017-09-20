@@ -51,12 +51,12 @@
 									</div>
 
 									<ul class="project-item__management-icons">
-										{{--<li class="project-item__management-item">--}}
-											{{--<a class="project-item__management-icon" href="#">--}}
-												{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
-											{{--</a>--}}
-										{{--</li>--}}
 										@role('owner')
+											<li class="project-item__management-item">
+												<a class="project-item__management-icon" href="{{ route('project-tickets', ['project_id' => $project->id]) }}">
+													<i class="fa fa-ticket" aria-hidden="true"></i>
+												</a>
+											</li>
 											<li class="project-item__management-item">
 												<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
 													<i class="fa fa-pencil" aria-hidden="true"></i>
