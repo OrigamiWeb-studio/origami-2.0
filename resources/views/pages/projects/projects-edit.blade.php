@@ -22,6 +22,9 @@
 			<label for="client">{{ __('Client') }}</label>
 
 			<select name="client" id="client">
+				<option value="0">
+					{{ __('Anonymous customer') }}
+				</option>
 				@foreach($clients as $client)
 					<option value="{{ $client->id }}" {{ $project->client_id === $client->id ? 'selected' : '' }}>
 						{{ $client->profile->name }}
