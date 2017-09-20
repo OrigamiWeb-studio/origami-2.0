@@ -88,11 +88,11 @@ Route::get('/contacts', 'ContactsController@index')
 #Team
 #
 #
-Route::get('/team', 'TeamController@allDevelopers')
-	->name('team');
-Route::get('/developer/{id}', 'TeamController@singleDeveloper')
+Route::get('/developers', 'TeamController@allDevelopers')
+	->name('developers');
+Route::get('/developers/{surname}', 'TeamController@singleDeveloper')
 	->name('developer')
-	->where('id', '[0-9]+');
+	->where('surname', '[a-z]+');
 #-----------------------------------------------------------------------------------
 #Email requests
 #
