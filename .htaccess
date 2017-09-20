@@ -1,6 +1,22 @@
 <IfModule mod_rewrite.c>
+
+		#SERVER
+#    RewriteEngine On
+#
+#    RewriteCond %{HTTP_HOST} ^origami\.team$
+#    RewriteCond %{REQUEST_URI} !^/public/
+#    RewriteRule (.*) /public/$1
+#
+#    RewriteEngine On
+#
+#    RewriteCond %{HTTP_HOST} ^keepmoving\.origami\.team$
+#    RewriteCond %{REQUEST_URI} !^/keepmoving/
+#    RewriteRule (.*) /public/$1
+
+    #LOCALHOST
     RewriteEngine On
-    RewriteRule ^(.*)$ public/$1 [L]
+    RewriteRule (.*) /public/$1
+
 </IfModule>
 
 # Включаем кэш в браузерах посетителей
