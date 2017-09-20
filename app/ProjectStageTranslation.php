@@ -8,5 +8,5 @@ class ProjectStageTranslation extends Model
 {
 	public $table = 'project_stages_trans';
 	public $timestamps = false;
-	public $fillable = ['title'];
+	public $fillable = ['title', 'description'];
 }

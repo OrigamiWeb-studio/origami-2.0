@@ -13,7 +13,7 @@
 						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<span>{{ $project->title }}</span>
+						<span>{{ $project->translateOrDefault(app()->getLocale())->title }}</span>
 					</li>
 				</ul>
 			</div>
@@ -23,7 +23,7 @@
 			<div class="container">
 
 				<header>
-					<h1>{{ $project->title }} <span>({{ $project->created_at->year }})</span></h1>
+					<h1>{{ $project->translateOrDefault(app()->getLocale())->title }} <span>({{ $project->created_at->year }})</span></h1>
 				</header>
 
 				<div class="project-content">
@@ -31,18 +31,18 @@
 
 						<aside class="col-md-3">
 
-							@isset($project->title)
+							@isset($project->translateOrDefault(app()->getLocale())->title)
 								<div class="block project-content__project-item project-item hidden-sm hidden-xs">
 
 									@isset($project->cover)
 										<figure class="project-item__logo-wrapper">
-											<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+											<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->translateOrDefault(app()->getLocale())->title }}">
 										</figure>
 									@endisset
 
 									<div class="project-item__description">
 
-										<span class="project-item__title">{{ $project->title }}</span>
+										<span class="project-item__title">{{ $project->translateOrDefault(app()->getLocale())->title }}</span>
 
 										@isset($project->category->translateOrDefault(app()->getLocale())->title)
 											<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
@@ -56,7 +56,7 @@
 												{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
 											{{--</a>--}}
 										{{--</li>--}}
-										@role('admin')
+										@role('owner')
 											<li class="project-item__management-item">
 												<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
 													<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -98,7 +98,7 @@
 								@isset($project->main_image)
 									<figure class="project-description__figure-block">
 										<img class="project-description__main-image" src="{{ asset($project->main_image) }}"
-										     alt="{{ $project->title }}">
+										     alt="{{ $project->translateOrDefault(app()->getLocale())->title }}">
 									</figure>
 								@endisset
 

@@ -31,7 +31,7 @@
 							<li style="background: #EAEAEA; margin-bottom: 2px">
 								<a href="{{ route('ticket', ['id' => $ticket->id]) }}">
 									<span>{{ $ticket->title }}</span>
-									@role('admin')
+									@role('owner')
 									<span>({{ $ticket->total_time }} min. = {{ $ticket->total_price }}$)</span>
 									@endrole()
 									<span> - {{ $ticket->developer->profile->name }}</span>

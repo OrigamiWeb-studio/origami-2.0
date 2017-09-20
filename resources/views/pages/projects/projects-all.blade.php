@@ -64,8 +64,8 @@
 							<div class="sort_by">
 								{{--<span>{{ __('Sort by') }}:</span>--}}
 								{{--<select class="orderby" name="orderby" id="orderby">--}}
-									{{--<option value="a-z">{{ __('A-Z') }}</option>--}}
-									{{--<option value="z-a">{{ __('Z-A') }}</option>--}}
+								{{--<option value="a-z">{{ __('A-Z') }}</option>--}}
+								{{--<option value="z-a">{{ __('Z-A') }}</option>--}}
 								{{--</select>--}}
 								<div v-bind:class="{opened: searchField}" class="search-wrapper">
 									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="filterData.search" required>
@@ -101,12 +101,12 @@
 								</div>
 								{{--<vue-slider></vue-slider>--}}
 								{{--<div class="sub_block">--}}
-									{{--<h3>{{ __('Price') }}</h3>--}}
-									{{--<label class="range_input">--}}
-										{{--<input type="range" value="30,80" multiple>--}}
-										{{--<span class="pull-left">{{ __('Cheap') }}</span>--}}
-										{{--<span class="pull-right">{{ __('Expencive') }}</span>--}}
-									{{--</label>--}}
+								{{--<h3>{{ __('Price') }}</h3>--}}
+								{{--<label class="range_input">--}}
+								{{--<input type="range" value="30,80" multiple>--}}
+								{{--<span class="pull-left">{{ __('Cheap') }}</span>--}}
+								{{--<span class="pull-right">{{ __('Expencive') }}</span>--}}
+								{{--</label>--}}
 								{{--</div>--}}
 
 								<div class="sub_block">
@@ -125,29 +125,29 @@
 
 							<div class="projects">
 
-                                <div class="block project-item projects__project-item" v-for="project in projects">
-                                    <a v-bind:href="'{{ url('/project') }}/' + project.id ">
-                                        <figure class="project-item__logo-wrapper">
-                                            <img  class="project-item__logo" v-bind:src='project.cover' v-bind:alt="project.title">
-                                        </figure>
-                                    </a>
-                                    <div class="project-item__description">
-                                        <a v-bind:href="'{{ url('/project') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
-                                        <span class="project-item__category">#@{{ project.category_title }}</span>
-                                    </div>
-                                </div>
+								<div class="block project-item projects__project-item" v-for="project in projects">
+									<a v-bind:href="'{{ url('/projects') }}/' + project.id ">
+										<figure class="project-item__logo-wrapper">
+											<img class="project-item__logo" v-bind:src='project.cover' v-bind:alt="project.title">
+										</figure>
+									</a>
+									<div class="project-item__description">
+										<a v-bind:href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
+										<span class="project-item__category">#@{{ project.category_title }}</span>
+									</div>
+								</div>
 
 							</div>
 
 							<ul v-if="pagination.page_last>1" class="pagination projects_content__pagination">
-                                <li class="pagination__item" v-for="(item, index) in pagination.page_last">
-                                    <template v-if="pagination.page_current == (index+1)">
-                                        <span class="pagination__index pagination__index_active">@{{ index+1 }}</span>
-                                    </template>
-                                    <template v-else>
-                                        <a v-bind:href="'/projects?page='+(index+1)" @click.prevent="paginate((index+1))" class="pagination__index">@{{ index+1 }}</a>
-                                    </template>
-                                </li>
+								<li class="pagination__item" v-for="(item, index) in pagination.page_last">
+									<template v-if="pagination.page_current == (index+1)">
+										<span class="pagination__index pagination__index_active">@{{ index+1 }}</span>
+									</template>
+									<template v-else>
+										<a v-bind:href="'/projects?page='+(index+1)" @click.prevent="paginate((index+1))" class="pagination__index">@{{ index+1 }}</a>
+									</template>
+								</li>
 							</ul>
 						</div>
 					</div>
