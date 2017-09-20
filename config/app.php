@@ -1,6 +1,13 @@
 <?php
 
 return [
+
+	'notification_emails' => [
+		'sanek.solodovnikov.94@gmail.com',
+		'victor58@ukr.net',
+		'transcend0808@gmail.com',
+		'porsche839@gmail.com'
+	],
 	
 	/*
 	|--------------------------------------------------------------------------
