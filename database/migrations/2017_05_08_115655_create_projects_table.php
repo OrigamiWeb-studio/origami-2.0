@@ -10,7 +10,7 @@ class CreateProjectsTable extends Migration
 	{
 		Schema::create('projects', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('client_id');
+			$table->integer('client_id')->nullable();
 			$table->integer('category_id');
 			$table->integer('current_stage_id');
 			$table->string('link')->nullable();
