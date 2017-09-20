@@ -63,7 +63,7 @@
 												</a>
 											</li>
 											<li class="project-item__management-item">
-												<form action="">
+												<form action="{{ route('project-delete-submit', ['id' => $project->id]) }}">
 													{{ csrf_field() }}
 													<button class="project-item__management-icon">
 														<i class="fa fa-trash-o" aria-hidden="true"></i>

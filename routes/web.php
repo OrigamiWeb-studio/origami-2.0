@@ -55,6 +55,7 @@ Route::post('/projects/{id}/edit', 'ProjectsController@editProject')
 
 //TODO change to DELETE method
 Route::get('/projects/{id}/delete', 'ProjectsController@deleteProject')
+	->where('id', '[0-9]+')
 	->name('project-delete-submit')
 	->middleware(['role:owner']);
 
