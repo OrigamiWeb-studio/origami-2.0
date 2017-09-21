@@ -15,20 +15,15 @@ class ProjectEditRequest extends FormRequest
 	{
 		$rules = [
 			'title'             => 'required|string|between:4,256',
-			'client'            => 'required|integer',
-			'category'          => 'required|integer',
-			'stage'             => 'required|integer',
-			'stages'            => 'required|array',
-			'stages.*'          => 'integer',
-			'slider_images'     => 'array',
+			'client'            => 'required',
+			'category'          => 'required',
+			'stage'             => 'required',
+			'stages'            => 'required',
 			'slider_images.*'   => 'image|mimes:jpeg,bmp,png|max:2000',
 			'cover'             => 'image',
 			'main_image'        => 'image',
-			'developers'        => 'required|array',
-			'developers.*'      => 'integer',
-			'link'              => 'string',
-			'review'            => 'string',
-			'description'       => 'string|between:4,4096',
+			'developers'        => 'required',
+			'description'       => 'required|between:4,4096',
 			'short_description' => 'required|string|between:4,512'
 		];
 		

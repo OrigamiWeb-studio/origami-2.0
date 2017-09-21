@@ -84,14 +84,14 @@
 
 						<div class="col-md-9">
 
-							@if(session('success'))
-								<div class="block project-content__block">
-									<h3 class="project-content__sub-title">
-										Success
-									</h3>
-									<p class="paragraph">{{ session('success') }}</p>
-								</div>
-							@endif
+							{{--@if(session('success'))--}}
+							{{--<div class="block project-content__block">--}}
+							{{--<h3 class="project-content__sub-title">--}}
+							{{--Success--}}
+							{{--</h3>--}}
+							{{--<p class="paragraph">{{ session('success') }}</p>--}}
+							{{--</div>--}}
+							{{--@endif--}}
 
 							<div class="block project-content__block project-description">
 
@@ -111,7 +111,7 @@
 													{{ __('About project') }} {{ $project->title }}
 												</h3>
 												<p class="paragraph">
-													{{ $project->short_description }}
+													{{ $project->translateOrDefault(app()->getLocale())->short_description }}
 												</p>
 											</div>
 
@@ -120,10 +120,11 @@
 													<h3 class="project-content__sub-title">{{ __('Stages of development') }}</h3>
 													<ul class="tag-list">
 
-														@foreach($project->stages->sortBy('order') as $key => $stage)
+														@php $iterator = 1; @endphp
+														@foreach($project->stages->sortBy('order') as $stage)
 															<li class="tag-list__item">
 																<span title="{{ $stage->translateOrDefault(app()->getLocale())->description }}">
-																	{{ $key + 1 . '. ' . $stage->translateOrDefault(app()->getLocale())->title }}</span>
+																	{{ $iterator++ . '. ' . $stage->translateOrDefault(app()->getLocale())->title }}</span>
 															</li>
 														@endforeach
 
@@ -170,7 +171,7 @@
 											{{ __('Summation') }}
 										</h3>
 
-										<p class="paragraph">{{ $project->description }}</p>
+										<p class="paragraph">{{ $project->translateOrDefault(app()->getLocale())->description }}</p>
 									@endisset
 
 								</div>

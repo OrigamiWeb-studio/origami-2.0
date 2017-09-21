@@ -109,8 +109,7 @@
 		<div class="form-group">
 			<label for="link">{{ __('Link') }}</label>
 
-			<input type="text" placeholder="{{ __('Link') }}" name="link" id="link"
-			       value="{{ empty(old('link')) ? $project->link : old('link') }}">
+			<input placeholder="{{ __('Link') }}" name="link" id="link" value="{{ empty(old('link')) ? $project->link : old('link') }}">
 
 			@if($errors->has('link'))
 				<p class="help-block text-danger">{{ $errors->first('link') }}</p>
@@ -154,7 +153,7 @@
 		<div class="form-group">
 			<label for="visible">{{ __('Visible') }}</label>
 
-			<input type="checkbox" name="visible" id="visible" {{ old('visible') === 'on' ? 'checked' : '' }}>
+			<input type="checkbox" name="visible" id="visible" {{ old('visible') === 'on' || $project->visible == true ? 'checked' : '' }}>
 
 			@if($errors->has('visible'))
 				<p class="help-block text-danger">{{ $errors->first('visible') }}</p>
@@ -165,7 +164,7 @@
 		<div class="form-group">
 			<label for="us_choice">{{ __('Us choice') }}</label>
 
-			<input type="checkbox" name="us_choice" id="us_choice" {{ old('us_choice') === 'on' ? 'checked' : '' }}>
+			<input type="checkbox" name="us_choice" id="us_choice" {{ old('us_choice') === 'on' || $project->us_choice == true ? 'checked' : '' }}>
 
 			@if($errors->has('us_choice'))
 				<p class="help-block text-danger">{{ $errors->first('us_choice') }}</p>
