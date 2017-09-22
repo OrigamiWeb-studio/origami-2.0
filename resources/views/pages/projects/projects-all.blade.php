@@ -61,7 +61,7 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-8">
-							<div class="sort_by">
+							<div class="sort-by">
 								{{--<span>{{ __('Sort by') }}:</span>--}}
 								{{--<select class="orderby" name="orderby" id="orderby">--}}
 									{{--<option value="a-z">{{ __('A-Z') }}</option>--}}
@@ -71,6 +71,7 @@
 									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="filterData.search" required>
 									<button type="submit" @click.prevent="searchField = !searchField" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
 								</div>
+								<a href="{{ route('project-add') }}" class="btn sort-by__add-project">{{ __('Add a project') }}</a>
 							</div>
 						</div>
 					</div>

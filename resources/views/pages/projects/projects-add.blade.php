@@ -1,6 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
+	<main>
+		<div class="breadcrumbs">
+			<div class="container">
+				<ul>
+					<li>
+						<a href="{{ route('home') }}">{{ __('Home') }}</a>
+					</li>
+					<li>
+						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
+					</li>
+					<li>
+						<span>{{ __('New project') }}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<section class="s-project-add">
+			<div class="container">
+				<header>
+					<h1>{{ __('Add a new project') }}</h1>
+				</header>
+				<div class="project-content" id="project-add">
+					<div class="row">
+						<aside class="col-md-3">
+							<div class="block project-content__project-item project-item hidden-sm hidden-xs">
+
+								<figure class="project-item__logo-wrapper">
+									<img class="project-item__logo" src="" onerror="this.src='/images/dick.png'; this.className+='project-item__logo_error'; this.alt='error'" alt="">
+								</figure>
+
+								<div class="project-item__description">
+
+									<span class="project-item__title">@{{ test }}</span>
+
+									<span class="project-item__category">#categorys</span>
+
+								</div>
+
+								<ul class="project-item__management-icons">
+									<li class="project-item__management-item">
+										<form action="">
+											{{ csrf_field() }}
+											<button class="project-item__management-icon">
+												<i class="fa fa-upload" aria-hidden="true"></i>
+											</button>
+										</form>
+									</li>
+								</ul>
+
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
 
 	<form action="{{ route('project-add-submit') }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}

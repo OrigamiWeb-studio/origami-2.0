@@ -6,12 +6,9 @@
 
 
 // Components
-@import "components/_project-item.sass"
-@import "components/_pagination.sass"
-
-.block
-	border: 2px solid $lightgrey
-	background: #fff
+@import "components/project-item"
+@import "components/pagination"
+@import "components/block"
 
 .custom_checkbutton
 	display: block
@@ -78,7 +75,7 @@
 	@media screen and (max-width: 991px) and (min-width: 768px)
 		text-align: right
 	
-.sort_by
+.sort-by
 	text-align: right
 	.jcf-select
 		border: 2px solid $lightgrey
@@ -99,6 +96,8 @@
 		margin-top: 20px
 	@media screen and (max-width: 767px)
 		text-align: left
+	&__add-project
+		margin-left: 5px
 .jcf-select-orderby
 	.jcf-select-drop-content
 		border: 2px solid $lightgrey

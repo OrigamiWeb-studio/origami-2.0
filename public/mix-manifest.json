@@ -1,14 +1,16 @@
 {
-    "/js/home-scripts.js": "/js/home-scripts.js?id=7afc2cae846b78f4f983",
-    "/css/about-style.css": "/css/about-style.css?id=5c7532ec61f5f8bb189b",
-    "/css/common.css": "/css/common.css?id=94d53c76103086402736",
-    "/css/contacts-style.css": "/css/contacts-style.css?id=e674c6373b3548e3b491",
-    "/css/home-style.css": "/css/home-style.css?id=02bd360dff6a8812a019",
-    "/css/project-style.css": "/css/project-style.css?id=f1189bbfda6b583c36b3",
-    "/css/projects-style.css": "/css/projects-style.css?id=03e65c7564cf03a2279b",
-    "/js/project-scripts.js": "/js/project-scripts.js?id=1ebb90f2de4977cbf4be",
-    "/js/projects-scripts.js": "/js/projects-scripts.js?id=2fa3c72a26d1b95beabd",
-    "/js/about-scripts.js": "/js/about-scripts.js?id=b3bc919c0b9f1ec466ba",
-    "/js/contact-scripts.js": "/js/contact-scripts.js?id=d7c49f32aca775838f60",
-    "/js/common.js": "/js/common.js?id=c2404cbbc393b05d40e8"
+    "/js/home-scripts.js": "/js/home-scripts.js?id=1a6ea9e60d313ac41625",
+    "/css/about-style.css": "/css/about-style.css?id=f255e7a46db60c3a5509",
+    "/css/common.css": "/css/common.css?id=8fe72d0fc1a92d5e2c56",
+    "/css/contacts-style.css": "/css/contacts-style.css?id=d23723d365c53acffa29",
+    "/css/home-style.css": "/css/home-style.css?id=89a68351ec6ffb583314",
+    "/css/project-style.css": "/css/project-style.css?id=fbd210d35bec5b1606c5",
+    "/css/projects-style.css": "/css/projects-style.css?id=71e0d023d317bc7386f4",
+    "/css/project-add-style.css": "/css/project-add-style.css?id=00622e4eb08a2aa3ad2d",
+    "/js/project-scripts.js": "/js/project-scripts.js?id=d06b06529f17c126426f",
+    "/js/projects-scripts.js": "/js/projects-scripts.js?id=8a4746b235c98bd42cb8",
+    "/js/about-scripts.js": "/js/about-scripts.js?id=6d7e4cf2e9bc94b7b7a5",
+    "/js/project-add-scripts.js": "/js/project-add-scripts.js?id=e14775cf1e03e8868536",
+    "/js/contact-scripts.js": "/js/contact-scripts.js?id=646ec7bde4f961fec60c",
+    "/js/common.js": "/js/common.js?id=de5158a59d8389996972"
 }
