@@ -170,7 +170,7 @@
 					}
 				</style>
 				<ul class="test-screenshots">
-					@foreach($project->screenshots as $screenshot)
+					@foreach($project->screenshots->sortBy('order_') as $screenshot)
 						<li>
 							<img src="{{ asset($screenshot->link) }}" alt="#">
 							<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="">[ X ]</a>
