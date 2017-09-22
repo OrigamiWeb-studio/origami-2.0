@@ -108,7 +108,7 @@
 
 											<div class="col-sm-7">
 												<h3 class="project-content__sub-title">
-													{{ __('About project') }} {{ $project->title }}
+													{{ __('About project') }} {{ $project->translateOrDefault(app()->getLocale())->title }}
 												</h3>
 												<p class="paragraph">
 													{{ $project->translateOrDefault(app()->getLocale())->short_description }}

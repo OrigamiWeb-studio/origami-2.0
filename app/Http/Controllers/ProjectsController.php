@@ -339,4 +339,16 @@ class ProjectsController extends Controller
 		return redirect()
 			->action('ProjectsController@allProjects');
 	}
+
+	public function deleteScreenshot($id){
+		$screenshot = ProjectScreenshot::find($id);
+
+		if (!$screenshot) return redirect()->back();
+
+		File::delete(public_path($screenshot->link));
+
+		$screenshot->delete();
+
+		return redirect()->back();
+	}
 }
