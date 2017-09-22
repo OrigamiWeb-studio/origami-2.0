@@ -10,7 +10,7 @@ class AddOrderFieldToProjectScreenshotsTable extends Migration
 	{
 		Schema::table('project_screenshots', function (Blueprint $table) {
 			//
-			$table->integer('order')->default(0)->after('project_id');
+			$table->integer('order_')->default(0)->after('project_id');
 		});
 	}
 
@@ -18,7 +18,7 @@ class AddOrderFieldToProjectScreenshotsTable extends Migration
 	{
 		Schema::table('project_screenshots', function (Blueprint $table) {
 			//
-			$table->dropColumn('order');
+			$table->dropColumn('order_');
 		});
 	}
 }

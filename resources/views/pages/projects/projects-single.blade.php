@@ -151,7 +151,7 @@
 										<div class="sub-block {{ isset($project->description) ? 'sub-block_border-bottom' : '' }}">
 											<div class="results-slider project-content__results-slider">
 												<ul id="results-slider" class="results-slider__list list-unstyled cS-hidden">
-													@foreach($project->screenshots->sortByDesc('order') as $screenshot)
+													@foreach($project->screenshots->sortBy('order_') as $screenshot)
 														<li class="results-slider__item">
 															<a href="{{ asset($screenshot->link) }}">
 																<img class="results-slider__image"
