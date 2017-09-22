@@ -208,7 +208,7 @@ class ProjectsController extends Controller
 		$project->link = $request['link'];
 		$project->visible = $request['visible'] === 'on' ? true : false;
 		$project->us_choice = $request['us_choice'] === 'on' ? true : false;
-		$project->client_review = $request['review'];
+		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
 		$project->stages()->sync($request['stages']);
@@ -275,7 +275,7 @@ class ProjectsController extends Controller
 		$project->link = $request['link'];
 		$project->visible = $request['visible'] === 'on' ? true : false;
 		$project->us_choice = $request['us_choice'] === 'on' ? true : false;
-		$project->client_review = $request['review'];
+		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
 		
