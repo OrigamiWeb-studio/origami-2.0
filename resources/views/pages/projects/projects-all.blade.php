@@ -71,7 +71,9 @@
 									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="filterData.search" required>
 									<button type="submit" @click.prevent="searchField = !searchField" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
 								</div>
+								@role('owner')
 								<a href="{{ route('project-add') }}" class="btn sort-by__add-project">{{ __('Add a project') }}</a>
+								@endrole()
 							</div>
 						</div>
 					</div>
