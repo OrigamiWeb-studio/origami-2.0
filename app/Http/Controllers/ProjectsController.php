@@ -25,10 +25,10 @@ class ProjectsController extends Controller
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get()
 		];
-		
+
 		return view('pages.projects.projects-all')->with($data);
 	}
-	
+
 	public function allProjectsJson(Request $request)
 	{
 		$categories = $request['categories'] ? $request['categories'] : null;
@@ -38,11 +38,12 @@ class ProjectsController extends Controller
 		$prices = $request['prices'] ? $request['prices'] : null;
 		$search = $request['search'] ? $request['search'] : null;
 		$paginate = $request['paginate'] ? $request['paginate'] : null;
-		
+
 		$projects = Project::query();
 		$projects = $projects->where('visible', true);
+		$projects = $projects->translatedIn(app()->getLocale());
 //		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
-		
+
 		#Фильтр по категориям
 		if ($categories !== null) {
 			if (is_array($categories))
@@ -50,7 +51,7 @@ class ProjectsController extends Controller
 			else
 				$projects = $projects->where('category_id', '=', $categories);
 		}
-		
+
 		#Фильтр по годам
 		if ($years !== null) {
 			if (is_array($years)) {
@@ -58,7 +59,7 @@ class ProjectsController extends Controller
 			} else
 				$projects = $projects->whereYear('created_at', $years);
 		}
-		
+
 		#Фильтр по компонентам
 		if ($stages !== null) {
 			if (is_array($stages))
@@ -70,7 +71,7 @@ class ProjectsController extends Controller
 					$q->where('stage_id', '=', $stages);
 				});
 		}
-		
+
 		#Фильтр по ценам
 		$max_project_price = Project::max('total_price');
 		if (is_array($prices) && count($prices) === 2) {
@@ -78,7 +79,7 @@ class ProjectsController extends Controller
 				$projects = $projects->whereBetween('total_price', [$prices[0] * ($max_project_price / 100), $prices[1] * ($max_project_price / 100)]);
 			}
 		}
-		
+
 		#Поиск по названию и описанию
 		if ($search !== null) {
 			$projects = $projects->whereHas('translations', function ($q) use ($search) {
@@ -97,17 +98,17 @@ class ProjectsController extends Controller
 //		$projects = $projects->groupBy('project_translations.id');
 //		$projects = $projects->orderBy('project_translations.title', $order);
 //		$projects = $projects->with('translations');
-		
+
 		#Пагинация
-		
+
 //		return $paginate;
-		
+
 		if ($paginate !== null && in_array($paginate, [1, 2, 3, 6, 9, 12])) {
 			$projects = $projects->paginate($paginate);
 		} else $projects = $projects->paginate(100);
 
 //		return $projects;
-		
+
 		$data = [
 			'pagination' => [
 				'item_first'    => $projects->firstItem(),
@@ -118,11 +119,11 @@ class ProjectsController extends Controller
 				'page_prev_url' => $projects->previousPageUrl(),
 				'per_page'      => $projects->perPage(),
 				'total'         => $projects->total()
-			
+
 			],
 			'projects'   => []
 		];
-		
+
 		foreach ($projects as $project) {
 			$data['projects'] [] = [
 				'id'             => $project->id,
@@ -148,10 +149,10 @@ class ProjectsController extends Controller
 //			'categories' => ProjectCategory::get(),
 //			'stages'     => ProjectStage::get()
 //		];
-		
+
 		return $data;
 	}
-	
+
 	public function singleProject($id)
 	{
 		$project = Project::where([
@@ -160,7 +161,7 @@ class ProjectsController extends Controller
 		])->first();
 
 		if (!$project) abort(404);
-		
+
 		$data = [
 			'styles'  => config('resources.projects.single.styles'),
 			'scripts' => config('resources.projects.single.scripts'),
@@ -168,10 +169,10 @@ class ProjectsController extends Controller
 		];
 
 //		dd($data['styles']);
-		
+
 		return view('pages.projects.projects-single')->with($data);
 	}
-	
+
 	public function addProjectView()
 	{
 		$data = [
@@ -180,10 +181,10 @@ class ProjectsController extends Controller
 			'clients'    => User::where('is_developer', false)->get(),
 			'developers' => Developer::get()
 		];
-		
+
 		return view('pages.projects.projects-add')->with($data);
 	}
-	
+
 	public function editProjectView($id)
 	{
 		$data = [
@@ -193,14 +194,14 @@ class ProjectsController extends Controller
 			'clients'    => User::where('is_developer', false)->get(),
 			'developers' => Developer::get()
 		];
-		
+
 		return view('pages.projects.projects-edit')->with($data);
 	}
-	
+
 	public function editProject(ProjectEditRequest $request, $project_id)
 	{
 		$project = Project::find($project_id);
-		
+
 		$project->title = $request['title'];
 		$project->client_id = $request['client'];
 		$project->category_id = $request['category'];
@@ -213,34 +214,34 @@ class ProjectsController extends Controller
 		$project->short_description = $request['short_description'];
 		$project->stages()->sync($request['stages']);
 		$project->developers()->sync($request['developers']);
-		
+
 		if (Input::hasFile('cover')) {
 			if ($project->cover)
 				File::delete(public_path($project->cover));
-			
+
 			$image = Input::file('cover');
 			$destination_path = public_path('uploads/projects/placeholders/');
 			$file_path = 'uploads/projects/placeholders/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
 			$image->move($destination_path, $file_path);
 			$project->cover = $file_path;
 		}
-		
+
 		if (Input::hasFile('main_image')) {
 			if ($project->main_image)
 				File::delete(public_path($project->main_image));
-			
+
 			$image = Input::file('main_image');
 			$destination_path = public_path('uploads/projects/main_images/');
 			$file_path = 'uploads/projects/main_images/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
 			$image->move($destination_path, $file_path);
 			$project->main_image = $file_path;
 		}
-		
+
 		if (Input::hasFile('slider_images')) {
-			
+
 			$images = Input::file('slider_images');
 			$destination_path = public_path('uploads/projects/slider_images/');
-			
+
 			foreach ($images as $image) {
 				$file_path = 'uploads/projects/slider_images/'
 					. $project->id
@@ -249,25 +250,25 @@ class ProjectsController extends Controller
 					. str_random(5)
 					. '.' . $image->getClientOriginalExtension();
 				$image->move($destination_path, $file_path);
-				
+
 				$screenshot = new ProjectScreenshot();
 				$screenshot->project_id = $project->id;
 				$screenshot->link = $file_path;
 				$screenshot->save();
 			}
-			
+
 		}
-		
+
 		$project->save();
-		
+
 		return redirect()
 			->action('ProjectsController@singleProject', ['id' => $project_id]);
 	}
-	
+
 	public function addProject(ProjectAddRequest $request)
 	{
 		$project = new Project();
-		
+
 		$project->title = $request['title'];
 		$project->client_id = $request['client'];
 		$project->category_id = $request['category'];
@@ -278,40 +279,40 @@ class ProjectsController extends Controller
 		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
-		
+
 		if (Input::hasFile('cover')) {
 			if ($project->cover)
 				File::delete(public_path($project->cover));
-			
+
 			$image = Input::file('cover');
 			$destination_path = public_path('uploads/projects/placeholders/');
 			$file_path = 'uploads/projects/placeholders/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
 			$image->move($destination_path, $file_path);
 			$project->cover = $file_path;
 		}
-		
+
 		if (Input::hasFile('main_image')) {
 			if ($project->main_image)
 				File::delete(public_path($project->main_image));
-			
+
 			$image = Input::file('main_image');
 			$destination_path = public_path('uploads/projects/main_images/');
 			$file_path = 'uploads/projects/main_images/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
 			$image->move($destination_path, $file_path);
 			$project->main_image = $file_path;
 		}
-		
+
 		$project->save();
-		
+
 		$project->stages()->sync($request['stages']);
 		$project->developers()->sync($request['developers']);
-		
+
 		if (Input::hasFile('slider_images')) {
-			
+
 			$images = Input::file('slider_images');
 			$destination_path = public_path('uploads/projects/slider_images/');
-			
-			foreach ($images as $image) {
+
+			foreach ($images as $key => $image) {
 				$file_path = 'uploads/projects/slider_images/'
 					. $project->id
 					. str_random(5)
@@ -319,23 +320,24 @@ class ProjectsController extends Controller
 					. str_random(5)
 					. '.' . $image->getClientOriginalExtension();
 				$image->move($destination_path, $file_path);
-				
+
 				$screenshot = new ProjectScreenshot();
+				$screenshot->order = $key;
 				$screenshot->project_id = $project->id;
 				$screenshot->link = $file_path;
 				$screenshot->save();
 			}
-			
+
 		}
-		
+
 		return redirect()
 			->action('ProjectsController@singleProject', ['id' => $project->id]);
 	}
-	
+
 	public function deleteProject($id)
 	{
 		Project::where('id', '=', $id)->delete();
-		
+
 		return redirect()
 			->action('ProjectsController@allProjects');
 	}
@@ -351,4 +353,23 @@ class ProjectsController extends Controller
 
 		return redirect()->back();
 	}
+
+//	public function moveScreenshot($id, $direction){
+//		if (!in_array($direction, ['right', 'left'])) abort(404);
+//
+//		$screenshot = ProjectScreenshot::find($id);
+//
+//		$screenshotReverse = ProjectScreenshot::query();
+//		$screenshotReverse = $screenshotReverse->where('project_id', '=', $screenshot->project_id);
+//
+//		if ($direction === 'right')
+//			$screenshotReverse = $screenshotReverse->where('order', '=', $screenshot->order - 1);
+//		elseif($direction === 'left')
+//			$screenshotReverse = $screenshotReverse->where('order', '=', $screenshot->order + 1);
+//
+//		$screenshotReverse = $screenshotReverse->first();
+//
+//		dd($id, $direction, $screenshot, $screenshotReverse, $screenshot->order - 1, $screenshotReverse->order + 1);
+//
+//	}
 }

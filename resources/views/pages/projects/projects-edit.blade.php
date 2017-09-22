@@ -149,11 +149,31 @@
 			@endif
 
 			@if($project->screenshots && count($project->screenshots) > 0)
-				<ul style="margin: 50px 0;">
+				<style>
+					.test-screenshots {
+						margin: 50px 0;
+					}
+					.test-screenshots li{
+						position: relative;
+						width: 150px;
+						display: inline-block;
+						margin: 0 0 30px 0
+					}
+					.test-screenshots li img{
+						width: 150px;
+					}
+					.test-screenshots li a{
+						position:absolute;
+						bottom: -25px;
+						left: 45%;
+						color: red;
+					}
+				</style>
+				<ul class="test-screenshots">
 					@foreach($project->screenshots as $screenshot)
-						<li style="position: relative; width: 150px; display: inline-block; margin: 0 0 30px 0">
-							<img src="{{ asset($screenshot->link) }}" alt="#" style="width: 150px;">
-							<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="position:absolute; bottom: -25px; left: 45%; color: red">[ X ]</a>
+						<li>
+							<img src="{{ asset($screenshot->link) }}" alt="#">
+							<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="">[ X ]</a>
 						</li>
 					@endforeach
 				</ul>
