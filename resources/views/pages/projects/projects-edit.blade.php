@@ -148,15 +148,16 @@
 				<p class="help-block text-danger">{{ $errors->first('slider_images') }}</p>
 			@endif
 
-			<ul style="margin: 50px 0;">
-				@foreach($project->screenshots as $screenshot)
-					<li style="position: relative; width: 150px; display: inline-block; margin: 0 0 30px 0">
-						<img src="{{ asset($screenshot->link) }}" alt="#" style="width: 150px;">
-						<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="position:absolute; bottom: -25px; left: 45%; color: red">[ X ]</a>
-					</li>
-				@endforeach
-			</ul>
-			
+			@if($project->screenshots && count($project->screenshots) > 0)
+				<ul style="margin: 50px 0;">
+					@foreach($project->screenshots as $screenshot)
+						<li style="position: relative; width: 150px; display: inline-block; margin: 0 0 30px 0">
+							<img src="{{ asset($screenshot->link) }}" alt="#" style="width: 150px;">
+							<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="position:absolute; bottom: -25px; left: 45%; color: red">[ X ]</a>
+						</li>
+					@endforeach
+				</ul>
+			@endif
 			
 		</div>
 
