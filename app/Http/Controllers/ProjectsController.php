@@ -176,6 +176,8 @@ class ProjectsController extends Controller
 	public function addProjectView()
 	{
 		$data = [
+      'styles'     => config('resources.projects.add.styles'),
+      'scripts'    => config('resources.projects.add.scripts'),
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get(),
 			'clients'    => User::where('is_developer', false)->get(),

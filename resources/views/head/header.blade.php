@@ -10,7 +10,6 @@
 			<div class="header_menu" v-show="headerActive" transition="appearing" style="display: none">
 				<nav class="main-nav">
 					<ul>
-
 						<li style="transition-delay: 0ms, 0ms, 0ms"
 						    class="{{ \Illuminate\Support\Facades\Request::is('projects') ? 'active' : '' }}">
 							<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
