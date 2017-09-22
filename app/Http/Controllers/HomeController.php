@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Locale;
 use App\Project;
-use App\EmailRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -15,7 +11,7 @@ class HomeController extends Controller
 		$data = [
 			'styles'   => config('resources.home.styles'),
 			'scripts'  => config('resources.home.scripts'),
-			'projects' => Project::get(),
+			'projects' => Project::where('visible', true)->get(),
 		];
 		
 		return view('pages.home', $data);

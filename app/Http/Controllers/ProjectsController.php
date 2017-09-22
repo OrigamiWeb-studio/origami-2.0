@@ -40,6 +40,7 @@ class ProjectsController extends Controller
 		$paginate = $request['paginate'] ? $request['paginate'] : null;
 		
 		$projects = Project::query();
+		$projects = $projects->where('visible', true);
 //		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
 		
 		#Фильтр по категориям
@@ -153,13 +154,17 @@ class ProjectsController extends Controller
 	
 	public function singleProject($id)
 	{
+		$project = Project::where([
+			['id', '=', $id],
+			['visible', true]
+		])->first();
 
-//		dd(config('resources.projects.single.styles'));
+		if (!$project) abort(404);
 		
 		$data = [
 			'styles'  => config('resources.projects.single.styles'),
 			'scripts' => config('resources.projects.single.scripts'),
-			'project' => Project::find($id)
+			'project' => $project
 		];
 
 //		dd($data['styles']);
@@ -205,7 +210,7 @@ class ProjectsController extends Controller
 		$project->link = $request['link'];
 		$project->visible = $request['visible'] === 'on' ? true : false;
 		$project->us_choice = $request['us_choice'] === 'on' ? true : false;
-		$project->client_review = $request['review'];
+		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
 		$project->stages()->sync($request['stages']);
@@ -258,8 +263,7 @@ class ProjectsController extends Controller
 		$project->save();
 		
 		return redirect()
-			->action('ProjectsController@singleProject', ['id' => $project_id])
-			->with('success', 'Данные успешно обновлены');
+			->action('ProjectsController@singleProject', ['id' => $project_id]);
 	}
 	
 	public function addProject(ProjectAddRequest $request)
@@ -273,7 +277,7 @@ class ProjectsController extends Controller
 		$project->link = $request['link'];
 		$project->visible = $request['visible'] === 'on' ? true : false;
 		$project->us_choice = $request['us_choice'] === 'on' ? true : false;
-		$project->client_review = $request['review'];
+		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
 		
@@ -327,8 +331,7 @@ class ProjectsController extends Controller
 		}
 		
 		return redirect()
-			->action('ProjectsController@singleProject', ['id' => $project->id])
-			->with('success', 'Проект успешно создан');
+			->action('ProjectsController@singleProject', ['id' => $project->id]);
 	}
 	
 	public function deleteProject($id)
@@ -336,7 +339,18 @@ class ProjectsController extends Controller
 		Project::where('id', '=', $id)->delete();
 		
 		return redirect()
-			->action('ProjectsController@allProjects')
-			->with('success', 'Проект успешно удален');
+			->action('ProjectsController@allProjects');
+	}
+
+	public function deleteScreenshot($id){
+		$screenshot = ProjectScreenshot::find($id);
+
+		if (!$screenshot) return redirect()->back();
+
+		File::delete(public_path($screenshot->link));
+
+		$screenshot->delete();
+
+		return redirect()->back();
 	}
 }

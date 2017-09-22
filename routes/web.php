@@ -36,36 +36,42 @@ Route::get('/projects', 'ProjectsController@allProjects')
 Route::post('/projects', 'ProjectsController@allProjectsJson')
 	->name('projects-json');
 
-Route::get('/project/add', 'ProjectsController@addProjectView')
+Route::get('/projects/add', 'ProjectsController@addProjectView')
 	->name('project-add')
-	->middleware(['role:admin']);
+	->middleware(['role:owner']);
 
-Route::post('/project/add', 'ProjectsController@addProject')
+Route::post('/projects/add', 'ProjectsController@addProject')
 	->name('project-add-submit')
-	->middleware(['role:admin']);
+	->middleware(['role:owner']);
 
-Route::get('/project/{id}/edit', 'ProjectsController@editProjectView')
+Route::get('/projects/{id}/edit', 'ProjectsController@editProjectView')
 	->name('project-edit')
-	->middleware(['role:admin']);
+	->middleware(['role:owner']);
 
 //TODO change to PUT method
-Route::post('/project/{id}/edit', 'ProjectsController@editProject')
+Route::post('/projects/{id}/edit', 'ProjectsController@editProject')
 	->name('project-edit-submit')
-	->middleware(['role:admin']);
+	->middleware(['role:owner']);
 
 //TODO change to DELETE method
-Route::get('/project/{id}/delete', 'ProjectsController@deleteProject')
+Route::get('/projects/{id}/delete', 'ProjectsController@deleteProject')
+	->where('id', '[0-9]+')
 	->name('project-delete-submit')
-	->middleware(['role:admin']);
+	->middleware(['role:owner']);
 
-Route::get('/project/{id}', 'ProjectsController@singleProject')
+Route::get('/projects/{id}', 'ProjectsController@singleProject')
 	->name('project')
 	->where('id', '[0-9]+');
+
+Route::get('/projects/screenshots/{id}/delete', 'ProjectsController@deleteScreenshot')
+	->name('project-screenshot-delete-submit')
+	->where('id', '[0-9]+')
+	->middleware(['role:owner']);
 #-----------------------------------------------------------------------------------
 #Tickets
 #
 #
-Route::get('/project/{project_id}/tickets', 'TicketsController@projectTickets')
+Route::get('/projects/{project_id}/tickets', 'TicketsController@projectTickets')
 	->name('project-tickets')
 	->where('project_id', '[0-9]+');
 
@@ -88,11 +94,11 @@ Route::get('/contacts', 'ContactsController@index')
 #Team
 #
 #
-Route::get('/team', 'TeamController@allDevelopers')
-	->name('team');
-Route::get('/developer/{id}', 'TeamController@singleDeveloper')
+Route::get('/developers', 'TeamController@allDevelopers')
+	->name('developers');
+Route::get('/developers/{surname}', 'TeamController@singleDeveloper')
 	->name('developer')
-	->where('id', '[0-9]+');
+	->where('surname', '[a-z]+');
 #-----------------------------------------------------------------------------------
 #Email requests
 #

@@ -21,7 +21,7 @@
 					<header class="comments-list__header">
 						<h4 class="comments-list__name">
 							#{{ $comment->user_id === null ? __('Guest') : $comment->user->profile->name }}
-							@role('admin')
+							@role('owner')
 							<a href="mailto:{{ $comment->email }}" class="grey-title-text">({{ $comment->email }})</a>
 							@endrole()
 						</h4>
@@ -32,7 +32,7 @@
 
 					<div class="comments-list__managment">
 						<input type="submit" class="btn btn_transparent comments-list__btn" value="{{ __('Answer') }}">
-						@role('admin')
+						@role('owner')
 						<input type="submit" class="btn btn_transparent comments-list__btn" value="{{ __('Edit') }}">
 						<input type="submit" class="btn btn_transparent comments-list__btn" value="{{ __('Delete') }}">
 						@endrole()
@@ -47,7 +47,7 @@
 							<header class="comments-list__header">
 								<h4 class="comments-list__name">
 									#{{ $answer->user_id === null ? __('Guest') : $answer->user->profile->name }}
-									@role('admin')
+									@role('owner')
 									<a href="mailto:{{ $answer->email }}" class="grey-title-text">({{ $answer->email }})</a>
 									@endrole()
 								</h4>
@@ -57,7 +57,7 @@
 							</header>
 							<p class="paragraph comments-list__paragraph">{{ $answer->message }}</p>
 							<div class="comments-list__managment">
-								@role('admin')
+								@role('owner')
 								<input type="submit" class="btn btn_transparent comments-list__btn" value="{{ __('Edit') }}">
 								<input type="submit" class="btn btn_transparent comments-list__btn" value="{{ __('Delete') }}">
 								@endrole()

@@ -13,7 +13,7 @@
 						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<span>{{ $project->title }}</span>
+						<span>{{ $project->translateOrDefault(app()->getLocale())->title }}</span>
 					</li>
 				</ul>
 			</div>
@@ -23,7 +23,7 @@
 			<div class="container">
 
 				<header>
-					<h1>{{ $project->title }} <span>({{ $project->created_at->year }})</span></h1>
+					<h1>{{ $project->translateOrDefault(app()->getLocale())->title }} <span>({{ $project->created_at->year }})</span></h1>
 				</header>
 
 				<div class="project-content">
@@ -31,18 +31,18 @@
 
 						<aside class="col-md-3">
 
-							@isset($project->title)
+							@isset($project->translateOrDefault(app()->getLocale())->title)
 								<div class="block project-content__project-item project-item hidden-sm hidden-xs">
 
 									@isset($project->cover)
 										<figure class="project-item__logo-wrapper">
-											<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+											<img class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->translateOrDefault(app()->getLocale())->title }}">
 										</figure>
 									@endisset
 
 									<div class="project-item__description">
 
-										<span class="project-item__title">{{ $project->title }}</span>
+										<span class="project-item__title">{{ $project->translateOrDefault(app()->getLocale())->title }}</span>
 
 										@isset($project->category->translateOrDefault(app()->getLocale())->title)
 											<span class="project-item__category">#{{ $project->category->translateOrDefault(app()->getLocale())->title }}</span>
@@ -51,24 +51,26 @@
 									</div>
 
 									<ul class="project-item__management-icons">
-										{{--<li class="project-item__management-item">--}}
-											{{--<a class="project-item__management-icon" href="#">--}}
-												{{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
-											{{--</a>--}}
-										{{--</li>--}}
-										<li class="project-item__management-item">
-											<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
-												<i class="fa fa-pencil" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li class="project-item__management-item">
-											<form action="">
-												{{ csrf_field() }}
-												<button class="project-item__management-icon">
-													<i class="fa fa-trash-o" aria-hidden="true"></i>
-												</button>
-											</form>
-										</li>
+										@role('owner')
+											<li class="project-item__management-item">
+												<a class="project-item__management-icon" href="{{ route('project-tickets', ['project_id' => $project->id]) }}">
+													<i class="fa fa-ticket" aria-hidden="true"></i>
+												</a>
+											</li>
+											<li class="project-item__management-item">
+												<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
+													<i class="fa fa-pencil" aria-hidden="true"></i>
+												</a>
+											</li>
+											<li class="project-item__management-item">
+												<form action="{{ route('project-delete-submit', ['id' => $project->id]) }}">
+													{{ csrf_field() }}
+													<button class="project-item__management-icon">
+														<i class="fa fa-trash-o" aria-hidden="true"></i>
+													</button>
+												</form>
+											</li>
+										@endrole()
 									</ul>
 
 								</div>
@@ -82,21 +84,21 @@
 
 						<div class="col-md-9">
 
-							@if(session('success'))
-								<div class="block project-content__block">
-									<h3 class="project-content__sub-title">
-										Success
-									</h3>
-									<p class="paragraph">{{ session('success') }}</p>
-								</div>
-							@endif
+							{{--@if(session('success'))--}}
+							{{--<div class="block project-content__block">--}}
+							{{--<h3 class="project-content__sub-title">--}}
+							{{--Success--}}
+							{{--</h3>--}}
+							{{--<p class="paragraph">{{ session('success') }}</p>--}}
+							{{--</div>--}}
+							{{--@endif--}}
 
 							<div class="block project-content__block project-description">
 
 								@isset($project->main_image)
 									<figure class="project-description__figure-block">
 										<img class="project-description__main-image" src="{{ asset($project->main_image) }}"
-										     alt="{{ $project->title }}">
+										     alt="{{ $project->translateOrDefault(app()->getLocale())->title }}">
 									</figure>
 								@endisset
 
@@ -106,21 +108,24 @@
 
 											<div class="col-sm-7">
 												<h3 class="project-content__sub-title">
-													{{ __('About project') }} {{ $project->title }}
+													{{ __('About project') }} {{ $project->translateOrDefault(app()->getLocale())->title }}
 												</h3>
 												<p class="paragraph">
-													{{ $project->short_description }}
+													{{ $project->translateOrDefault(app()->getLocale())->short_description }}
 												</p>
 											</div>
 
 											@isset($project->stages)
 												<div class="col-sm-4 col-sm-offset-1">
-													<h3 class="project-content__sub-title">{{ __('Project components') }}</h3>
+													<h3 class="project-content__sub-title">{{ __('Stages of development') }}</h3>
 													<ul class="tag-list">
 
-														@php $iterator = 1 @endphp
-														@foreach($project->stages->sortBy('id') as $stage)
-															<li class="tag-list__item">{{ $iterator++ . '. ' . $stage->title }}</li>
+														@php $iterator = 1; @endphp
+														@foreach($project->stages->sortBy('order') as $stage)
+															<li class="tag-list__item">
+																<span title="{{ $stage->translateOrDefault(app()->getLocale())->description }}">
+																	{{ $iterator++ . '. ' . $stage->translateOrDefault(app()->getLocale())->title }}</span>
+															</li>
 														@endforeach
 
 													</ul>
@@ -166,7 +171,7 @@
 											{{ __('Summation') }}
 										</h3>
 
-										<p class="paragraph">{{ $project->description }}</p>
+										<p class="paragraph">{{ $project->translateOrDefault(app()->getLocale())->description }}</p>
 									@endisset
 
 								</div>

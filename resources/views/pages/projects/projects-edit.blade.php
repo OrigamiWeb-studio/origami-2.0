@@ -22,6 +22,9 @@
 			<label for="client">{{ __('Client') }}</label>
 
 			<select name="client" id="client">
+				<option value="0">
+					{{ __('Anonymous customer') }}
+				</option>
 				@foreach($clients as $client)
 					<option value="{{ $client->id }}" {{ $project->client_id === $client->id ? 'selected' : '' }}>
 						{{ $client->profile->name }}
@@ -106,8 +109,7 @@
 		<div class="form-group">
 			<label for="link">{{ __('Link') }}</label>
 
-			<input type="text" placeholder="{{ __('Link') }}" name="link" id="link"
-			       value="{{ empty(old('link')) ? $project->link : old('link') }}">
+			<input placeholder="{{ __('Link') }}" name="link" id="link" value="{{ empty(old('link')) ? $project->link : old('link') }}">
 
 			@if($errors->has('link'))
 				<p class="help-block text-danger">{{ $errors->first('link') }}</p>
@@ -145,13 +147,25 @@
 			@if($errors->has('slider_images'))
 				<p class="help-block text-danger">{{ $errors->first('slider_images') }}</p>
 			@endif
+
+			@if($project->screenshots && count($project->screenshots) > 0)
+				<ul style="margin: 50px 0;">
+					@foreach($project->screenshots as $screenshot)
+						<li style="position: relative; width: 150px; display: inline-block; margin: 0 0 30px 0">
+							<img src="{{ asset($screenshot->link) }}" alt="#" style="width: 150px;">
+							<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="position:absolute; bottom: -25px; left: 45%; color: red">[ X ]</a>
+						</li>
+					@endforeach
+				</ul>
+			@endif
+			
 		</div>
 
 
 		<div class="form-group">
 			<label for="visible">{{ __('Visible') }}</label>
 
-			<input type="checkbox" name="visible" id="visible" {{ old('visible') === 'on' ? 'checked' : '' }}>
+			<input type="checkbox" name="visible" id="visible" {{ old('visible') === 'on' || $project->visible == true ? 'checked' : '' }}>
 
 			@if($errors->has('visible'))
 				<p class="help-block text-danger">{{ $errors->first('visible') }}</p>
@@ -162,7 +176,7 @@
 		<div class="form-group">
 			<label for="us_choice">{{ __('Us choice') }}</label>
 
-			<input type="checkbox" name="us_choice" id="us_choice" {{ old('us_choice') === 'on' ? 'checked' : '' }}>
+			<input type="checkbox" name="us_choice" id="us_choice" {{ old('us_choice') === 'on' || $project->us_choice == true ? 'checked' : '' }}>
 
 			@if($errors->has('us_choice'))
 				<p class="help-block text-danger">{{ $errors->first('us_choice') }}</p>

@@ -10,18 +10,24 @@ class TeamController extends Controller
 	public function allDevelopers()
 	{
 		$data = [
-			'developers' => Developer::get()
+			'developers' => Developer::get(),
 		];
-		
-		return view('pages.team.all')->with($data);
+
+		return view('pages.developers.developers-all')->with($data);
 	}
-	
-	public function singleDeveloper($id)
+
+	public function singleDeveloper($surname)
 	{
+		$developer = Developer::whereHas('profile', function ($query) use ($surname) {
+			$query->whereTranslation('last_name', ucfirst($surname));
+		})->first();
+
+		if (!$developer) abort(404);
+
 		$data = [
-			'developer' => Developer::find($id)
+			'developer' => $developer,
 		];
-		
-		return view('pages.team.single')->with($data);
+
+		return view('pages.developers.developers-single')->with($data);
 	}
 }

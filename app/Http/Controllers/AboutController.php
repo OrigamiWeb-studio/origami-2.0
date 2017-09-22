@@ -15,10 +15,11 @@ class AboutController extends Controller
 	{
 		$data = [
 			'styles'   => config('resources.about.styles'),
-            'scripts'  => config('resources.about.scripts'),
-			'projects' => Project::where('cover', '!=', null)->get()
+			'scripts'  => config('resources.about.scripts'),
+			'projects' => Project::where('cover', '!=', null)->get(),
+			'stages'   => ProjectStage::get(),
 		];
-		
+
 		return view('pages.about')->with($data);
 	}
 }
