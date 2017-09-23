@@ -23,9 +23,8 @@ Route::get('/locale/{code}', 'LocalesController@setLocale')
 #
 Route::get('/', 'HomeController@index')
 	->name('home');
+
 Route::get('/home', 'HomeController@index');
-Route::post('/send-form', 'HomeController@sendForm')
-	->name('home-send-form');
 #-----------------------------------------------------------------------------------
 #Projects
 #
@@ -48,12 +47,10 @@ Route::get('/projects/{id}/edit', 'ProjectsController@editProjectView')
 	->name('project-edit')
 	->middleware(['role:owner']);
 
-//TODO change to PUT method
 Route::post('/projects/{id}/edit', 'ProjectsController@editProject')
 	->name('project-edit-submit')
 	->middleware(['role:owner']);
 
-//TODO change to DELETE method
 Route::get('/projects/{id}/delete', 'ProjectsController@deleteProject')
 	->where('id', '[0-9]+')
 	->name('project-delete-submit')
@@ -75,8 +72,9 @@ Route::get('/projects/{project_id}/tickets', 'TicketsController@projectTickets')
 	->name('project-tickets')
 	->where('project_id', '[0-9]+');
 
-Route::get('/ticket/{id}', 'TicketsController@singleTicket')
+Route::get('/projects/{project_id}/tickets/{id}', 'TicketsController@singleTicket')
 	->name('ticket')
+	->where('project_id', '[0-9]+')
 	->where('id', '[0-9]+');
 #-----------------------------------------------------------------------------------
 #About
@@ -96,6 +94,7 @@ Route::get('/contacts', 'ContactsController@index')
 #
 Route::get('/developers', 'TeamController@allDevelopers')
 	->name('developers');
+
 Route::get('/developers/{surname}', 'TeamController@singleDeveloper')
 	->name('developer')
 	->where('surname', '[a-z]+');
@@ -105,5 +104,6 @@ Route::get('/developers/{surname}', 'TeamController@singleDeveloper')
 #
 Route::post('/email-requests/start-project', 'EmailRequestsController@saveStartProjectRequest')
 	->name('save-start-project-request');
+
 Route::post('/email-requests/contact-us', 'EmailRequestsController@saveContactUsRequest')
 	->name('save-contact-us-request');

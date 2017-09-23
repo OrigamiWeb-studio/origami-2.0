@@ -21,7 +21,6 @@ class ProjectsController extends Controller
 		$data = [
 			'styles'     => config('resources.projects.all.styles'),
 			'scripts'    => config('resources.projects.all.scripts'),
-			'projects'   => Project::paginate(6),
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get()
 		];
@@ -168,8 +167,6 @@ class ProjectsController extends Controller
 			'project' => $project
 		];
 
-//		dd($data['styles']);
-
 		return view('pages.projects.projects-single')->with($data);
 	}
 
@@ -203,6 +200,8 @@ class ProjectsController extends Controller
 	public function editProject(ProjectEditRequest $request, $project_id)
 	{
 		$project = Project::find($project_id);
+
+		if (!$project) abort(404);
 
 		$project->title = $request['title'];
 		$project->client_id = $request['client'];
@@ -338,7 +337,11 @@ class ProjectsController extends Controller
 
 	public function deleteProject($id)
 	{
-		Project::where('id', '=', $id)->delete();
+		$project = Project::find($id);
+
+		if (!$project) abort(404);
+
+		$project->delete();
 
 		return redirect()
 			->action('ProjectsController@allProjects');
