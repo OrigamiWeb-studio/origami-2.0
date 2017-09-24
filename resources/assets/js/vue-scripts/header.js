@@ -1,4 +1,4 @@
-const headerMenu = new Vue({
+new Vue({
     el: ".main-header",
     data: {
         headerActive: false,
@@ -7,7 +7,7 @@ const headerMenu = new Vue({
     methods: {
         mobileMenu: function(){
             this.headerActive = !this.headerActive;
-            var bodyEl = document.querySelector('body');
+            let bodyEl = document.querySelector('body');
             bodyEl.classList.toggle('opened');
         },
         closeDropDown: function(){
@@ -15,7 +15,7 @@ const headerMenu = new Vue({
         }
     },
     mounted: function(){
-        var self = this;
+        let self = this;
         window.addEventListener('click', function(e){
             if(!e.target.parentNode.classList.contains('lang-dropdown'))
                 self.closeDropDown();

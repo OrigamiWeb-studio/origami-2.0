@@ -1,0 +1,89 @@
+.origami-modal2
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow-x: hidden
+  overflow-y: auto
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1050
+  -webkit-overflow-scrolling: touch
+  outline: 0
+  transition: all .2s ease
+  &__overlay
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    background: rgba(0,0,0,0.5)
+    z-index: 1
+  &__dialog
+    position: relative
+    width: 600px
+    max-width: 100%
+    margin: 30px auto
+    display: inline-block
+    text-align: left
+    vertical-align: middle
+    z-index: 2
+    transition: all .2s ease
+  &__content
+    position: relative
+    background-color: #fff
+    border: 1px solid rgba(0, 0, 0, 0.2)
+    background-clip: padding-box
+    outline: 0
+    padding: 0 50px
+    text-align: center
+  &__close
+    background: none
+    color: #9da7b0
+    font-weight: 700
+    border: none
+    font-size: 26px
+    position: absolute
+    right: 22px
+    top: 20px
+    &:hover
+      color: $darkblue
+  &__title
+    font-size: 40px
+    color: #262b2f
+    font-weight: 700
+    font-family: 'RobotoSlab', sans-serif
+    margin: 85px 0 6px
+    line-height: 1.42857143
+  &__body
+    position: relative
+    padding: 15px
+    font-size: 16px
+    color: $lightblue
+  &__paragraph
+    margin: 0
+    line-height: 1.8
+  &__buttons
+    margin: 42px 0 55px
+  &__button
+    letter-spacing: 1px
+    padding: 11px 28px
+    &:nth-child(2)
+      margin-right: 26px
+      border: none
+      background-color: #9da7b0
+      color: #fff
+      &:focus,
+      &:hover
+        background: #262b2f
+        color: #fff
+
+.origami-modal2-enter,
+.origami-modal2-leave-active
+  opacity: 0
+
+.origami-modal2-enter .origami-modal2__dialog,
+.origami-modal2-leave-active .origami-modal2__dialog
+  transform: scale(1.1)

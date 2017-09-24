@@ -10,6 +10,11 @@
   "New project": "Новий проект",
   "Add a new project": "Додати новий проект",
   "Add a project": "Додати проект",
+  "Confirm": "Підтвердити",
+  "Cancel": "Відмінити",
+  "Are you sure?": "Ви впевненні?",
+  "will be deleted. Are you sure that you want to delete it at all?": "буде видаленний. Ви впевненні, що ви хочете видалити його назавжди?",
+
 
   "Start a project": "Почати проект",
   "Name": "Ім'я",

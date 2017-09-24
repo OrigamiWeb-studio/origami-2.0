@@ -32,7 +32,7 @@
 						<aside class="col-md-3">
 
 							@isset($project->translateOrDefault(app()->getLocale())->title)
-								<div class="block project-content__project-item project-item hidden-sm hidden-xs">
+								<div id="manage-block" class="block project-content__project-item project-item hidden-sm hidden-xs">
 
 									@isset($project->cover)
 										<figure class="project-item__logo-wrapper">
@@ -50,8 +50,8 @@
 
 									</div>
 
-									<ul class="project-item__management-icons">
-										@role('owner')
+									@role('owner')
+										<ul class="project-item__management-icons">
 											<li class="project-item__management-item">
 												<a class="project-item__management-icon" href="{{ route('project-tickets', ['project_id' => $project->id]) }}">
 													<i class="fa fa-ticket" aria-hidden="true"></i>
@@ -63,16 +63,19 @@
 												</a>
 											</li>
 											<li class="project-item__management-item">
-												<form action="{{ route('project-delete-submit', ['id' => $project->id]) }}">
-													{{ csrf_field() }}
-													<button class="project-item__management-icon">
-														<i class="fa fa-trash-o" aria-hidden="true"></i>
-													</button>
-												</form>
+												<button class="project-item__management-icon" @click.prevent="deleteModalShow = true">
+													<i class="fa fa-trash-o" aria-hidden="true"></i>
+												</button>
 											</li>
-										@endrole()
-									</ul>
-
+										</ul>
+										<delete-modal v-bind:visible="deleteModalShow" v-cloak @close="deleteModalShow = false" form-action="{{ route('project-delete-submit', ['id' => $project->id]) }}">
+											<template slot="title">{{ __('Are you sure?') }}</template>
+											{{ __('Project') }} "{{ $project->translateOrDefault(app()->getLocale())->title }}" {{ __('will be deleted. Are you sure that you want to delete it at all?') }}
+											<template slot="token">{{ csrf_field() }}</template>
+											<template slot="confirm">{{ __('Confirm') }}</template>
+											<template slot="cancel">{{ __('Cancel') }}</template>
+										</delete-modal>
+									@endrole()
 								</div>
 							@endisset
 

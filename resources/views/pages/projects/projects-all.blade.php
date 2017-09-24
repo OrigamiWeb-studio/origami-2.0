@@ -127,8 +127,7 @@
 						<div class="col-md-9 col-sm-8">
 
 							<div class="projects">
-
-								<div class="block project-item projects__project-item" v-for="project in projects">
+								<div class="block project-item projects__project-item project-block-vue" :key="false" v-for="project in projects">
 									<a v-bind:href="'{{ url('/projects') }}/' + project.id ">
 										<figure class="project-item__logo-wrapper">
 											<img class="project-item__logo" v-bind:src='project.cover' v-bind:alt="project.title">
@@ -138,8 +137,19 @@
 										<a v-bind:href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
 										<span class="project-item__category">#@{{ project.category_title }}</span>
 									</div>
+									@role('owner')
+										<manage-project v-cloak
+														v-bind:tickets-link="this.window.location.origin+'/projects/'+project.id+'/tickets'"
+														v-bind:edit-link="this.window.location.origin+'/projects/'+project.id+'/edit'"
+														v-bind:delete-link="this.window.location.origin+'/projects/'+project.id+'/delete'">
+											<template slot="title">{{ __('Are you sure?') }}</template>
+											{{ __('Project') }} "@{{ project.title }}" {{ __('will be deleted. Are you sure that you want to delete it at all?') }}
+											<template slot="token">{{ csrf_field() }}</template>
+											<template slot="confirm">{{ __('Confirm') }}</template>
+											<template slot="cancel">{{ __('Cancel') }}</template>
+										</manage-project>
+									@endrole()
 								</div>
-
 							</div>
 
 							<ul v-if="pagination.page_last>1" class="pagination projects_content__pagination">

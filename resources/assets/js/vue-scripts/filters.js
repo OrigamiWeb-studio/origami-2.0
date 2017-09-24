@@ -1,9 +1,12 @@
-vueSlider = require('vue-slider-component');
-
+// vueSlider = require('vue-slider-component');
+// import confirmModal from './components/confirm-modal.vue';
+// Vue.component('delete-modal', confirmModal);
+import manageProject from './components/manage-project.vue';
+Vue.component('manage-project', manageProject);
 new Vue({
     el: '.s_allprojects',
     components: {
-        vueSlider
+        // vueSlider
     },
     data: {
         searchField: false,
@@ -15,7 +18,8 @@ new Vue({
             "paginate": 9
         },
         projects: [],
-        pagination: []
+        pagination: [],
+      deleteModal: false
     },
     watch: {
         filterData: {
@@ -42,7 +46,6 @@ new Vue({
                 console.error(err);
             })
         }
-
     },
     mounted: function(){
         let self = this;
