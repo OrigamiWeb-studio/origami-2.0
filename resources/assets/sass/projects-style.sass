@@ -73,6 +73,10 @@
 		margin-left: 10px
 		@media screen and (max-width: 767px)
 			margin-left: 0
+		@media screen and (max-width: 420px)
+			display: block
+			margin-top: 20px
+			text-align: left
 	@media screen and (max-width: 991px) and (min-width: 768px)
 		text-align: right
 	
@@ -201,6 +205,11 @@
 	flex-wrap: wrap
 	justify-content: flex-start
 	margin-right: -23px
+	&__not-found
+		font-size: 20px
+		font-weight: 700
+		color: $lightblue
+		margin: 23px 0 0
 	&__project-item
 		margin-bottom: 30px
 		margin-right: 23px
@@ -232,5 +241,3 @@
 
 .project-leave-active
 	position: absolute
-
-

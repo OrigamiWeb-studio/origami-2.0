@@ -6,7 +6,6 @@
 
 		<form class="origami-form s-contact__form" id="contact-form" @submit.prevent="sendForm" action="{{ route('save-contact-us-request') }}" method="post">
 			{{ csrf_field() }}
-
 			<div class="origami-form__form-group">
 				<label for="homeform__name" class="origami-form__label">{{ __('Name') }} *</label>
 				<input class="origami-form__input s-contact__input" id="homeform__name"

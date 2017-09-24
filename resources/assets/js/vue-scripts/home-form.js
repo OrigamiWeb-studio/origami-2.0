@@ -1,4 +1,4 @@
-const contactUsForm = new Vue({
+new Vue({
     el: "#contact-form",
     data: {
         formData: {
@@ -14,6 +14,7 @@ const contactUsForm = new Vue({
     },
     methods: {
         sendForm: function(){
+          $('body').append('<div class="loader"><div class="loader__inner"></div></div>');
             this.formData["g-recaptcha-response"] = document.getElementById("captcha-contact-us").getElementsByClassName("g-recaptcha-response")[0].value;
             axios.post('/email-requests/contact-us', this.formData).then(response => {
                 let receivedData = response.data;
@@ -31,9 +32,12 @@ const contactUsForm = new Vue({
                         "g-recaptcha-response": ''
                     };
                     this.success = receivedData.success;
+                    grecaptcha.reset();
                 }
+                $(".loader").remove();
             }).catch(err => {
                 console.error(err);
+                $(".loader").remove();
             });
         }
     }

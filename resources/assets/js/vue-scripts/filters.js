@@ -1,6 +1,4 @@
 // vueSlider = require('vue-slider-component');
-// import confirmModal from './components/confirm-modal.vue';
-// Vue.component('delete-modal', confirmModal);
 import manageProject from './components/manage-project.vue';
 Vue.component('manage-project', manageProject);
 new Vue({
@@ -19,7 +17,8 @@ new Vue({
         },
         projects: [],
         pagination: [],
-      deleteModal: false
+      loading: true,
+      notFound: false
     },
     watch: {
         filterData: {
@@ -31,19 +30,31 @@ new Vue({
     },
     methods: {
         sendData: function(){
+          this.loading = true;
             axios.post('/projects', this.filterData).then(response => {
-                this.projects = response.data.projects;
-                this.pagination = response.data.pagination;
+                let self = this;
+                self.projects = response.data.projects;
+                self.pagination = response.data.pagination;
+                self.loading = false;
+                if(this.projects.length === 0){
+                    self.notFound = true;
+                }else{
+                    self.notFound = false;
+                }
             }).catch(err => {
                 console.error(err);
+              this.loading = false;
             })
         },
         paginate: function(page){
+            this.loading = true;
             axios.post('/projects?page='+page, this.filterData).then(response => {
                 this.projects = response.data.projects;
                 this.pagination = response.data.pagination;
+              this.loading = false;
             }).catch(err => {
                 console.error(err);
+              this.loading = false;
             })
         }
     },
