@@ -186,8 +186,12 @@ class ProjectsController extends Controller
 
 	public function editProjectView($id)
 	{
+		$project = Project::find($id);
+
+		if (!$project) abort(404);
+
 		$data = [
-			'project'    => Project::find($id),
+			'project'    => $project,
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get(),
 			'clients'    => User::where('is_developer', false)->get(),
