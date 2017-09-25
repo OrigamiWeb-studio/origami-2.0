@@ -32,7 +32,11 @@ new Vue({
                         "g-recaptcha-response": ''
                     };
                     this.success = receivedData.success;
-                    grecaptcha.reset();
+                  $(".g-recaptcha-response").each(function(index){
+                    if($(this).closest("#captcha-contact-us").length){
+                      grecaptcha.reset(index);
+                    }
+                  });
                 }
                 $(".loader").remove();
             }).catch(err => {

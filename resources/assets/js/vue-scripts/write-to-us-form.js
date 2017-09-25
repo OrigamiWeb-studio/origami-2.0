@@ -1,5 +1,5 @@
 new Vue({
-    el: "#write-to-us-form",
+    el: "#write-to-us-wrapper",
     data: {
         formData: {
             "_token": Laravel.csrfToken,
@@ -35,13 +35,17 @@ new Vue({
                     };
                     // this.success = receivedData.success;
                     $("#writetous-modal").modal('hide');
-                    grecaptcha.reset();
+                  $(".g-recaptcha-response").each(function(index){
+                    if($(this).closest("#captcha-start-project").length){
+                      grecaptcha.reset(index);
+                    }
+                  });
                 }
               $(".loader").remove();
             }).catch(err => {
                 this.errors = err;
                 console.error(err);
-              $(".loader").remove();
+                $(".loader").remove();
             });
         }
     }

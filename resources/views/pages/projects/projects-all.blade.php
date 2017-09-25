@@ -130,7 +130,7 @@
 								<div class="loader__inner"></div>
 							</div>
 							<div class="projects" v-cloak>
-								<span class="projects__not-found v-cloak--hidden" v-if="notFound">По заданим критеріям нічого не знайдено</span>
+								<span class="projects__not-found v-cloak--hidden" v-if="notFound">{{ __('There is no results for your request') }}</span>
 								<div class=" v-cloak--hidden block project-item projects__project-item project-block-vue" v-for="project in projects">
 									<a v-bind:href="'{{ url('/projects') }}/' + project.id ">
 										<figure class="project-item__logo-wrapper">
