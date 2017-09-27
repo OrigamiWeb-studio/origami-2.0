@@ -80,6 +80,7 @@ a
 	cursor: pointer
 	font-size: 14px
 	transition: all .2s ease
+	letter-spacing: 1px
 	&-submit
 		border: none
 		color: #fff
@@ -92,7 +93,47 @@ a
 		background: $darkblue
 		color: #fff
 		border-color: $darkblue
-		
+
+.custom_checkbutton
+	display: block
+	position: relative
+	padding-left: 33px
+	color: $lightblue
+	cursor: pointer
+	font-weight: 400
+	margin-bottom: 10px
+	input
+		display: none
+		&:checked~.custom_mark
+			border-color: #7f8285
+			outline-color: $darkblue
+			i
+				display: block
+			span
+				color: $darkblue
+	@media screen and (max-width: 767px)
+		width: 33.33333%
+		float: left
+	@media screen and (max-width: 660px)
+		width: 50%
+	@media screen and (max-width: 540px)
+		width: 100%
+.custom_mark
+	width: 16px
+	height: 16px
+	border: 1px solid #f3f4f6
+	outline: 1px solid #ebedef
+	position: absolute
+	left: 0
+	top: 2px
+	i
+		display: none
+		position: absolute
+		left: 3px
+		top: 1px
+		font-size: 10px
+		color: $darkblue
+
 .caret
 	display: inline-block
 	width: 0
@@ -186,7 +227,7 @@ a
 				pointer-events: none
 .lang-dropdown
 	@extend %inline-block
-	margin: 30px 30px 30px 0
+	margin: 30px
 	position: relative
 	&__caret
 		position: relative
@@ -376,3 +417,63 @@ a
 		margin-right: 24px
 		&:last-child
 			margin-right: 0
+
+
+
+
+
+.login-page
+	display: flex
+	justify-content: center
+	align-items: center
+	padding: 20px 15px
+
+.s-login
+	max-width: 325px
+	margin: 50px auto
+	&__title
+		font-size: 40px
+		margin: 0 0 41px
+		font-family: 'RobotoSlab', sans-serif
+		color: #151120
+		@media screen and (max-width: 550px)
+			font-size: 30px
+	&__forgot-password
+		float: right
+
+
+
+.error-page
+	display: flex
+	justify-content: center
+	align-items: center
+	padding: 20px 15px
+	&__block
+		max-width: 740px
+		margin: 0 auto
+		text-align: center
+		font-size: 16px
+	&__error-code
+		display: block
+		font-family: 'RobotoSlab', sans-serif
+		text-transform: uppercase
+		margin-bottom: 31px
+		@media screen and (max-width: 767px)
+			margin-bottom: 21px
+	&__title
+		font-size: 60px
+		margin: 0
+		line-height: 1
+		font-family: 'RobotoSlab', sans-serif
+		@media screen and (max-width: 767px)
+			font-size: 40px
+	&__description
+		color: $lightblue
+		margin: 19px 0 0
+		line-height: 1.7
+	&__button-holder
+		margin-top: 32px
+		.btn
+			margin-right: 25px
+			&:last-child
+				margin-right: 0

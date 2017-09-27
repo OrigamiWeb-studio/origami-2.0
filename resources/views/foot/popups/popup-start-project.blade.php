@@ -4,9 +4,9 @@
   ]); ?>
 </script>
 <div id="write-to-us-wrapper">
-	<success-modal>
+	{{--<success-modal>--}}
 
-	</success-modal>
+	{{--</success-modal>--}}
 	<div class="modal fade origami-modal origami-modal_wide" id="writetous-modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog origami-modal__dialog origami-modal__dialog_wide" role="document">
 			<div class="modal-content origami-modal__content">

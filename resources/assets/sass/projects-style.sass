@@ -11,48 +11,6 @@
 @import "components/block"
 @import "components/modal2"
 
-.custom_checkbutton
-	display: block
-	position: relative
-	padding-left: 33px
-	color: $lightblue
-	cursor: pointer
-	font-weight: 400
-	margin-bottom: 10px
-	input
-		display: none
-		&:checked
-			&~
-				.custom_mark
-					border-color: #7f8285
-					outline-color: $darkblue 
-					i
-						display: block
-				span
-					color: $darkblue
-	@media screen and (max-width: 767px)
-		width: 33.33333%
-		float: left
-	@media screen and (max-width: 660px)
-		width: 50%
-	@media screen and (max-width: 540px)
-		width: 100%
-.custom_mark
-	width: 16px
-	height: 16px
-	border: 1px solid #f3f4f6
-	outline: 1px solid #ebedef
-	position: absolute
-	left: 0
-	top: 2px
-	i
-		display: none
-		position: absolute
-		left: 3px
-		top: 1px
-		font-size: 10px
-		color: $darkblue
-
 .s_allprojects
 	padding-bottom: 45px
 	header
@@ -223,6 +181,8 @@
 			width: 100%
 			max-width: 290px
 			margin-right: 0
+		&_invisible
+			opacity: 0.5
 	@media screen and (max-width: 767px)
 		margin-top: 30px
 	@media screen and (max-width: 500px)
