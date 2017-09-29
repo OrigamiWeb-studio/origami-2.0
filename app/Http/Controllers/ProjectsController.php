@@ -39,7 +39,9 @@ class ProjectsController extends Controller
 		$paginate = $request['paginate'] ? $request['paginate'] : null;
 
 		$projects = Project::query();
-		$projects = $projects->where('visible', true);
+
+		if (!auth()->user()->hasRole('owner'))
+			$projects = $projects->where('visible', true);
 		$projects = $projects->translatedIn(app()->getLocale());
 //		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
 
@@ -128,26 +130,10 @@ class ProjectsController extends Controller
 				'id'             => $project->id,
 				'cover'          => $project->cover,
 				'title'          => $project->translateOrDefault(app()->getLocale())->title,
-				'category_title' => $project->category->translateOrDefault(app()->getLocale())->title
+				'category_title' => $project->category->translateOrDefault(app()->getLocale())->title,
+				'visible'				 => $project->visible
 			];
 		}
-
-//		return $data;
-//
-//		$data = [
-//			'styles'     => [
-//				'libs/jcf/jcf.css',
-//				'css/projects-style.css'
-//			],
-//			'scripts'    => [
-//				'libs/jcf/jcf.js',
-//				'libs/jcf/jcf.select.js',
-//				'libs/jcf/jcf.range.js'
-//			],
-//			'projects'   => $projects,
-//			'categories' => ProjectCategory::get(),
-//			'stages'     => ProjectStage::get()
-//		];
 
 		return $data;
 	}
