@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\File;
 
 class ProjectsController extends Controller
 {
+	#GET /projects
 	public function allProjects()
 	{
 		$data = [
@@ -28,6 +29,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-all')->with($data);
 	}
 
+	#POST /projects
 	public function allProjectsJson(Request $request)
 	{
 		$categories = $request['categories'] ? $request['categories'] : null;
@@ -138,6 +140,7 @@ class ProjectsController extends Controller
 		return $data;
 	}
 
+	#GET /projects/{id}
 	public function singleProject($id)
 	{
 		$project = Project::query();
@@ -159,6 +162,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-single')->with($data);
 	}
 
+	#GET /projects/add
 	public function addProjectView()
 	{
 		$data = [
@@ -173,6 +177,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-add')->with($data);
 	}
 
+	#GET /projects/{id}/edit
 	public function editProjectView($id)
 	{
 		$project = Project::find($id);
@@ -190,6 +195,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-edit')->with($data);
 	}
 
+	#POST /projects/{id}/edit
 	public function editProject(ProjectEditRequest $request, $project_id)
 	{
 		$project = Project::find($project_id);
@@ -259,6 +265,7 @@ class ProjectsController extends Controller
 			->action('ProjectsController@singleProject', ['id' => $project_id]);
 	}
 
+	#POST /projects/add
 	public function addProject(ProjectAddRequest $request)
 	{
 		$project = new Project();
@@ -328,6 +335,7 @@ class ProjectsController extends Controller
 			->action('ProjectsController@singleProject', ['id' => $project->id]);
 	}
 
+	#GET /projects/{id}/delete
 	public function deleteProject($id)
 	{
 		$project = Project::find($id);
@@ -350,6 +358,7 @@ class ProjectsController extends Controller
 			->action('ProjectsController@allProjects');
 	}
 
+	#GET /projects/screenshots/{id}/delete
 	public function deleteScreenshot($id){
 		$screenshot = ProjectScreenshot::find($id);
 

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Developer;
 use Illuminate\Http\Request;
 
-class TeamController extends Controller
+class DevelopersController extends Controller
 {
+	#GET /developers
 	public function allDevelopers()
 	{
 		$data = [
@@ -16,6 +17,7 @@ class TeamController extends Controller
 		return view('pages.developers.developers-all')->with($data);
 	}
 
+	#GET /developers/{surname}
 	public function singleDeveloper($surname)
 	{
 		$developer = Developer::whereHas('profile', function ($query) use ($surname) {
