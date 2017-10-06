@@ -334,6 +334,16 @@ class ProjectsController extends Controller
 
 		if (!$project) abort(404);
 
+		foreach ($project->screenshots as $screenshot) {
+			$this->deleteScreenshot($screenshot->id);
+		}
+
+		$project->comments()->delete();
+		$project->developers()->detach();
+		$project->stages()->detach();
+
+		//TODO deleting tickets (?)
+
 		$project->delete();
 
 		return redirect()
