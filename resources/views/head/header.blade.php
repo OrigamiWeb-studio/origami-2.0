@@ -40,9 +40,9 @@
 			</div>
 		</transition>
 		<div class="pull-right">
-			@if(!Auth::user())
-				<a href="/login">{{ __('Login') }}</a>
-			@endif
+			{{--@if(!Auth::user())--}}
+				{{--<a href="/login">{{ __('Login') }}</a>--}}
+			{{--@endif--}}
 			<div class="lang-dropdown">
 				<a class="lang-dropdown__current-lang" href="#" @click.prevent="langDropdown = !langDropdown">
 					{{ session('locales.current.name') }}

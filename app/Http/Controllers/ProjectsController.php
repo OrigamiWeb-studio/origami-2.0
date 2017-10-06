@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\File;
 
 class ProjectsController extends Controller
 {
+	#GET /projects
 	public function allProjects()
 	{
 		$data = [
@@ -28,6 +29,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-all')->with($data);
 	}
 
+	#POST /projects
 	public function allProjectsJson(Request $request)
 	{
 		$categories = $request['categories'] ? $request['categories'] : null;
@@ -39,7 +41,9 @@ class ProjectsController extends Controller
 		$paginate = $request['paginate'] ? $request['paginate'] : null;
 
 		$projects = Project::query();
-		$projects = $projects->where('visible', true);
+
+		if (auth()->guest() || !auth()->user()->hasRole('owner'))
+			$projects = $projects->where('visible', true);
 		$projects = $projects->translatedIn(app()->getLocale());
 //		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
 
@@ -128,36 +132,24 @@ class ProjectsController extends Controller
 				'id'             => $project->id,
 				'cover'          => $project->cover,
 				'title'          => $project->translateOrDefault(app()->getLocale())->title,
-				'category_title' => $project->category->translateOrDefault(app()->getLocale())->title
+				'category_title' => $project->category->translateOrDefault(app()->getLocale())->title,
+				'visible'				 => $project->visible
 			];
 		}
-
-//		return $data;
-//
-//		$data = [
-//			'styles'     => [
-//				'libs/jcf/jcf.css',
-//				'css/projects-style.css'
-//			],
-//			'scripts'    => [
-//				'libs/jcf/jcf.js',
-//				'libs/jcf/jcf.select.js',
-//				'libs/jcf/jcf.range.js'
-//			],
-//			'projects'   => $projects,
-//			'categories' => ProjectCategory::get(),
-//			'stages'     => ProjectStage::get()
-//		];
 
 		return $data;
 	}
 
+	#GET /projects/{id}
 	public function singleProject($id)
 	{
-		$project = Project::where([
-			['id', '=', $id],
-			['visible', true]
-		])->first();
+		$project = Project::query();
+		$project = $project->where('id', '=', $id);
+
+		if (auth()->guest() || !auth()->user()->hasRole('owner'))
+			$project = $project->where('visible', true);
+
+		$project = $project->first();
 
 		if (!$project) abort(404);
 
@@ -170,6 +162,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-single')->with($data);
 	}
 
+	#GET /projects/add
 	public function addProjectView()
 	{
 		$data = [
@@ -184,6 +177,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-add')->with($data);
 	}
 
+	#GET /projects/{id}/edit
 	public function editProjectView($id)
 	{
 		$project = Project::find($id);
@@ -203,6 +197,7 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-edit')->with($data);
 	}
 
+	#POST /projects/{id}/edit
 	public function editProject(ProjectEditRequest $request, $project_id)
 	{
 		$project = Project::find($project_id);
@@ -272,6 +267,7 @@ class ProjectsController extends Controller
 			->action('ProjectsController@singleProject', ['id' => $project_id]);
 	}
 
+	#POST /projects/add
 	public function addProject(ProjectAddRequest $request)
 	{
 		$project = new Project();
@@ -341,11 +337,22 @@ class ProjectsController extends Controller
 			->action('ProjectsController@singleProject', ['id' => $project->id]);
 	}
 
+	#GET /projects/{id}/delete
 	public function deleteProject($id)
 	{
 		$project = Project::find($id);
 
 		if (!$project) abort(404);
+
+		foreach ($project->screenshots as $screenshot) {
+			$this->deleteScreenshot($screenshot->id);
+		}
+
+		$project->comments()->delete();
+		$project->developers()->detach();
+		$project->stages()->detach();
+
+		//TODO deleting tickets (?)
 
 		$project->delete();
 
@@ -353,6 +360,7 @@ class ProjectsController extends Controller
 			->action('ProjectsController@allProjects');
 	}
 
+	#GET /projects/screenshots/{id}/delete
 	public function deleteScreenshot($id){
 		$screenshot = ProjectScreenshot::find($id);
 

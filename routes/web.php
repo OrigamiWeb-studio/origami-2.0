@@ -89,13 +89,13 @@ Route::get('/about', 'AboutController@index')
 Route::get('/contacts', 'ContactsController@index')
 	->name('contacts');
 #-----------------------------------------------------------------------------------
-#Team
+#Developers
 #
 #
-Route::get('/developers', 'TeamController@allDevelopers')
+Route::get('/developers', 'DevelopersController@allDevelopers')
 	->name('developers');
 
-Route::get('/developers/{surname}', 'TeamController@singleDeveloper')
+Route::get('/developers/{surname}', 'DevelopersController@singleDeveloper')
 	->name('developer')
 	->where('surname', '[a-z]+');
 #-----------------------------------------------------------------------------------

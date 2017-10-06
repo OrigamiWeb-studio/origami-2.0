@@ -19,6 +19,7 @@ class EmailRequestsController extends Controller
 		}
 	}
 
+	#POST /email-requests/start-project
 	public function saveStartProjectRequest(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
@@ -52,6 +53,7 @@ class EmailRequestsController extends Controller
 		return response()->json(['error' => $validator->errors()->all()]);
 	}
 
+	#POST /email-requests/contact-us
 	public function saveContactUsRequest(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
