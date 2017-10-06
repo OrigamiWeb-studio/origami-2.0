@@ -40,7 +40,7 @@ class ProjectsController extends Controller
 
 		$projects = Project::query();
 
-		if (!auth()->user()->hasRole('owner'))
+		if (auth()->guest() || !auth()->user()->hasRole('owner'))
 			$projects = $projects->where('visible', true);
 		$projects = $projects->translatedIn(app()->getLocale());
 //		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
@@ -140,10 +140,13 @@ class ProjectsController extends Controller
 
 	public function singleProject($id)
 	{
-		$project = Project::where([
-			['id', '=', $id],
-			['visible', true]
-		])->first();
+		$project = Project::query();
+		$project = $project->where('id', '=', $id);
+
+		if (auth()->guest() || !auth()->user()->hasRole('owner'))
+			$project = $project->where('visible', true);
+
+		$project = $project->first();
 
 		if (!$project) abort(404);
 
