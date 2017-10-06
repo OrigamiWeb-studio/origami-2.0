@@ -1,9 +1,193 @@
 @import "./common"
 
+//Libs
+@import "../../../node_modules/magnific-popup/dist/magnific-popup"
+@import "../../../public/libs/jquery-ui/datepicker/jquery-ui"
+
 // Colors
-@import "components/_colors.sass"
+@import "components/colors"
 
 //Components
 @import "components/project-item"
+@import "components/management-icons"
 @import "components/block"
 @import "components/project-content"
+@import "components/project-description"
+
+.project-description__figure-block
+  margin-bottom: 39px
+  .management-icons
+    right: 25px
+  &:hover
+    .management-icons
+      display: block
+
+.project-add-form
+  &__group
+    margin-bottom: 39px
+    &:after
+      content: ''
+      display: table
+      clear: both
+  &__sub-group
+    @media screen and (max-width: 767px)
+      margin-bottom: 39px
+
+.button-holder
+  text-align: center
+  .btn:first-child
+    margin-right: 20px
+    border: none
+    background-color: #9da7b0
+    color: #fff
+    &:hover
+      background: #262b2f
+      color: #fff
+    @media screen and (max-width: 500px)
+      display: block
+      margin: 0 auto 15px
+
+.project-screens
+  margin: 0 -12px
+  font-size: 0
+  @media screen and (max-width: 767px)
+    text-align: center
+  &__item
+    width: 25%
+    padding: 0 12px
+    @media screen and (max-width: 767px)
+      width: 33.333%
+    @media screen and (max-width: 510px)
+      width: 50%
+    @media screen and (max-width: 410px)
+      width: 100%
+      max-width: 150px
+      display: block
+  &__input-wrapper
+    display: block
+    height: 171px
+    position: relative
+    border: 2px solid #ebedef
+    cursor: pointer
+    @media screen and (max-width: 1199px) and (min-width: 992px), screen and (max-width: 767px)
+      height: 131px
+    &:before
+      content: '\f067'
+      top: 0
+      bottom: 0
+      right: 0
+      left: 0
+      font-size: 11px
+      color: $lightblue
+      text-align: center
+      margin: auto
+      width: 35px
+      height: 35px
+      line-height: 35px
+      position: absolute
+      border: 2px solid #ebedef
+      font-family: 'FontAwesome'
+    &_uploaded
+      &:before
+        display: none
+      &:after
+        content: attr(data-files)
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        line-height: 171px
+        text-align: center
+        font-size: 16px
+        font-weight: 400
+        color: $lightblue
+        @media screen and (max-width: 1199px) and (min-width: 992px), screen and (max-width: 767px)
+          line-height: 131px
+    input
+      display: none
+  &__image-wrapper
+    position: relative
+    img
+      height: 171px
+      object-fit: cover
+      width: 100%
+
+
+
+
+//--------------Jquery ui customization-----------------
+
+.ui-widget.ui-widget-content
+  border-radius: 0
+
+
+.ui-datepicker .ui-datepicker-header
+  background: none
+  border: none
+  color: $darkblue
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next
+  color: $lightblue
+  font-weight: 400
+  &:before
+    position: absolute
+    font-family: "FontAwesome"
+    width: 100%
+    line-height: 25px
+    text-align: center
+
+.ui-datepicker .ui-datepicker-prev:before
+  content: '\f104'
+
+.ui-datepicker .ui-datepicker-next:before
+  content: '\f105'
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover
+  border: none
+  background: none
+  color: $darkblue
+
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover
+  top: 2px
+
+.ui-datepicker .ui-datepicker-prev-hover
+  left: 2px
+
+.ui-datepicker .ui-datepicker-next-hover
+  right: 2px
+
+
+.ui-state-default,
+.ui-widget-content .ui-state-default
+  border: none
+  background: none
+  color: $lightblue
+  text-align: center
+
+.ui-state-active,
+.ui-widget-content .ui-state-active
+  border: none
+  background: none
+  font-weight: 700
+  color: $darkblue
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight
+  border: none
+  background: none
+  color: $lightblue
+  font-weight: 700
+  outline: 1px solid $lightblue
+  &:focus
+    outline-offset: 0
+
+.ui-datepicker th
+  color: $darkblue
+  font-weight: 400
+
+//--------------END Jquery ui customization-----------------

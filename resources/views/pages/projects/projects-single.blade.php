@@ -51,19 +51,19 @@
 									</div>
 
 									@role('owner')
-										<ul class="project-item__management-icons">
-											<li class="project-item__management-item">
-												<a class="project-item__management-icon" href="{{ route('project-tickets', ['project_id' => $project->id]) }}">
+										<ul class="management-icons">
+											<li class="management-icons__item">
+												<a class="management-icons__icon" href="{{ route('project-tickets', ['project_id' => $project->id]) }}">
 													<i class="fa fa-ticket" aria-hidden="true"></i>
 												</a>
 											</li>
-											<li class="project-item__management-item">
-												<a class="project-item__management-icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
+											<li class="management-icons__item">
+												<a class="management-icons__icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
 													<i class="fa fa-pencil" aria-hidden="true"></i>
 												</a>
 											</li>
-											<li class="project-item__management-item">
-												<button class="project-item__management-icon" @click.prevent="deleteModalShow = true">
+											<li class="management-icons__item">
+												<button class="management-icons__icon" @click.prevent="deleteModalShow = true">
 													<i class="fa fa-trash-o" aria-hidden="true"></i>
 												</button>
 											</li>

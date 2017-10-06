@@ -23,10 +23,10 @@ return [
 
     'edit' => [
       'styles' => [
-
+        'css/project-add-style.css'
       ],
       'scripts' => [
-
+        'js/project-add-scripts.js'
       ]
     ],
 

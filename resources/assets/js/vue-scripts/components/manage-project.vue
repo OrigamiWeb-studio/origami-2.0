@@ -1,18 +1,18 @@
 <template lang="html">
     <div>
-        <ul class="project-item__management-icons">
-            <li class="project-item__management-item">
-                <a class="project-item__management-icon" v-bind:href="ticketsLink">
+        <ul class="management-icons">
+            <li class="management-icons__item">
+                <a class="management-icons__icon" v-bind:href="ticketsLink">
                     <i class="fa fa-ticket" aria-hidden="true"></i>
                 </a>
             </li>
-            <li class="project-item__management-item">
-                <a class="project-item__management-icon" v-bind:href="editLink">
+            <li class="management-icons__item">
+                <a class="management-icons__icon" v-bind:href="editLink">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
             </li>
-            <li class="project-item__management-item">
-                <button class="project-item__management-icon" @click="visible = true">
+            <li class="management-icons__item">
+                <button class="management-icons__icon" @click="visible = true">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </button>
             </li>
@@ -59,7 +59,7 @@
         let outer = document.createElement("div");
         outer.style.visibility = "hidden";
         outer.style.width = "100px";
-        outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+        outer.style.msOverflowStyle = "scrollbar";
 
         document.body.appendChild(outer);
 

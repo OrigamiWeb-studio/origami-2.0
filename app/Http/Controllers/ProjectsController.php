@@ -191,6 +191,8 @@ class ProjectsController extends Controller
 		if (!$project) abort(404);
 
 		$data = [
+      'styles'     => config('resources.projects.edit.styles'),
+      'scripts'    => config('resources.projects.edit.scripts'),
 			'project'    => $project,
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get(),

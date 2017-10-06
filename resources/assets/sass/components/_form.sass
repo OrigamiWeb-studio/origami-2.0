@@ -2,6 +2,10 @@
 	font-size: 16px
 	&__form-group
 		margin-bottom: 20px
+		&:after
+			content: ''
+			display: table
+			clear: both
 	&__label
 		cursor: pointer
 		color: $lightblue
@@ -20,11 +24,21 @@
 			color: $darkblue
 		&_textarea
 			resize: none
+		&_datepicker
+			background: url('../images/calendar-icon.png') no-repeat;
+			background-size: 13px
+			background-position: 95% 13px
 		&_error
 			border-color: #e83c44
 			color: #e83c44
 			&:focus
 				color: $darkblue
+	&__symbols-left
+		float: right
+		font-size: 12px
+		color: $lightblue
+		display: block
+		margin-top: 5px
 
 .jcf-select-origami-form__select
 	display: block
@@ -60,8 +74,22 @@
 		line-height: 1.4
 		font-size: 16px
 		padding: 10px 16px
-		&.jcf-hover
-			color: #656565
+		color: $lightblue
+		&.jcf-hover,
+		&.jcf-selected
+			color: $darkblue
+	.jcf-scrollbar-vertical
+		width: 4px
+		background: #ebedef
+		.jcf-scrollbar-dec,
+		.jcf-scrollbar-inc
+			display: none
+		.jcf-scrollbar-handle
+			border-radius: 4px
+			width: 4px
+			background: #a3adb5
+	.jcf-scrollbar-horizontal
+		display: none
 
 
 .alert
