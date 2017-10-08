@@ -5,18 +5,19 @@ require('jcf/dist/js/jcf.select');
 $(document).ready(function(){
 
     // jcf.setOptions('Scrollable', {
-    //   alwaysShowScrollbars: false,
-    //   alwaysPreventMouseWheel: true,
-    //   handleResize: true
+    //   alwaysShowScrollbars: true,
+    //   alwaysPreventMouseWheel: false,
+    //   handleResize: false
     // });
-
+    //
     jcf.setOptions('Select', {
       wrapNative: false,
       wrapNativeOnMobile: false,
       maxVisibleItems: 5,
-      useCustomScroll: false
+      useCustomScroll: true,
+      fakeDropInBody: false
     });
 
-    jcf.replace('select');
+    jcf.replaceAll();
 
 });

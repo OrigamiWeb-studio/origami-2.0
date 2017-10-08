@@ -139,7 +139,10 @@
 															</option>
 														@endforeach
 													</select>
-													{{--<span @click="selectAll('stages')">Select All</span>--}}
+													<div class="project-add-form__multiple-select-buttons">
+														<span @click="selectAll('stages')">{{ __('Select All') }}</span>
+														<span @click="deselectAll('stages')">{{ __('Deselect All') }}</span>
+													</div>
 												</div>
 											</div>
 											<div class="col-sm-6">
@@ -169,7 +172,8 @@
 										</div>
 									@endif
 									<div class="project-add-form__group">
-										<label class="origami-form__label">{{ __('Slider images (can attach more than one)') }}*</label>
+										<label class="origami-form__label">{{ __('Images of the project') }}*</label>
+										<span class="project-add-form__max-size">{{ __('Max size') }} - <strong>5000Kb</strong></span>
 										<div class="project-screens">
 											{{--<project-images></project-images>--}}
 											<div class="project-screens__item">
@@ -198,6 +202,10 @@
 															</option>
 														@endforeach
 													</select>
+													<div class="project-add-form__multiple-select-buttons">
+														<span @click="selectAll('developers')">{{ __('Select All') }}</span>
+														<span @click="deselectAll('developers')">{{ __('Deselect All') }}</span>
+													</div>
 												</div>
 											</div>
 											<div class="col-sm-6">

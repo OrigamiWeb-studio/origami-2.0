@@ -20,9 +20,14 @@ new Vue({
       let theInput = event.target;
       this.filesUploaded = theInput.files.length;
     },
-    // selectAll(id){
-    //   $("#stages option").prop('selected', true);
-    // },
+    selectAll(id){
+      $(`#${id} option`).prop('selected', true);
+      jcf.refreshAll();
+    },
+    deselectAll(id){
+      $(`#${id} option`).prop('selected', false);
+      jcf.refreshAll();
+    },
     previewLogo(event){
       let theInput = event.target,
           self = this;

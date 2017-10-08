@@ -67,8 +67,8 @@
 								{{--<option value="a-z">{{ __('A-Z') }}</option>--}}
 								{{--<option value="z-a">{{ __('Z-A') }}</option>--}}
 								{{--</select>--}}
-								<div v-bind:class="{opened: searchField}" class="search-wrapper">
-									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="filterData.search" required>
+								<div :class="{opened: searchField}" class="search-wrapper">
+									<input type="text" name="search" placeholder="{{ __('Search') }}" value="" v-model="searchText" required>
 									<button type="submit" @click.prevent="searchField = !searchField" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
 								</div>
 								@role('owner')
@@ -131,21 +131,21 @@
 							</div>
 							<div class="projects" v-cloak>
 								<span class="projects__not-found v-cloak--hidden" v-if="notFound">{{ __('There is no results for your request') }}</span>
-								<div class=" v-cloak--hidden block project-item projects__project-item" v-for="project in projects">
-									<a v-bind:href="'{{ url('/projects') }}/' + project.id ">
+								<div class="v-cloak--hidden block project-item projects__project-item" v-for="project in projects" :class="{'projects__project-item_invisible': !project.visible}">
+									<a :href="'{{ url('/projects') }}/' + project.id ">
 										<figure class="project-item__logo-wrapper">
-											<img class="project-item__logo" v-bind:src='project.cover' v-bind:alt="project.title">
+											<img class="project-item__logo" :src='project.cover' :alt="project.title">
 										</figure>
 									</a>
 									<div class="project-item__description">
-										<a v-bind:href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
+										<a :href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
 										<span class="project-item__category">#@{{ project.category_title }}</span>
 									</div>
 									@role('owner')
 										<manage-project v-cloak
-														v-bind:tickets-link="this.window.location.origin+'/projects/'+project.id+'/tickets'"
-														v-bind:edit-link="this.window.location.origin+'/projects/'+project.id+'/edit'"
-														v-bind:delete-link="this.window.location.origin+'/projects/'+project.id+'/delete'">
+														:tickets-link="this.window.location.origin+'/projects/'+project.id+'/tickets'"
+														:edit-link="this.window.location.origin+'/projects/'+project.id+'/edit'"
+														:delete-link="this.window.location.origin+'/projects/'+project.id+'/delete'">
 											<template slot="title">{{ __('Are you sure?') }}</template>
 											{{ __('Project') }} "@{{ project.title }}" {{ __('will be deleted. Are you sure that you want to delete it at all?') }}
 											<template slot="token">{{ csrf_field() }}</template>
@@ -162,7 +162,7 @@
 										<span class="pagination__index pagination__index_active">@{{ index+1 }}</span>
 									</template>
 									<template v-else>
-										<a v-bind:href="'/projects?page='+(index+1)" @click.prevent="paginate((index+1))" class="pagination__index">@{{ index+1 }}</a>
+										<a :href="'/projects?page='+(index+1)" @click.prevent="paginate((index+1))" class="pagination__index">@{{ index+1 }}</a>
 									</template>
 								</li>
 							</ul>

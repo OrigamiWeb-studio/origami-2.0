@@ -8,6 +8,8 @@ new Vue({
     },
     data: {
         searchField: false,
+        searchText: '',
+        timeout: null,
         filterData: {
             "categories": [],
             "years" : [],
@@ -17,8 +19,8 @@ new Vue({
         },
         projects: [],
         pagination: [],
-      loading: true,
-      notFound: false
+        loading: true,
+        notFound: false
     },
     watch: {
         filterData: {
@@ -26,6 +28,13 @@ new Vue({
                 this.sendData()
             },
             deep: true
+        },
+        searchText(){
+            let self = this;
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(function(){
+                self.filterData.search = self.searchText;
+            }, 500)
         }
     },
     methods: {
