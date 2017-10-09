@@ -6,7 +6,7 @@ $(document).ready(function () {
     if($("#results-slider").length){
         $("#results-slider").lightSlider({
             item: 4,
-            loop: true,
+            loop: false,
             controls: false,
             slideMargin: 30,
             onSliderLoad: function() {
@@ -38,23 +38,19 @@ $(document).ready(function () {
         });
 
         $("#results-slider").magnificPopup({
-            delegate: 'a',
+            delegate: '.results-slider__link',
             type: 'image',
+            tLoading: 'Loading image #%curr%...',
             closeOnContentClick: false,
             closeBtnInside: false,
-            mainClass: 'mfp-with-zoom mfp-img-mobile',
+            mainClass: 'mfp-img-mobile',
             image: {
-                verticalFit: true
+                verticalFit: true,
+                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
             },
             gallery: {
-                enabled: true
-            },
-            zoom: {
                 enabled: true,
-                duration: 300,
-                opener: function(element) {
-                    return element.find('img');
-                }
+                preload: [0,1]
             }
         })
 

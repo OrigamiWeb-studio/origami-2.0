@@ -156,7 +156,7 @@
 												<ul id="results-slider" class="results-slider__list list-unstyled cS-hidden">
 													@foreach($project->screenshots->sortBy('order_') as $screenshot)
 														<li class="results-slider__item">
-															<a href="{{ asset($screenshot->link) }}">
+															<a class="results-slider__link" href="{{ asset($screenshot->link) }}">
 																<img class="results-slider__image"
 																	 src="{{ asset($screenshot->link) }}"
 																	 onerror="this.src='{{ asset('/images/image.svg') }}';"
