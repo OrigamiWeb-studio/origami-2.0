@@ -1,7 +1,11 @@
 // import projectImages from './components/add-project-images.vue';
 // Vue.component('project-images', projectImages);
 import origamiTextArea from './components/textarea.vue';
+import projectScreenshotDelete from './components/project-screenshot-delete.vue';
+
 Vue.component('origami-textarea', origamiTextArea);
+Vue.component('project-screenshot-delete', projectScreenshotDelete);
+
 new Vue({
   el: "#project-add",
   data: {

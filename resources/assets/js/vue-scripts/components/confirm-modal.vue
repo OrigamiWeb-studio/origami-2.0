@@ -16,9 +16,9 @@
                         <p class="origami-modal2__paragraph"><slot></slot></p>
                         <div class="origami-modal2__buttons">
                             <form v-bind:action="formAction">
-                                <slot name="token"></slot>
                                 <button class="btn origami-modal2__button"><slot name="confirm"></slot></button>
                                 <button class="btn origami-modal2__button" @click.prevent="$emit('close')"><slot name="cancel"></slot></button>
+                                <slot name="token"></slot>
                             </form>
                         </div>
                     </div>

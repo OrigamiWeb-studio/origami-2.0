@@ -37,6 +37,8 @@
   "Deselect All": "Відмінити виділення",
   "Images of the project": "Зображення проекта",
   "Max size": "Максимальний розмір",
+  "Link": "Посилання",
+  "Visible": "Видимий",
 
   "Start a project": "Почати проект",
   "Name": "Ім'я",
@@ -54,6 +56,8 @@
   "Our projects": "Наші проекти",
   "All projects": "Всі проекти",
   "Clients": "Клієнти",
+  "Client": "Клієнт",
+  "Client's review": "Відгук клієнта",
 
   "View per page": "Відображати на сторінці",
   "All": "Всі",
@@ -72,6 +76,7 @@
   "About project": "Про проект",
   "Project components": "Компоненти проекту",
   "Developers team": "Команда розробників",
+  "Developers": "Розробники",
   "Description": "Опис",
   "Comments": "Коментарі",
   "screenshots": "скріншоти",

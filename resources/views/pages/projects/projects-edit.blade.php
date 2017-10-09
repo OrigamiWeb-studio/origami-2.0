@@ -181,6 +181,33 @@
 													<input multiple name="slider_images[]" type="file" @change="countFiles($event)" accept="image/jpeg,image/png,image/gif">
 												</label>
 											</div>
+											@foreach($project->screenshots->sortBy('order_') as $screenshot)
+												{{--<li>--}}
+													{{--<img src="{{ asset($screenshot->link) }}" alt="#">--}}
+													{{--<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="">[ X ]</a>--}}
+												{{--</li>--}}
+												<div class="project-screens__item">
+													<div class="project-screens__image-wrapper" >
+														{{--<ul class="management-icons">--}}
+															{{--<li class="management-icons__item">--}}
+																{{--<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" class="management-icons__icon">--}}
+																	{{--<i aria-hidden="true" class="fa fa-trash-o"></i>--}}
+																{{--</a>--}}
+															{{--</li>--}}
+														{{--</ul>--}}
+														<project-screenshot-delete v-cloak
+																		:delete-link="'{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}'">
+															<template slot="title">{{ __('Are you sure?') }}</template>
+															This screeshot will be deleted
+															<template slot="confirm">{{ __('Confirm') }}</template>
+															<template slot="cancel">{{ __('Cancel') }}</template>
+														</project-screenshot-delete>
+														<a class="project-screens__magnific-link" href="{{ asset($screenshot->link) }}">
+															<img src="{{ asset($screenshot->link) }}">
+														</a>
+													</div>
+												</div>
+											@endforeach
 										</div>
 									</div>
 									@if($errors->has('slider_images'))
@@ -238,7 +265,7 @@
 										</div>
 									@endif
 									<div class="project-add-form__group">
-										<label for="client_review" class="origami-form__label">{{ __('Client review') }}</label>
+										<label for="client_review" class="origami-form__label">{{ __("Client's review") }}</label>
 										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="280" oldvalue="{{ empty(old('client_review')) ? $project->client_review : old('client_review') }}">
 											<template slot="symbolsLeft">
 												{{ __('symbols left') }}
@@ -489,7 +516,7 @@
 					{{--@endforeach--}}
 				{{--</ul>--}}
 			{{--@endif--}}
-			{{----}}
+
 		{{--</div>--}}
 
 

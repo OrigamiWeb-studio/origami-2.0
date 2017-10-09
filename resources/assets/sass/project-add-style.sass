@@ -13,6 +13,7 @@
 @import "components/block"
 @import "components/project-content"
 @import "components/project-description"
+@import "components/modal2"
 
 .project-description__figure-block
   margin-bottom: 39px
@@ -80,6 +81,9 @@
   &__item
     width: 25%
     padding: 0 12px
+    margin-bottom: 15px
+    display: inline-block
+    vertical-align: top
     @media screen and (max-width: 767px)
       width: 33.333%
     @media screen and (max-width: 510px)
@@ -133,6 +137,12 @@
       display: none
   &__image-wrapper
     position: relative
+    border: 2px solid #ebedef
+    .management-icons__icon
+      background-color: #fff
+    &:hover
+      .management-icons
+        display: block
     img
       height: 171px
       object-fit: cover

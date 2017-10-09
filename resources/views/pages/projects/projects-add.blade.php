@@ -237,7 +237,7 @@
 										</div>
 									@endif
 									<div class="project-add-form__group">
-										<label for="client_review" class="origami-form__label">{{ __('Client review') }}</label>
+										<label for="client_review" class="origami-form__label">{{ __("Client's review") }}</label>
 										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="280" oldvalue="{{ old('client_review') }}">
 											<template slot="symbolsLeft">
 												{{ __('symbols left') }}

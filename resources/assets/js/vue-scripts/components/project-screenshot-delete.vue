@@ -2,17 +2,7 @@
     <div>
         <ul class="management-icons">
             <li class="management-icons__item">
-                <a class="management-icons__icon" v-bind:href="ticketsLink">
-                    <i class="fa fa-ticket" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li class="management-icons__item">
-                <a class="management-icons__icon" v-bind:href="editLink">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li class="management-icons__item">
-                <button class="management-icons__icon" @click="visible = true">
+                <button class="management-icons__icon" @click.prevent="visible = true">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </button>
             </li>
@@ -33,11 +23,8 @@
                         <div class="origami-modal2__body">
                             <p class="origami-modal2__paragraph"><slot></slot></p>
                             <div class="origami-modal2__buttons">
-                                <form v-bind:action="deleteLink">
-                                    <button class="btn origami-modal2__button"><slot name="confirm"></slot></button>
-                                    <button class="btn origami-modal2__button" @click.prevent="visible = false"><slot name="cancel"></slot></button>
-                                    <slot name="token"></slot>
-                                </form>
+                                <a :href="deleteLink" class="btn origami-modal2__button"><slot name="confirm"></slot></a>
+                                <button class="btn origami-modal2__button" @click.prevent="visible = false"><slot name="cancel"></slot></button>
                             </div>
                         </div>
                     </div>
@@ -76,7 +63,7 @@
         return widthNoScroll - widthWithScroll;
       }
     },
-    props: ['deleteLink', 'editLink', 'ticketsLink'],
+    props: ['deleteLink'],
     watch: {
       visible: function(){
         if(this.visible){
