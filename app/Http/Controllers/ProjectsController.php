@@ -325,7 +325,7 @@ class ProjectsController extends Controller
 				$image->move($destination_path, $file_path);
 
 				$screenshot = new ProjectScreenshot();
-				$screenshot->order = $key;
+				$screenshot->order_ = $key;
 				$screenshot->project_id = $project->id;
 				$screenshot->link = $file_path;
 				$screenshot->save();
