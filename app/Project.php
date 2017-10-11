@@ -4,15 +4,16 @@ namespace App;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-	use Translatable;
+	use Translatable, SoftDeletes;
 	
 	public $table = 'projects';
 	public $translationModel = ProjectTranslation::class;
 	public $translatedAttributes = ['title', 'description', 'short_description'];
-	protected $dates = ['created_at', 'updated_at', 'closed_at'];
+	protected $dates = ['created_at', 'updated_at', 'deleted_at', 'closed_at'];
 	
 	public function category()
 	{
