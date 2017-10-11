@@ -23,7 +23,7 @@
 			<div class="container">
 
 				<header>
-					<h1>{{ $project->translateOrDefault(app()->getLocale())->title }} <span>({{ $project->created_at->year }})</span></h1>
+					<h1>{{ $project->translateOrDefault(app()->getLocale())->title }} <span>({{ $project->closed_at->year }})</span></h1>
 				</header>
 
 				<div class="project-content">

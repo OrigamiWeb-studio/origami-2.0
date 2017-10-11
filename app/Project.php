@@ -12,6 +12,7 @@ class Project extends Model
 	public $table = 'projects';
 	public $translationModel = ProjectTranslation::class;
 	public $translatedAttributes = ['title', 'description', 'short_description'];
+	protected $dates = ['created_at', 'updated_at', 'closed_at'];
 	
 	public function category()
 	{

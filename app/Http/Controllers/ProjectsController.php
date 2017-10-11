@@ -10,6 +10,7 @@ use App\ProjectCategory;
 use App\ProjectScreenshot;
 use App\ProjectStage;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -58,9 +59,9 @@ class ProjectsController extends Controller
 		#Фильтр по годам
 		if ($years !== null) {
 			if (is_array($years)) {
-				$projects = $projects->whereRaw("year(created_at) in (" . implode(', ', array_fill(0, count($years), '?')) . ")", $years);
+				$projects = $projects->whereRaw("year(closed_at) in (" . implode(', ', array_fill(0, count($years), '?')) . ")", $years);
 			} else
-				$projects = $projects->whereYear('created_at', $years);
+				$projects = $projects->whereYear('closed_at', $years);
 		}
 
 		#Фильтр по компонентам
@@ -214,6 +215,7 @@ class ProjectsController extends Controller
 		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
+		$project->closed_at = Carbon::createFromFormat('d.m.Y H:i:s', $request['closed_at'].' 00:00:00');
 		$project->stages()->sync($request['stages']);
 		$project->developers()->sync($request['developers']);
 

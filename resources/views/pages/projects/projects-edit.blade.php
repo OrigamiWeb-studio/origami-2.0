@@ -14,7 +14,10 @@
 						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<span>{{ __('New project') }}</span>
+						<a href="{{ route('project', ['id' => $project]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
+					</li>
+					<li>
+						<span>{{ __('Editing a project') }}</span>
 					</li>
 				</ul>
 			</div>
@@ -22,7 +25,7 @@
 		<section class="s-project-add">
 			<div class="container">
 				<header>
-					<h1>{{ __('Add a new project') }}</h1>
+					<h1>{{ __('Editing a project') }}: {{ $project->translateOrDefault(app()->getLocale())->title }}</h1>
 				</header>
 				<div class="project-content" id="project-add">
 					<form action="{{ route('project-edit-submit', ['id' => $project->id]) }}" method="post" enctype="multipart/form-data" class="origami-form project-add-form">
@@ -31,7 +34,11 @@
 							<aside class="col-md-3">
 								<div class="block project-content__project-item project-item">
 									<figure class="project-item__logo-wrapper">
-										<img v-if="!logoUploaded" class="project-item__logo" src="{{ asset('images/no-logotype.png') }}" alt="No logotype">
+										@if($project->cover)
+											<img v-if="!logoUploaded" class="project-item__logo" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
+										@else
+											<img v-if="!logoUploaded" class="project-item__logo" src="{{ asset('images/no-logotype.png') }}" alt="No logotype">
+										@endif
 										<img v-else class="project-item__logo" v-cloak :src="logoUrl" :alt="projectName">
 									</figure>
 									<div class="project-item__description">
@@ -50,8 +57,12 @@
 							</aside>
 							<div class="col-md-9">
 								<div class="block project-content__block project-description">
-									<figure class="project-description__figure-block" :class="{'project-description__figure-block_error': !mainImageUploaded}">
-										<img v-cloak v-if="!mainImageUploaded" class="project-description__main-image" src="{{ asset('images/no-logotype.png') }}" alt="No image">
+									<figure class="project-description__figure-block" @if(!$project->main_image) :class="{'project-description__figure-block_error': !mainImageUploaded}" @endif >
+										@if($project->main_image)
+											<img v-cloak v-if="!mainImageUploaded" class="project-description__main-image" src="{{ asset($project->main_image) }}" alt="{{ $project->title }}">
+										@else
+											<img v-cloak v-if="!mainImageUploaded" class="project-description__main-image" src="{{ asset('images/no-logotype.png') }}" alt="No image">
+										@endif
 										<img v-else class="project-description__main-image" v-cloak :src="mainImageUrl" :alt="projectName">
 										<ul class="management-icons">
 											<li class="management-icons__item">
@@ -101,7 +112,7 @@
 										<label for="short_description" class="origami-form__label">{{ __('Summary') }}</label>
 										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="140" oldvalue="{{ empty(old('short_description')) ? $project->short_description : old('short_description') }}">
 											<template slot="symbolsLeft">
-												{{ __('symbols left') }}
+												{{ __('Symbols left') }}: N
 											</template>
 										</origami-textarea>
 									</div>
@@ -116,7 +127,7 @@
 										<label for="description" class="origami-form__label">{{ __('Description') }}*</label>
 										<origami-textarea rows="5" name="description" id="description" maxlength="280" oldvalue="{{ empty(old('description')) ? $project->description : old('description') }}">
 											<template slot="symbolsLeft">
-												{{ __('symbols left') }}
+												{{ __('Symbols left') }}: N
 											</template>
 										</origami-textarea>
 									</div>
@@ -268,7 +279,7 @@
 										<label for="client_review" class="origami-form__label">{{ __("Client's review") }}</label>
 										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="280" oldvalue="{{ empty(old('client_review')) ? $project->client_review : old('client_review') }}">
 											<template slot="symbolsLeft">
-												{{ __('symbols left') }}
+												{{ __('Symbols left') }}: N
 											</template>
 										</origami-textarea>
 									</div>
@@ -289,7 +300,9 @@
 											</div>
 											<div class="col-sm-6">
 												<label for="end-date" class="origami-form__label">{{ __('Date of completion') }}</label>
-												<input type="text" class="origami-form__input origami-form__input_datepicker" id="end-date">
+												<input type="text" class="origami-form__input origami-form__input_datepicker" id="end-date"
+															 name="closed_at"
+															 value="{{ empty(old('closed_at')) ? $project->closed_at->format('d.m.Y') : old('closed_at') }}">
 											</div>
 										</div>
 									</div>
@@ -328,7 +341,13 @@
 									@endif
 									<div class="button-holder">
 										<button class="btn" type="submit">{{ __('Edit the project') }}</button>
-										<a href="#" class="btn">{{ __('Cancel') }}</a>
+
+										@php $previous = \Illuminate\Support\Facades\URL::previous(); @endphp
+										@if($previous !== url('/') && $previous !== \Illuminate\Support\Facades\Request::url())
+											<a href="{{ $previous }}" class="btn">{{ __('Cancel') }}</a>
+										@else
+											<a href="{{ route('project', ['id' => $project]) }}" class="btn">{{ __('Cancel') }}</a>
+										@endif
 									</div>
 								</div>
 							</div>

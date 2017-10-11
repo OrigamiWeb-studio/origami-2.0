@@ -108,7 +108,7 @@
 								{{--<label class="range_input">--}}
 								{{--<input type="range" value="30,80" multiple>--}}
 								{{--<span class="pull-left">{{ __('Cheap') }}</span>--}}
-								{{--<span class="pull-right">{{ __('Expencive') }}</span>--}}
+								{{--<span class="pull-right">{{ __('Expensive') }}</span>--}}
 								{{--</label>--}}
 								{{--</div>--}}
 

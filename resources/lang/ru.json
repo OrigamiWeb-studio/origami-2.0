@@ -28,7 +28,7 @@
   "Project name": "Название проекта",
   "Select a category": "Выберите категорию",
   "Summary": "Краткое описание",
-  "symbols left": "символов осталось",
+  "Symbols left": "Символов осталось",
   "Date of completion": "Дата окончания",
   "Add to homepage": "Добавить на главную страницу",
   "Current stage": "Текущий этап",
@@ -70,7 +70,7 @@
   "Price": "Цена",
   "Components": "Компоненты",
   "Cheap": "Дёшево",
-  "Expencive": "Дорого",
+  "Expensive": "Дорого",
 
   "Go to the site": "Перейти на сайт",
   "About project": "О проекте",
@@ -86,6 +86,7 @@
   "Guest": "Гость",
   "Answer": "Ответить",
   "Edit": "Редактировать",
+  "Editing a project": "Редактирование проекта",
   "Delete": "Удалить",
 
   "Anonymous customer": "Анонимный клиент",

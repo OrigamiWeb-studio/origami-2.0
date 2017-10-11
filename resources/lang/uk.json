@@ -28,7 +28,7 @@
   "Project name": "Назва проекту",
   "Select a category": "Оберіть категорію",
   "Summary": "Корокий опис",
-  "symbols left": "символів зашилось",
+  "Symbols left": "Символів зашилось",
   "Date of completion": "Дата закінчення",
   "Add to homepage": "Додати до головної сторінки",
   "Current stage": "Поточний етап",
@@ -86,6 +86,7 @@
   "Guest": "Гість",
   "Answer": "Відповісти",
   "Edit": "Редагувати",
+  "Editing a project": "Редагування проекту",
   "Delete": "Видалити",
 
   "Anonymous customer": "Анонімний клієнт",
