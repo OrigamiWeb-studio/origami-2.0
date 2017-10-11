@@ -346,20 +346,12 @@ class ProjectsController extends Controller
 
 		if (!$project) abort(404);
 
-		foreach ($project->screenshots as $screenshot) {
-			$this->deleteScreenshot($screenshot->id);
-		}
-
+		#Soft deleting
+		$project->screenshots()->delete();
 		$project->comments()->delete();
-		$project->developers()->detach();
-		$project->stages()->detach();
-
-		//TODO deleting tickets (?)
-
 		$project->delete();
 
-		return redirect()
-			->action('ProjectsController@allProjects');
+		return redirect()->route('projects');
 	}
 
 	#GET /projects/{project_id}/screenshots
@@ -389,29 +381,10 @@ class ProjectsController extends Controller
 
 		if (!$screenshot) return false;
 
-		File::delete(public_path($screenshot->link));
+//		File::delete(public_path($screenshot->link));
 
 		$screenshot->delete();
 
 		return true;
 	}
-
-//	public function moveScreenshot($id, $direction){
-//		if (!in_array($direction, ['right', 'left'])) abort(404);
-//
-//		$screenshot = ProjectScreenshot::find($id);
-//
-//		$screenshotReverse = ProjectScreenshot::query();
-//		$screenshotReverse = $screenshotReverse->where('project_id', '=', $screenshot->project_id);
-//
-//		if ($direction === 'right')
-//			$screenshotReverse = $screenshotReverse->where('order', '=', $screenshot->order - 1);
-//		elseif($direction === 'left')
-//			$screenshotReverse = $screenshotReverse->where('order', '=', $screenshot->order + 1);
-//
-//		$screenshotReverse = $screenshotReverse->first();
-//
-//		dd($id, $direction, $screenshot, $screenshotReverse, $screenshot->order - 1, $screenshotReverse->order + 1);
-//
-//	}
 }
