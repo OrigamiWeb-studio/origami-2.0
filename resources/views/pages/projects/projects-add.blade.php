@@ -33,7 +33,7 @@
 										<img v-else class="project-item__logo" v-cloak :src="logoUrl" :alt="projectName">
 									</figure>
 									<div class="project-item__description" v-cloak>
-										<span class="project-item__title" v-if="projectName.length > 1">@{{ projectName }}</span>
+										<span class="project-item__title" v-if="projectName.length > 0">@{{ projectName }}</span>
 										<span class="project-item__title" v-else>{{ __('Project name') }}</span>
 										{{--<span class="project-item__category">#category</span>--}}
 									</div>
