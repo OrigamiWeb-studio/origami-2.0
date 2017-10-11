@@ -24,7 +24,7 @@ class ProjectsController extends Controller
 			'styles'     => config('resources.projects.all.styles'),
 			'scripts'    => config('resources.projects.all.scripts'),
 			'categories' => ProjectCategory::get(),
-			'stages'     => ProjectStage::get()
+			'stages'     => ProjectStage::get(),
 		];
 
 		return view('pages.projects.projects-all')->with($data);
@@ -122,10 +122,10 @@ class ProjectsController extends Controller
 				'page_next_url' => $projects->nextPageUrl(),
 				'page_prev_url' => $projects->previousPageUrl(),
 				'per_page'      => $projects->perPage(),
-				'total'         => $projects->total()
+				'total'         => $projects->total(),
 
 			],
-			'projects'   => []
+			'projects'   => [],
 		];
 
 		foreach ($projects as $project) {
@@ -134,7 +134,7 @@ class ProjectsController extends Controller
 				'cover'          => $project->cover,
 				'title'          => $project->translateOrDefault(app()->getLocale())->title,
 				'category_title' => $project->category->translateOrDefault(app()->getLocale())->title,
-				'visible'				 => $project->visible
+				'visible'        => $project->visible,
 			];
 		}
 
@@ -157,7 +157,7 @@ class ProjectsController extends Controller
 		$data = [
 			'styles'  => config('resources.projects.single.styles'),
 			'scripts' => config('resources.projects.single.scripts'),
-			'project' => $project
+			'project' => $project,
 		];
 
 		return view('pages.projects.projects-single')->with($data);
@@ -167,12 +167,12 @@ class ProjectsController extends Controller
 	public function addProjectView()
 	{
 		$data = [
-      'styles'     => config('resources.projects.add.styles'),
-      'scripts'    => config('resources.projects.add.scripts'),
+			'styles'     => config('resources.projects.add.styles'),
+			'scripts'    => config('resources.projects.add.scripts'),
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get(),
 			'clients'    => User::where('is_developer', false)->get(),
-			'developers' => Developer::get()
+			'developers' => Developer::get(),
 		];
 
 		return view('pages.projects.projects-add')->with($data);
@@ -186,13 +186,13 @@ class ProjectsController extends Controller
 		if (!$project) abort(404);
 
 		$data = [
-      'styles'     => config('resources.projects.edit.styles'),
-      'scripts'    => config('resources.projects.edit.scripts'),
+			'styles'     => config('resources.projects.edit.styles'),
+			'scripts'    => config('resources.projects.edit.scripts'),
 			'project'    => $project,
 			'categories' => ProjectCategory::get(),
 			'stages'     => ProjectStage::get(),
 			'clients'    => User::where('is_developer', false)->get(),
-			'developers' => Developer::get()
+			'developers' => Developer::get(),
 		];
 
 		return view('pages.projects.projects-edit')->with($data);
@@ -215,7 +215,7 @@ class ProjectsController extends Controller
 		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
-		$project->closed_at = Carbon::createFromFormat('d.m.Y H:i:s', $request['closed_at'].' 00:00:00');
+		$project->closed_at = Carbon::createFromFormat('d.m.Y H:i:s', $request['closed_at'] . ' 00:00:00');
 		$project->stages()->sync($request['stages']);
 		$project->developers()->sync($request['developers']);
 
@@ -362,8 +362,29 @@ class ProjectsController extends Controller
 			->action('ProjectsController@allProjects');
 	}
 
+	#GET /projects/{project_id}/screenshots
+	public function projectScreenshotsJson($id)
+	{
+		$project = Project::find($id);
+
+		if (!$project) abort(404);
+
+		$screenshots = [];
+
+		foreach ($project->screenshots as $screenshot) {
+			$screenshots [] = [
+				'id'    => $screenshot->id,
+				'order' => $screenshot->order_,
+				'link'  => $screenshot->link,
+			];
+		}
+
+		return $screenshots;
+	}
+
 	#GET /projects/screenshots/{id}/delete
-	public function deleteScreenshot($id){
+	public function deleteScreenshot($id)
+	{
 		$screenshot = ProjectScreenshot::find($id);
 
 		if (!$screenshot) return redirect()->back();

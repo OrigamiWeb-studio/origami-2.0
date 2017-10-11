@@ -64,6 +64,11 @@ Route::get('/projects/screenshots/{id}/delete', 'ProjectsController@deleteScreen
 	->name('project-screenshot-delete-submit')
 	->where('id', '[0-9]+')
 	->middleware(['role:owner']);
+
+Route::get('/projects/{project_id}/screenshots', 'ProjectsController@projectScreenshotsJson')
+	->name('project-screenshots')
+	->where('project_id', '[0-9]+')
+	->middleware(['role:owner']);
 #-----------------------------------------------------------------------------------
 #Tickets
 #
