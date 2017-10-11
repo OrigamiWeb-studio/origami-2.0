@@ -378,7 +378,7 @@ class ProjectsController extends Controller
 	}
 
 	#GET /projects/{project_id}/screenshots/{id}/delete
-	public function deleteScreenshot($id)
+	public function deleteScreenshot($project_id, $id)
 	{
 		$screenshot = ProjectScreenshot::find($id);
 
