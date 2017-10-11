@@ -382,18 +382,18 @@ class ProjectsController extends Controller
 		return $screenshots;
 	}
 
-	#GET /projects/screenshots/{id}/delete
+	#GET /projects/{project_id}/screenshots/{id}/delete
 	public function deleteScreenshot($id)
 	{
 		$screenshot = ProjectScreenshot::find($id);
 
-		if (!$screenshot) return redirect()->back();
+		if (!$screenshot) return false;
 
 		File::delete(public_path($screenshot->link));
 
 		$screenshot->delete();
 
-		return redirect()->back();
+		return true;
 	}
 
 //	public function moveScreenshot($id, $direction){

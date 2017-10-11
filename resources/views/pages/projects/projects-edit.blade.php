@@ -207,7 +207,7 @@
 															{{--</li>--}}
 														{{--</ul>--}}
 														<project-screenshot-delete v-cloak
-																		:delete-link="'{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}'">
+																		:delete-link="'{{ route('project-screenshot-delete-submit', ['project_id' => $project->id, 'id' => $screenshot->id]) }}'">
 															<template slot="title">{{ __('Are you sure?') }}</template>
 															This screeshot will be deleted
 															<template slot="confirm">{{ __('Confirm') }}</template>

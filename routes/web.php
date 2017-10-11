@@ -60,8 +60,9 @@ Route::get('/projects/{id}', 'ProjectsController@singleProject')
 	->name('project')
 	->where('id', '[0-9]+');
 
-Route::get('/projects/screenshots/{id}/delete', 'ProjectsController@deleteScreenshot')
+Route::get('/projects/{project_id}/screenshots/{id}/delete', 'ProjectsController@deleteScreenshot')
 	->name('project-screenshot-delete-submit')
+	->where('project_id', '[0-9]+')
 	->where('id', '[0-9]+')
 	->middleware(['role:owner']);
 
