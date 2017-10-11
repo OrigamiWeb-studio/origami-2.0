@@ -298,7 +298,7 @@
 											</div>
 											<div class="col-sm-6">
 												<label for="end-date" class="origami-form__label">{{ __('Date of completion') }}</label>
-												<input type="text" class="origami-form__input origami-form__input_datepicker" id="end-date">
+												<input type="text" name="closed_at" class="origami-form__input origami-form__input_datepicker" id="end-date">
 											</div>
 										</div>
 									</div>

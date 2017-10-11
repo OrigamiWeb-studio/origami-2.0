@@ -100,7 +100,7 @@ class ProjectsController extends Controller
 //			'project_translations.description'
 		]);
 //		$projects = $projects->groupBy('project_translations.id');
-//		$projects = $projects->orderBy('project_translations.title', $order);
+		$projects = $projects->orderBy('created_at', 'desc');
 //		$projects = $projects->with('translations');
 
 		#Пагинация
