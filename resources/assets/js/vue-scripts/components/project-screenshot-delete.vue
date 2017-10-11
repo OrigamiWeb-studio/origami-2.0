@@ -7,7 +7,7 @@
                 </button>
             </li>
         </ul>
-        <transition appear name="origami-modal2" v-if="visible">
+        <transition appear name="origami-modal2" v-if="visible" v-on:after-leave="afterLeave">
             <div class="origami-modal2">
                 <div class="origami-modal2__overlay" @click="visible = false"></div>
                 <div class="origami-modal2__dialog">
@@ -21,9 +21,7 @@
                             </button>
                         </header>
                         <div class="origami-modal2__body">
-                            <p class="origami-modal2__paragraph"><slot></slot></p>
                             <div class="origami-modal2__buttons">
-                                <!--<a :href="deleteLink" class="btn origami-modal2__button"><slot name="confirm"></slot></a>-->
                                 <button class="btn origami-modal2__button" @click.prevent="deleteScreen()"><slot name="confirm"></slot></button>
                                 <button class="btn origami-modal2__button" @click.prevent="visible = false"><slot name="cancel"></slot></button>
                             </div>
@@ -39,15 +37,26 @@
   export default {
     data() {
       return {
-        visible: false
+        visible: false,
+        deleted: false
       }
     },
     methods: {
       deleteScreen(){
+        this.$emit('loadon');
         axios.get(this.deleteLink).then(response => {
-          console.log(response);
+          this.visible = false;
+          this.deleted = true;
+          this.$emit('loadoff');
+        }).catch(err => {
+          console.log(err);
+          this.$emit('loadoff');
         });
-        this.$emit('delete-screen');
+      },
+      afterLeave(){
+        if(this.deleted){
+          this.$emit('deletescreen');
+        }
       },
       getScrollbarWidth() {
         let outer = document.createElement("div");

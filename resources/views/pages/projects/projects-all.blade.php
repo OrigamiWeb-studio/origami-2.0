@@ -129,6 +129,7 @@
 							<div class="loader" v-if="loading">
 								<div class="loader__inner"></div>
 							</div>
+
 							<div class="projects" v-cloak>
 								<span class="projects__not-found v-cloak--hidden" v-if="notFound">{{ __('There is no results for your request') }}</span>
 								<div class="v-cloak--hidden block project-item projects__project-item" v-for="project in projects" :class="{'projects__project-item_invisible': !project.visible}">

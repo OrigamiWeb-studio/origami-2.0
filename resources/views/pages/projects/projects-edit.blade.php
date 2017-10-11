@@ -27,7 +27,13 @@
 				<header>
 					<h1>{{ __('Editing a project') }}: {{ $project->translateOrDefault(app()->getLocale())->title }}</h1>
 				</header>
+				<script>
+                  	window.projectId = {{ $project->id }};
+				</script>
 				<div class="project-content" id="project-edit">
+					<div class="loader" v-if="loading">
+						<div class="loader__inner"></div>
+					</div>
 					<form action="{{ route('project-edit-submit', ['id' => $project->id]) }}" method="post" enctype="multipart/form-data" class="origami-form project-add-form">
 						{{ csrf_field() }}
 						<div class="row">
@@ -192,31 +198,14 @@
 													<input multiple name="slider_images[]" type="file" @change="countFiles($event)" accept="image/jpeg,image/png,image/gif">
 												</label>
 											</div>
-											{{--@foreach($project->screenshots->sortBy('order_') as $screenshot)--}}
-												{{--<div class="project-screens__item">--}}
-													{{--<div class="project-screens__image-wrapper" >--}}
-														{{--<project-screenshot-delete v-cloak--}}
-																		{{--:delete-link="'{{ route('project-screenshot-delete-submit', ['project_id' => $project->id, 'id' => $screenshot->id]) }}'">--}}
-															{{--<template slot="title">{{ __('Are you sure?') }}</template>--}}
-															{{--This screeshot will be deleted--}}
-															{{--<template slot="confirm">{{ __('Confirm') }}</template>--}}
-															{{--<template slot="cancel">{{ __('Cancel') }}</template>--}}
-														{{--</project-screenshot-delete>--}}
-														{{--<a class="project-screens__magnific-link" href="{{ asset($screenshot->link) }}">--}}
-															{{--<a class="project-screens__magnific-link" href="{{ asset($screenshot->link) }}">--}}
-
-															{{--<img src="{{ asset($screenshot->link) }}">--}}
-														{{--</a>--}}
-													{{--</div>--}}
-												{{--</div>--}}
-											{{--@endforeach--}}
-											<div class="project-screens__item" v-for="screenshot in screenshots">
+											<div class="project-screens__item" v-for="(screenshot, index) in screenshots">
 												<div class="project-screens__image-wrapper">
 													<project-screenshot-delete v-cloak
 																			   :delete-link="'/projects/{{ $project->id }}/screenshots/'+screenshot.id+'/delete'"
-																			   v-on:delete-screen="deleteScreenshot(screenshot.id)">
+																			   v-on:deletescreen="deleteScreenshot(index)"
+																			   v-on:loadon="loading = true"
+																			   v-on:loadoff="loading = false">
 														<template slot="title">{{ __('Are you sure?') }}</template>
-														This screeshot will be deleted
 														<template slot="confirm">{{ __('Confirm') }}</template>
 														<template slot="cancel">{{ __('Cancel') }}</template>
 													</project-screenshot-delete>
@@ -227,10 +216,10 @@
 											</div>
 										</div>
 									</div>
-									@if($errors->has('slider_images'))
+									@if($errors->has('slider_images.*'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
-												{{ $errors->first('slider_images') }}
+												{{ $errors->first('slider_images.*') }}
 											</div>
 										</div>
 									@endif

@@ -9,8 +9,9 @@ Vue.component('project-screenshot-delete', projectScreenshotDelete);
 new Vue({
   el: "#project-edit",
   data: {
+    loading: false,
 
-    screenshots: {},
+    screenshots: [],
 
     filesUploaded: 0,
 
@@ -21,8 +22,8 @@ new Vue({
     mainImageUrl: ''
   },
   methods: {
-    deleteScreenshot(id){
-      console.log(`Screenshot with id ${id} was deleted!(No)`);
+    deleteScreenshot(index){
+      this.screenshots.splice(index, 1);
     },
     countFiles(event){
       let theInput = event.target;
@@ -74,7 +75,7 @@ new Vue({
     }
   },
   beforeMount(){
-    axios.get(`/projects/4/screenshots`).then(response => {
+    axios.get(`/projects/${window.projectId}/screenshots`).then(response => {
       this.screenshots = response.data;
     }).catch(err => {
       console.log(err)
