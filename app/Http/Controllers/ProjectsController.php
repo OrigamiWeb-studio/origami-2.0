@@ -284,6 +284,7 @@ class ProjectsController extends Controller
 		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
+		$project->closed_at = Carbon::createFromFormat('d.m.Y H:i:s', $request['closed_at'] . ' 00:00:00');
 
 		if (Input::hasFile('cover')) {
 			if ($project->cover)
@@ -377,16 +378,16 @@ class ProjectsController extends Controller
 	}
 
 	#GET /projects/{project_id}/screenshots/{id}/delete
-	public function deleteScreenshot($id)
+	public function deleteScreenshot($project_id, $id)
 	{
 		$screenshot = ProjectScreenshot::find($id);
 
-		if (!$screenshot) return false;
+		if (!$screenshot) return ['status' => false];
 
 //		File::delete(public_path($screenshot->link));
 
 		$screenshot->delete();
 
-		return true;
+		return ['status' => true];
 	}
 }
