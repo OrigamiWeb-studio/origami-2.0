@@ -367,7 +367,7 @@ class ProjectsController extends Controller
 	{
 		$project = Project::find($id);
 
-		if (!$project) abort(404);
+		if (!$project) return [];
 
 		$screenshots = [];
 
