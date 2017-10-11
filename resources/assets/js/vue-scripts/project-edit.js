@@ -1,13 +1,16 @@
 // import projectImages from './components/add-project-images.vue';
 // Vue.component('project-images', projectImages);
 import origamiTextArea from './components/textarea.vue';
+import projectScreenshotDelete from './components/project-screenshot-delete.vue';
 
 Vue.component('origami-textarea', origamiTextArea);
+Vue.component('project-screenshot-delete', projectScreenshotDelete);
 
 new Vue({
-  el: "#project-add",
+  el: "#project-edit",
   data: {
-    projectName: '',
+
+    screenshots: {},
 
     filesUploaded: 0,
 
@@ -18,6 +21,9 @@ new Vue({
     mainImageUrl: ''
   },
   methods: {
+    deleteScreenshot(id){
+      console.log(`Screenshot with id ${id} was deleted!(No)`);
+    },
     countFiles(event){
       let theInput = event.target;
       this.filesUploaded = theInput.files.length;
@@ -32,7 +38,7 @@ new Vue({
     },
     previewLogo(event){
       let theInput = event.target,
-          self = this;
+        self = this;
 
       if (theInput.files && theInput.files[0]) {
         let reader = new FileReader();
@@ -50,7 +56,7 @@ new Vue({
     },
     previewMainImage(event){
       let theInput = event.target,
-          self = this;
+        self = this;
 
       if (theInput.files && theInput.files[0]) {
         let reader = new FileReader();
@@ -66,5 +72,12 @@ new Vue({
         self.mainImageUrl = '#'
       }
     }
+  },
+  beforeMount(){
+    axios.get(`/projects/4/screenshots`).then(response => {
+      this.screenshots = response.data;
+    }).catch(err => {
+      console.log(err)
+    })
   }
 });

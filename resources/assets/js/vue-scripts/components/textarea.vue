@@ -2,7 +2,7 @@
     <div>
         <textarea :name="name" :id="id" :rows="rows" :keyup="countdown()" :maxlength="maxlength" v-model="message" class="origami-form__input origami-form__input_textarea">
         </textarea>
-        <span class="origami-form__symbols-left">{{ remainingCount }} <slot name="symbolsLeft"></slot></span>
+        <span class="origami-form__symbols-left"><slot name="symbolsLeft"></slot> {{ remainingCount }}</span>
     </div>
 </template>
 

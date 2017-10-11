@@ -27,7 +27,7 @@
 				<header>
 					<h1>{{ __('Editing a project') }}: {{ $project->translateOrDefault(app()->getLocale())->title }}</h1>
 				</header>
-				<div class="project-content" id="project-add">
+				<div class="project-content" id="project-edit">
 					<form action="{{ route('project-edit-submit', ['id' => $project->id]) }}" method="post" enctype="multipart/form-data" class="origami-form project-add-form">
 						{{ csrf_field() }}
 						<div class="row">
@@ -112,7 +112,7 @@
 										<label for="short_description" class="origami-form__label">{{ __('Summary') }}</label>
 										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="140" oldvalue="{{ empty(old('short_description')) ? $project->short_description : old('short_description') }}">
 											<template slot="symbolsLeft">
-												{{ __('Symbols left') }}: N
+												{{ __('Symbols left') }}:
 											</template>
 										</origami-textarea>
 									</div>
@@ -127,7 +127,7 @@
 										<label for="description" class="origami-form__label">{{ __('Description') }}*</label>
 										<origami-textarea rows="5" name="description" id="description" maxlength="280" oldvalue="{{ empty(old('description')) ? $project->description : old('description') }}">
 											<template slot="symbolsLeft">
-												{{ __('Symbols left') }}: N
+												{{ __('Symbols left') }}:
 											</template>
 										</origami-textarea>
 									</div>
@@ -185,40 +185,46 @@
 									<div class="project-add-form__group">
 										<label class="origami-form__label">{{ __('Images of the project') }}*</label>
 										<span class="project-add-form__max-size">{{ __('Max size') }} - <strong>5000Kb</strong></span>
-										<div class="project-screens">
+										<div class="project-screens" id="project-screens">
 											{{--<project-images></project-images>--}}
 											<div class="project-screens__item">
 												<label class="project-screens__input-wrapper" :data-files="'Uploaded '+filesUploaded+' files'" :class="{'project-screens__input-wrapper_uploaded': filesUploaded}">
 													<input multiple name="slider_images[]" type="file" @change="countFiles($event)" accept="image/jpeg,image/png,image/gif">
 												</label>
 											</div>
-											@foreach($project->screenshots->sortBy('order_') as $screenshot)
-												{{--<li>--}}
-													{{--<img src="{{ asset($screenshot->link) }}" alt="#">--}}
-													{{--<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" style="">[ X ]</a>--}}
-												{{--</li>--}}
-												<div class="project-screens__item">
-													<div class="project-screens__image-wrapper" >
-														{{--<ul class="management-icons">--}}
-															{{--<li class="management-icons__item">--}}
-																{{--<a href="{{ route('project-screenshot-delete-submit', ['id' => $screenshot->id]) }}" class="management-icons__icon">--}}
-																	{{--<i aria-hidden="true" class="fa fa-trash-o"></i>--}}
-																{{--</a>--}}
-															{{--</li>--}}
-														{{--</ul>--}}
-														<project-screenshot-delete v-cloak
-																		:delete-link="'{{ route('project-screenshot-delete-submit', ['project_id' => $project->id, 'id' => $screenshot->id]) }}'">
-															<template slot="title">{{ __('Are you sure?') }}</template>
-															This screeshot will be deleted
-															<template slot="confirm">{{ __('Confirm') }}</template>
-															<template slot="cancel">{{ __('Cancel') }}</template>
-														</project-screenshot-delete>
-														<a class="project-screens__magnific-link" href="{{ asset($screenshot->link) }}">
-															<img src="{{ asset($screenshot->link) }}">
-														</a>
-													</div>
+											{{--@foreach($project->screenshots->sortBy('order_') as $screenshot)--}}
+												{{--<div class="project-screens__item">--}}
+													{{--<div class="project-screens__image-wrapper" >--}}
+														{{--<project-screenshot-delete v-cloak--}}
+																		{{--:delete-link="'{{ route('project-screenshot-delete-submit', ['project_id' => $project->id, 'id' => $screenshot->id]) }}'">--}}
+															{{--<template slot="title">{{ __('Are you sure?') }}</template>--}}
+															{{--This screeshot will be deleted--}}
+															{{--<template slot="confirm">{{ __('Confirm') }}</template>--}}
+															{{--<template slot="cancel">{{ __('Cancel') }}</template>--}}
+														{{--</project-screenshot-delete>--}}
+														{{--<a class="project-screens__magnific-link" href="{{ asset($screenshot->link) }}">--}}
+															{{--<a class="project-screens__magnific-link" href="{{ asset($screenshot->link) }}">--}}
+
+															{{--<img src="{{ asset($screenshot->link) }}">--}}
+														{{--</a>--}}
+													{{--</div>--}}
+												{{--</div>--}}
+											{{--@endforeach--}}
+											<div class="project-screens__item" v-for="screenshot in screenshots">
+												<div class="project-screens__image-wrapper">
+													<project-screenshot-delete v-cloak
+																			   :delete-link="'/projects/{{ $project->id }}/screenshots/'+screenshot.id+'/delete'"
+																			   v-on:delete-screen="deleteScreenshot(screenshot.id)">
+														<template slot="title">{{ __('Are you sure?') }}</template>
+														This screeshot will be deleted
+														<template slot="confirm">{{ __('Confirm') }}</template>
+														<template slot="cancel">{{ __('Cancel') }}</template>
+													</project-screenshot-delete>
+													<a class="project-screens__magnific-link" :data-source="this.window.location.origin+'/'+screenshot.link" data-source-text="Source" :href="this.window.location.origin+'/'+screenshot.link">
+														<img :src="this.window.location.origin+'/'+screenshot.link">
+													</a>
 												</div>
-											@endforeach
+											</div>
 										</div>
 									</div>
 									@if($errors->has('slider_images'))
@@ -279,7 +285,7 @@
 										<label for="client_review" class="origami-form__label">{{ __("Client's review") }}</label>
 										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="280" oldvalue="{{ empty(old('client_review')) ? $project->client_review : old('client_review') }}">
 											<template slot="symbolsLeft">
-												{{ __('Symbols left') }}: N
+												{{ __('Symbols left') }}:
 											</template>
 										</origami-textarea>
 									</div>

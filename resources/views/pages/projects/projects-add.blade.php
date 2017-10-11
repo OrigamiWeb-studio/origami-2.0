@@ -100,7 +100,7 @@
 										<label for="short_description" class="origami-form__label">{{ __('Summary') }}</label>
 										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="140" oldvalue="{{ old('short_description') }}">
 											<template slot="symbolsLeft">
-												{{ __('symbols left') }}
+												{{ __('Symbols left') }}
 											</template>
 										</origami-textarea>
 									</div>
@@ -115,7 +115,7 @@
 										<label for="description" class="origami-form__label">{{ __('Description') }}*</label>
 										<origami-textarea rows="5" name="description" id="description" maxlength="280" oldvalue="{{ old('description') }}">
 											<template slot="symbolsLeft">
-												{{ __('symbols left') }}
+												{{ __('Symbols left') }}
 											</template>
 										</origami-textarea>
 									</div>
@@ -240,7 +240,7 @@
 										<label for="client_review" class="origami-form__label">{{ __("Client's review") }}</label>
 										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="280" oldvalue="{{ old('client_review') }}">
 											<template slot="symbolsLeft">
-												{{ __('symbols left') }}
+												{{ __('Symbols left') }}
 											</template>
 										</origami-textarea>
 									</div>

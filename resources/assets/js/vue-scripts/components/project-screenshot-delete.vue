@@ -23,7 +23,8 @@
                         <div class="origami-modal2__body">
                             <p class="origami-modal2__paragraph"><slot></slot></p>
                             <div class="origami-modal2__buttons">
-                                <a :href="deleteLink" class="btn origami-modal2__button"><slot name="confirm"></slot></a>
+                                <!--<a :href="deleteLink" class="btn origami-modal2__button"><slot name="confirm"></slot></a>-->
+                                <button class="btn origami-modal2__button" @click.prevent="deleteScreen()"><slot name="confirm"></slot></button>
                                 <button class="btn origami-modal2__button" @click.prevent="visible = false"><slot name="cancel"></slot></button>
                             </div>
                         </div>
@@ -42,6 +43,12 @@
       }
     },
     methods: {
+      deleteScreen(){
+        axios.get(this.deleteLink).then(response => {
+          console.log(response);
+        });
+        this.$emit('delete-screen');
+      },
       getScrollbarWidth() {
         let outer = document.createElement("div");
         outer.style.visibility = "hidden";
@@ -63,7 +70,7 @@
         return widthNoScroll - widthWithScroll;
       }
     },
-    props: ['deleteLink'],
+    props: ['deleteLink', 'screenshotId'],
     watch: {
       visible: function(){
         if(this.visible){
