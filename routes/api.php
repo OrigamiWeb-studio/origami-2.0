@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::post('/screenshots', '???')
+//	->name('api-project-screenshots')
+//	->middleware(['role:owner']);
+//
+//Route::delete('/screenshots', '???')
+//	->name('api-project-screenshots')
+//	->middleware(['role:owner']);
