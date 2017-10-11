@@ -26,17 +26,21 @@
 					<form action="{{ route('project-add-submit') }}" method="post" enctype="multipart/form-data" class="origami-form project-add-form">
 					{{ csrf_field() }}
 						<div class="row">
+
 							<aside class="col-md-3">
 								<div class="block project-content__project-item project-item">
+
 									<figure class="project-item__logo-wrapper">
 										<img v-if="!logoUploaded" class="project-item__logo" src="{{ asset('images/no-logotype.png') }}" alt="No logotype">
 										<img v-else class="project-item__logo" v-cloak :src="logoUrl" :alt="projectName">
 									</figure>
+
 									<div class="project-item__description" v-cloak>
 										<span class="project-item__title" v-if="projectName.length > 0">@{{ projectName }}</span>
 										<span class="project-item__title" v-else>{{ __('Project name') }}</span>
 										{{--<span class="project-item__category">#category</span>--}}
 									</div>
+
 									<ul class="management-icons">
 										<li class="management-icons__item">
 											<label for="cover" class="management-icons__icon">
@@ -45,13 +49,18 @@
 											</label>
 										</li>
 									</ul>
+
 								</div>
 							</aside>
+
 							<div class="col-md-9">
 								<div class="block project-content__block project-description">
+
 									<figure class="project-description__figure-block" :class="{'project-description__figure-block_error': !mainImageUploaded}">
+
 										<img v-cloak v-if="!mainImageUploaded" class="project-description__main-image" src="{{ asset('images/no-logotype.png') }}" alt="No image">
 										<img v-else class="project-description__main-image" v-cloak :src="mainImageUrl" :alt="projectName">
+
 										<ul class="management-icons">
 											<li class="management-icons__item">
 												<label for="main_image" class="management-icons__icon">
@@ -60,15 +69,19 @@
 												</label>
 											</li>
 										</ul>
+
 									</figure>
+
 									<div class="project-add-form__group">
 										<div class="row">
+
 											<div class="col-sm-6">
 												<div class="project-add-form__sub-group">
 													<label for="project_name" class="origami-form__label">{{ __('Project name') }}*</label>
 													<input type="text" name="title" v-model="projectName" class="origami-form__input" id="project_name" value="{{ old('title') }}">
 												</div>
 											</div>
+
 											<div class="col-sm-6">
 												<label for="category" class="origami-form__label">{{ __('Category') }}*</label>
 												<select name="category" id="category" class="origami-form__select">
@@ -80,8 +93,10 @@
 													@endforeach
 												</select>
 											</div>
+
 										</div>
 									</div>
+
 									@if($errors->has('title'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -89,6 +104,7 @@
 											</div>
 										</div>
 									@endif
+
 									@if($errors->has('category'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -96,6 +112,7 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
 										<label for="short_description" class="origami-form__label">{{ __('Summary') }}</label>
 										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="140" oldvalue="{{ old('short_description') }}">
@@ -104,6 +121,7 @@
 											</template>
 										</origami-textarea>
 									</div>
+
 									@if($errors->has('short_description'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -111,6 +129,7 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
 										<label for="description" class="origami-form__label">{{ __('Description') }}*</label>
 										<origami-textarea rows="5" name="description" id="description" maxlength="280" oldvalue="{{ old('description') }}">
@@ -119,6 +138,7 @@
 											</template>
 										</origami-textarea>
 									</div>
+
 									@if($errors->has('description'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -126,8 +146,10 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
 										<div class="row">
+
 											<div class="col-sm-6">
 												<div class="project-add-form__sub-group">
 													<label for="stages" class="origami-form__label">{{ __('Stages of development') }}*</label>
@@ -144,6 +166,7 @@
 													</div>
 												</div>
 											</div>
+
 											<div class="col-sm-6">
 												<label for="stage" class="origami-form__label">{{ __('Current stage') }}</label>
 												<select name="stage" id="stage" class="origami-form__select">
@@ -154,8 +177,10 @@
 													@endforeach
 												</select>
 											</div>
+
 										</div>
 									</div>
+
 									@if($errors->has('stages'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -163,6 +188,7 @@
 											</div>
 										</div>
 									@endif
+
 									@if($errors->has('stage'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -170,6 +196,7 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
 										<label class="origami-form__label">{{ __('Images of the project') }}*</label>
 										<span class="project-add-form__max-size">{{ __('Max size') }} - <strong>5000Kb</strong></span>
@@ -182,6 +209,7 @@
 											</div>
 										</div>
 									</div>
+
 									@if($errors->has('slider_images'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -189,8 +217,10 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
 										<div class="row">
+
 											<div class="col-sm-6">
 												<div class="project-add-form__sub-group">
 													<label for="developers" class="origami-form__label">{{ __('Developers') }}*</label>
@@ -207,6 +237,7 @@
 													</div>
 												</div>
 											</div>
+
 											<div class="col-sm-6">
 												<label for="client" class="origami-form__label">{{ __('Client') }}</label>
 												<select name="client" id="client" class="origami-form__select">
@@ -220,8 +251,10 @@
 													@endforeach
 												</select>
 											</div>
+
 										</div>
 									</div>
+
 									@if($errors->has('developers'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -229,6 +262,7 @@
 											</div>
 										</div>
 									@endif
+
 									@if($errors->has('client'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -236,6 +270,7 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
 										<label for="client_review" class="origami-form__label">{{ __("Client's review") }}</label>
 										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="280" oldvalue="{{ old('client_review') }}">
@@ -244,6 +279,7 @@
 											</template>
 										</origami-textarea>
 									</div>
+
 									@if($errors->has('client_review'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -251,6 +287,7 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
 										<div class="row">
 											<div class="col-sm-6">
@@ -265,6 +302,7 @@
 											</div>
 										</div>
 									</div>
+
 									@if($errors->has('link'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -272,18 +310,23 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="project-add-form__group">
+
 										<label class="custom_checkbutton">
 											<input type="checkbox" name="visible" {{ old('visible') === 'on' ? 'checked' : '' }}>
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ __('Visible') }}</span>
 										</label>
+
 										<label class="custom_checkbutton">
 											<input type="checkbox" name="us_choice" {{ old('us_choice') === 'on' ? 'checked' : '' }}>
 											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
 											<span>{{ __('Add to homepage') }}</span>
 										</label>
+
 									</div>
+
 									@if($errors->has('visible'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -291,6 +334,7 @@
 											</div>
 										</div>
 									@endif
+
 									@if($errors->has('us_choice'))
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
@@ -298,10 +342,12 @@
 											</div>
 										</div>
 									@endif
+
 									<div class="button-holder">
 										<button class="btn" type="submit">{{ __('Add a project') }}</button>
 										<a href="#" class="btn">{{ __('Cancel') }}</a>
 									</div>
+
 								</div>
 							</div>
 						</div>

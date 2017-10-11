@@ -382,12 +382,12 @@ class ProjectsController extends Controller
 	{
 		$screenshot = ProjectScreenshot::find($id);
 
-		if (!$screenshot) return false;
+		if (!$screenshot) return ['status' => false];
 
 //		File::delete(public_path($screenshot->link));
 
 		$screenshot->delete();
 
-		return true;
+		return ['status' => true];
 	}
 }
