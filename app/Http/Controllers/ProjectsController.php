@@ -351,6 +351,8 @@ class ProjectsController extends Controller
 		$project->comments()->delete();
 		$project->delete();
 
+		#TODO force deleting: remove main_image, cover..., screenshots...
+
 		return redirect()->route('projects');
 	}
 
