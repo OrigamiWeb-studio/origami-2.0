@@ -121,11 +121,22 @@ return [
 	*/
 
 	'attributes' => [
-		'name'            => 'Imię',
-		'email'           => 'Email',
-		'phone'           => 'Numer telefonu',
-		'description'     => 'Opis',
-		'project_details' => 'Szczegóły projektu',
+		'name'              => 'Imię',
+		'email'             => 'Email',
+		'phone'             => 'Numer telefonu',
+		'description'       => 'Opis',
+		'project_details'   => 'Szczegóły projektu',
+		'title'             => 'Nazwa projektu',
+		'category'          => 'Kategoria',
+		'short_description' => 'Krótki opis',
+		'stages'            => 'Etapy rozwoju',
+		'stage'             => 'Aktualny etap',
+		'slider_images'     => 'Zdjęcia projektu',
+		'developers'        => 'Deweloperzy',
+		'client'            => 'Klient',
+		'client_review'     => "Recenzja klienta",
+		'link'              => 'Link',
+		'closed_at'         => 'Data zakończenia',
 	],
 
 ];

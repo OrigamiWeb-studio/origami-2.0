@@ -114,7 +114,7 @@
 									@endif
 
 									<div class="project-add-form__group">
-										<label for="short_description" class="origami-form__label">{{ __('Summary') }}</label>
+										<label for="short_description" class="origami-form__label">{{ __('Short description') }}</label>
 										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="140" oldvalue="{{ old('short_description') }}">
 											<template slot="symbolsLeft">
 												{{ __('Symbols left') }}
@@ -307,6 +307,14 @@
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
 												{{ $errors->first('link') }}
+											</div>
+										</div>
+									@endif
+
+									@if($errors->has('closed_at'))
+										<div class="project-add-form__group">
+											<div class="alert alert_danger">
+												{{ $errors->first('closed_at') }}
 											</div>
 										</div>
 									@endif

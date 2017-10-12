@@ -121,11 +121,22 @@ return [
 	*/
 
 	'attributes' => [
-		'name'            => 'Ім\'я',
-		'email'           => 'Email',
-		'phone'           => 'Номер телефону',
-		'description'     => 'Опис',
-		'project_details' => 'Деталі проекту',
+		'name'              => 'Ім\'я',
+		'email'             => 'Email',
+		'phone'             => 'Номер телефону',
+		'description'       => 'Опис',
+		'project_details'   => 'Деталі проекту',
+		'title'             => 'Назва проекту',
+		'category'          => 'Категорія',
+		'short_description' => 'Короткий опис',
+		'stages'            => 'Етапи розробки',
+		'stage'             => 'Поточний етап',
+		'slider_images'     => 'Зображення проекту',
+		'developers'        => 'Розробники',
+		'client'            => 'Клієнт',
+		'client_review'     => "Відгук клієнта",
+		'link'              => 'Посилання',
+		'closed_at'         => 'Дата закінчення',
 	],
 
 ];

@@ -119,11 +119,22 @@ return [
 	*/
 
 	'attributes' => [
-		'name'            => 'Name',
-		'email'           => 'Email',
-		'phone'           => 'Phone number',
-		'description'     => 'Description',
-		'project_details' => 'Project details',
+		'name'              => 'Name',
+		'email'             => 'Email',
+		'phone'             => 'Phone number',
+		'description'       => 'Description',
+		'project_details'   => 'Project details',
+		'title'             => 'Project name',
+		'category'          => 'Category',
+		'short_description' => 'Short description',
+		'stages'            => 'Stages of development',
+		'stage'             => 'Current stage',
+		'slider_images'     => 'Images of the project',
+		'developers'        => 'Developers',
+		'client'            => 'Client',
+		'client_review'     => "Client's review",
+		'link'              => 'Link',
+		'closed_at'         => 'Date of completion',
 	],
 
 ];
