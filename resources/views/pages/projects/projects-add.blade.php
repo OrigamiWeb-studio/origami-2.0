@@ -44,7 +44,7 @@
 									<ul class="management-icons">
 										<li class="management-icons__item">
 											<label for="cover" class="management-icons__icon">
-												<input accept="image/jpeg,image/png,image/gif" @change="previewLogo($event)" type="file" id="cover" name="cover">
+												<input accept="image/jpeg,image/bmp,image/png" @change="previewLogo($event)" type="file" id="cover" name="cover">
 												<i class="fa fa-upload" aria-hidden="true"></i>
 											</label>
 										</li>
@@ -64,13 +64,29 @@
 										<ul class="management-icons">
 											<li class="management-icons__item">
 												<label for="main_image" class="management-icons__icon">
-													<input @change="previewMainImage($event)" accept="image/jpeg,image/png,image/gif" type="file" id="main_image" name="main_image">
+													<input @change="previewMainImage($event)" accept="image/jpeg,image/bmp,image/png" type="file" id="main_image" name="main_image">
 													<i class="fa fa-upload" aria-hidden="true"></i>
 												</label>
 											</li>
 										</ul>
 
 									</figure>
+
+									@if($errors->has('cover'))
+										<div class="project-add-form__group">
+											<div class="alert alert_danger">
+												{{ $errors->first('cover') }}
+											</div>
+										</div>
+									@endif
+
+									@if($errors->has('main_image'))
+										<div class="project-add-form__group">
+											<div class="alert alert_danger">
+												{{ $errors->first('main_image') }}
+											</div>
+										</div>
+									@endif
 
 									<div class="project-add-form__group">
 										<div class="row">
@@ -114,10 +130,10 @@
 									@endif
 
 									<div class="project-add-form__group">
-										<label for="short_description" class="origami-form__label">{{ __('Short description') }}</label>
-										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="140" oldvalue="{{ old('short_description') }}">
+										<label for="short_description" class="origami-form__label">{{ __('Short description') }}*</label>
+										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="512" oldvalue="{{ old('short_description') }}">
 											<template slot="symbolsLeft">
-												{{ __('Symbols left') }}
+												{{ __('Symbols left') }}:
 											</template>
 										</origami-textarea>
 									</div>
@@ -132,9 +148,9 @@
 
 									<div class="project-add-form__group">
 										<label for="description" class="origami-form__label">{{ __('Description') }}*</label>
-										<origami-textarea rows="5" name="description" id="description" maxlength="280" oldvalue="{{ old('description') }}">
+										<origami-textarea rows="5" name="description" id="description" maxlength="4096" oldvalue="{{ old('description') }}">
 											<template slot="symbolsLeft">
-												{{ __('Symbols left') }}
+												{{ __('Symbols left') }}:
 											</template>
 										</origami-textarea>
 									</div>
@@ -168,7 +184,7 @@
 											</div>
 
 											<div class="col-sm-6">
-												<label for="stage" class="origami-form__label">{{ __('Current stage') }}</label>
+												<label for="stage" class="origami-form__label">{{ __('Current stage') }}*</label>
 												<select name="stage" id="stage" class="origami-form__select">
 													@foreach($stages as $stage)
 														<option value="{{ $stage->id }}">
@@ -199,7 +215,7 @@
 
 									<div class="project-add-form__group">
 										<label class="origami-form__label">{{ __('Images of the project') }}*</label>
-										<span class="project-add-form__max-size">{{ __('Max size') }} - <strong>5000Kb</strong></span>
+										<span class="project-add-form__max-size">{{ __('Max file size') }} - <strong>2Mb</strong></span>
 										<div class="project-screens">
 											{{--<project-images></project-images>--}}
 											<div class="project-screens__item">
@@ -239,7 +255,7 @@
 											</div>
 
 											<div class="col-sm-6">
-												<label for="client" class="origami-form__label">{{ __('Client') }}</label>
+												<label for="client" class="origami-form__label">{{ __('Client') }}*</label>
 												<select name="client" id="client" class="origami-form__select">
 													<option value="0" selected>
 														{{ __('Anonymous customer') }}
@@ -273,9 +289,9 @@
 
 									<div class="project-add-form__group">
 										<label for="client_review" class="origami-form__label">{{ __("Client's review") }}</label>
-										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="280" oldvalue="{{ old('client_review') }}">
+										<origami-textarea rows="5" name="client_review" id="client_review" maxlength="512" oldvalue="{{ old('client_review') }}">
 											<template slot="symbolsLeft">
-												{{ __('Symbols left') }}
+												{{ __('Symbols left') }}:
 											</template>
 										</origami-textarea>
 									</div>
@@ -293,12 +309,13 @@
 											<div class="col-sm-6">
 												<div class="project-add-form__sub-group">
 													<label for="link" class="origami-form__label">{{ __('Link') }}</label>
-													<input type="text" name="link" class="origami-form__input" id="link" value="{{ old('link') }}">
+													<input type="text" name="link" class="origami-form__input" id="link" value="{{ old('link') }}" placeholder="http(s)://">
 												</div>
 											</div>
 											<div class="col-sm-6">
-												<label for="end-date" class="origami-form__label">{{ __('Date of completion') }}</label>
-												<input type="text" name="closed_at" class="origami-form__input origami-form__input_datepicker" id="end-date">
+												<label for="end-date" class="origami-form__label">{{ __('Date of completion') }}*</label>
+												<input type="text" name="closed_at" class="origami-form__input origami-form__input_datepicker" id="end-date"
+															 value="{{ empty(old('closed_at')) ? \Carbon\Carbon::now()->format('d.m.Y') : old('closed_at') }}">
 											</div>
 										</div>
 									</div>
