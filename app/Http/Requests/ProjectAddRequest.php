@@ -26,7 +26,7 @@ class ProjectAddRequest extends FormRequest
 			'developers'        => 'required',
 			'client'            => 'required',
 			'client_review' 		=> 'string|between:4,512|nullable',
-			'link'            	=> 'url',
+			'link'            	=> 'url|nullable',
 			'closed_at'					=> 'required|date_format:d.m.Y',
 		];
 

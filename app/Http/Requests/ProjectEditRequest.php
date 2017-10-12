@@ -14,17 +14,20 @@ class ProjectEditRequest extends FormRequest
 	public function rules()
 	{
 		$rules = [
+			'cover'             => 'image|mimes:jpeg,bmp,png|max:1024',
+			'main_image'        => 'image|mimes:jpeg,bmp,png|max:3072',
 			'title'             => 'required|string|between:4,256',
-			'client'            => 'required',
 			'category'          => 'required',
-			'stage'             => 'required',
-			'stages'            => 'required',
-			'slider_images.*'   => 'image|mimes:jpeg,bmp,png|max:2000',
-			'cover'             => 'image',
-			'main_image'        => 'image',
-			'developers'        => 'required',
+			'short_description' => 'required|string|between:4,512',
 			'description'       => 'required|between:4,4096',
-			'short_description' => 'required|string|between:4,512'
+			'stages'            => 'required',
+			'stage'             => 'required',
+			'slider_images.*'   => 'image|mimes:jpeg,bmp,png|max:2048',
+			'developers'        => 'required',
+			'client'            => 'required',
+			'client_review' 		=> 'string|between:4,512|nullable',
+			'link'            	=> 'url|nullable',
+			'closed_at'					=> 'required|date_format:d.m.Y',
 		];
 		
 		return $rules;
