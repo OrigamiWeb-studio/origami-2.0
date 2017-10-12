@@ -16,7 +16,7 @@ class AboutController extends Controller
 		$data = [
 			'styles'   => config('resources.about.styles'),
 			'scripts'  => config('resources.about.scripts'),
-			'projects' => Project::where([['cover', '!=', null], ['visible', true]])->get(),
+			'projects' => Project::where([['cover', '!=', null], ['visible', true]])->inRandomOrder()->get(),
 			'stages'   => ProjectStage::get(),
 		];
 
