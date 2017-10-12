@@ -25,7 +25,7 @@ class ProjectAddRequest extends FormRequest
 			'slider_images.*'   => 'image|mimes:jpeg,bmp,png|max:2048',
 			'developers'        => 'required',
 			'client'            => 'required',
-			'client_review' 		=> 'between:4,512',
+			'client_review' 		=> 'string|between:4,512|nullable',
 			'link'            	=> 'url',
 			'closed_at'					=> 'required|date_format:d.m.Y',
 		];
