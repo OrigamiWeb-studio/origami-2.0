@@ -103,7 +103,7 @@
 												<select name="category" id="category" class="origami-form__select">
 													<option value="" class="placeholder">{{ __('Select a category') }}</option>
 													@foreach($categories as $category)
-														<option value="{{ $category->id }}">
+														<option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
 															{{ $category->translateOrDefault(app()->getLocale())->title }}
 														</option>
 													@endforeach
@@ -171,7 +171,7 @@
 													<label for="stages" class="origami-form__label">{{ __('Stages of development') }}*</label>
 													<select name="stages[]" id="stages" multiple class="origami-form__select" size="4">
 														@foreach($stages as $stage)
-															<option value="{{ $stage->id }}">
+															<option value="{{ $stage->id }}" {{ old('stages') !== null ? in_array($stage->id, old('stages')) ? 'selected' : '' : '' }}>
 																{{ $stage->translateOrDefault(app()->getLocale())->title }}
 															</option>
 														@endforeach
@@ -187,7 +187,7 @@
 												<label for="stage" class="origami-form__label">{{ __('Current stage') }}*</label>
 												<select name="stage" id="stage" class="origami-form__select">
 													@foreach($stages as $stage)
-														<option value="{{ $stage->id }}">
+														<option value="{{ $stage->id }}" {{ old('stage') == $stage->id ? 'selected' : '' }}>
 															{{ $stage->translateOrDefault(app()->getLocale())->title }}
 														</option>
 													@endforeach
@@ -242,7 +242,7 @@
 													<label for="developers" class="origami-form__label">{{ __('Developers') }}*</label>
 													<select name="developers[]" id="developers" multiple class="origami-form__select" size="4">
 														@foreach($developers as $developer)
-															<option value="{{ $developer->id }}">
+															<option value="{{ $developer->id }}" {{ old('developers') !== null ? in_array($developer->id, old('developers')) ? 'selected' : '' : '' }}>
 																{{ $developer->profile->name }}
 															</option>
 														@endforeach
@@ -309,7 +309,7 @@
 											<div class="col-sm-6">
 												<div class="project-add-form__sub-group">
 													<label for="link" class="origami-form__label">{{ __('Link') }}</label>
-													<input type="text" name="link" class="origami-form__input" id="link" value="{{ old('link') }}" placeholder="http(s)://">
+													<input type="text" name="link" class="origami-form__input" id="link" value="{{ old('link') }}" placeholder="https://site.com">
 												</div>
 											</div>
 											<div class="col-sm-6">
