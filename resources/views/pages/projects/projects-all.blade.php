@@ -133,14 +133,16 @@
 							<div class="projects" v-cloak>
 								<span class="projects__not-found v-cloak--hidden" v-if="notFound">{{ __('There is no results for your request') }}</span>
 								<div class="v-cloak--hidden block project-item projects__project-item" v-for="project in projects" :class="{'projects__project-item_invisible': !project.visible}">
-									<a :href="'{{ url('/projects') }}/' + project.id ">
-										<figure class="project-item__logo-wrapper">
-											<img class="project-item__logo" :src='project.cover' :alt="project.title">
-										</figure>
-									</a>
-									<div class="project-item__description">
-										<a :href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
-										<span class="project-item__category">#@{{ project.category_title }}</span>
+									<div class="project-item__content">
+										<a :href="'{{ url('/projects') }}/' + project.id ">
+											<figure class="project-item__logo-wrapper">
+												<img class="project-item__logo" :src='project.cover' :alt="project.title">
+											</figure>
+										</a>
+										<div class="project-item__description">
+											<a :href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
+											<span class="project-item__category">#@{{ project.category_title }}</span>
+										</div>
 									</div>
 									@role('owner')
 										<manage-project v-cloak
