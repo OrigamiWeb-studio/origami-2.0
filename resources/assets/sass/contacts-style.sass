@@ -70,6 +70,15 @@ main
 		width: 50%
 		display: inline-block
 		vertical-align: top
+		&:first-child
+			width: auto
+			max-width: 50%
+			padding-right: 50px
+			@media screen and (max-width: 991px)
+				max-width: none
+				padding-right: 0
+				width: 100%
+				display: block
 		@media screen and (max-width: 991px)
 			width: 100%
 			display: block
