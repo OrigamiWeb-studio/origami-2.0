@@ -45,4 +45,13 @@ class LoginController extends Controller
 		$user->last_ip = $request->ip();
 		$user->save();
 	}
+
+	public function showLoginForm()
+	{
+		$data = [
+			'title' => __('Sign In')
+		];
+
+		return view('auth.login')->with($data);
+	}
 }

@@ -21,6 +21,7 @@ class ProjectsController extends Controller
 	public function allProjects()
 	{
 		$data = [
+			'title'      => __('Projects'),
 			'styles'     => config('resources.projects.all.styles'),
 			'scripts'    => config('resources.projects.all.scripts'),
 			'categories' => ProjectCategory::get(),
@@ -155,6 +156,7 @@ class ProjectsController extends Controller
 		if (!$project) abort(404);
 
 		$data = [
+			'title'   => $project->translateOrDefault(app()->getLocale())->title,
 			'styles'  => config('resources.projects.single.styles'),
 			'scripts' => config('resources.projects.single.scripts'),
 			'project' => $project,
@@ -167,6 +169,7 @@ class ProjectsController extends Controller
 	public function addProjectView()
 	{
 		$data = [
+			'title'      => __('Add a new project'),
 			'styles'     => config('resources.projects.add.styles'),
 			'scripts'    => config('resources.projects.add.scripts'),
 			'categories' => ProjectCategory::get(),
@@ -186,6 +189,7 @@ class ProjectsController extends Controller
 		if (!$project) abort(404);
 
 		$data = [
+			'title'      => __('Editing a project') . ': ' . $project->translateOrDefault(app()->getLocale())->title,
 			'styles'     => config('resources.projects.edit.styles'),
 			'scripts'    => config('resources.projects.edit.scripts'),
 			'project'    => $project,
