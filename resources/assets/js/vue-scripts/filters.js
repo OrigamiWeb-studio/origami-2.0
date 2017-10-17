@@ -2,7 +2,7 @@
 import manageProject from './components/manage-project.vue';
 Vue.component('manage-project', manageProject);
 new Vue({
-    el: '.s_allprojects',
+    el: '.s-allprojects',
     components: {
         // vueSlider
     },
@@ -10,6 +10,7 @@ new Vue({
         searchField: false,
         searchText: '',
         timeout: null,
+        mobileFilters: false,
         filterData: {
             "categories": [],
             "years" : [],
@@ -38,6 +39,12 @@ new Vue({
         }
     },
     methods: {
+        clearFilters(){
+          this.filterData.categories = [];
+          this.filterData.years  = [];
+          this.filterData.components = [];
+          this.mobileFilters = false;
+        },
         sendData: function(){
           this.loading = true;
             axios.post('/projects', this.filterData).then(response => {

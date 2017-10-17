@@ -14,7 +14,7 @@
 				</ul>
 			</div>
 		</div>
-		<section class="s_allprojects">
+		<section class="s-allprojects">
 			<div class="container">
 				<header>
 					<div class="row">
@@ -81,46 +81,53 @@
 				<div class="projects_content">
 					<div class="row">
 						<aside class="col-md-3 col-sm-4">
-							<div class="block">
-								<div class="sub_block">
-									<h3>{{ __('Category') }}</h3>
-									@foreach($categories as $category)
-										<label class="custom_checkbutton">
-											<input type="checkbox" name="website_category" v-model="filterData.categories" value="{{ $category->id }}">
-											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
-											<span>{{ $category->translateOrDefault(app()->getLocale())->title }}</span>
-										</label>
-									@endforeach
-								</div>
-								<div class="sub_block">
-									<h3>{{ __('Year') }}</h3>
-									@for($i = \Carbon\Carbon::now()->addYear()->year; $i >= 2016; $i--)
-										<label class="custom_checkbutton">
-											<input type="checkbox" name="finish_date" v-model="filterData.years" value="{{ $i }}">
-											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
-											<span>{{ $i }}</span>
-										</label>
-									@endfor
-								</div>
-								{{--<vue-slider></vue-slider>--}}
-								{{--<div class="sub_block">--}}
-								{{--<h3>{{ __('Price') }}</h3>--}}
-								{{--<label class="range_input">--}}
-								{{--<input type="range" value="30,80" multiple>--}}
-								{{--<span class="pull-left">{{ __('Cheap') }}</span>--}}
-								{{--<span class="pull-right">{{ __('Expensive') }}</span>--}}
-								{{--</label>--}}
-								{{--</div>--}}
+							<button class="btn s-allprojects__filter-button" @click.prevent="mobileFilters = !mobileFilters">Filters</button>
+							<div class="block s-allprojects__filters" style="display: none" v-show="mobileFilters">
+								<div class="s-allprojects__filters-content">
+									<div class="sub_block">
+										<h3>{{ __('Category') }}</h3>
+										@foreach($categories as $category)
+											<label class="custom_checkbutton">
+												<input type="checkbox" name="website_category" v-model="filterData.categories" value="{{ $category->id }}">
+												<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
+												<span>{{ $category->translateOrDefault(app()->getLocale())->title }}</span>
+											</label>
+										@endforeach
+									</div>
+									<div class="sub_block">
+										<h3>{{ __('Year') }}</h3>
+										@for($i = \Carbon\Carbon::now()->addYear()->year; $i >= 2016; $i--)
+											<label class="custom_checkbutton">
+												<input type="checkbox" name="finish_date" v-model="filterData.years" value="{{ $i }}">
+												<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
+												<span>{{ $i }}</span>
+											</label>
+										@endfor
+									</div>
+									{{--<vue-slider></vue-slider>--}}
+									{{--<div class="sub_block">--}}
+									{{--<h3>{{ __('Price') }}</h3>--}}
+									{{--<label class="range_input">--}}
+									{{--<input type="range" value="30,80" multiple>--}}
+									{{--<span class="pull-left">{{ __('Cheap') }}</span>--}}
+									{{--<span class="pull-right">{{ __('Expensive') }}</span>--}}
+									{{--</label>--}}
+									{{--</div>--}}
 
-								<div class="sub_block">
-									<h3>{{ __('Components') }}</h3>
-									@foreach($stages as $stage)
-										<label class="custom_checkbutton">
-											<input type="checkbox" name="components" v-model="filterData.components" value="{{ $stage->id }}">
-											<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
-											<span>{{ $stage->translateOrDefault(app()->getLocale())->title }}</span>
-										</label>
-									@endforeach
+									<div class="sub_block">
+										<h3>{{ __('Components') }}</h3>
+										@foreach($stages as $stage)
+											<label class="custom_checkbutton">
+												<input type="checkbox" name="components" v-model="filterData.components" value="{{ $stage->id }}">
+												<span class="custom_mark"><i class="fa fa-times" aria-hidden="true"></i></span>
+												<span>{{ $stage->translateOrDefault(app()->getLocale())->title }}</span>
+											</label>
+										@endforeach
+									</div>
+								</div>
+								<div class="mobile-filters-buttons">
+									<button class="btn" @click.prevent="mobileFilters = false">{{ __('Confirm') }}</button>
+									<button class="btn" @click.prevent="clearFilters()">{{ __('Clear') }}</button>
 								</div>
 							</div>
 						</aside>

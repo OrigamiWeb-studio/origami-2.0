@@ -80,7 +80,7 @@
 							@endisset
 
 							@isset($project->link)
-								<a href="{{ $project->link }}" class="btn block block_btn project-content__project-item">{{ __('Go to the site') }}</a>
+								<a href="{{ $project->link }}" target="__blank" rel="nofollow" class="btn block block_btn project-content__project-item">{{ __('Go to the site') }}</a>
 							@endisset
 
 						</aside>
