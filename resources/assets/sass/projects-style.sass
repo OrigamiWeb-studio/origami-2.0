@@ -12,7 +12,7 @@
 @import "components/block"
 @import "components/modal2"
 
-.s_allprojects
+.s-allprojects
 	padding-bottom: 45px
 	header
 		padding: 22px 0 0
@@ -24,6 +24,48 @@
 				margin-bottom: 10px
 		span
 			font-weight: 700
+	&__filter-button
+		@media screen and (min-width: 768px)
+			display: none
+	&__filters
+		padding: 30px
+		@media screen and (min-width: 768px)
+			display: block !important
+		@media screen and (max-width: 767px)
+			padding: 30px 25px 55px
+			z-index: 100
+			position: fixed
+			top: 0
+			bottom: 0
+			right: 0
+			left: 0
+	&__filters-content
+		@media screen and (max-width: 767px)
+			max-height: 100%
+			overflow-x: auto
+			padding: 0 5px
+
+.mobile-filters-buttons
+	position: absolute
+	bottom: 0
+	left: 0
+	right: 0
+	text-align: center
+	font-size: 0
+	.btn
+		font-size: 14px
+		width: 50%
+		&:first-child
+			border-color: #9da7b0
+			background-color: #9da7b0
+			color: #fff
+			&:focus,
+			&:hover
+				background: #262b2f
+				color: #fff
+	@media screen and (min-width: 768px)
+		display: none
+
 .view-per-page 
 	padding: 9px 0 0
 	&__pagination
@@ -104,9 +146,6 @@
 
 .projects_content
 	margin-top: 18px
-	aside
-		.block
-			padding: 30px
 	&__pagination
 		margin-top: 26px
 .sub_block
