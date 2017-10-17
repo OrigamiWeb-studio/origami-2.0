@@ -12,9 +12,98 @@ main
 	flex-direction: row
 	flex-wrap: wrap
 	justify-content: center
+	position: relative
+	align-items: center
+	padding: 130px 0 50px
+	@media screen and (max-width: 670px)
+		display: block
+		padding: 0
 
-.breadcrumbs
+.contacts-head
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	@media screen and (max-width: 670px)
+		position: relative
+
+.s-contacts
+	text-align: center
 	width: 100%
+	@media screen and (max-width: 670px)
+		padding: 30px 0 50px
+	header
+		text-align: center
+	h2
+		display: inline-block
+		margin: 0 0 94px
+		border-bottom: $darkblue 3px solid
+		font-family: 'RobotoSlab', sans-serif
+		font-size: 36px
+		line-height: 1.2
+		@media screen and (max-width: 670px)
+			margin-bottom: 50px
+	ul
+		font-size: 0
+		display: flex
+		flex-flow: row wrap
+		text-align: left
+		margin-bottom: 83px
+		@media screen and (max-width: 670px)
+			display: block
+			margin-bottom: 50px
+	li
+		flex: 1 1 auto
+		width: 33.333%
+		padding: 0 30px
+		border-right: 2px solid #ebedef
+		&:last-child
+			border-right-color: transparent
+		@media screen and (max-width: 670px)
+			display: list-item
+			border-right: none
+			text-align: center
+			width: auto
+			margin-bottom: 30px
+	&__col
+		font-size: 14px
+		width: 50%
+		display: inline-block
+		vertical-align: top
+		@media screen and (max-width: 991px)
+			width: 100%
+			display: block
+	h3
+		font-size: 24px
+		margin: 0
+		line-height: 1
+		@media screen and (max-width: 991px)
+			margin-bottom: 25px
+	dl,
+	dd
+		margin: 0
+	dl
+		color: $lightblue
+		font-weight: 700
+	dt
+		text-transform: uppercase
+		letter-spacing: 1px
+	dd
+		font-size: 16px
+		margin-bottom: 25px
+		&:last-child
+			margin-bottom: 0
+
+
+.brief-online
+	color: $darkblue
+	padding: 0 11px 9px
+	border-bottom: 2px solid #ebedef
+	transition: all .2s ease
+	&:focus,
+	&:hover
+		outline: none
+		border-bottom-color: $darkblue
 
 .s_contacts
 	width: 100%

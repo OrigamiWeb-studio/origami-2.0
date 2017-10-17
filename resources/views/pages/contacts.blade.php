@@ -4,41 +4,97 @@
 
 	<main>
 
-		<div class="breadcrumbs">
-			<div class="container">
-				<ul>
-					<li>
-						<a href="{{ route('home') }}">{{ __('Home') }}</a>
-					</li>
-					<li>
-						<span>{{ __('Contacts') }}</span>
-					</li>
-				</ul>
+		<div class="contacts-head">
+			<div class="breadcrumbs">
+				<div class="container">
+					<ul>
+						<li>
+							<a href="{{ route('home') }}">{{ __('Home') }}</a>
+						</li>
+						<li>
+							<span>{{ __('Contacts') }}</span>
+						</li>
+					</ul>
+				</div>
 			</div>
+			<header>
+				<div class="container">
+					<h1>{{ __('Contacts') }}</h1>
+				</div>
+			</header>
 		</div>
 
-		<section class="s_contacts">
+		<section class="s-contacts">
 			<div class="container">
-				<div class="our-contacts">
-					<h2>{{ __('Contact us') }}</h2>
-					<ul>
+				<header>
+					<h2>{{ __('Get in touch') }}</h2>
+				</header>
+				<ul>
+					<li>
+						<div class="s-contacts__col">
+							<h3>Email</h3>
+						</div>
+						<div class="s-contacts__col">
+							<dl>
+								<dt>{{ __('Support') }}</dt>
+								<dd><a href="#">info@origami.team</a></dd>
+							</dl>
+						</div>
+					</li>
+					<li>
+						<div class="s-contacts__col">
+							<h3>{{ __('Phones') }}</h3>
+						</div>
+						<div class="s-contacts__col">
+							<dl>
+								<dt>{{ __('Ukraine') }}</dt>
+								<dd>(096) 724-28-23</dd>
+								<dt>{{ __('Poland') }}</dt>
+								<dd>576-188-501</dd>
+							</dl>
+						</div>
+					</li>
+					<li>
+						<div class="s-contacts__col">
+							<h3>{{ __('Other') }}</h3>
+						</div>
+						<div class="s-contacts__col">
+							<dl>
+								<dt>Skype</dt>
+								<dd>origami.team</dd>
+								<dt>Telegram</dt>
+								<dd>+48 576 188 501</dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+				<a href="#" class="brief-online" data-toggle="modal" data-target="#writetous-modal">{{ __('Brief online') }}</a>
+			</div>
+		</section>
+
+		{{--<section class="s_contacts">--}}
+			{{--<div class="container">--}}
+
+				{{--<div class="our-contacts">--}}
+					{{--<h2>{{ __('Contact us') }}</h2>--}}
+					{{--<ul>--}}
 						{{--<li>--}}
 							{{--<strong>Skype</strong>--}}
 							{{--<a href="#">origamiwebstudio</a>--}}
 						{{--</li>--}}
-						<li>
-							<strong>Email</strong>
-							<a href="mailto:contact@origami.team">contact@origami.team</a>
-						</li>
+						{{--<li>--}}
+							{{--<strong>Email</strong>--}}
+							{{--<a href="mailto:contact@origami.team">contact@origami.team</a>--}}
+						{{--</li>--}}
 						{{--<li>--}}
 							{{--<strong>{{ __('Phone number') }}</strong>--}}
 							{{--<span>+380 (96) 724 28 23</span>--}}
 						{{--</li>--}}
-					</ul>
+					{{--</ul>--}}
 					{{--<a href="#" class="btn btn-submit" data-toggle="modal" data-target="#contact-modal">{{ __('We will contact you') }}</a>--}}
-				</div>
-			</div>
-		</section>
+				{{--</div>--}}
+			{{--</div>--}}
+		{{--</section>--}}
 
 	</main>
 

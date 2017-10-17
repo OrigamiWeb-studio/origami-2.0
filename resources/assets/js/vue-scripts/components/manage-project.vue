@@ -33,7 +33,7 @@
                         <div class="origami-modal2__body">
                             <p class="origami-modal2__paragraph"><slot></slot></p>
                             <div class="origami-modal2__buttons">
-                                <form v-bind:action="deleteLink">
+                                <form :action="deleteLink">
                                     <button class="btn origami-modal2__button"><slot name="confirm"></slot></button>
                                     <button class="btn origami-modal2__button" @click.prevent="visible = false"><slot name="cancel"></slot></button>
                                     <slot name="token"></slot>
