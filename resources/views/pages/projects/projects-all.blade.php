@@ -126,7 +126,7 @@
 									</div>
 								</div>
 								<div class="mobile-filters-buttons">
-									<button class="btn" @click.prevent="mobileFilters = false">{{ __('Confirm') }}</button>
+									<button class="btn" @click.prevent="mobileFilters = false">{{ __('Confirm') }} (@{{ projects.length }})</button>
 									<button class="btn" @click.prevent="clearFilters()">{{ __('Clear') }}</button>
 								</div>
 							</div>
@@ -141,10 +141,8 @@
 								<span class="projects__not-found v-cloak--hidden" v-if="notFound">{{ __('There is no results for your request') }}</span>
 								<div class="v-cloak--hidden block project-item projects__project-item" v-for="project in projects" :class="{'projects__project-item_invisible': !project.visible}">
 									<div class="project-item__content">
-										<a :href="'{{ url('/projects') }}/' + project.id ">
-											<figure class="project-item__logo-wrapper">
-												<img class="project-item__logo" :src='project.cover' :alt="project.title">
-											</figure>
+										<a class="project-item__logo-wrapper" :href="'{{ url('/projects') }}/' + project.id ">
+											<img class="project-item__logo" :src='project.cover' :alt="project.title">
 										</a>
 										<div class="project-item__description">
 											<a :href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>

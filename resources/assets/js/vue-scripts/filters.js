@@ -40,9 +40,11 @@ new Vue({
     },
     methods: {
         clearFilters(){
-          this.filterData.categories = [];
-          this.filterData.years  = [];
-          this.filterData.components = [];
+          if(!(this.filterData.categories.length === 0 && this.filterData.years.length === 0 && this.filterData.components.length === 0)){
+            this.filterData.categories = [];
+            this.filterData.years  = [];
+            this.filterData.components = [];
+          }
           this.mobileFilters = false;
         },
         sendData: function(){
