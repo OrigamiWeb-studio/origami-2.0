@@ -37,7 +37,7 @@
 						<div class="s-contacts__col">
 							<dl>
 								<dt>{{ __('Support') }}</dt>
-								<dd><a href="#">contact@origami.team</a></dd>
+								<dd><a href="mailto:contact@origami.team">contact@origami.team</a></dd>
 							</dl>
 						</div>
 					</li>
@@ -63,7 +63,9 @@
 								{{--<dt>Skype</dt>--}}
 								{{--<dd>origami.team</dd>--}}
 								<dt>Telegram</dt>
-								<dd>@origami_team</dd>
+								<dd><a target="_blank" href="https://t.me/origami_team">@origami_team</a></dd>
+								{{--<dt>Viber</dt>--}}
+								{{--<dd></dd>--}}
 							</dl>
 						</div>
 					</li>
