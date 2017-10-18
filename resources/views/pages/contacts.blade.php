@@ -48,7 +48,7 @@
 						<div class="s-contacts__col">
 							<dl>
 								<dt>{{ __('Ukraine') }}</dt>
-								<dd>+380 96 724 2823</dd>
+								<dd>+380 67 436 8746</dd>
 								<dt>{{ __('Poland') }}</dt>
 								<dd>+48 535 764 974</dd>
 							</dl>
