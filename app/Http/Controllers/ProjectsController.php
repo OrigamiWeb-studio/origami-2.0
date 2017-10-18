@@ -189,7 +189,7 @@ class ProjectsController extends Controller
 		if (!$project) abort(404);
 
 		$data = [
-			'title'      => __('Editing a project') . ': ' . $project->translateOrDefault(app()->getLocale())->title,
+			'title'      => __('Editing a project') . ': ' . (!empty($project->title) ? $project->translateOrDefault(app()->getLocale())->title : '?'),
 			'styles'     => config('resources.projects.edit.styles'),
 			'scripts'    => config('resources.projects.edit.scripts'),
 			'project'    => $project,
@@ -310,6 +310,12 @@ class ProjectsController extends Controller
 			$file_path = 'uploads/projects/main_images/' . str_random(5) . time() . str_random(5) . '.' . $image->getClientOriginalExtension();
 			$image->move($destination_path, $file_path);
 			$project->main_image = $file_path;
+		}
+
+		if (app()->getLocale() !== config('app.default_locale')) {
+			$project->{'title:' . config('app.default_locale')} = $request['title'];
+			$project->{'description:' . config('app.default_locale')} = $request['description'];
+			$project->{'short_description:' . config('app.default_locale')} = $request['short_description'];
 		}
 
 		$project->save();
