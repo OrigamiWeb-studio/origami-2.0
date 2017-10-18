@@ -37,7 +37,7 @@
 						<div class="s-contacts__col">
 							<dl>
 								<dt>{{ __('Support') }}</dt>
-								<dd><a href="#">contact@origami.team</a></dd>
+								<dd><a href="mailto:contact@origami.team">contact@origami.team</a></dd>
 							</dl>
 						</div>
 					</li>
@@ -48,7 +48,7 @@
 						<div class="s-contacts__col">
 							<dl>
 								<dt>{{ __('Ukraine') }}</dt>
-								<dd>+380 96 724 2823</dd>
+								<dd>+380 67 436 8746</dd>
 								<dt>{{ __('Poland') }}</dt>
 								<dd>+48 535 764 974</dd>
 							</dl>
@@ -63,7 +63,9 @@
 								{{--<dt>Skype</dt>--}}
 								{{--<dd>origami.team</dd>--}}
 								<dt>Telegram</dt>
-								<dd>@origami_team</dd>
+								<dd><a target="_blank" href="https://t.me/origami_team">@origami_team</a></dd>
+								{{--<dt>Viber</dt>--}}
+								{{--<dd></dd>--}}
 							</dl>
 						</div>
 					</li>
