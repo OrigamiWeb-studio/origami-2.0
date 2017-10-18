@@ -21,7 +21,7 @@
 						<div class="col-md-3 col-sm-4">
 							<h1>{{ __('Projects') }}</h1>
 						</div>
-						<div class="col-md-6 col-sm-8">
+						<div class="col-md-5 col-sm-8">
 							<div class="view-per-page">
 								<span>{{ __('View per page') }}:</span>
 								<ul class="pagination view-per-page__pagination">
@@ -60,7 +60,7 @@
 								</ul>
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-8">
+						<div class="col-md-4 col-sm-8">
 							<div class="sort-by">
 								{{--<span>{{ __('Sort by') }}:</span>--}}
 								{{--<select class="orderby" name="orderby" id="orderby">--}}
