@@ -130,6 +130,21 @@
 									@endif
 
 									<div class="project-add-form__group">
+										<div class="project-add-form__sub-group">
+											<label for="project_slug" class="origami-form__label">Slug*</label>
+											<input type="text" name="slug" class="origami-form__input" id="project_slug" value="{{ old('slug') }}">
+										</div>
+									</div>
+
+									@if($errors->has('slug'))
+										<div class="project-add-form__group">
+											<div class="alert alert_danger">
+												{{ $errors->first('slug') }}
+											</div>
+										</div>
+									@endif
+
+									<div class="project-add-form__group">
 										<label for="short_description" class="origami-form__label">{{ __('Short description') }}*</label>
 										<origami-textarea rows="5" name="short_description" id="short_description" maxlength="512" oldvalue="{{ old('short_description') }}">
 											<template slot="symbolsLeft">

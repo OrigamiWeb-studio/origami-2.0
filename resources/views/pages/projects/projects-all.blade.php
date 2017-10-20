@@ -141,21 +141,21 @@
 								<span class="projects__not-found v-cloak--hidden" v-if="notFound">{{ __('There is no results for your request') }}</span>
 								<div class="v-cloak--hidden block project-item projects__project-item" v-for="project in projects" :class="{'projects__project-item_invisible': !project.visible}">
 									<div class="project-item__content">
-										<a :href="'{{ url('/projects') }}/' + project.id ">
+										<a :href="'{{ url('/projects') }}/' + project.slug ">
 											<figure class="project-item__logo-wrapper">
 												<img class="project-item__logo" :src='project.cover' :alt="project.title">
 											</figure>
 										</a>
 										<div class="project-item__description">
-											<a :href="'{{ url('/projects') }}/' + project.id" class="project-item__title">@{{ project.title }}</a>
+											<a :href="'{{ url('/projects') }}/' + project.slug" class="project-item__title">@{{ project.title }}</a>
 											<span class="project-item__category">#@{{ project.category_title }}</span>
 										</div>
 									</div>
 									@role('owner')
 										<manage-project v-cloak
-														:tickets-link="this.window.location.origin+'/projects/'+project.id+'/tickets'"
-														:edit-link="this.window.location.origin+'/projects/'+project.id+'/edit'"
-														:delete-link="this.window.location.origin+'/projects/'+project.id+'/delete'">
+														:tickets-link="this.window.location.origin+'/projects/'+project.slug+'/tickets'"
+														:edit-link="this.window.location.origin+'/projects/'+project.slug+'/edit'"
+														:delete-link="this.window.location.origin+'/projects/'+project.slug+'/delete'">
 											<template slot="title">{{ __('Are you sure?') }}</template>
 											{{ __('Project') }} "@{{ project.title }}" {{ __('will be deleted. Are you sure that you want to delete it at all?') }}
 											<template slot="token">{{ csrf_field() }}</template>

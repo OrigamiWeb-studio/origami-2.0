@@ -53,12 +53,12 @@
 									@role('owner')
 										<ul class="management-icons">
 											<li class="management-icons__item">
-												<a class="management-icons__icon" href="{{ route('project-tickets', ['project_id' => $project->id]) }}">
+												<a class="management-icons__icon" href="{{ route('project-tickets', ['project_slug' => $project->slug]) }}">
 													<i class="fa fa-ticket" aria-hidden="true"></i>
 												</a>
 											</li>
 											<li class="management-icons__item">
-												<a class="management-icons__icon" href="{{ route('project-edit', ['id' => $project->id]) }}">
+												<a class="management-icons__icon" href="{{ route('project-edit', ['slug' => $project->slug]) }}">
 													<i class="fa fa-pencil" aria-hidden="true"></i>
 												</a>
 											</li>
@@ -68,7 +68,7 @@
 												</button>
 											</li>
 										</ul>
-										<delete-modal v-bind:visible="deleteModalShow" v-cloak @close="deleteModalShow = false" form-action="{{ route('project-delete-submit', ['id' => $project->id]) }}">
+										<delete-modal v-bind:visible="deleteModalShow" v-cloak @close="deleteModalShow = false" form-action="{{ route('project-delete-submit', ['slug' => $project->slug]) }}">
 											<template slot="title">{{ __('Are you sure?') }}</template>
 											{{ __('Project') }} "{{ $project->translateOrDefault(app()->getLocale())->title }}" {{ __('will be deleted. Are you sure that you want to delete it at all?') }}
 											<template slot="token">{{ csrf_field() }}</template>

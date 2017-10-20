@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class TicketsController extends Controller
 {
-	#GET /projects/{project_id}/tickets
-	public function projectTickets($project_id) {
+	#GET /projects/{project_slug}/tickets
+	public function projectTickets($project_slug) {
+		$project = Project::where('slug', '=', $project_slug)->first();
+
 		$data = [
-			'project' => Project::find($project_id),
-			'tickets' => Ticket::where('project_id', '=', $project_id)->get()
+			'project' => $project,
+			'tickets' => Ticket::where('project_id', '=', $project->id)->get()
 		];
 		
 		return view('pages.tickets.tickets-all')->with($data);

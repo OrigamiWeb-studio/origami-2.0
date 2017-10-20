@@ -12,7 +12,7 @@
 						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<a href="{{ route('project', ['id' => $project->id]) }}">{{ $project->title }}</a>
+						<a href="{{ route('project', ['slug' => $project->slug]) }}">{{ $project->title }}</a>
 					</li>
 					<li>
 						<span>{{ __('Tickets') }}</span>

@@ -15,7 +15,7 @@
 						<a href="{{ route('projects') }}">{{ __('Projects') }}</a>
 					</li>
 					<li>
-						<a href="{{ route('project', ['id' => $project]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
+						<a href="{{ route('project', ['slug' => $project->slug]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
 					</li>
 					<li>
 						<span>{{ __('Editing a project') }}</span>
@@ -39,7 +39,7 @@
 					<div class="loader" v-if="loading">
 						<div class="loader__inner"></div>
 					</div>
-					<form action="{{ route('project-edit-submit', ['id' => $project->id]) }}" method="post" enctype="multipart/form-data" class="origami-form project-add-form">
+					<form action="{{ route('project-edit-submit', ['project_slug' => $project->slug]) }}" method="post" enctype="multipart/form-data" class="origami-form project-add-form">
 						{{ csrf_field() }}
 						<div class="row">
 
@@ -145,6 +145,21 @@
 										<div class="project-add-form__group">
 											<div class="alert alert_danger">
 												{{ $errors->first('category') }}
+											</div>
+										</div>
+									@endif
+
+									<div class="project-add-form__group">
+										<div class="project-add-form__sub-group">
+											<label for="project_slug" class="origami-form__label">Slug*</label>
+											<input type="text" name="slug" class="origami-form__input" id="project_slug" value="{{ empty(old('slug')) ? $project->slug : old('slug') }}">
+										</div>
+									</div>
+
+									@if($errors->has('slug'))
+										<div class="project-add-form__group">
+											<div class="alert alert_danger">
+												{{ $errors->first('slug') }}
 											</div>
 										</div>
 									@endif

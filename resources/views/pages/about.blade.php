@@ -53,7 +53,7 @@
 							@foreach($projects as $project)
 								@isset($project->cover)
 									<li class="our-clients__item">
-										<a class="our-clients__link" href="{{ action('ProjectsController@singleProject', ['id' => $project->id]) }}">
+										<a class="our-clients__link" href="{{ route('project', ['slug' => $project->slug]) }}">
 											<img class="our-clients__image" src="{{ asset($project->cover) }}" alt="@isset($project->title) {{ $project->title }} @endisset">
 										</a>
 									</li>

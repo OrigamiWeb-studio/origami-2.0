@@ -132,6 +132,7 @@ class ProjectsController extends Controller
 		foreach ($projects as $project) {
 			$data['projects'] [] = [
 				'id'             => $project->id,
+				'slug'           => $project->slug,
 				'cover'          => $project->cover,
 				'title'          => $project->translateOrDefault(app()->getLocale())->title,
 				'category_title' => $project->category->translateOrDefault(app()->getLocale())->title,
@@ -142,11 +143,11 @@ class ProjectsController extends Controller
 		return $data;
 	}
 
-	#GET /projects/{id}
-	public function singleProject($id)
+	#GET /projects/{slug}
+	public function singleProject($slug)
 	{
 		$project = Project::query();
-		$project = $project->where('id', '=', $id);
+		$project = $project->where('slug', '=', $slug);
 
 		if (auth()->guest() || !auth()->user()->hasRole('owner'))
 			$project = $project->where('visible', true);
@@ -181,10 +182,10 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-add')->with($data);
 	}
 
-	#GET /projects/{id}/edit
-	public function editProjectView($id)
+	#GET /projects/{slug}/edit
+	public function editProjectView($slug)
 	{
-		$project = Project::find($id);
+		$project = Project::where('slug', '=', $slug)->first();
 
 		if (!$project) abort(404);
 
@@ -202,15 +203,16 @@ class ProjectsController extends Controller
 		return view('pages.projects.projects-edit')->with($data);
 	}
 
-	#POST /projects/{id}/edit
-	public function editProject(ProjectEditRequest $request, $project_id)
+	#POST /projects/{slug}/edit
+	public function editProject(ProjectEditRequest $request, $slug)
 	{
-		$project = Project::find($project_id);
+		$project = Project::where('slug', '=', $slug)->first();
 
 		if (!$project) abort(404);
 
 		$project->title = $request['title'];
 		$project->client_id = $request['client'];
+		$project->slug = $request['slug'];
 		$project->category_id = $request['category'];
 		$project->current_stage_id = $request['stage'];
 		$project->link = $request['link'];
@@ -269,8 +271,7 @@ class ProjectsController extends Controller
 
 		$project->save();
 
-		return redirect()
-			->action('ProjectsController@singleProject', ['id' => $project_id]);
+		return redirect()->route('project', ['slug' => $slug]);
 	}
 
 	#POST /projects/add
@@ -280,6 +281,7 @@ class ProjectsController extends Controller
 
 		$project->title = $request['title'];
 		$project->client_id = $request['client'];
+		$project->slug = $request['slug'];
 		$project->category_id = $request['category'];
 		$project->current_stage_id = $request['stage'];
 		$project->link = $request['link'];
@@ -346,14 +348,13 @@ class ProjectsController extends Controller
 
 		}
 
-		return redirect()
-			->action('ProjectsController@singleProject', ['id' => $project->id]);
+		return redirect()->route('project', ['slug' => $project->slug]);
 	}
 
-	#GET /projects/{id}/delete
-	public function deleteProject($id)
+	#GET /projects/{slug}/delete
+	public function deleteProject($slug)
 	{
-		$project = Project::find($id);
+		$project = Project::where('slug', '=', $slug)->first();
 
 		if (!$project) abort(404);
 

@@ -25,7 +25,7 @@
 						<ul id="projects-slider" class="list-unstyled cS-hidden">
 							@foreach($projects as $project)
 								<li class="s-projects__item">
-									<a href="{{ route('project', ['id' => $project->id]) }}" class="s-projects__content">
+									<a href="{{ route('project', ['slug' => $project->slug]) }}" class="s-projects__content">
 										<img class="s-projects__image" src="{{ asset($project->cover) }}" alt="{{ $project->title }}">
 									</a>
 								</li>

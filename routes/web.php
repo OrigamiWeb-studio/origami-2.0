@@ -43,22 +43,28 @@ Route::post('/projects/add', 'ProjectsController@addProject')
 	->name('project-add-submit')
 	->middleware(['role:owner']);
 
-Route::get('/projects/{id}/edit', 'ProjectsController@editProjectView')
+Route::get('/projects/{slug}/edit', 'ProjectsController@editProjectView')
+	->where('slug', '[a-z0-9_]+')
 	->name('project-edit')
 	->middleware(['role:owner']);
 
-Route::post('/projects/{id}/edit', 'ProjectsController@editProject')
+Route::post('/projects/{slug}/edit', 'ProjectsController@editProject')
+	->where('slug', '[a-z0-9_]+')
 	->name('project-edit-submit')
 	->middleware(['role:owner']);
 
-Route::get('/projects/{id}/delete', 'ProjectsController@deleteProject')
-	->where('id', '[0-9]+')
+Route::get('/projects/{slug}/delete', 'ProjectsController@deleteProject')
+	->where('slug', '[a-z0-9_]+')
 	->name('project-delete-submit')
 	->middleware(['role:owner']);
 
-Route::get('/projects/{id}', 'ProjectsController@singleProject')
+//Route::get('/projects/{id}', 'ProjectsController@singleProject')
+//	->name('project')
+//	->where('id', '[0-9]+');
+
+Route::get('/projects/{slug}', 'ProjectsController@singleProject')
 	->name('project')
-	->where('id', '[0-9]+');
+	->where('slug', '[a-z0-9_]+');
 
 Route::get('/projects/{project_id}/screenshots/{id}/delete', 'ProjectsController@deleteScreenshot')
 	->name('project-screenshot-delete-submit')
@@ -74,13 +80,13 @@ Route::get('/projects/{project_id}/screenshots', 'ProjectsController@projectScre
 #Tickets
 #
 #
-Route::get('/projects/{project_id}/tickets', 'TicketsController@projectTickets')
+Route::get('/projects/{project_slug}/tickets', 'TicketsController@projectTickets')
 	->name('project-tickets')
-	->where('project_id', '[0-9]+');
+	->where('project_slug', '[a-z0-9_]+');
 
-Route::get('/projects/{project_id}/tickets/{id}', 'TicketsController@singleTicket')
+Route::get('/projects/{project_slug}/tickets/{id}', 'TicketsController@singleTicket')
 	->name('ticket')
-	->where('project_id', '[0-9]+')
+	->where('project_slug', '[a-z0-9_]+')
 	->where('id', '[0-9]+');
 #-----------------------------------------------------------------------------------
 #About
