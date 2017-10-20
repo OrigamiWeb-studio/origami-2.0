@@ -24,6 +24,11 @@ class Project extends Model
 	{
 		return $this->hasOne(User::class, 'id', 'client_id');
 	}
+
+	public function last_editor()
+	{
+		return $this->hasOne(Developer::class, 'id', 'last_edit_by');
+	}
 	
 	public function developers()
 	{

@@ -41,6 +41,9 @@
 					</div>
 					<form action="{{ route('project-edit-submit', ['project_slug' => $project->slug]) }}" method="post" enctype="multipart/form-data" class="origami-form project-add-form">
 						{{ csrf_field() }}
+
+						<input type="hidden" name="project_id" value="{{ $project->id }}">
+
 						<div class="row">
 
 							<aside class="col-md-3">

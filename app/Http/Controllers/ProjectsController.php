@@ -222,6 +222,7 @@ class ProjectsController extends Controller
 		$project->client_review = $request['client_review'];
 		$project->description = $request['description'];
 		$project->short_description = $request['short_description'];
+		$project->last_edit_by = auth()->user() && auth()->user()->is_developer ? auth()->user()->profile->developer->id : null;
 		$project->closed_at = Carbon::createFromFormat('d.m.Y H:i:s', $request['closed_at'] . ' 00:00:00');
 		$project->stages()->sync($request['stages']);
 		$project->developers()->sync($request['developers']);
