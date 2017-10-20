@@ -271,7 +271,7 @@ class ProjectsController extends Controller
 
 		$project->save();
 
-		return redirect()->route('project', ['slug' => $slug]);
+		return redirect()->route('project', ['slug' => $project->slug]);
 	}
 
 	#POST /projects/add
