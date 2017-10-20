@@ -437,6 +437,8 @@
 										@endif
 									</div>
 
+									<p>Last edit by: {{ $project->last_editor->profile->name }} on {{ $project->updated_at->format('H:i:s d/m/y') }}</p>
+
 								</div>
 							</div>
 						</div>
