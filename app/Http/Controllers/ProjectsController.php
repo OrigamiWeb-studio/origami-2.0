@@ -44,9 +44,10 @@ class ProjectsController extends Controller
 
 		$projects = Project::query();
 
-		if (auth()->guest() || !auth()->user()->hasRole('owner'))
+		if (auth()->guest() || !auth()->user()->hasRole('owner')){
 			$projects = $projects->where('visible', true);
-		$projects = $projects->translatedIn(app()->getLocale());
+			$projects = $projects->translatedIn(app()->getLocale());
+		}
 //		$projects = $projects->join('project_translations', 'projects.id', '=', 'project_translations.project_id');
 
 		#Фильтр по категориям
