@@ -18,6 +18,7 @@ class ProjectAddRequest extends FormRequest
 			'main_image'        => 'required|image|mimes:jpeg,bmp,png|max:3072',
 			'title'             => 'required|string|between:4,256',
 			'category'          => 'required',
+			'slug'              => 'required|alpha_dash|unique:projects',
 			'short_description' => 'required|string|between:4,512',
 			'description'       => 'required|between:4,4096',
 			'stages'            => 'required',
@@ -25,9 +26,9 @@ class ProjectAddRequest extends FormRequest
 			'slider_images.*'   => 'image|mimes:jpeg,bmp,png|max:2048',
 			'developers'        => 'required',
 			'client'            => 'required',
-			'client_review' 		=> 'string|between:4,512|nullable',
-			'link'            	=> 'url|nullable',
-			'closed_at'					=> 'required|date_format:d.m.Y',
+			'client_review'     => 'string|between:4,512|nullable',
+			'link'              => 'url|nullable',
+			'closed_at'         => 'required|date_format:d.m.Y',
 		];
 
 		return $rules;
