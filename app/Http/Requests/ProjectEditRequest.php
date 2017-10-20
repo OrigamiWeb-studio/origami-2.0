@@ -18,7 +18,7 @@ class ProjectEditRequest extends FormRequest
 			'main_image'        => 'image|mimes:jpeg,bmp,png|max:3072',
 			'title'             => 'required|string|between:4,256',
 			'category'          => 'required',
-			'slug'              => 'required|alpha_dash|unique:projects',
+			'slug'              => 'required|alpha_dash|unique:projects,slug,' . $this->project_id,
 			'short_description' => 'required|string|between:4,512',
 			'description'       => 'required|between:4,4096',
 			'stages'            => 'required',
