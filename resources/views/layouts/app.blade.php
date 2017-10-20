@@ -3,7 +3,7 @@
 <head>
 	@include('head.meta')
 
-	<title>{{ isset($title) ? $title.' - ' : '' }}{{ config('app.name', 'ORIGAMI STUDIO') }}</title>
+	<title>{{ isset($title) ? $title : __('Studio of development web-sites') }} Origami Web Studio</title>
 
 	@include('head.styles')
 </head>

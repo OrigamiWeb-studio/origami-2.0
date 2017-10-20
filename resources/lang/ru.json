@@ -87,7 +87,7 @@
   "Guest": "Гость",
   "Answer": "Ответить",
   "Edit": "Редактировать",
-  "Editing a project": "Редактирование проекта",
+  "Editing": "Редактирование",
   "Delete": "Удалить",
 
   "Anonymous customer": "Анонимный клиент",
@@ -108,5 +108,10 @@
   "Ukraine": "Украина",
   "Poland": "Польша",
   "Brief online": "Бриф онлайн",
-  "Support": "Поддержка"
+  "Support": "Поддержка",
+
+  "Studio of development web-sites": "Студия разработки веб-сайтов",
+  "Sites portfolio from the studio": "Портфолио сайтов от студии",
+  "About studio of development web-sites": "О студии разработки веб-сайтов",
+  "Contact details of the studio of development web-sites": "Контактные данные студии разработки веб-сайтов"
 }

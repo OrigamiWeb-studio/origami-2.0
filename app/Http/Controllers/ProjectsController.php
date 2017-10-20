@@ -21,7 +21,7 @@ class ProjectsController extends Controller
 	public function allProjects()
 	{
 		$data = [
-			'title'      => __('Projects'),
+			'title'      => __('Sites portfolio from the studio'),
 			'styles'     => config('resources.projects.all.styles'),
 			'scripts'    => config('resources.projects.all.scripts'),
 			'categories' => ProjectCategory::get(),
@@ -157,7 +157,7 @@ class ProjectsController extends Controller
 		if (!$project) abort(404);
 
 		$data = [
-			'title'   => $project->translateOrDefault(app()->getLocale())->title,
+			'title'   => $project->translateOrDefault(app()->getLocale())->title . ' - ' . __('Studio of development web-sites'),
 			'styles'  => config('resources.projects.single.styles'),
 			'scripts' => config('resources.projects.single.scripts'),
 			'project' => $project,
@@ -170,7 +170,7 @@ class ProjectsController extends Controller
 	public function addProjectView()
 	{
 		$data = [
-			'title'      => __('Add a new project'),
+			'title'      => __('Add a new project') . ' - ' . __('Studio of development web-sites'),
 			'styles'     => config('resources.projects.add.styles'),
 			'scripts'    => config('resources.projects.add.scripts'),
 			'categories' => ProjectCategory::get(),
@@ -190,7 +190,7 @@ class ProjectsController extends Controller
 		if (!$project) abort(404);
 
 		$data = [
-			'title'      => __('Editing a project') . ': ' . (!empty($project->title) ? $project->translateOrDefault(app()->getLocale())->title : '?'),
+			'title'      => $project->translateOrDefault(app()->getLocale())->title . ': ' . __('Editing') . ' - ' . __('Studio of development web-sites'),
 			'styles'     => config('resources.projects.edit.styles'),
 			'scripts'    => config('resources.projects.edit.scripts'),
 			'project'    => $project,

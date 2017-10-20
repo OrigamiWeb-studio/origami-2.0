@@ -49,7 +49,7 @@ class LoginController extends Controller
 	public function showLoginForm()
 	{
 		$data = [
-			'title' => __('Sign In')
+			'title' => __('Sign In') . ' - ' . __('Studio of development web-sites')
 		];
 
 		return view('auth.login')->with($data);

@@ -18,7 +18,7 @@
 						<a href="{{ route('project', ['slug' => $project->slug]) }}">{{ $project->translateOrDefault(app()->getLocale())->title }}</a>
 					</li>
 					<li>
-						<span>{{ __('Editing a project') }}</span>
+						<span>{{ __('Editing') }}</span>
 					</li>
 				</ul>
 			</div>
@@ -28,7 +28,7 @@
 			<div class="container">
 
 				<header>
-					<h1>{{ __('Editing a project') }}: {{ $project->translateOrDefault(app()->getLocale())->title }}</h1>
+					<h1>{{ $project->translateOrDefault(app()->getLocale())->title }}: {{ __('Editing') }}</h1>
 				</header>
 
 				<script>

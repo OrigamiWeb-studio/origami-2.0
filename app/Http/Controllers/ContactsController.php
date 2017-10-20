@@ -14,7 +14,7 @@ class ContactsController extends Controller
 	public function index()
 	{
 		$data = [
-			'title'   => __('Contacts'),
+			'title'   => __('Contact details of the studio of development web-sites'),
 			'styles'  => config('resources.contacts.styles'),
 			'scripts' => config('resources.contacts.scripts'),
 		];
