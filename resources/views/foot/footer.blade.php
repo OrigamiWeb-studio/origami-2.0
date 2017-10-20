@@ -13,17 +13,17 @@
 			<div class="soc-icons">
 				<ul>
 					<li>
-						<a target="_blank" href="https://www.instagram.com/origami.team/">
+						<a target="_blank" rel="nofollow" href="https://www.instagram.com/origami.team/">
 							<i class="fa fa-instagram" aria-hidden="true"></i>
 						</a>
 					</li>
 					<li>
-						<a target="_blank" href="https://vk.com/origamiwebstudio">
+						<a target="_blank" rel="nofollow" href="https://vk.com/origamiwebstudio">
 							<i class="fa fa-vk" aria-hidden="true"></i>
 						</a>
 					</li>
 					<li>
-						<a target="_blank" href="https://www.facebook.com/groups/746999255478272">
+						<a target="_blank" rel="nofollow" href="https://www.facebook.com/groups/746999255478272">
 							<i class="fa fa-facebook" aria-hidden="true"></i>
 						</a>
 					</li>
