@@ -23,7 +23,7 @@
 			<div class="container">
 
 				<header>
-					<h1>{{ $project->translateOrDefault(app()->getLocale())->title }} <span>({{ $project->closed_at->year }})</span></h1>
+					<h1>{{ $project->id.' | '.$project->translateOrDefault(app()->getLocale())->title }} <span>({{ $project->closed_at->year }})</span></h1>
 				</header>
 
 				<div class="project-content">
@@ -180,7 +180,7 @@
 								</div>
 							@endif
 
-{{--							@include('pages.projects.components.project-comments')--}}
+							@include('pages.projects.components.project-comments')
 
 						</div>
 

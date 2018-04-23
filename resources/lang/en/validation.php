@@ -135,6 +135,7 @@ return [
 		'client_review'     => "Client's review",
 		'link'              => 'Link',
 		'closed_at'         => 'Date of completion',
+		'message' 					=> 'Message',
 	],
 
 ];

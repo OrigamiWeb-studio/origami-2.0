@@ -137,6 +137,7 @@ return [
 		'client_review'     => "Recenzja klienta",
 		'link'              => 'Link',
 		'closed_at'         => 'Data zakończenia',
+		'message' 					=> 'Wiadomość',
 	],
 
 ];

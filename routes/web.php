@@ -73,6 +73,16 @@ Route::get('/projects/{project_id}/screenshots', 'ProjectsController@projectScre
 	->where('project_id', '[0-9]+')
 	->middleware(['role:owner']);
 #-----------------------------------------------------------------------------------
+#Project comments
+#
+#
+Route::get('/projects/{slug}/comments', 'ProjectCommentsController@projectComments')
+	->name('project-comments')
+	->where('slug', '[a-zA-Z0-9_-]+');
+
+Route::post('/projects/comments/add', 'ProjectCommentsController@addComment')
+	->name('project-comment-add');
+#-----------------------------------------------------------------------------------
 #Tickets
 #
 #
